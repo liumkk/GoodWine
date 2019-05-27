@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D63865EB229C1EC20020DE4B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D63865EA229C1EC20020DE4B /* AppDelegate.m */; };
+		D63865EE229C1EC20020DE4B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D63865ED229C1EC20020DE4B /* ViewController.m */; };
+		D63865F1229C1EC20020DE4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63865EF229C1EC20020DE4B /* Main.storyboard */; };
+		D63865F3229C1EC40020DE4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D63865F2229C1EC40020DE4B /* Assets.xcassets */; };
+		D63865F6229C1EC40020DE4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63865F4229C1EC40020DE4B /* LaunchScreen.storyboard */; };
+		D63865F9229C1EC40020DE4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D63865F8229C1EC40020DE4B /* main.m */; };
+		D6386603229C1EC40020DE4B /* GoodWineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386602229C1EC40020DE4B /* GoodWineTests.m */; };
+		D638660E229C1EC40020DE4B /* GoodWineUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D638660D229C1EC40020DE4B /* GoodWineUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D63865FF229C1EC40020DE4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D63865DE229C1EC20020DE4B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D63865E5229C1EC20020DE4B;
+			remoteInfo = GoodWine;
+		};
+		D638660A229C1EC40020DE4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D63865DE229C1EC20020DE4B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D63865E5229C1EC20020DE4B;
+			remoteInfo = GoodWine;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D63865E6229C1EC20020DE4B /* GoodWine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodWine.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D63865E9229C1EC20020DE4B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D63865EA229C1EC20020DE4B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D63865EC229C1EC20020DE4B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D63865ED229C1EC20020DE4B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D63865F0229C1EC20020DE4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D63865F2229C1EC40020DE4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D63865F5229C1EC40020DE4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D63865F7229C1EC40020DE4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D63865F8229C1EC40020DE4B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D63865FE229C1EC40020DE4B /* GoodWineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoodWineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6386602229C1EC40020DE4B /* GoodWineTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodWineTests.m; sourceTree = "<group>"; };
+		D6386604229C1EC40020DE4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6386609229C1EC40020DE4B /* GoodWineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoodWineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D638660D229C1EC40020DE4B /* GoodWineUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodWineUITests.m; sourceTree = "<group>"; };
+		D638660F229C1EC40020DE4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D63865E3229C1EC20020DE4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D63865FB229C1EC40020DE4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6386606229C1EC40020DE4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D63865DD229C1EC20020DE4B = {
+			isa = PBXGroup;
+			children = (
+				D63865E8229C1EC20020DE4B /* GoodWine */,
+				D6386601229C1EC40020DE4B /* GoodWineTests */,
+				D638660C229C1EC40020DE4B /* GoodWineUITests */,
+				D63865E7229C1EC20020DE4B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D63865E7229C1EC20020DE4B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D63865E6229C1EC20020DE4B /* GoodWine.app */,
+				D63865FE229C1EC40020DE4B /* GoodWineTests.xctest */,
+				D6386609229C1EC40020DE4B /* GoodWineUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D63865E8229C1EC20020DE4B /* GoodWine */ = {
+			isa = PBXGroup;
+			children = (
+				D63865E9229C1EC20020DE4B /* AppDelegate.h */,
+				D63865EA229C1EC20020DE4B /* AppDelegate.m */,
+				D63865EC229C1EC20020DE4B /* ViewController.h */,
+				D63865ED229C1EC20020DE4B /* ViewController.m */,
+				D63865EF229C1EC20020DE4B /* Main.storyboard */,
+				D63865F2229C1EC40020DE4B /* Assets.xcassets */,
+				D63865F4229C1EC40020DE4B /* LaunchScreen.storyboard */,
+				D63865F7229C1EC40020DE4B /* Info.plist */,
+				D63865F8229C1EC40020DE4B /* main.m */,
+			);
+			path = GoodWine;
+			sourceTree = "<group>";
+		};
+		D6386601229C1EC40020DE4B /* GoodWineTests */ = {
+			isa = PBXGroup;
+			children = (
+				D6386602229C1EC40020DE4B /* GoodWineTests.m */,
+				D6386604229C1EC40020DE4B /* Info.plist */,
+			);
+			path = GoodWineTests;
+			sourceTree = "<group>";
+		};
+		D638660C229C1EC40020DE4B /* GoodWineUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D638660D229C1EC40020DE4B /* GoodWineUITests.m */,
+				D638660F229C1EC40020DE4B /* Info.plist */,
+			);
+			path = GoodWineUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D63865E5229C1EC20020DE4B /* GoodWine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6386612229C1EC40020DE4B /* Build configuration list for PBXNativeTarget "GoodWine" */;
+			buildPhases = (
+				D63865E2229C1EC20020DE4B /* Sources */,
+				D63865E3229C1EC20020DE4B /* Frameworks */,
+				D63865E4229C1EC20020DE4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GoodWine;
+			productName = GoodWine;
+			productReference = D63865E6229C1EC20020DE4B /* GoodWine.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D63865FD229C1EC40020DE4B /* GoodWineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6386615229C1EC40020DE4B /* Build configuration list for PBXNativeTarget "GoodWineTests" */;
+			buildPhases = (
+				D63865FA229C1EC40020DE4B /* Sources */,
+				D63865FB229C1EC40020DE4B /* Frameworks */,
+				D63865FC229C1EC40020DE4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D6386600229C1EC40020DE4B /* PBXTargetDependency */,
+			);
+			name = GoodWineTests;
+			productName = GoodWineTests;
+			productReference = D63865FE229C1EC40020DE4B /* GoodWineTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D6386608229C1EC40020DE4B /* GoodWineUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6386618229C1EC40020DE4B /* Build configuration list for PBXNativeTarget "GoodWineUITests" */;
+			buildPhases = (
+				D6386605229C1EC40020DE4B /* Sources */,
+				D6386606229C1EC40020DE4B /* Frameworks */,
+				D6386607229C1EC40020DE4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D638660B229C1EC40020DE4B /* PBXTargetDependency */,
+			);
+			name = GoodWineUITests;
+			productName = GoodWineUITests;
+			productReference = D6386609229C1EC40020DE4B /* GoodWineUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D63865DE229C1EC20020DE4B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = GM;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = LMK;
+				TargetAttributes = {
+					D63865E5229C1EC20020DE4B = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					D63865FD229C1EC40020DE4B = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = D63865E5229C1EC20020DE4B;
+					};
+					D6386608229C1EC40020DE4B = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = D63865E5229C1EC20020DE4B;
+					};
+				};
+			};
+			buildConfigurationList = D63865E1229C1EC20020DE4B /* Build configuration list for PBXProject "GoodWine" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D63865DD229C1EC20020DE4B;
+			productRefGroup = D63865E7229C1EC20020DE4B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D63865E5229C1EC20020DE4B /* GoodWine */,
+				D63865FD229C1EC40020DE4B /* GoodWineTests */,
+				D6386608229C1EC40020DE4B /* GoodWineUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D63865E4229C1EC20020DE4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D63865F6229C1EC40020DE4B /* LaunchScreen.storyboard in Resources */,
+				D63865F3229C1EC40020DE4B /* Assets.xcassets in Resources */,
+				D63865F1229C1EC20020DE4B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D63865FC229C1EC40020DE4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6386607229C1EC40020DE4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D63865E2229C1EC20020DE4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D63865EE229C1EC20020DE4B /* ViewController.m in Sources */,
+				D63865F9229C1EC40020DE4B /* main.m in Sources */,
+				D63865EB229C1EC20020DE4B /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D63865FA229C1EC40020DE4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6386603229C1EC40020DE4B /* GoodWineTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6386605229C1EC40020DE4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D638660E229C1EC40020DE4B /* GoodWineUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D6386600229C1EC40020DE4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D63865E5229C1EC20020DE4B /* GoodWine */;
+			targetProxy = D63865FF229C1EC40020DE4B /* PBXContainerItemProxy */;
+		};
+		D638660B229C1EC40020DE4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D63865E5229C1EC20020DE4B /* GoodWine */;
+			targetProxy = D638660A229C1EC40020DE4B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D63865EF229C1EC20020DE4B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D63865F0229C1EC20020DE4B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D63865F4229C1EC40020DE4B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D63865F5229C1EC40020DE4B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D6386610229C1EC40020DE4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D6386611229C1EC40020DE4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D6386613229C1EC40020DE4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoodWine/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lmk.GoodWine;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D6386614229C1EC40020DE4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoodWine/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lmk.GoodWine;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D6386616229C1EC40020DE4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoodWineTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lmk.GoodWineTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoodWine.app/GoodWine";
+			};
+			name = Debug;
+		};
+		D6386617229C1EC40020DE4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoodWineTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lmk.GoodWineTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GoodWine.app/GoodWine";
+			};
+			name = Release;
+		};
+		D6386619229C1EC40020DE4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoodWineUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lmk.GoodWineUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GoodWine;
+			};
+			name = Debug;
+		};
+		D638661A229C1EC40020DE4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GoodWineUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lmk.GoodWineUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GoodWine;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D63865E1229C1EC20020DE4B /* Build configuration list for PBXProject "GoodWine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6386610229C1EC40020DE4B /* Debug */,
+				D6386611229C1EC40020DE4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6386612229C1EC40020DE4B /* Build configuration list for PBXNativeTarget "GoodWine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6386613229C1EC40020DE4B /* Debug */,
+				D6386614229C1EC40020DE4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6386615229C1EC40020DE4B /* Build configuration list for PBXNativeTarget "GoodWineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6386616229C1EC40020DE4B /* Debug */,
+				D6386617229C1EC40020DE4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6386618229C1EC40020DE4B /* Build configuration list for PBXNativeTarget "GoodWineUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6386619229C1EC40020DE4B /* Debug */,
+				D638661A229C1EC40020DE4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D63865DE229C1EC20020DE4B /* Project object */;
+}
