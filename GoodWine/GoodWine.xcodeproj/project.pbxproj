@@ -16,6 +16,28 @@
 		D63865F9229C1EC40020DE4B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D63865F8229C1EC40020DE4B /* main.m */; };
 		D6386603229C1EC40020DE4B /* GoodWineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386602229C1EC40020DE4B /* GoodWineTests.m */; };
 		D638660E229C1EC40020DE4B /* GoodWineUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D638660D229C1EC40020DE4B /* GoodWineUITests.m */; };
+		D6386631229C34CE0020DE4B /* AppDelegate+RootViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386630229C34CE0020DE4B /* AppDelegate+RootViewcontroller.m */; };
+		D6386638229C36090020DE4B /* GMTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386637229C36080020DE4B /* GMTabBarController.m */; };
+		D638663F229C399E0020DE4B /* GMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D638663E229C399E0020DE4B /* GMNavigationController.m */; };
+		D6386643229C3A210020DE4B /* GMBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386642229C3A210020DE4B /* GMBaseViewController.m */; };
+		D6386646229C3A500020DE4B /* GMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386645229C3A500020DE4B /* GMLoginViewController.m */; };
+		D6386650229D76520020DE4B /* GMHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D638664F229D76520020DE4B /* GMHomePageViewController.m */; };
+		D6386653229D76600020DE4B /* GMShoppCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386652229D76600020DE4B /* GMShoppCartViewController.m */; };
+		D6386656229D766F0020DE4B /* GMOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386655229D766F0020DE4B /* GMOrderViewController.m */; };
+		D6386659229D767B0020DE4B /* GMUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386658229D767B0020DE4B /* GMUserCenterViewController.m */; };
+		D638665C229D7A270020DE4B /* TabbarItem.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D638665B229D7A270020DE4B /* TabbarItem.xcassets */; };
+		D6386664229D7DB90020DE4B /* GMHomePageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386663229D7DB90020DE4B /* GMHomePageTableView.m */; };
+		D6386667229D7EF40020DE4B /* GMAdScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386666229D7EF40020DE4B /* GMAdScrollView.m */; };
+		D638666C229D90E50020DE4B /* GMKeyValueInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D638666B229D90E50020DE4B /* GMKeyValueInfoCell.m */; };
+		D638666F229D94390020DE4B /* GMAdPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D638666E229D94390020DE4B /* GMAdPageControl.m */; };
+		D6386673229ED8D10020DE4B /* GMUserCenterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386672229ED8D10020DE4B /* GMUserCenterTableView.m */; };
+		D6386677229ED8F40020DE4B /* GMUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386676229ED8F40020DE4B /* GMUserInfoCell.m */; };
+		D638667A229EE1B50020DE4B /* GMMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386679229EE1B50020DE4B /* GMMyOrderCell.m */; };
+		D638667E229EE3510020DE4B /* GMITButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D638667D229EE3510020DE4B /* GMITButton.m */; };
+		D6386684229EE7E00020DE4B /* UIView+Addtion.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386683229EE7E00020DE4B /* UIView+Addtion.m */; };
+		D638668822A572460020DE4B /* GMServerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D638668722A572460020DE4B /* GMServerClient.m */; };
+		D638668B22A572730020DE4B /* GMServerAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D638668A22A572730020DE4B /* GMServerAPIManager.m */; };
+		D638669122A5746C0020DE4B /* GMNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = D638669022A5746C0020DE4B /* GMNetworkError.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +77,54 @@
 		D6386609229C1EC40020DE4B /* GoodWineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoodWineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D638660D229C1EC40020DE4B /* GoodWineUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodWineUITests.m; sourceTree = "<group>"; };
 		D638660F229C1EC40020DE4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6386624229C31950020DE4B /* GoodWine-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GoodWine-Prefix.pch"; sourceTree = "<group>"; };
+		D638662F229C34CE0020DE4B /* AppDelegate+RootViewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+RootViewcontroller.h"; sourceTree = "<group>"; };
+		D6386630229C34CE0020DE4B /* AppDelegate+RootViewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+RootViewcontroller.m"; sourceTree = "<group>"; };
+		D6386636229C36080020DE4B /* GMTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMTabBarController.h; sourceTree = "<group>"; };
+		D6386637229C36080020DE4B /* GMTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMTabBarController.m; sourceTree = "<group>"; };
+		D638663A229C36C50020DE4B /* GoodWine_Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodWine_Constant.h; sourceTree = "<group>"; };
+		D638663B229C38C90020DE4B /* UI_Constant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UI_Constant.h; sourceTree = "<group>"; };
+		D638663D229C399E0020DE4B /* GMNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMNavigationController.h; sourceTree = "<group>"; };
+		D638663E229C399E0020DE4B /* GMNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMNavigationController.m; sourceTree = "<group>"; };
+		D6386641229C3A210020DE4B /* GMBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMBaseViewController.h; sourceTree = "<group>"; };
+		D6386642229C3A210020DE4B /* GMBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMBaseViewController.m; sourceTree = "<group>"; };
+		D6386644229C3A500020DE4B /* GMLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMLoginViewController.h; sourceTree = "<group>"; };
+		D6386645229C3A500020DE4B /* GMLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMLoginViewController.m; sourceTree = "<group>"; };
+		D638664E229D76520020DE4B /* GMHomePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMHomePageViewController.h; sourceTree = "<group>"; };
+		D638664F229D76520020DE4B /* GMHomePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMHomePageViewController.m; sourceTree = "<group>"; };
+		D6386651229D76600020DE4B /* GMShoppCartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMShoppCartViewController.h; sourceTree = "<group>"; };
+		D6386652229D76600020DE4B /* GMShoppCartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMShoppCartViewController.m; sourceTree = "<group>"; };
+		D6386654229D766F0020DE4B /* GMOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderViewController.h; sourceTree = "<group>"; };
+		D6386655229D766F0020DE4B /* GMOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderViewController.m; sourceTree = "<group>"; };
+		D6386657229D767B0020DE4B /* GMUserCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMUserCenterViewController.h; sourceTree = "<group>"; };
+		D6386658229D767B0020DE4B /* GMUserCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMUserCenterViewController.m; sourceTree = "<group>"; };
+		D638665B229D7A270020DE4B /* TabbarItem.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TabbarItem.xcassets; sourceTree = "<group>"; };
+		D6386662229D7DB90020DE4B /* GMHomePageTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMHomePageTableView.h; sourceTree = "<group>"; };
+		D6386663229D7DB90020DE4B /* GMHomePageTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMHomePageTableView.m; sourceTree = "<group>"; };
+		D6386665229D7EF40020DE4B /* GMAdScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAdScrollView.h; sourceTree = "<group>"; };
+		D6386666229D7EF40020DE4B /* GMAdScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMAdScrollView.m; sourceTree = "<group>"; };
+		D6386668229D80A50020DE4B /* MacroDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefine.h; sourceTree = "<group>"; };
+		D638666A229D90E50020DE4B /* GMKeyValueInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMKeyValueInfoCell.h; sourceTree = "<group>"; };
+		D638666B229D90E50020DE4B /* GMKeyValueInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMKeyValueInfoCell.m; sourceTree = "<group>"; };
+		D638666D229D94390020DE4B /* GMAdPageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAdPageControl.h; sourceTree = "<group>"; };
+		D638666E229D94390020DE4B /* GMAdPageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMAdPageControl.m; sourceTree = "<group>"; };
+		D6386671229ED8D10020DE4B /* GMUserCenterTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMUserCenterTableView.h; sourceTree = "<group>"; };
+		D6386672229ED8D10020DE4B /* GMUserCenterTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMUserCenterTableView.m; sourceTree = "<group>"; };
+		D6386675229ED8F40020DE4B /* GMUserInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMUserInfoCell.h; sourceTree = "<group>"; };
+		D6386676229ED8F40020DE4B /* GMUserInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMUserInfoCell.m; sourceTree = "<group>"; };
+		D6386678229EE1B50020DE4B /* GMMyOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMMyOrderCell.h; sourceTree = "<group>"; };
+		D6386679229EE1B50020DE4B /* GMMyOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMMyOrderCell.m; sourceTree = "<group>"; };
+		D638667C229EE3510020DE4B /* GMITButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMITButton.h; sourceTree = "<group>"; };
+		D638667D229EE3510020DE4B /* GMITButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMITButton.m; sourceTree = "<group>"; };
+		D6386682229EE7E00020DE4B /* UIView+Addtion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Addtion.h"; sourceTree = "<group>"; };
+		D6386683229EE7E00020DE4B /* UIView+Addtion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addtion.m"; sourceTree = "<group>"; };
+		D638668522A571F00020DE4B /* GMNetConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMNetConfig.h; sourceTree = "<group>"; };
+		D638668622A572460020DE4B /* GMServerClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMServerClient.h; sourceTree = "<group>"; };
+		D638668722A572460020DE4B /* GMServerClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMServerClient.m; sourceTree = "<group>"; };
+		D638668922A572730020DE4B /* GMServerAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMServerAPIManager.h; sourceTree = "<group>"; };
+		D638668A22A572730020DE4B /* GMServerAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMServerAPIManager.m; sourceTree = "<group>"; };
+		D638668F22A5746C0020DE4B /* GMNetworkError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMNetworkError.h; sourceTree = "<group>"; };
+		D638669022A5746C0020DE4B /* GMNetworkError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMNetworkError.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +190,9 @@
 				D63865EA229C1EC20020DE4B /* AppDelegate.m */,
 				D63865EC229C1EC20020DE4B /* ViewController.h */,
 				D63865ED229C1EC20020DE4B /* ViewController.m */,
+				D638661E229C2FC70020DE4B /* GM */,
 				D63865EF229C1EC20020DE4B /* Main.storyboard */,
+				D6386624229C31950020DE4B /* GoodWine-Prefix.pch */,
 				D63865F2229C1EC40020DE4B /* Assets.xcassets */,
 				D63865F4229C1EC40020DE4B /* LaunchScreen.storyboard */,
 				D63865F7229C1EC40020DE4B /* Info.plist */,
@@ -145,6 +217,244 @@
 				D638660F229C1EC40020DE4B /* Info.plist */,
 			);
 			path = GoodWineUITests;
+			sourceTree = "<group>";
+		};
+		D638661E229C2FC70020DE4B /* GM */ = {
+			isa = PBXGroup;
+			children = (
+				D638661F229C2FD20020DE4B /* Biz */,
+				D638662A229C34220020DE4B /* Common */,
+				D6386620229C2FDF0020DE4B /* NetWork */,
+				D638662B229C343C0020DE4B /* Resource */,
+			);
+			path = GM;
+			sourceTree = "<group>";
+		};
+		D638661F229C2FD20020DE4B /* Biz */ = {
+			isa = PBXGroup;
+			children = (
+				D638664A229D755E0020DE4B /* HomePage */,
+				D638664D229D75910020DE4B /* ShoppCart */,
+				D638664C229D758A0020DE4B /* Order */,
+				D638664B229D75670020DE4B /* UserCenter */,
+				D6386625229C32CE0020DE4B /* Login */,
+			);
+			path = Biz;
+			sourceTree = "<group>";
+		};
+		D6386620229C2FDF0020DE4B /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				D638668522A571F00020DE4B /* GMNetConfig.h */,
+				D638668622A572460020DE4B /* GMServerClient.h */,
+				D638668722A572460020DE4B /* GMServerClient.m */,
+				D638668922A572730020DE4B /* GMServerAPIManager.h */,
+				D638668A22A572730020DE4B /* GMServerAPIManager.m */,
+				D638668F22A5746C0020DE4B /* GMNetworkError.h */,
+				D638669022A5746C0020DE4B /* GMNetworkError.m */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
+		D6386621229C2FE70020DE4B /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				D638662F229C34CE0020DE4B /* AppDelegate+RootViewcontroller.h */,
+				D6386630229C34CE0020DE4B /* AppDelegate+RootViewcontroller.m */,
+				D6386682229EE7E00020DE4B /* UIView+Addtion.h */,
+				D6386683229EE7E00020DE4B /* UIView+Addtion.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		D6386622229C30590020DE4B /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				D638667B229EE2F70020DE4B /* GMITButton */,
+				D6386669229D90BA0020DE4B /* GMKeyValueInfoCell */,
+				D6386640229C3A090020DE4B /* GMBaseViewController */,
+				D638663C229C395F0020DE4B /* GMNavigationController */,
+				D6386632229C353A0020DE4B /* GMTabBarController */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		D6386625229C32CE0020DE4B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D6386629229C333D0020DE4B /* View */,
+				D6386644229C3A500020DE4B /* GMLoginViewController.h */,
+				D6386645229C3A500020DE4B /* GMLoginViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D6386629229C333D0020DE4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D638662A229C34220020DE4B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D6386639229C36300020DE4B /* Macro */,
+				D6386621229C2FE70020DE4B /* Category */,
+				D6386622229C30590020DE4B /* Custom */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D638662B229C343C0020DE4B /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D638665A229D7A0B0020DE4B /* ImageResource */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		D6386632229C353A0020DE4B /* GMTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				D6386636229C36080020DE4B /* GMTabBarController.h */,
+				D6386637229C36080020DE4B /* GMTabBarController.m */,
+			);
+			path = GMTabBarController;
+			sourceTree = "<group>";
+		};
+		D6386639229C36300020DE4B /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				D638663A229C36C50020DE4B /* GoodWine_Constant.h */,
+				D638663B229C38C90020DE4B /* UI_Constant.h */,
+				D6386668229D80A50020DE4B /* MacroDefine.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		D638663C229C395F0020DE4B /* GMNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				D638663D229C399E0020DE4B /* GMNavigationController.h */,
+				D638663E229C399E0020DE4B /* GMNavigationController.m */,
+			);
+			path = GMNavigationController;
+			sourceTree = "<group>";
+		};
+		D6386640229C3A090020DE4B /* GMBaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D6386641229C3A210020DE4B /* GMBaseViewController.h */,
+				D6386642229C3A210020DE4B /* GMBaseViewController.m */,
+			);
+			path = GMBaseViewController;
+			sourceTree = "<group>";
+		};
+		D638664A229D755E0020DE4B /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				D638665E229D7C3D0020DE4B /* Cell */,
+				D638665D229D7C350020DE4B /* View */,
+				D638664E229D76520020DE4B /* GMHomePageViewController.h */,
+				D638664F229D76520020DE4B /* GMHomePageViewController.m */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		D638664B229D75670020DE4B /* UserCenter */ = {
+			isa = PBXGroup;
+			children = (
+				D6386674229ED8DA0020DE4B /* Cell */,
+				D6386670229ED8A30020DE4B /* View */,
+				D6386657229D767B0020DE4B /* GMUserCenterViewController.h */,
+				D6386658229D767B0020DE4B /* GMUserCenterViewController.m */,
+			);
+			path = UserCenter;
+			sourceTree = "<group>";
+		};
+		D638664C229D758A0020DE4B /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				D6386654229D766F0020DE4B /* GMOrderViewController.h */,
+				D6386655229D766F0020DE4B /* GMOrderViewController.m */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		D638664D229D75910020DE4B /* ShoppCart */ = {
+			isa = PBXGroup;
+			children = (
+				D6386651229D76600020DE4B /* GMShoppCartViewController.h */,
+				D6386652229D76600020DE4B /* GMShoppCartViewController.m */,
+			);
+			path = ShoppCart;
+			sourceTree = "<group>";
+		};
+		D638665A229D7A0B0020DE4B /* ImageResource */ = {
+			isa = PBXGroup;
+			children = (
+				D638665B229D7A270020DE4B /* TabbarItem.xcassets */,
+			);
+			path = ImageResource;
+			sourceTree = "<group>";
+		};
+		D638665D229D7C350020DE4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6386662229D7DB90020DE4B /* GMHomePageTableView.h */,
+				D6386663229D7DB90020DE4B /* GMHomePageTableView.m */,
+				D6386665229D7EF40020DE4B /* GMAdScrollView.h */,
+				D6386666229D7EF40020DE4B /* GMAdScrollView.m */,
+				D638666D229D94390020DE4B /* GMAdPageControl.h */,
+				D638666E229D94390020DE4B /* GMAdPageControl.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D638665E229D7C3D0020DE4B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D6386669229D90BA0020DE4B /* GMKeyValueInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				D638666A229D90E50020DE4B /* GMKeyValueInfoCell.h */,
+				D638666B229D90E50020DE4B /* GMKeyValueInfoCell.m */,
+			);
+			path = GMKeyValueInfoCell;
+			sourceTree = "<group>";
+		};
+		D6386670229ED8A30020DE4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6386671229ED8D10020DE4B /* GMUserCenterTableView.h */,
+				D6386672229ED8D10020DE4B /* GMUserCenterTableView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D6386674229ED8DA0020DE4B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D6386675229ED8F40020DE4B /* GMUserInfoCell.h */,
+				D6386676229ED8F40020DE4B /* GMUserInfoCell.m */,
+				D6386678229EE1B50020DE4B /* GMMyOrderCell.h */,
+				D6386679229EE1B50020DE4B /* GMMyOrderCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D638667B229EE2F70020DE4B /* GMITButton */ = {
+			isa = PBXGroup;
+			children = (
+				D638667C229EE3510020DE4B /* GMITButton.h */,
+				D638667D229EE3510020DE4B /* GMITButton.m */,
+			);
+			path = GMITButton;
 			sourceTree = "<group>";
 		};
 		D8CD415E4C4DB5A6843A45BB /* Pods */ = {
@@ -264,6 +574,7 @@
 			files = (
 				D63865F6229C1EC40020DE4B /* LaunchScreen.storyboard in Resources */,
 				D63865F3229C1EC40020DE4B /* Assets.xcassets in Resources */,
+				D638665C229D7A270020DE4B /* TabbarItem.xcassets in Resources */,
 				D63865F1229C1EC20020DE4B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,12 +627,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-GoodWine/Pods-GoodWine-resources.sh",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,9 +649,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6386684229EE7E00020DE4B /* UIView+Addtion.m in Sources */,
+				D638667E229EE3510020DE4B /* GMITButton.m in Sources */,
 				D63865EE229C1EC20020DE4B /* ViewController.m in Sources */,
+				D638669122A5746C0020DE4B /* GMNetworkError.m in Sources */,
+				D638666C229D90E50020DE4B /* GMKeyValueInfoCell.m in Sources */,
+				D6386673229ED8D10020DE4B /* GMUserCenterTableView.m in Sources */,
+				D6386638229C36090020DE4B /* GMTabBarController.m in Sources */,
+				D638666F229D94390020DE4B /* GMAdPageControl.m in Sources */,
 				D63865F9229C1EC40020DE4B /* main.m in Sources */,
+				D638663F229C399E0020DE4B /* GMNavigationController.m in Sources */,
+				D6386631229C34CE0020DE4B /* AppDelegate+RootViewcontroller.m in Sources */,
 				D63865EB229C1EC20020DE4B /* AppDelegate.m in Sources */,
+				D6386659229D767B0020DE4B /* GMUserCenterViewController.m in Sources */,
+				D638668B22A572730020DE4B /* GMServerAPIManager.m in Sources */,
+				D6386656229D766F0020DE4B /* GMOrderViewController.m in Sources */,
+				D6386650229D76520020DE4B /* GMHomePageViewController.m in Sources */,
+				D6386646229C3A500020DE4B /* GMLoginViewController.m in Sources */,
+				D6386664229D7DB90020DE4B /* GMHomePageTableView.m in Sources */,
+				D6386677229ED8F40020DE4B /* GMUserInfoCell.m in Sources */,
+				D6386643229C3A210020DE4B /* GMBaseViewController.m in Sources */,
+				D6386667229D7EF40020DE4B /* GMAdScrollView.m in Sources */,
+				D638667A229EE1B50020DE4B /* GMMyOrderCell.m in Sources */,
+				D6386653229D76600020DE4B /* GMShoppCartViewController.m in Sources */,
+				D638668822A572460020DE4B /* GMServerClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +845,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GoodWine/GoodWine-Prefix.pch";
 				INFOPLIST_FILE = GoodWine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -528,6 +864,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GoodWine/GoodWine-Prefix.pch";
 				INFOPLIST_FILE = GoodWine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

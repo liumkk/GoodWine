@@ -1,0 +1,17 @@
+//
+//  GoodWine-Prefix.pch
+//  GoodWine
+//
+//  Created by LMK on 2019/5/27.
+//  Copyright © 2019年 LMK. All rights reserved.
+//
+
+#ifndef GoodWine_Prefix_pch
+#define GoodWine_Prefix_pch
+
+#import "UI_Constant.h"
+#import "GoodWine_Constant.h"
+#import "MacroDefine.h"
+#import "GMNetConfig.h"
+
+#endif /* GoodWine_Prefix_pch */
