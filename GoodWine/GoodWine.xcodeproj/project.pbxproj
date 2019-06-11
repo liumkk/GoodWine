@@ -27,9 +27,7 @@
 		D6386659229D767B0020DE4B /* GMUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386658229D767B0020DE4B /* GMUserCenterViewController.m */; };
 		D638665C229D7A270020DE4B /* TabbarItem.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D638665B229D7A270020DE4B /* TabbarItem.xcassets */; };
 		D6386664229D7DB90020DE4B /* GMHomePageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386663229D7DB90020DE4B /* GMHomePageTableView.m */; };
-		D6386667229D7EF40020DE4B /* GMAdScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386666229D7EF40020DE4B /* GMAdScrollView.m */; };
 		D638666C229D90E50020DE4B /* GMKeyValueInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D638666B229D90E50020DE4B /* GMKeyValueInfoCell.m */; };
-		D638666F229D94390020DE4B /* GMAdPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D638666E229D94390020DE4B /* GMAdPageControl.m */; };
 		D6386673229ED8D10020DE4B /* GMUserCenterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386672229ED8D10020DE4B /* GMUserCenterTableView.m */; };
 		D6386677229ED8F40020DE4B /* GMUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386676229ED8F40020DE4B /* GMUserInfoCell.m */; };
 		D638667A229EE1B50020DE4B /* GMMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6386679229EE1B50020DE4B /* GMMyOrderCell.m */; };
@@ -38,6 +36,10 @@
 		D638668822A572460020DE4B /* GMServerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D638668722A572460020DE4B /* GMServerClient.m */; };
 		D638668B22A572730020DE4B /* GMServerAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D638668A22A572730020DE4B /* GMServerAPIManager.m */; };
 		D638669122A5746C0020DE4B /* GMNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = D638669022A5746C0020DE4B /* GMNetworkError.m */; };
+		D638669722A57F3C0020DE4B /* GMLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = D638669622A57F3C0020DE4B /* GMLoginView.m */; };
+		D638669B22A6B0DC0020DE4B /* GMViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D638669A22A6B0DC0020DE4B /* GMViewControllerManager.m */; };
+		D638669E22A6BCF40020DE4B /* GMMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D638669D22A6BCF40020DE4B /* GMMenuTableViewCell.m */; };
+		D63866A122A6C76D0020DE4B /* GMWineListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D63866A022A6C76D0020DE4B /* GMWineListTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,13 +103,9 @@
 		D638665B229D7A270020DE4B /* TabbarItem.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TabbarItem.xcassets; sourceTree = "<group>"; };
 		D6386662229D7DB90020DE4B /* GMHomePageTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMHomePageTableView.h; sourceTree = "<group>"; };
 		D6386663229D7DB90020DE4B /* GMHomePageTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMHomePageTableView.m; sourceTree = "<group>"; };
-		D6386665229D7EF40020DE4B /* GMAdScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAdScrollView.h; sourceTree = "<group>"; };
-		D6386666229D7EF40020DE4B /* GMAdScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMAdScrollView.m; sourceTree = "<group>"; };
 		D6386668229D80A50020DE4B /* MacroDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefine.h; sourceTree = "<group>"; };
 		D638666A229D90E50020DE4B /* GMKeyValueInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMKeyValueInfoCell.h; sourceTree = "<group>"; };
 		D638666B229D90E50020DE4B /* GMKeyValueInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMKeyValueInfoCell.m; sourceTree = "<group>"; };
-		D638666D229D94390020DE4B /* GMAdPageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAdPageControl.h; sourceTree = "<group>"; };
-		D638666E229D94390020DE4B /* GMAdPageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMAdPageControl.m; sourceTree = "<group>"; };
 		D6386671229ED8D10020DE4B /* GMUserCenterTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMUserCenterTableView.h; sourceTree = "<group>"; };
 		D6386672229ED8D10020DE4B /* GMUserCenterTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMUserCenterTableView.m; sourceTree = "<group>"; };
 		D6386675229ED8F40020DE4B /* GMUserInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMUserInfoCell.h; sourceTree = "<group>"; };
@@ -125,6 +123,14 @@
 		D638668A22A572730020DE4B /* GMServerAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMServerAPIManager.m; sourceTree = "<group>"; };
 		D638668F22A5746C0020DE4B /* GMNetworkError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMNetworkError.h; sourceTree = "<group>"; };
 		D638669022A5746C0020DE4B /* GMNetworkError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMNetworkError.m; sourceTree = "<group>"; };
+		D638669522A57F3C0020DE4B /* GMLoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMLoginView.h; sourceTree = "<group>"; };
+		D638669622A57F3C0020DE4B /* GMLoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMLoginView.m; sourceTree = "<group>"; };
+		D638669922A6B0DC0020DE4B /* GMViewControllerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMViewControllerManager.h; sourceTree = "<group>"; };
+		D638669A22A6B0DC0020DE4B /* GMViewControllerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMViewControllerManager.m; sourceTree = "<group>"; };
+		D638669C22A6BCF40020DE4B /* GMMenuTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMMenuTableViewCell.h; sourceTree = "<group>"; };
+		D638669D22A6BCF40020DE4B /* GMMenuTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMMenuTableViewCell.m; sourceTree = "<group>"; };
+		D638669F22A6C76D0020DE4B /* GMWineListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMWineListTableViewCell.h; sourceTree = "<group>"; };
+		D63866A022A6C76D0020DE4B /* GMWineListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMWineListTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +276,7 @@
 		D6386622229C30590020DE4B /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				D638669822A6B0760020DE4B /* GMViewControllerManager */,
 				D638667B229EE2F70020DE4B /* GMITButton */,
 				D6386669229D90BA0020DE4B /* GMKeyValueInfoCell */,
 				D6386640229C3A090020DE4B /* GMBaseViewController */,
@@ -292,6 +299,8 @@
 		D6386629229C333D0020DE4B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D638669522A57F3C0020DE4B /* GMLoginView.h */,
+				D638669622A57F3C0020DE4B /* GMLoginView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -404,10 +413,6 @@
 			children = (
 				D6386662229D7DB90020DE4B /* GMHomePageTableView.h */,
 				D6386663229D7DB90020DE4B /* GMHomePageTableView.m */,
-				D6386665229D7EF40020DE4B /* GMAdScrollView.h */,
-				D6386666229D7EF40020DE4B /* GMAdScrollView.m */,
-				D638666D229D94390020DE4B /* GMAdPageControl.h */,
-				D638666E229D94390020DE4B /* GMAdPageControl.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -415,6 +420,10 @@
 		D638665E229D7C3D0020DE4B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				D638669C22A6BCF40020DE4B /* GMMenuTableViewCell.h */,
+				D638669D22A6BCF40020DE4B /* GMMenuTableViewCell.m */,
+				D638669F22A6C76D0020DE4B /* GMWineListTableViewCell.h */,
+				D63866A022A6C76D0020DE4B /* GMWineListTableViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -455,6 +464,15 @@
 				D638667D229EE3510020DE4B /* GMITButton.m */,
 			);
 			path = GMITButton;
+			sourceTree = "<group>";
+		};
+		D638669822A6B0760020DE4B /* GMViewControllerManager */ = {
+			isa = PBXGroup;
+			children = (
+				D638669922A6B0DC0020DE4B /* GMViewControllerManager.h */,
+				D638669A22A6B0DC0020DE4B /* GMViewControllerManager.m */,
+			);
+			path = GMViewControllerManager;
 			sourceTree = "<group>";
 		};
 		D8CD415E4C4DB5A6843A45BB /* Pods */ = {
@@ -656,7 +674,7 @@
 				D638666C229D90E50020DE4B /* GMKeyValueInfoCell.m in Sources */,
 				D6386673229ED8D10020DE4B /* GMUserCenterTableView.m in Sources */,
 				D6386638229C36090020DE4B /* GMTabBarController.m in Sources */,
-				D638666F229D94390020DE4B /* GMAdPageControl.m in Sources */,
+				D638669722A57F3C0020DE4B /* GMLoginView.m in Sources */,
 				D63865F9229C1EC40020DE4B /* main.m in Sources */,
 				D638663F229C399E0020DE4B /* GMNavigationController.m in Sources */,
 				D6386631229C34CE0020DE4B /* AppDelegate+RootViewcontroller.m in Sources */,
@@ -669,9 +687,11 @@
 				D6386664229D7DB90020DE4B /* GMHomePageTableView.m in Sources */,
 				D6386677229ED8F40020DE4B /* GMUserInfoCell.m in Sources */,
 				D6386643229C3A210020DE4B /* GMBaseViewController.m in Sources */,
-				D6386667229D7EF40020DE4B /* GMAdScrollView.m in Sources */,
 				D638667A229EE1B50020DE4B /* GMMyOrderCell.m in Sources */,
 				D6386653229D76600020DE4B /* GMShoppCartViewController.m in Sources */,
+				D63866A122A6C76D0020DE4B /* GMWineListTableViewCell.m in Sources */,
+				D638669B22A6B0DC0020DE4B /* GMViewControllerManager.m in Sources */,
+				D638669E22A6BCF40020DE4B /* GMMenuTableViewCell.m in Sources */,
 				D638668822A572460020DE4B /* GMServerClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -848,6 +868,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoodWine/GoodWine-Prefix.pch";
 				INFOPLIST_FILE = GoodWine/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -867,6 +888,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoodWine/GoodWine-Prefix.pch";
 				INFOPLIST_FILE = GoodWine/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

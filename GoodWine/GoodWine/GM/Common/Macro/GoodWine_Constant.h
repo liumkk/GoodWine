@@ -16,6 +16,9 @@
 #import "Masonry.h"
 #import "SDCycleScrollView.h"
 #import "GMITButton.h"
+#import "AFNetworking.h"
+#import <UIImageView+WebCache.h>
+#import "MKCategory.h"
 
 #import "UIView+Addtion.h"
 
@@ -23,6 +26,7 @@
 
 #import "GMBaseViewController.h"
 #import "GMLoginViewController.h"
+#import "GMViewControllerManager.h"
 #import "GMHomePageViewController.h"
 #import "GMShoppCartViewController.h"
 #import "GMOrderViewController.h"

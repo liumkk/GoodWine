@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *phoneNumLabel;
 @property (nonatomic, strong) UIView *lineView;
+@property (nonatomic, strong) UITextField *tf;
 
 + (CGFloat)heightForCell;
 

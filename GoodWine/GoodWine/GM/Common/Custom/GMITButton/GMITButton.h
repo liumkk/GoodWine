@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UILabel *contentLabel;
 
+- (void)updateIconImageName:(NSString *)imageName contentText:(NSString *)contentText;
+
 @end
 
 NS_ASSUME_NONNULL_END

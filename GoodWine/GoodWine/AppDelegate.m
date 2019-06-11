@@ -17,7 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [self setTabbarController];
+//    [self setTabbarController];
+    [self checkLoginViewController];
     
     return YES;
 }

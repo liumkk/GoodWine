@@ -8,7 +8,7 @@
 
 #import "GMTabBarController.h"
 
-@interface GMTabBarController ()
+@interface GMTabBarController () <UITabBarControllerDelegate>
 
 @end
 
@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.delegate = self;
     
     [self initSubViewControllers];
 }
@@ -48,4 +50,37 @@
     self.viewControllers = @[homePageNAC,shoppNAC,orderNAC,myNAC];
 }
 
+#pragma mark - UITabBarControllerDelegate
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
+{
+    NSUInteger selectedTab = [self whichTabSelectedAccordingViewController:viewController];
+    self.selectedIndex = selectedTab;
+    MKNSLog(@"点击了%lu",(unsigned long)self.selectedIndex);
+    return YES;
+}
+
+- (NSUInteger)whichTabSelectedAccordingViewController:(UIViewController*)viewController {
+    
+    GMNavigationController * nc = (GMNavigationController *)viewController;
+    
+    UIViewController * vc = (UIViewController *)nc.viewControllers[0];
+    
+    if ([vc isKindOfClass:[GMHomePageViewController class]]) {
+        return 0;
+    } else  if ([vc isKindOfClass:[GMShoppCartViewController class]]) {
+//        ViewControllerManager.rootController = self.homePageNC;
+//        [MobClick event:AppBotTabCount attributes:@{@"tabChoice":@"首页"}];
+        return 1;
+    } else if ([vc isKindOfClass:[GMOrderViewController class]]) {
+//        ViewControllerManager.rootController = self.youLikeNC;
+//        [MobClick event:AppBotTabCount attributes:@{@"tabChoice":@"全民惠"}];
+        return 2;
+    } else {
+//        ViewControllerManager.rootController = self.myNC;
+//        [MobClick event:AppBotTabCount attributes:@{@"tabChoice":@"我的"}];
+        return 3;
+    }
+    
+}
 @end
