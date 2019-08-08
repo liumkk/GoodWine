@@ -7,6 +7,15 @@
 //
 
 #import "GMWineListTableViewCell.h"
+#import "GMWineListCollectionViewCell.h"
+
+static NSString *collectionViewCellId = @"collectionViewCellId";
+
+@interface GMWineListTableViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (nonatomic, strong) NSArray <HomePageTypeItem *> *dataArray;
+
+@end
 
 @implementation GMWineListTableViewCell
 
@@ -16,59 +25,58 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self setupConstraints];
         
+        [self initWineListCollectionView];
     }
     return self;
 }
 
+- (void)initWineListCollectionView {
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    flowLayout.itemSize = CGSizeMake((Width_Screen/2) - 9, 255);
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    flowLayout.minimumLineSpacing = 0;
+    flowLayout.minimumInteritemSpacing = 0;
+    
+    self.wineListCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(9, 0, Width_Screen-18, 255) collectionViewLayout:flowLayout];
+    self.wineListCollectionView.delegate = self;
+    self.wineListCollectionView.dataSource = self;
+    [self.wineListCollectionView registerClass:[GMWineListCollectionViewCell class] forCellWithReuseIdentifier:collectionViewCellId];
+    self.wineListCollectionView.backgroundColor = [UIColor whiteColor];
+    self.wineListCollectionView.showsVerticalScrollIndicator = YES;//关闭滚动条
+    self.wineListCollectionView.bounces = NO;//是否有回弹效果
+    self.wineListCollectionView.scrollEnabled = NO;
+    [self.contentView addSubview:self.wineListCollectionView];
+    
+}
 - (void)setupConstraints {
-    [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.contentView);
-        make.left.equalTo(self.contentView).offset(16.f);
-        make.size.mas_equalTo(CGSizeMake(30.f, 30.f));
-    }];
-    
-    [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.iconImageView);
-        make.left.equalTo(self.iconImageView.mas_right).offset(16.f);
-        make.right.equalTo(self.contentView.mas_right).offset(-30.f);
-    }];
-    
     
 }
 
-- (void)updateWineListCellWithImage:(NSString *)image contentText:(NSString *)contentText {
+- (void)updateWineListCellWithArray:(NSArray <HomePageTypeItem *> *)array {
+    self.dataArray = array;
+    self.wineListCollectionView.frame = CGRectMake(9, 0, Width_Screen - 18, (self.dataArray.count/2 + self.dataArray.count %2)* 255.f);
+    [self.wineListCollectionView reloadData];
+}
+
+#pragma mark - collectionView dataSource Or delegate
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.dataArray.count;
     
 }
 
-+ (CGFloat)heightForCell {
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    GMWineListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionViewCellId forIndexPath:indexPath];
+    [cell updateWineListCollectionCellWithHomePageTypeItem:self.dataArray[indexPath.item]];
+    return cell;
     
-//    return 60.f;
-    NSString *string = @"沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王";
-    CGSize size = [string boundingRectWithSize:CGSizeMake(Width_Screen - 30, MAXFLOAT) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.f]} context:nil].size;
-    return ceil(size.height);
-    
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"collecIndexPath--%ld",(long)indexPath.row);
 }
 
 #pragma mark --init subviews
-
-- (UIImageView *)iconImageView {
-    if (! _iconImageView) {
-        _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"test"]];
-        [self.contentView addSubview:_iconImageView];
-    }
-    return _iconImageView;
-}
-
-- (UILabel *)contentLabel {
-    if (! _contentLabel) {
-        _contentLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _contentLabel.textColor = [UIColor blackColor];
-        _contentLabel.font = [UIFont systemFontOfSize:14.f];
-        _contentLabel.text = @"沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王沙河王";
-        _contentLabel.numberOfLines = 0;
-        [self.contentView addSubview:_contentLabel];
-    }
-    return _contentLabel;
-}
 
 @end

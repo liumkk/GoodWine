@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GMServerAPIManager : NSObject
 
-singleton_interface(GMServerAPIManager);
+//singleton_interface(GMServerAPIManager);
++ (instancetype)shared;
 
 /**
  获取token

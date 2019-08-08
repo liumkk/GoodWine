@@ -16,10 +16,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedClient;
 
+- (void)setContentTypeJson;
+
 - (NSURLSessionDataTask *)asyncNetworkRequestWithURL:(NSString *)url
                                            parameter:(id)param
                                              success:(void (^)(NSDictionary *responseDict))success
                                              failure:(void (^)(NSError *error))failure;
+
+- (NSURLSessionDataTask *)asyncGetNetworkRequestWithURLString:(NSString *)urlString
+                                                    parameter:(id)param
+                                                      success:(void (^)(NSDictionary *responseDict))success
+                                                      failure:(void (^)(NSError *error))failure;
 
 @end
 

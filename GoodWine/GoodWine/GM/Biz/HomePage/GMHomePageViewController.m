@@ -12,6 +12,7 @@
 @interface GMHomePageViewController ()
 
 @property (nonatomic, strong) GMHomePageTableView *homePageTableView;
+@property (nonatomic, strong) HomePageInfoModel *infoModel;
 
 @end
 
@@ -23,12 +24,34 @@
     [self initSubviews];
     
     [self setupConstraints];
+    
+    [self requestQueryHomePageinfo];
+    
+//    self.homePageTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self.homePageTableView.mj_footer endRefreshing];
+//            [self.homePageTableView reloadHomePageTableViewWithHomePageInfoModel:self.infoModel];
+//        });
+//    }];
 }
 
 - (void)initSubviews {
     self.title = @"首页";
     
     self.view.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)requestQueryHomePageinfo {
+    [GMLoadingActivity showLoadingActivityInView:self.view];
+    [ServerAPIManager asyncQueryHomePageInfoWithSucceedBlock:^(HomePageInfoModel * _Nonnull infoModel) {
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [self.homePageTableView updateBannerImageWithHomePageInfoModel:infoModel];
+        [self.homePageTableView reloadHomePageTableViewWithHomePageInfoModel:infoModel];
+    } failedBlock:^(NSError * _Nonnull error) {
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [self showAlertViewWithTitle:@"提示" Error:error buttonTitle:@"确定"];
+    }];
 }
 
 #pragma mark --update constraints
@@ -40,7 +63,6 @@
     }];
     
 }
-
 
 - (GMHomePageTableView *)homePageTableView {
     if (! _homePageTableView) {

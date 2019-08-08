@@ -12,17 +12,17 @@
 
 + (instancetype)buttonWithType:(UIButtonType)buttonType {
     GMITButton *button = [super buttonWithType:buttonType];
-    button.layer.cornerRadius = 5.f;
-    button.layer.masksToBounds = YES;
-    button.layer.borderWidth = 1.f;
-    button.layer.borderColor = [UIColor blueColor].CGColor;
+//    button.layer.cornerRadius = 5.f;
+//    button.layer.masksToBounds = YES;
+//    button.layer.borderWidth = 1.f;
+//    button.layer.borderColor = [UIColor blueColor].CGColor;
     [button setUpConstrain];
     
     return button;
 }
 
 - (void)updateIconImageName:(NSString *)imageName contentText:(NSString *)contentText {
-    NSURL *URL = [NSURL URLWithString:@"http://img.taopic.com/uploads/allimg/140806/235020-140P60H10661.jpg"];
+    NSURL *URL = [NSURL URLWithString:@"https://image.so.com/i?q=天空图片&listsrc=sobox&listsign=19440fdd6ddfd0df010b7fbf00eb217f&src=360pic_strong"];
 
     [self.iconImageView sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"test"] options:0];
     

@@ -1,1 +1,1 @@
-../../../MKCategory/MKCategory/UIImage+MKAdditions.h
+../../../MKCategory/MKCategory/MKCategory/UIImage+MKAdditions.h

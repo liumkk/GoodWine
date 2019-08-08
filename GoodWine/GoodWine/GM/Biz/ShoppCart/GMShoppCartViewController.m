@@ -7,8 +7,11 @@
 //
 
 #import "GMShoppCartViewController.h"
+#import "GMShoppCarTableView.h"
 
 @interface GMShoppCartViewController ()
+
+@property (nonatomic, strong) GMShoppCarTableView *shoppCarTV;
 
 @end
 
@@ -18,13 +21,25 @@
     [super viewDidLoad];
     
     [self initSubviews];
+    [self setupConstranits];
 }
 
 - (void)initSubviews {
     self.title = @"购物车";
-    
-    self.view.backgroundColor = [UIColor whiteColor];
 }
 
+- (void)setupConstranits {
+    [self.shoppCarTV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+}
+
+- (GMShoppCarTableView *)shoppCarTV {
+    if (! _shoppCarTV) {
+        _shoppCarTV = [[GMShoppCarTableView alloc] initWithFrame:CGRectZero];
+        [self.view addSubview:_shoppCarTV];
+    }
+    return _shoppCarTV;
+}
 
 @end

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GMBaseViewController : UIViewController
 
+- (void)updateNavigationBar;
+
 @end
 
 NS_ASSUME_NONNULL_END

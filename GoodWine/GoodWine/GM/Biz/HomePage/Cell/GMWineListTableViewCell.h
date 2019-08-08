@@ -12,10 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GMWineListTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UIImageView *iconImageView;
-@property (nonatomic, strong) UILabel *contentLabel;
+@property (nonatomic, strong) UICollectionView *wineListCollectionView;
 
-+ (CGFloat)heightForCell;
+- (void)updateWineListCellWithArray:(NSArray <HomePageTypeItem *> *)array;
 
 @end
 

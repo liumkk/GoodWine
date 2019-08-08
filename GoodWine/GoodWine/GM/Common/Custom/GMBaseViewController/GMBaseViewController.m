@@ -30,6 +30,21 @@
     //修改return键
     _returnKeyHander = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
 }
+
+- (void)updateNavigationBar {
+    UIImage *leftBarButtonImage = [UIImage imageNamed:@"back"];
+    leftBarButtonImage = [leftBarButtonImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:leftBarButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    }
+}
+
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 }

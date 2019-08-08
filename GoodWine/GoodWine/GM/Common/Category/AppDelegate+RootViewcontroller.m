@@ -13,7 +13,7 @@
 - (void)setTabbarController {
     
     GMTabBarController *tabBarController = [[GMTabBarController alloc] initWithNibName:nil bundle:nil];
-    tabBarController.tabBar.backgroundColor = COLOR_TEXT_FIELD_COLOR;
+    tabBarController.tabBar.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = tabBarController;
 }
 

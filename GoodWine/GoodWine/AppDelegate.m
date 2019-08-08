@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+typedef void (^myBlock1)(void) ;
+
 @interface AppDelegate ()
 
 @end
@@ -17,12 +19,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-//    [self setTabbarController];
+    //适配iOS 11
+//    if (@available(iOS 11.0, *)) {
+//        UIScrollView.appearance.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//        UITableView.appearance.estimatedRowHeight = 0;
+//        UITableView.appearance.estimatedSectionFooterHeight = 0;
+//        UITableView.appearance.estimatedSectionHeaderHeight = 0;
+//    }
+    [LocationManager openLocationFunction];
     [self checkLoginViewController];
     
     return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

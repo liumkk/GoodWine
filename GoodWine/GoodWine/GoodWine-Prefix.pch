@@ -10,8 +10,9 @@
 #define GoodWine_Prefix_pch
 
 #import "UI_Constant.h"
-#import "GoodWine_Constant.h"
 #import "MacroDefine.h"
+#import "Model_Header.h"
 #import "GMNetConfig.h"
+#import "GoodWine_Constant.h"
 
 #endif /* GoodWine_Prefix_pch */

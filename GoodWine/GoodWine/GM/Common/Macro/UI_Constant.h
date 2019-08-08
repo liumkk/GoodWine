@@ -19,6 +19,14 @@
 #define Font_Normal                 [UIFont systemFontOfSize:16.f]
 #define Font_Big                    [UIFont systemFontOfSize:17.f]
 
+#define Font_10 [UIFont systemFontOfSize:10]
+#define Font_12 [UIFont systemFontOfSize:12]
+#define Font_13 [UIFont systemFontOfSize:13]
+#define Font_14 [UIFont systemFontOfSize:14]
+#define Font_15 [UIFont systemFontOfSize:15]
+#define Font_16 [UIFont systemFontOfSize:16]
+#define Font_17 [UIFont systemFontOfSize:17]
+#define Font_18 [UIFont systemFontOfSize:18]
 
 /* Colors */
 
@@ -69,5 +77,9 @@
 // 用于不可用状态文字描述
 #define COLOR_GRAY_200                                                    \
 [UIColor colorWithRed:200 / 255.0 green:200 / 255.0 blue:200 / 255.0 alpha:1]
+
+// 用于及浅的灰色
+#define COLOR_GRAY_244                                                    \
+[UIColor colorWithRed:244 / 255.0 green:245 / 255.0 blue:248 / 255.0 alpha:1]
 
 #endif /* UI_Constant_h */

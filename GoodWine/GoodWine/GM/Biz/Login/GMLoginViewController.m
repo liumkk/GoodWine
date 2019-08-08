@@ -37,7 +37,18 @@
 }
 
 - (void)loginAction:(UIButton *)btn {
-    [ViewControllerManager showTabController];
+
+    [GMLoadingActivity showLoadingActivityInView:self.view];
+    [ServerAPIManager asyncLoginWithUserName:@"zhangsan"
+                                    password:@"123456"
+                                succeedBlock:^(GMUserCenterInfoModel * model) {
+        UserCenter.userInfoModel = model;
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [ViewControllerManager showTabController];
+    } failedBlock:^(NSError * _Nonnull error) {
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [self showAlertViewWithError:error];
+    }];
 }
 
 - (void)forgetAction:(UIButton *)btn {

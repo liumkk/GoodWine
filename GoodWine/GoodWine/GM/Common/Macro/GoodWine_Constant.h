@@ -9,6 +9,7 @@
 #ifndef GoodWine_Constant_h
 #define GoodWine_Constant_h
 
+#import "MKLocationManager.h"
 #import "GMNavigationController.h"
 #import "GMTabBarController.h"
 #import "AppDelegate+RootViewcontroller.h"
@@ -19,10 +20,20 @@
 #import "AFNetworking.h"
 #import <UIImageView+WebCache.h>
 #import "MKCategory.h"
+#import "MBProgressHUD.h"
+#import "MJRefresh.h"
+
+#import "GMLoadingActivity.h"
+#import "MKToastView.h"
 
 #import "UIView+Addtion.h"
+#import "UIViewController+Additions.h"
+#import "NSString+Additions.h"
+
+#import "GMDataManager.h"
 
 #import "GMKeyValueInfoCell.h"
+#import "GMTableViewFooterView.h"
 
 #import "GMBaseViewController.h"
 #import "GMLoginViewController.h"

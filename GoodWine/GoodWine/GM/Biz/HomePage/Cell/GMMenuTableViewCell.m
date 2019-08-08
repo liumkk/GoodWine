@@ -65,7 +65,7 @@
 - (GMITButton *)otherArea {
     if (! _otherArea) {
         _otherArea = [GMITButton buttonWithType:UIButtonTypeCustom];
-        [_otherArea updateIconImageName:@"" contentText:@"其他"];
+        [_otherArea updateIconImageName:@"" contentText:@"其他酒品"];
         [self.contentView addSubview:_otherArea];
     }
     return _otherArea;
@@ -74,7 +74,7 @@
 - (GMITButton *)couponArea {
     if (! _couponArea) {
         _couponArea = [GMITButton buttonWithType:UIButtonTypeCustom];
-        [_couponArea updateIconImageName:@"" contentText:@"领优惠券"];
+        [_couponArea updateIconImageName:@"" contentText:@"领券中心"];
         [self.contentView addSubview:_couponArea];
     }
     return _couponArea;

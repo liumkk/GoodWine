@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		68200F8D558620CB41287D97 /* libPods-GoodWine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D46740FEC822C0FD6505E6C /* libPods-GoodWine.a */; };
+		D61A1EA522CCE10E00EC69AB /* GMServerAPIManager+UserAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = D61A1EA422CCE10E00EC69AB /* GMServerAPIManager+UserAccess.m */; };
+		D61A1EA922D37F3B00EC69AB /* GMServerAPIManager+HomePage.m in Sources */ = {isa = PBXBuildFile; fileRef = D61A1EA822D37F3B00EC69AB /* GMServerAPIManager+HomePage.m */; };
+		D61A1EAD22D8C25B00EC69AB /* HomePageInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D61A1EAC22D8C25B00EC69AB /* HomePageInfoModel.m */; };
+		D61A1EB122D8DFAB00EC69AB /* HomePageInfoDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D61A1EB022D8DFAB00EC69AB /* HomePageInfoDetailItem.m */; };
+		D61A1EB422D8E6CE00EC69AB /* UIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = D61A1EB322D8E6CE00EC69AB /* UIViewController+Additions.m */; };
+		D61A1EB822D8E79500EC69AB /* GMLoadingActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = D61A1EB722D8E79500EC69AB /* GMLoadingActivity.m */; };
+		D61A1EC122E5F37100EC69AB /* HomePageTypeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D61A1EC022E5F37100EC69AB /* HomePageTypeItem.m */; };
+		D61A1F0D22E8A86400EC69AB /* GMWineListCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D61A1F0C22E8A86400EC69AB /* GMWineListCollectionViewCell.m */; };
 		D63865EB229C1EC20020DE4B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D63865EA229C1EC20020DE4B /* AppDelegate.m */; };
 		D63865EE229C1EC20020DE4B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D63865ED229C1EC20020DE4B /* ViewController.m */; };
 		D63865F1229C1EC20020DE4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63865EF229C1EC20020DE4B /* Main.storyboard */; };
@@ -40,6 +48,35 @@
 		D638669B22A6B0DC0020DE4B /* GMViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D638669A22A6B0DC0020DE4B /* GMViewControllerManager.m */; };
 		D638669E22A6BCF40020DE4B /* GMMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D638669D22A6BCF40020DE4B /* GMMenuTableViewCell.m */; };
 		D63866A122A6C76D0020DE4B /* GMWineListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D63866A022A6C76D0020DE4B /* GMWineListTableViewCell.m */; };
+		D671920622EED1F30061146F /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = D671920522EED1F30061146F /* NSString+Additions.m */; };
+		D687ED3722F172E600A3D249 /* GMUserCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED3622F172E600A3D249 /* GMUserCenter.m */; };
+		D687ED3A22F1730100A3D249 /* GMUserCenterInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED3922F1730100A3D249 /* GMUserCenterInfoModel.m */; };
+		D687ED3D22F1925C00A3D249 /* GMUserCenterFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED3C22F1925C00A3D249 /* GMUserCenterFooterView.m */; };
+		D687ED4022F1950E00A3D249 /* GMCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED3F22F1950E00A3D249 /* GMCollectionView.m */; };
+		D687ED4322F1991B00A3D249 /* GMUserSecondCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED4222F1991B00A3D249 /* GMUserSecondCollectionViewCell.m */; };
+		D687ED4722F2D45300A3D249 /* GMOrderCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED4622F2D45300A3D249 /* GMOrderCollectionView.m */; };
+		D687ED4C22F2E00400A3D249 /* GMServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED4B22F2E00400A3D249 /* GMServiceViewController.m */; };
+		D687ED5222F4127100A3D249 /* UserCenterImage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D687ED5122F4127100A3D249 /* UserCenterImage.xcassets */; };
+		D687ED5622F422BB00A3D249 /* GMServiceTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED5522F422BB00A3D249 /* GMServiceTableView.m */; };
+		D687ED5822F4280100A3D249 /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D687ED5722F4280100A3D249 /* Icon.xcassets */; };
+		D687ED5D22F42BD600A3D249 /* GMVersionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED5C22F42BD500A3D249 /* GMVersionViewController.m */; };
+		D687ED6222F437D400A3D249 /* GMVersionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED6122F437D400A3D249 /* GMVersionTableView.m */; };
+		D687ED6522F437FA00A3D249 /* GMVersionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED6422F437FA00A3D249 /* GMVersionHeaderView.m */; };
+		D687ED6E22F51CA000A3D249 /* GMAddressManageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED6D22F51CA000A3D249 /* GMAddressManageTableViewCell.m */; };
+		D687ED7122F51CCE00A3D249 /* GMAddressManageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED7022F51CCE00A3D249 /* GMAddressManageTableView.m */; };
+		D687ED7522F5285900A3D249 /* GMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED7422F5285900A3D249 /* GMDataManager.m */; };
+		D687ED7C22F56BAF00A3D249 /* GMServerAPIManager+GMMyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED7B22F56BAF00A3D249 /* GMServerAPIManager+GMMyCenter.m */; };
+		D687ED8022F56D9100A3D249 /* GMAddressInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED7F22F56D9100A3D249 /* GMAddressInfoModel.m */; };
+		D687ED8322F5758C00A3D249 /* GMAddressManagerViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED8222F5758C00A3D249 /* GMAddressManagerViewcontroller.m */; };
+		D687EE1022F828F500A3D249 /* GMAddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D687EE0F22F828F500A3D249 /* GMAddAddressViewController.m */; };
+		D687EE1422F8296400A3D249 /* GMAddAddressTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D687EE1322F8296400A3D249 /* GMAddAddressTableView.m */; };
+		D687EE8822F9C34500A3D249 /* GMTableViewFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D687EE8722F9C34500A3D249 /* GMTableViewFooterView.m */; };
+		D687EE8C22F9C84B00A3D249 /* MKToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = D687EE8B22F9C84B00A3D249 /* MKToastView.m */; };
+		D687EE9522FB0DB100A3D249 /* GMShoppCarTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D687EE9422FB0DB000A3D249 /* GMShoppCarTableView.m */; };
+		D687EE9B22FB0E5300A3D249 /* GMShoppCarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D687EE9A22FB0E5300A3D249 /* GMShoppCarTableViewCell.m */; };
+		D687EE9E22FBB18C00A3D249 /* ShoppCarInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D687EE9D22FBB18B00A3D249 /* ShoppCarInfoModel.m */; };
+		D687EEA522FBB40C00A3D249 /* GMServerAPIManager+ShoppCar.m in Sources */ = {isa = PBXBuildFile; fileRef = D687EEA422FBB40C00A3D249 /* GMServerAPIManager+ShoppCar.m */; };
+		D687EEA922FC004A00A3D249 /* MKLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D687EEA822FC004A00A3D249 /* MKLocationManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +100,23 @@
 		3654DA2FCCC0710E2022EF96 /* Pods-GoodWine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodWine.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-GoodWine/Pods-GoodWine.debug.xcconfig"; sourceTree = "<group>"; };
 		7EA57E12E89DBAE6120E2D79 /* Pods-GoodWine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodWine.release.xcconfig"; path = "../Pods/Target Support Files/Pods-GoodWine/Pods-GoodWine.release.xcconfig"; sourceTree = "<group>"; };
 		8D46740FEC822C0FD6505E6C /* libPods-GoodWine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GoodWine.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D61A1EA322CCE10E00EC69AB /* GMServerAPIManager+UserAccess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GMServerAPIManager+UserAccess.h"; sourceTree = "<group>"; };
+		D61A1EA422CCE10E00EC69AB /* GMServerAPIManager+UserAccess.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GMServerAPIManager+UserAccess.m"; sourceTree = "<group>"; };
+		D61A1EA722D37F3B00EC69AB /* GMServerAPIManager+HomePage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GMServerAPIManager+HomePage.h"; sourceTree = "<group>"; };
+		D61A1EA822D37F3B00EC69AB /* GMServerAPIManager+HomePage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GMServerAPIManager+HomePage.m"; sourceTree = "<group>"; };
+		D61A1EAB22D8C25B00EC69AB /* HomePageInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePageInfoModel.h; sourceTree = "<group>"; };
+		D61A1EAC22D8C25B00EC69AB /* HomePageInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePageInfoModel.m; sourceTree = "<group>"; };
+		D61A1EAE22D8C4C000EC69AB /* Model_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model_Header.h; sourceTree = "<group>"; };
+		D61A1EAF22D8DFAB00EC69AB /* HomePageInfoDetailItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePageInfoDetailItem.h; sourceTree = "<group>"; };
+		D61A1EB022D8DFAB00EC69AB /* HomePageInfoDetailItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePageInfoDetailItem.m; sourceTree = "<group>"; };
+		D61A1EB222D8E6CE00EC69AB /* UIViewController+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Additions.h"; sourceTree = "<group>"; };
+		D61A1EB322D8E6CE00EC69AB /* UIViewController+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Additions.m"; sourceTree = "<group>"; };
+		D61A1EB622D8E79500EC69AB /* GMLoadingActivity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMLoadingActivity.h; sourceTree = "<group>"; };
+		D61A1EB722D8E79500EC69AB /* GMLoadingActivity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMLoadingActivity.m; sourceTree = "<group>"; };
+		D61A1EBF22E5F37100EC69AB /* HomePageTypeItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePageTypeItem.h; sourceTree = "<group>"; };
+		D61A1EC022E5F37100EC69AB /* HomePageTypeItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePageTypeItem.m; sourceTree = "<group>"; };
+		D61A1F0B22E8A86400EC69AB /* GMWineListCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMWineListCollectionViewCell.h; sourceTree = "<group>"; };
+		D61A1F0C22E8A86400EC69AB /* GMWineListCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMWineListCollectionViewCell.m; sourceTree = "<group>"; };
 		D63865E6229C1EC20020DE4B /* GoodWine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodWine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D63865E9229C1EC20020DE4B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D63865EA229C1EC20020DE4B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -131,6 +185,62 @@
 		D638669D22A6BCF40020DE4B /* GMMenuTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMMenuTableViewCell.m; sourceTree = "<group>"; };
 		D638669F22A6C76D0020DE4B /* GMWineListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMWineListTableViewCell.h; sourceTree = "<group>"; };
 		D63866A022A6C76D0020DE4B /* GMWineListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMWineListTableViewCell.m; sourceTree = "<group>"; };
+		D671920422EED1F30061146F /* NSString+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
+		D671920522EED1F30061146F /* NSString+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
+		D687ED3522F172E600A3D249 /* GMUserCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMUserCenter.h; sourceTree = "<group>"; };
+		D687ED3622F172E600A3D249 /* GMUserCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMUserCenter.m; sourceTree = "<group>"; };
+		D687ED3822F1730100A3D249 /* GMUserCenterInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMUserCenterInfoModel.h; sourceTree = "<group>"; };
+		D687ED3922F1730100A3D249 /* GMUserCenterInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMUserCenterInfoModel.m; sourceTree = "<group>"; };
+		D687ED3B22F1925C00A3D249 /* GMUserCenterFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMUserCenterFooterView.h; sourceTree = "<group>"; };
+		D687ED3C22F1925C00A3D249 /* GMUserCenterFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMUserCenterFooterView.m; sourceTree = "<group>"; };
+		D687ED3E22F1950E00A3D249 /* GMCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMCollectionView.h; sourceTree = "<group>"; };
+		D687ED3F22F1950E00A3D249 /* GMCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMCollectionView.m; sourceTree = "<group>"; };
+		D687ED4122F1991B00A3D249 /* GMUserSecondCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMUserSecondCollectionViewCell.h; sourceTree = "<group>"; };
+		D687ED4222F1991B00A3D249 /* GMUserSecondCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMUserSecondCollectionViewCell.m; sourceTree = "<group>"; };
+		D687ED4522F2D45300A3D249 /* GMOrderCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderCollectionView.h; sourceTree = "<group>"; };
+		D687ED4622F2D45300A3D249 /* GMOrderCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderCollectionView.m; sourceTree = "<group>"; };
+		D687ED4A22F2E00400A3D249 /* GMServiceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMServiceViewController.h; sourceTree = "<group>"; };
+		D687ED4B22F2E00400A3D249 /* GMServiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMServiceViewController.m; sourceTree = "<group>"; };
+		D687ED5122F4127100A3D249 /* UserCenterImage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = UserCenterImage.xcassets; sourceTree = "<group>"; };
+		D687ED5422F422BB00A3D249 /* GMServiceTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMServiceTableView.h; sourceTree = "<group>"; };
+		D687ED5522F422BB00A3D249 /* GMServiceTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMServiceTableView.m; sourceTree = "<group>"; };
+		D687ED5722F4280100A3D249 /* Icon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icon.xcassets; sourceTree = "<group>"; };
+		D687ED5B22F42BD500A3D249 /* GMVersionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMVersionViewController.h; sourceTree = "<group>"; };
+		D687ED5C22F42BD500A3D249 /* GMVersionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMVersionViewController.m; sourceTree = "<group>"; };
+		D687ED6022F437D400A3D249 /* GMVersionTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMVersionTableView.h; sourceTree = "<group>"; };
+		D687ED6122F437D400A3D249 /* GMVersionTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMVersionTableView.m; sourceTree = "<group>"; };
+		D687ED6322F437F900A3D249 /* GMVersionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMVersionHeaderView.h; sourceTree = "<group>"; };
+		D687ED6422F437FA00A3D249 /* GMVersionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMVersionHeaderView.m; sourceTree = "<group>"; };
+		D687ED6C22F51CA000A3D249 /* GMAddressManageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAddressManageTableViewCell.h; sourceTree = "<group>"; };
+		D687ED6D22F51CA000A3D249 /* GMAddressManageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMAddressManageTableViewCell.m; sourceTree = "<group>"; };
+		D687ED6F22F51CCE00A3D249 /* GMAddressManageTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAddressManageTableView.h; sourceTree = "<group>"; };
+		D687ED7022F51CCE00A3D249 /* GMAddressManageTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMAddressManageTableView.m; sourceTree = "<group>"; };
+		D687ED7322F5285900A3D249 /* GMDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMDataManager.h; sourceTree = "<group>"; };
+		D687ED7422F5285900A3D249 /* GMDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMDataManager.m; sourceTree = "<group>"; };
+		D687ED7A22F56BAF00A3D249 /* GMServerAPIManager+GMMyCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GMServerAPIManager+GMMyCenter.h"; sourceTree = "<group>"; };
+		D687ED7B22F56BAF00A3D249 /* GMServerAPIManager+GMMyCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GMServerAPIManager+GMMyCenter.m"; sourceTree = "<group>"; };
+		D687ED7E22F56D9100A3D249 /* GMAddressInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAddressInfoModel.h; sourceTree = "<group>"; };
+		D687ED7F22F56D9100A3D249 /* GMAddressInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMAddressInfoModel.m; sourceTree = "<group>"; };
+		D687ED8122F5758C00A3D249 /* GMAddressManagerViewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAddressManagerViewcontroller.h; sourceTree = "<group>"; };
+		D687ED8222F5758C00A3D249 /* GMAddressManagerViewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMAddressManagerViewcontroller.m; sourceTree = "<group>"; };
+		D687EE0E22F828F500A3D249 /* GMAddAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAddAddressViewController.h; sourceTree = "<group>"; };
+		D687EE0F22F828F500A3D249 /* GMAddAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMAddAddressViewController.m; sourceTree = "<group>"; };
+		D687EE1222F8296400A3D249 /* GMAddAddressTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAddAddressTableView.h; sourceTree = "<group>"; };
+		D687EE1322F8296400A3D249 /* GMAddAddressTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMAddAddressTableView.m; sourceTree = "<group>"; };
+		D687EE8622F9C34500A3D249 /* GMTableViewFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMTableViewFooterView.h; sourceTree = "<group>"; };
+		D687EE8722F9C34500A3D249 /* GMTableViewFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMTableViewFooterView.m; sourceTree = "<group>"; };
+		D687EE8A22F9C84B00A3D249 /* MKToastView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKToastView.h; sourceTree = "<group>"; };
+		D687EE8B22F9C84B00A3D249 /* MKToastView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKToastView.m; sourceTree = "<group>"; };
+		D687EE9322FB0DB000A3D249 /* GMShoppCarTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMShoppCarTableView.h; sourceTree = "<group>"; };
+		D687EE9422FB0DB000A3D249 /* GMShoppCarTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMShoppCarTableView.m; sourceTree = "<group>"; };
+		D687EE9922FB0E5300A3D249 /* GMShoppCarTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMShoppCarTableViewCell.h; sourceTree = "<group>"; };
+		D687EE9A22FB0E5300A3D249 /* GMShoppCarTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMShoppCarTableViewCell.m; sourceTree = "<group>"; };
+		D687EE9C22FBB18B00A3D249 /* ShoppCarInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShoppCarInfoModel.h; sourceTree = "<group>"; };
+		D687EE9D22FBB18B00A3D249 /* ShoppCarInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppCarInfoModel.m; sourceTree = "<group>"; };
+		D687EEA322FBB40C00A3D249 /* GMServerAPIManager+ShoppCar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GMServerAPIManager+ShoppCar.h"; sourceTree = "<group>"; };
+		D687EEA422FBB40C00A3D249 /* GMServerAPIManager+ShoppCar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GMServerAPIManager+ShoppCar.m"; sourceTree = "<group>"; };
+		D687EEA722FC004A00A3D249 /* MKLocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKLocationManager.h; sourceTree = "<group>"; };
+		D687EEA822FC004A00A3D249 /* MKLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKLocationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +275,57 @@
 				8D46740FEC822C0FD6505E6C /* libPods-GoodWine.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D61A1EA122CCE08700EC69AB /* GMServerAPI */ = {
+			isa = PBXGroup;
+			children = (
+				D687EE9F22FBB3B600A3D249 /* GMShoppCar */,
+				D687ED7622F56A8C00A3D249 /* GMUserCenter */,
+				D61A1EA622D37F2300EC69AB /* GMHomePage */,
+				D61A1EA222CCE0AD00EC69AB /* GMLogin */,
+			);
+			path = GMServerAPI;
+			sourceTree = "<group>";
+		};
+		D61A1EA222CCE0AD00EC69AB /* GMLogin */ = {
+			isa = PBXGroup;
+			children = (
+				D61A1EA322CCE10E00EC69AB /* GMServerAPIManager+UserAccess.h */,
+				D61A1EA422CCE10E00EC69AB /* GMServerAPIManager+UserAccess.m */,
+			);
+			path = GMLogin;
+			sourceTree = "<group>";
+		};
+		D61A1EA622D37F2300EC69AB /* GMHomePage */ = {
+			isa = PBXGroup;
+			children = (
+				D61A1EA722D37F3B00EC69AB /* GMServerAPIManager+HomePage.h */,
+				D61A1EA822D37F3B00EC69AB /* GMServerAPIManager+HomePage.m */,
+			);
+			path = GMHomePage;
+			sourceTree = "<group>";
+		};
+		D61A1EAA22D8C1FC00EC69AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D61A1EAB22D8C25B00EC69AB /* HomePageInfoModel.h */,
+				D61A1EAC22D8C25B00EC69AB /* HomePageInfoModel.m */,
+				D61A1EAF22D8DFAB00EC69AB /* HomePageInfoDetailItem.h */,
+				D61A1EB022D8DFAB00EC69AB /* HomePageInfoDetailItem.m */,
+				D61A1EBF22E5F37100EC69AB /* HomePageTypeItem.h */,
+				D61A1EC022E5F37100EC69AB /* HomePageTypeItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D61A1EB522D8E77600EC69AB /* GMLoadingActivity */ = {
+			isa = PBXGroup;
+			children = (
+				D61A1EB622D8E79500EC69AB /* GMLoadingActivity.h */,
+				D61A1EB722D8E79500EC69AB /* GMLoadingActivity.m */,
+			);
+			path = GMLoadingActivity;
 			sourceTree = "<group>";
 		};
 		D63865DD229C1EC20020DE4B = {
@@ -251,6 +412,7 @@
 		D6386620229C2FDF0020DE4B /* NetWork */ = {
 			isa = PBXGroup;
 			children = (
+				D61A1EA122CCE08700EC69AB /* GMServerAPI */,
 				D638668522A571F00020DE4B /* GMNetConfig.h */,
 				D638668622A572460020DE4B /* GMServerClient.h */,
 				D638668722A572460020DE4B /* GMServerClient.m */,
@@ -269,6 +431,10 @@
 				D6386630229C34CE0020DE4B /* AppDelegate+RootViewcontroller.m */,
 				D6386682229EE7E00020DE4B /* UIView+Addtion.h */,
 				D6386683229EE7E00020DE4B /* UIView+Addtion.m */,
+				D61A1EB222D8E6CE00EC69AB /* UIViewController+Additions.h */,
+				D61A1EB322D8E6CE00EC69AB /* UIViewController+Additions.m */,
+				D671920422EED1F30061146F /* NSString+Additions.h */,
+				D671920522EED1F30061146F /* NSString+Additions.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -276,6 +442,11 @@
 		D6386622229C30590020DE4B /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				D687EEA622FC002E00A3D249 /* MKLocationManager */,
+				D687EE8922F9C82200A3D249 /* MKToastView */,
+				D687EE8522F9C30A00A3D249 /* GMTableViewFooterView */,
+				D687ED7222F5283900A3D249 /* GMDataManager */,
+				D61A1EB522D8E77600EC69AB /* GMLoadingActivity */,
 				D638669822A6B0760020DE4B /* GMViewControllerManager */,
 				D638667B229EE2F70020DE4B /* GMITButton */,
 				D6386669229D90BA0020DE4B /* GMKeyValueInfoCell */,
@@ -338,6 +509,7 @@
 				D638663A229C36C50020DE4B /* GoodWine_Constant.h */,
 				D638663B229C38C90020DE4B /* UI_Constant.h */,
 				D6386668229D80A50020DE4B /* MacroDefine.h */,
+				D61A1EAE22D8C4C000EC69AB /* Model_Header.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -363,6 +535,7 @@
 		D638664A229D755E0020DE4B /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				D61A1EAA22D8C1FC00EC69AB /* Model */,
 				D638665E229D7C3D0020DE4B /* Cell */,
 				D638665D229D7C350020DE4B /* View */,
 				D638664E229D76520020DE4B /* GMHomePageViewController.h */,
@@ -374,10 +547,8 @@
 		D638664B229D75670020DE4B /* UserCenter */ = {
 			isa = PBXGroup;
 			children = (
-				D6386674229ED8DA0020DE4B /* Cell */,
-				D6386670229ED8A30020DE4B /* View */,
-				D6386657229D767B0020DE4B /* GMUserCenterViewController.h */,
-				D6386658229D767B0020DE4B /* GMUserCenterViewController.m */,
+				D687ED5922F42B5000A3D249 /* MyService */,
+				D687ED4822F2DF9800A3D249 /* UserCenter */,
 			);
 			path = UserCenter;
 			sourceTree = "<group>";
@@ -385,6 +556,7 @@
 		D638664C229D758A0020DE4B /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				D687ED4422F2D3F200A3D249 /* View */,
 				D6386654229D766F0020DE4B /* GMOrderViewController.h */,
 				D6386655229D766F0020DE4B /* GMOrderViewController.m */,
 			);
@@ -394,6 +566,9 @@
 		D638664D229D75910020DE4B /* ShoppCart */ = {
 			isa = PBXGroup;
 			children = (
+				D687EE9222FB0D9600A3D249 /* Model */,
+				D687EE9122FB0D8D00A3D249 /* Cell */,
+				D687EE9022FB0D8600A3D249 /* View */,
 				D6386651229D76600020DE4B /* GMShoppCartViewController.h */,
 				D6386652229D76600020DE4B /* GMShoppCartViewController.m */,
 			);
@@ -404,6 +579,8 @@
 			isa = PBXGroup;
 			children = (
 				D638665B229D7A270020DE4B /* TabbarItem.xcassets */,
+				D687ED5122F4127100A3D249 /* UserCenterImage.xcassets */,
+				D687ED5722F4280100A3D249 /* Icon.xcassets */,
 			);
 			path = ImageResource;
 			sourceTree = "<group>";
@@ -424,6 +601,8 @@
 				D638669D22A6BCF40020DE4B /* GMMenuTableViewCell.m */,
 				D638669F22A6C76D0020DE4B /* GMWineListTableViewCell.h */,
 				D63866A022A6C76D0020DE4B /* GMWineListTableViewCell.m */,
+				D61A1F0B22E8A86400EC69AB /* GMWineListCollectionViewCell.h */,
+				D61A1F0C22E8A86400EC69AB /* GMWineListCollectionViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -442,6 +621,10 @@
 			children = (
 				D6386671229ED8D10020DE4B /* GMUserCenterTableView.h */,
 				D6386672229ED8D10020DE4B /* GMUserCenterTableView.m */,
+				D687ED3B22F1925C00A3D249 /* GMUserCenterFooterView.h */,
+				D687ED3C22F1925C00A3D249 /* GMUserCenterFooterView.m */,
+				D687ED3E22F1950E00A3D249 /* GMCollectionView.h */,
+				D687ED3F22F1950E00A3D249 /* GMCollectionView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -453,6 +636,8 @@
 				D6386676229ED8F40020DE4B /* GMUserInfoCell.m */,
 				D6386678229EE1B50020DE4B /* GMMyOrderCell.h */,
 				D6386679229EE1B50020DE4B /* GMMyOrderCell.m */,
+				D687ED4122F1991B00A3D249 /* GMUserSecondCollectionViewCell.h */,
+				D687ED4222F1991B00A3D249 /* GMUserSecondCollectionViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -473,6 +658,244 @@
 				D638669A22A6B0DC0020DE4B /* GMViewControllerManager.m */,
 			);
 			path = GMViewControllerManager;
+			sourceTree = "<group>";
+		};
+		D687ED3422F1701100A3D249 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D687ED3522F172E600A3D249 /* GMUserCenter.h */,
+				D687ED3622F172E600A3D249 /* GMUserCenter.m */,
+				D687ED3822F1730100A3D249 /* GMUserCenterInfoModel.h */,
+				D687ED3922F1730100A3D249 /* GMUserCenterInfoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D687ED4422F2D3F200A3D249 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D687ED4522F2D45300A3D249 /* GMOrderCollectionView.h */,
+				D687ED4622F2D45300A3D249 /* GMOrderCollectionView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D687ED4822F2DF9800A3D249 /* UserCenter */ = {
+			isa = PBXGroup;
+			children = (
+				D687ED3422F1701100A3D249 /* Model */,
+				D6386674229ED8DA0020DE4B /* Cell */,
+				D6386670229ED8A30020DE4B /* View */,
+				D6386657229D767B0020DE4B /* GMUserCenterViewController.h */,
+				D6386658229D767B0020DE4B /* GMUserCenterViewController.m */,
+			);
+			path = UserCenter;
+			sourceTree = "<group>";
+		};
+		D687ED4922F2DFD400A3D249 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D687ED5322F4229E00A3D249 /* View */,
+				D687ED4A22F2E00400A3D249 /* GMServiceViewController.h */,
+				D687ED4B22F2E00400A3D249 /* GMServiceViewController.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D687ED5322F4229E00A3D249 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D687ED5422F422BB00A3D249 /* GMServiceTableView.h */,
+				D687ED5522F422BB00A3D249 /* GMServiceTableView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D687ED5922F42B5000A3D249 /* MyService */ = {
+			isa = PBXGroup;
+			children = (
+				D687ED6622F51BE700A3D249 /* AddressManage */,
+				D687ED5E22F437AB00A3D249 /* Setting */,
+				D687ED5A22F42B6B00A3D249 /* Version */,
+				D687ED4922F2DFD400A3D249 /* Service */,
+			);
+			path = MyService;
+			sourceTree = "<group>";
+		};
+		D687ED5A22F42B6B00A3D249 /* Version */ = {
+			isa = PBXGroup;
+			children = (
+				D687ED5F22F437BF00A3D249 /* View */,
+				D687ED5B22F42BD500A3D249 /* GMVersionViewController.h */,
+				D687ED5C22F42BD500A3D249 /* GMVersionViewController.m */,
+			);
+			path = Version;
+			sourceTree = "<group>";
+		};
+		D687ED5E22F437AB00A3D249 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		D687ED5F22F437BF00A3D249 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D687ED6022F437D400A3D249 /* GMVersionTableView.h */,
+				D687ED6122F437D400A3D249 /* GMVersionTableView.m */,
+				D687ED6322F437F900A3D249 /* GMVersionHeaderView.h */,
+				D687ED6422F437FA00A3D249 /* GMVersionHeaderView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D687ED6622F51BE700A3D249 /* AddressManage */ = {
+			isa = PBXGroup;
+			children = (
+				D687EE0C22F828BC00A3D249 /* Address */,
+				D687EE0D22F828D700A3D249 /* AddAddress */,
+			);
+			path = AddressManage;
+			sourceTree = "<group>";
+		};
+		D687ED6A22F51C4500A3D249 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D687ED6F22F51CCE00A3D249 /* GMAddressManageTableView.h */,
+				D687ED7022F51CCE00A3D249 /* GMAddressManageTableView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D687ED6B22F51C4A00A3D249 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D687ED6C22F51CA000A3D249 /* GMAddressManageTableViewCell.h */,
+				D687ED6D22F51CA000A3D249 /* GMAddressManageTableViewCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D687ED7222F5283900A3D249 /* GMDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				D687ED7322F5285900A3D249 /* GMDataManager.h */,
+				D687ED7422F5285900A3D249 /* GMDataManager.m */,
+			);
+			path = GMDataManager;
+			sourceTree = "<group>";
+		};
+		D687ED7622F56A8C00A3D249 /* GMUserCenter */ = {
+			isa = PBXGroup;
+			children = (
+				D687ED7A22F56BAF00A3D249 /* GMServerAPIManager+GMMyCenter.h */,
+				D687ED7B22F56BAF00A3D249 /* GMServerAPIManager+GMMyCenter.m */,
+			);
+			path = GMUserCenter;
+			sourceTree = "<group>";
+		};
+		D687ED7D22F56D7100A3D249 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D687ED7E22F56D9100A3D249 /* GMAddressInfoModel.h */,
+				D687ED7F22F56D9100A3D249 /* GMAddressInfoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D687EE0C22F828BC00A3D249 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				D687ED7D22F56D7100A3D249 /* Model */,
+				D687ED6B22F51C4A00A3D249 /* Cell */,
+				D687ED6A22F51C4500A3D249 /* View */,
+				D687ED8122F5758C00A3D249 /* GMAddressManagerViewcontroller.h */,
+				D687ED8222F5758C00A3D249 /* GMAddressManagerViewcontroller.m */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		D687EE0D22F828D700A3D249 /* AddAddress */ = {
+			isa = PBXGroup;
+			children = (
+				D687EE1122F8290700A3D249 /* View */,
+				D687EE0E22F828F500A3D249 /* GMAddAddressViewController.h */,
+				D687EE0F22F828F500A3D249 /* GMAddAddressViewController.m */,
+			);
+			path = AddAddress;
+			sourceTree = "<group>";
+		};
+		D687EE1122F8290700A3D249 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D687EE1222F8296400A3D249 /* GMAddAddressTableView.h */,
+				D687EE1322F8296400A3D249 /* GMAddAddressTableView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D687EE8522F9C30A00A3D249 /* GMTableViewFooterView */ = {
+			isa = PBXGroup;
+			children = (
+				D687EE8622F9C34500A3D249 /* GMTableViewFooterView.h */,
+				D687EE8722F9C34500A3D249 /* GMTableViewFooterView.m */,
+			);
+			path = GMTableViewFooterView;
+			sourceTree = "<group>";
+		};
+		D687EE8922F9C82200A3D249 /* MKToastView */ = {
+			isa = PBXGroup;
+			children = (
+				D687EE8A22F9C84B00A3D249 /* MKToastView.h */,
+				D687EE8B22F9C84B00A3D249 /* MKToastView.m */,
+			);
+			path = MKToastView;
+			sourceTree = "<group>";
+		};
+		D687EE9022FB0D8600A3D249 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D687EE9322FB0DB000A3D249 /* GMShoppCarTableView.h */,
+				D687EE9422FB0DB000A3D249 /* GMShoppCarTableView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D687EE9122FB0D8D00A3D249 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D687EE9922FB0E5300A3D249 /* GMShoppCarTableViewCell.h */,
+				D687EE9A22FB0E5300A3D249 /* GMShoppCarTableViewCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D687EE9222FB0D9600A3D249 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D687EE9C22FBB18B00A3D249 /* ShoppCarInfoModel.h */,
+				D687EE9D22FBB18B00A3D249 /* ShoppCarInfoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D687EE9F22FBB3B600A3D249 /* GMShoppCar */ = {
+			isa = PBXGroup;
+			children = (
+				D687EEA322FBB40C00A3D249 /* GMServerAPIManager+ShoppCar.h */,
+				D687EEA422FBB40C00A3D249 /* GMServerAPIManager+ShoppCar.m */,
+			);
+			path = GMShoppCar;
+			sourceTree = "<group>";
+		};
+		D687EEA622FC002E00A3D249 /* MKLocationManager */ = {
+			isa = PBXGroup;
+			children = (
+				D687EEA722FC004A00A3D249 /* MKLocationManager.h */,
+				D687EEA822FC004A00A3D249 /* MKLocationManager.m */,
+			);
+			path = MKLocationManager;
 			sourceTree = "<group>";
 		};
 		D8CD415E4C4DB5A6843A45BB /* Pods */ = {
@@ -590,6 +1013,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D687ED5822F4280100A3D249 /* Icon.xcassets in Resources */,
+				D687ED5222F4127100A3D249 /* UserCenterImage.xcassets in Resources */,
 				D63865F6229C1EC40020DE4B /* LaunchScreen.storyboard in Resources */,
 				D63865F3229C1EC40020DE4B /* Assets.xcassets in Resources */,
 				D638665C229D7A270020DE4B /* TabbarItem.xcassets in Resources */,
@@ -667,30 +1092,65 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D687ED3A22F1730100A3D249 /* GMUserCenterInfoModel.m in Sources */,
 				D6386684229EE7E00020DE4B /* UIView+Addtion.m in Sources */,
+				D61A1F0D22E8A86400EC69AB /* GMWineListCollectionViewCell.m in Sources */,
+				D61A1EA922D37F3B00EC69AB /* GMServerAPIManager+HomePage.m in Sources */,
+				D687ED7C22F56BAF00A3D249 /* GMServerAPIManager+GMMyCenter.m in Sources */,
+				D687EE1422F8296400A3D249 /* GMAddAddressTableView.m in Sources */,
+				D687ED6522F437FA00A3D249 /* GMVersionHeaderView.m in Sources */,
+				D687ED8022F56D9100A3D249 /* GMAddressInfoModel.m in Sources */,
 				D638667E229EE3510020DE4B /* GMITButton.m in Sources */,
 				D63865EE229C1EC20020DE4B /* ViewController.m in Sources */,
 				D638669122A5746C0020DE4B /* GMNetworkError.m in Sources */,
 				D638666C229D90E50020DE4B /* GMKeyValueInfoCell.m in Sources */,
 				D6386673229ED8D10020DE4B /* GMUserCenterTableView.m in Sources */,
 				D6386638229C36090020DE4B /* GMTabBarController.m in Sources */,
+				D687ED4C22F2E00400A3D249 /* GMServiceViewController.m in Sources */,
 				D638669722A57F3C0020DE4B /* GMLoginView.m in Sources */,
 				D63865F9229C1EC40020DE4B /* main.m in Sources */,
+				D687ED5622F422BB00A3D249 /* GMServiceTableView.m in Sources */,
+				D687EE8822F9C34500A3D249 /* GMTableViewFooterView.m in Sources */,
+				D61A1EA522CCE10E00EC69AB /* GMServerAPIManager+UserAccess.m in Sources */,
 				D638663F229C399E0020DE4B /* GMNavigationController.m in Sources */,
+				D61A1EB422D8E6CE00EC69AB /* UIViewController+Additions.m in Sources */,
+				D687EE8C22F9C84B00A3D249 /* MKToastView.m in Sources */,
+				D61A1EB822D8E79500EC69AB /* GMLoadingActivity.m in Sources */,
 				D6386631229C34CE0020DE4B /* AppDelegate+RootViewcontroller.m in Sources */,
+				D61A1EB122D8DFAB00EC69AB /* HomePageInfoDetailItem.m in Sources */,
+				D687ED4022F1950E00A3D249 /* GMCollectionView.m in Sources */,
+				D687EEA522FBB40C00A3D249 /* GMServerAPIManager+ShoppCar.m in Sources */,
+				D687ED7122F51CCE00A3D249 /* GMAddressManageTableView.m in Sources */,
 				D63865EB229C1EC20020DE4B /* AppDelegate.m in Sources */,
 				D6386659229D767B0020DE4B /* GMUserCenterViewController.m in Sources */,
 				D638668B22A572730020DE4B /* GMServerAPIManager.m in Sources */,
+				D687ED6222F437D400A3D249 /* GMVersionTableView.m in Sources */,
+				D687EE9E22FBB18C00A3D249 /* ShoppCarInfoModel.m in Sources */,
 				D6386656229D766F0020DE4B /* GMOrderViewController.m in Sources */,
+				D687ED3722F172E600A3D249 /* GMUserCenter.m in Sources */,
+				D61A1EAD22D8C25B00EC69AB /* HomePageInfoModel.m in Sources */,
+				D687ED4722F2D45300A3D249 /* GMOrderCollectionView.m in Sources */,
+				D687ED6E22F51CA000A3D249 /* GMAddressManageTableViewCell.m in Sources */,
+				D687EE1022F828F500A3D249 /* GMAddAddressViewController.m in Sources */,
+				D687ED7522F5285900A3D249 /* GMDataManager.m in Sources */,
 				D6386650229D76520020DE4B /* GMHomePageViewController.m in Sources */,
+				D687ED5D22F42BD600A3D249 /* GMVersionViewController.m in Sources */,
+				D687EE9B22FB0E5300A3D249 /* GMShoppCarTableViewCell.m in Sources */,
 				D6386646229C3A500020DE4B /* GMLoginViewController.m in Sources */,
+				D687EEA922FC004A00A3D249 /* MKLocationManager.m in Sources */,
 				D6386664229D7DB90020DE4B /* GMHomePageTableView.m in Sources */,
+				D687ED3D22F1925C00A3D249 /* GMUserCenterFooterView.m in Sources */,
 				D6386677229ED8F40020DE4B /* GMUserInfoCell.m in Sources */,
 				D6386643229C3A210020DE4B /* GMBaseViewController.m in Sources */,
 				D638667A229EE1B50020DE4B /* GMMyOrderCell.m in Sources */,
+				D671920622EED1F30061146F /* NSString+Additions.m in Sources */,
+				D687ED8322F5758C00A3D249 /* GMAddressManagerViewcontroller.m in Sources */,
+				D687EE9522FB0DB100A3D249 /* GMShoppCarTableView.m in Sources */,
 				D6386653229D76600020DE4B /* GMShoppCartViewController.m in Sources */,
+				D687ED4322F1991B00A3D249 /* GMUserSecondCollectionViewCell.m in Sources */,
 				D63866A122A6C76D0020DE4B /* GMWineListTableViewCell.m in Sources */,
 				D638669B22A6B0DC0020DE4B /* GMViewControllerManager.m in Sources */,
+				D61A1EC122E5F37100EC69AB /* HomePageTypeItem.m in Sources */,
 				D638669E22A6BCF40020DE4B /* GMMenuTableViewCell.m in Sources */,
 				D638668822A572460020DE4B /* GMServerClient.m in Sources */,
 			);
@@ -865,6 +1325,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CPU9SP6L3H;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoodWine/GoodWine-Prefix.pch";
 				INFOPLIST_FILE = GoodWine/Info.plist;
@@ -885,6 +1346,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CPU9SP6L3H;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoodWine/GoodWine-Prefix.pch";
 				INFOPLIST_FILE = GoodWine/Info.plist;

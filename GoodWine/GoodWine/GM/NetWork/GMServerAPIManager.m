@@ -9,8 +9,25 @@
 #import "GMServerAPIManager.h"
 
 @implementation GMServerAPIManager
+static GMServerAPIManager *_instance = nil;
 
-singleton_implementation(GMServerAPIManager);
+//singleton_implementation(GMServerAPIManager);
++ (instancetype)shared {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [[self alloc] init];
+    });
+    return _instance;
+}
+
++ (id)allocWithZone:(NSZone *)zone
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [super allocWithZone:zone];
+    });
+    return _instance;
+}
 
 - (NSURLSessionDataTask *)asyncGetTokenWithAppCustomerId:(NSString *)appCustomerId
                                                 password:(NSString *)password

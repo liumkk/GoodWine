@@ -1,0 +1,88 @@
+//
+//  GMServerAPIManager+GMMyCenter.m
+//  GoodWine
+//
+//  Created by LMK on 2019/8/3.
+//  Copyright © 2019年 LMK. All rights reserved.
+//
+
+#import "GMServerAPIManager+GMMyCenter.h"
+
+@implementation GMServerAPIManager (GMMyCenter)
+
+- (NSURLSessionDataTask *)asyncQueryAddressWithSucceedBlock:(void (^)(NSArray * _Nonnull))succeedBlock
+                                                failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    
+    return
+    [ServerClient asyncGetNetworkRequestWithURLString:GMAllAddress parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            NSMutableArray *dataArray = [[NSMutableArray alloc] init];
+            for (NSDictionary *dic in responseDict[@"data"]) {
+                GMAddressInfoModel *model = [GMAddressInfoModel addressInfoModelWithDictionary:dic];
+                [dataArray addObject:model];
+            }
+            if (succeedBlock) {
+                succeedBlock(dataArray);
+            }
+            
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
+- (NSURLSessionDataTask *)asyncAddAddressWithName:(NSString *)name
+                                         phoneNum:(NSString *)phoneNum
+                                          address:(NSString *)address
+                                    detailAddress:(NSString *)detailAddress
+                                     succeedBlock:(void (^)(void))succeedBlock
+                                      failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    if (IsStrEmpty(name) ||
+        IsStrEmpty(phoneNum) ||
+        IsStrEmpty(address) ||
+        IsStrEmpty(detailAddress)) {
+        if (failedBlock) {
+            failedBlock([GMNetworkError getParamError]);
+        }
+        return nil;
+    }
+    
+    NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
+    temParamDict[@"storeId"] = @"1";
+    temParamDict[@"memberId"] = UserCenter.userInfoModel.memberId;
+    temParamDict[@"name"] = name;
+    temParamDict[@"phoneNumber"] = phoneNum;
+    temParamDict[@"city"] = address;
+    temParamDict[@"detailAddress"] = detailAddress;
+    [ServerClient setContentTypeJson];
+    return
+    [ServerClient asyncNetworkRequestWithURL:GMAddAddress parameter:temParamDict success:^(NSDictionary *responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+
+            if (succeedBlock) {
+                succeedBlock();
+            }
+            
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
+@end

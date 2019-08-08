@@ -13,5 +13,6 @@ target :GoodWine do
    pod 'SDWebImage', '~> 3.8.1'
    pod 'SDCycleScrollView', '~> 1.65'
    pod 'IQKeyboardManager', '~> 6.1.1'
-   pod 'MKCategory', '~> 1.0.0'
+   pod 'MKCategory', '~> 1.0.2'
+   pod 'AMapLocation-NO-IDFA' #无IDFA版定位 高德SDK
 end

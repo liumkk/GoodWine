@@ -14,13 +14,11 @@
 #define Width_Screen  [UIScreen mainScreen].bounds.size.width
 #define Height_Screen [UIScreen mainScreen].bounds.size.height
 
-#define Auto_Size_Scale           Width_Screen/375
+#define ScreenScale           Width_Screen/375
 
 #define Height_StatusBar 20
 #define Height_NavBar 44
 #define Height_TabBar 49
-
-//--------------------------------常用宏----------------------------------------------//
 
 #define IS_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
@@ -29,6 +27,10 @@
 //字符串是否为空
 #define IsStrEmpty(_ref)    (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]) ||([(_ref)isEqualToString:@""]))
 
+//-----------------------------------------------------------------------------------------//
+
+#define LeftTitle       @"leftTitle"
+#define RightTitle      @"rightTitle"
 
 //-----------------------------------------------------------------------------------------//
 

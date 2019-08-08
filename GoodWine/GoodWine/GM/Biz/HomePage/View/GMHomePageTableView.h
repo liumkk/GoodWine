@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GMHomePageTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
 
+- (void)updateBannerImageWithHomePageInfoModel:(HomePageInfoModel *)infoModel;
+- (void)reloadHomePageTableViewWithHomePageInfoModel:(HomePageInfoModel *)infoModel;
+
 @end
 
 NS_ASSUME_NONNULL_END

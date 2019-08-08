@@ -1,0 +1,1 @@
+../../../MKCategory/MKCategory/MKCategory/NSString+MKAdditions.h
