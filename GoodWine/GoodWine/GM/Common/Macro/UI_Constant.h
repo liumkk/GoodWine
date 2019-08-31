@@ -27,6 +27,8 @@
 #define Font_16 [UIFont systemFontOfSize:16]
 #define Font_17 [UIFont systemFontOfSize:17]
 #define Font_18 [UIFont systemFontOfSize:18]
+#define Font_24 [UIFont systemFontOfSize:24]
+#define Font_60 [UIFont systemFontOfSize:60]
 
 /* Colors */
 

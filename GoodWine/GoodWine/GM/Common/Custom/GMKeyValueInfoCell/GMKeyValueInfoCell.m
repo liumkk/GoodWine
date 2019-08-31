@@ -31,7 +31,7 @@
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.equalTo(self.contentView);
         make.left.equalTo(self.contentView).offset(16.f);
-        make.width.mas_equalTo(80.f);
+        make.width.mas_equalTo(70.f);
     }];
     
     [self.rightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -65,11 +65,26 @@
     }];
 }
 
+- (void)defaultLabelUpdateLabelFrame {
+    [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.equalTo(self.contentView);
+        make.left.equalTo(self.contentView).offset(16.f);
+        make.width.mas_equalTo(160.f);
+    }];
+    if (self.accessoryType == UITableViewCellAccessoryDisclosureIndicator) {
+        [self.rightLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.equalTo(self.contentView);
+            make.right.equalTo(self.contentView.mas_right);
+        }];
+    }
+}
+
 - (void)updateCellContentWithCellType:(GMKVInfoCellType)cellType leftText:(NSString *)leftText rightText:(NSString *)rightText needLine:(BOOL)needLine {
     self.topLine.hidden = !needLine;
     self.titleLabel.text = leftText;
     
     if (cellType == GMKVInfoCellTypeDefaultLabel) {
+        [self defaultLabelUpdateLabelFrame];
         self.rightLabel.text = rightText;
         [self viewNeedShow:self.rightLabel];
     } else if (cellType == GMKVInfoCellTypeAllTextField) {
@@ -135,6 +150,7 @@
     if (! _rightLabel) {
         _rightLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _rightLabel.textColor = [UIColor blackColor];
+        _rightLabel.font = Font_15;
         _rightLabel.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:_rightLabel];
     }

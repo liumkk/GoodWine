@@ -8,8 +8,11 @@
 
 #import "GMHomePageViewController.h"
 #import "GMHomePageTableView.h"
+#import "GMProductDetailViewController.h"
+#import "GMProductAreaViewController.h"
+#import "GMCouponViewController.h"
 
-@interface GMHomePageViewController ()
+@interface GMHomePageViewController () <GMHomePageTableViewDelegate>
 
 @property (nonatomic, strong) GMHomePageTableView *homePageTableView;
 @property (nonatomic, strong) HomePageInfoModel *infoModel;
@@ -25,7 +28,9 @@
     
     [self setupConstraints];
     
-    [self requestQueryHomePageinfo];
+    [self addRefreshHeaderView];
+    
+    [self requestQueryHomePageinfoNeedLoad:YES];
     
 //    self.homePageTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
 //
@@ -42,16 +47,59 @@
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
-- (void)requestQueryHomePageinfo {
-    [GMLoadingActivity showLoadingActivityInView:self.view];
-    [ServerAPIManager asyncQueryHomePageInfoWithSucceedBlock:^(HomePageInfoModel * _Nonnull infoModel) {
+#pragma mark --add MJRefresh
+- (void)addRefreshHeaderView {
+    self.homePageTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self requestQueryHomePageinfoNeedLoad:NO];
+    }];
+}
+
+- (void)requestQueryHomePageinfoNeedLoad:(BOOL)needLoad {
+    if (needLoad) {
+        [GMLoadingActivity showLoadingActivityInView:self.view];
+    }
+    [ServerAPIManager asyncQueryHomePageInfoWithStoreId:UserCenter.storeId SucceedBlock:^(HomePageInfoModel * _Nonnull infoModel) {
         [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [self.homePageTableView.mj_header endRefreshing];
         [self.homePageTableView updateBannerImageWithHomePageInfoModel:infoModel];
         [self.homePageTableView reloadHomePageTableViewWithHomePageInfoModel:infoModel];
     } failedBlock:^(NSError * _Nonnull error) {
         [GMLoadingActivity hideLoadingActivityInView:self.view];
         [self showAlertViewWithTitle:@"提示" Error:error buttonTitle:@"确定"];
+        [self.homePageTableView.mj_header endRefreshing];
     }];
+}
+
+- (void)collectionViewDidSelectItemWithModel:(HomePageTypeItem *)model {
+    GMProductDetailViewController *vc = [[GMProductDetailViewController alloc] initWithProductId:model.productId];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)clickWineAreaWithAreaType:(WineAreaType)type {
+    if (type == WineAreaTypeCoupon) {
+        GMCouponViewController *vc = [[GMCouponViewController alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        NSString *cateId;
+        NSString *title;
+        if (type == WineAreaTypeWhite) {
+            cateId = @"2";
+            title = @"白酒专区";
+        } else if (type == WineAreaTypeRed) {
+            cateId = @"3";
+            title = @"红酒专区";
+        } else if (type == WineAreaTypeOther) {
+            cateId = @"4";
+            title = @"其他酒品";
+        } 
+        GMProductAreaViewController *vc = [[GMProductAreaViewController alloc] initWithCateId:cateId];
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 
 #pragma mark --update constraints
@@ -67,6 +115,7 @@
 - (GMHomePageTableView *)homePageTableView {
     if (! _homePageTableView) {
         _homePageTableView = [[GMHomePageTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _homePageTableView.homePageTVDelegate = self;
         [self.view addSubview:_homePageTableView];
     }
     return _homePageTableView;

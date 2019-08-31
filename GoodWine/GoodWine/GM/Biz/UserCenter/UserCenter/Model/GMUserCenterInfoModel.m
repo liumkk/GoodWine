@@ -17,6 +17,7 @@
              @"username" : @"username",
              @"nickname" : @"nickname",
              @"password" : @"password",
+             @"icon"     : @"icon",
              @"phone"    : @"phone",
              @"city"     : @"city",
              @"job"      : @"job"

@@ -29,6 +29,14 @@
 }
 
 - (void)setupConstraints {
+    
+    [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.contentView).offset(2.f);
+//        make.left.equalTo(self.contentView).offset(2.f);
+//        make.right.equalTo(self.contentView).offset(-2.f);
+        make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(2, 2, 2, 2));
+    }];
+    
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(7.f);
         make.left.equalTo(self.contentView).offset(6.f);
@@ -49,7 +57,7 @@
     
     [self.originalPriceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.promotionPriceLabel.mas_bottom).offset(8.f);
-        make.left.equalTo(self.promotionPriceLabel).offset(5.f);
+        make.left.equalTo(self.promotionPriceLabel);
     }];
     
     [self.saleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -57,6 +65,14 @@
         make.right.equalTo(self.contentView.mas_right);
     }];
     
+}
+
+- (UIImageView *)bgView {
+    if (! _bgView) {
+        _bgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"collection_bg"]];
+        [self.contentView addSubview:_bgView];
+    }
+    return _bgView;
 }
 
 - (UIImageView *)imageView {
@@ -71,6 +87,7 @@
     if (! _titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _titleLabel.font = Font_16;
+        _titleLabel.text = @"测试数据"; //--test
         [self.contentView addSubview:_titleLabel];
     }
     return _titleLabel;

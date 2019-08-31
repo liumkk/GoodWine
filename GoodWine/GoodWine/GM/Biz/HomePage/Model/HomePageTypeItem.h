@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HomePageTypeItem : MTLModel <MTLJSONSerializing>
 
+@property (nonatomic, copy) NSString *productId;
 @property (nonatomic, assign) NSInteger brandId;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *pic;

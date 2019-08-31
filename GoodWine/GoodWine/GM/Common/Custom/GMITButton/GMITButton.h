@@ -17,6 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)updateIconImageName:(NSString *)imageName contentText:(NSString *)contentText;
 
+- (void)updateImageName:(NSString *)imageName
+            contentText:(NSString *)contentText
+                  Width:(CGFloat)width
+              topMargin:(CGFloat)topMargin
+           bottomMargin:(CGFloat)bottomMargin;
+
 @end
 
 NS_ASSUME_NONNULL_END

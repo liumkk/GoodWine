@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) GMUserCenterInfoModel *userInfoModel;
 @property (nonatomic, assign) BOOL isLogin;
 
+@property (nonatomic, copy) NSString *storeId;
+
 + (instancetype)sharedInstance;
 
 - (void)setIsLogin:(BOOL)isLogin;

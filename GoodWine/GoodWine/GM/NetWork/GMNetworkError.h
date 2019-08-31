@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 #define GM_Net_Error_Domain  @"UMSFS_Net_Error_Domain"
-#define GM_Net_Key_ErrCode   @"errCode"
-#define GM_Net_Key_ErrInfo   @"errInfo"
+#define GM_Net_Key_ErrCode   @"code"
+#define GM_Net_Key_ErrInfo   @"message"
 
 #define GM_Net_RespCode_Success               @"0000"
 #define GM_Net_RespCode_Error                 @"01"

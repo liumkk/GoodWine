@@ -65,7 +65,7 @@
 - (UIImageView *)headerImageiew {
     if (! _headerImageiew) {
         _headerImageiew = [[UIImageView alloc] initWithFrame:CGRectZero];
-        _headerImageiew.image = [UIImage imageNamed:@"test"];
+        _headerImageiew.image = [UIImage imageNamed:@"goodWine"];
         _headerImageiew.clipsToBounds = YES;
         _headerImageiew.layer.cornerRadius = HeaderView_width/2;
         [self.contentView addSubview:_headerImageiew];

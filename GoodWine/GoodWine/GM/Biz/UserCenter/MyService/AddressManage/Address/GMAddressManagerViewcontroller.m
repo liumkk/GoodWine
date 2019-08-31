@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) GMAddressManageTableView *addressTableView;
 @property (nonatomic, strong) NSMutableArray <GMAddressInfoModel *> *dataArray;
+@property (nonatomic, copy) SelectAddressCallBack callBack;
+
 
 @end
 
@@ -33,7 +35,7 @@
     [ServerAPIManager asyncQueryAddressWithSucceedBlock:^(NSArray * _Nonnull array) {
         [GMLoadingActivity hideLoadingActivityInView:self.view];
         [self.dataArray removeAllObjects];
-        self.dataArray = [[NSMutableArray alloc] initWithArray:array];
+        self.dataArray = (NSMutableArray *)array;
         [self.addressTableView reloadTableViewWithDataArray:self.dataArray];
     } failedBlock:^(NSError * _Nonnull error) {
         [GMLoadingActivity hideLoadingActivityInView:self.view];
@@ -49,6 +51,29 @@
     [self.navigationController pushViewController:addVC animated:YES];
 }
 
+- (void)addressManageTableView:(UITableView *)tableView
+          deleteRowAtIndexPath:(NSIndexPath *)indexPath
+                         model:(GMAddressInfoModel *)model {
+    [GMLoadingActivity showLoadingActivityInView:self.view];
+    
+    [ServerAPIManager asyncDeleteAddressWithAddressId:model.addressId succeedBlock:^{
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [self.dataArray removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView reloadData];
+    } failedBlock:^(NSError * _Nonnull error) {
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [self showAlertViewWithError:error];
+    }];
+}
+
+- (void)addressManagerTableViewDidSelectRowAtModel:(GMAddressInfoModel *)model {
+    if (self.callBack) {
+        self.callBack(model);
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 - (void)setupConstranits {
     [self.addressTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -62,6 +87,10 @@
         [self.view addSubview:_addressTableView];
     }
     return _addressTableView;
+}
+
+- (void)addressManagerSelectAddressCallBack:(SelectAddressCallBack)callBack {
+    self.callBack = callBack;
 }
 
 @end

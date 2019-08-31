@@ -7,16 +7,15 @@
 //
 
 #import "MKLocationManager.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
 
-@interface MKLocationManager ()
+#define     MKApiKey        @"bb580696faf63d215ca472e9f9d6fc6e"
+#define     MKWebApiKey     @"7da5a57fc078a7240d77aa45d561204e"
 
-@property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, strong) CLLocation *location;
-@property (nonatomic, strong) NSDictionary *locationForGeocode;
+@interface MKLocationManager () <AMapLocationManagerDelegate>
 
-@property (nonatomic, copy) CompletionBlock completionBlock;
-
-@property (nonatomic, copy) FailedBlock failedBlock;
+@property (nonatomic, strong) AMapLocationManager *locationManager;
 
 @end
 
@@ -37,151 +36,53 @@ static MKLocationManager *_sharedInstance = nil;
 - (id)init{
     
     if (self = [super init]) {
-        if ([CLLocationManager locationServicesEnabled]) {
-            
-            if (nil == self.locationManager)
-                self.locationManager = [[CLLocationManager alloc]init];
-            self.locationManager.delegate = self;
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-            self.locationManager.distanceFilter = 100; // meters
-            
-        }else {
-            NSLog(@"TKLocationManager don't open");
-        }
+        [AMapServices sharedServices].apiKey = MKApiKey;
+        
+        self.locationManager = [[AMapLocationManager alloc] init];
+        [self.locationManager setDelegate:self];
+        // 带逆地理信息的一次定位（返回坐标和地址信息）
+        [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+        //   定位超时时间，最低2s，此处设置为5s
+        self.locationManager.locationTimeout =5;
+        //   逆地理请求超时时间，最低2s，此处设置为5s
+        self.locationManager.reGeocodeTimeout = 5;
     }
     return self;
 }
 
-- (BOOL)checkLocationFunctionEnable {
-    
-    if(!([CLLocationManager locationServicesEnabled]) || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
-        return NO;
-    }
-    return YES;
-}
-
 - (void)openLocationFunction {
-    
-    if (/*[FeatureManager isFeatureDisabled:FeatureYext]*/YES) {
-        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-            [self.locationManager requestWhenInUseAuthorization];
-        }
-    } else {
-        //        if ([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-        //            [self.locationManager requestAlwaysAuthorization];
-        //        }
-    }
-    [self.locationManager startUpdatingLocation];
-}
-
--(void)stopLocationFunction {
-    [self.locationManager stopUpdatingLocation];
-}
-
-- (void)updateLocationFunctionWithCompletion:(CompletionBlock)completion failed:(FailedBlock)failed {
-    self.completionBlock = completion;
-    self.failedBlock = failed;
-    [self openLocationFunction];
-}
-
-// Delegate method from the CLLocationManagerDelegate protocol.
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray *)locations {
-    
-    // If it's a relatively recent event, turn off updates to save power.
-    self.location = [locations lastObject];
-    // If the event is recent, do something with it.
-    NSLog(@"latitude %+.6f, longitude %+.6f\n, longitude %+.6f\n",
-          self.location.coordinate.latitude,
-          self.location.coordinate.longitude,
-          self.location.altitude);
-    
-    [self stopLocationFunction];
-    
-//    CLLocationCoordinate2D converterCoordinate = [UMSLocationConverter wgs84ToBd09:self.location.coordinate];
-    
-//    NSString *latitude = [NSString stringWithFormat:@"%f",converterCoordinate.latitude];
-//    NSString *longitude = [NSString stringWithFormat:@"%f",converterCoordinate.longitude];
-//    NSString *altitude = [NSString stringWithFormat:@"%f",self.location.altitude];
-//    [UserCenter setLatitude:latitude Longitude:longitude Altitude:altitude];
-    
-    NSBlockOperation *blockForUpdate = [NSBlockOperation blockOperationWithBlock:^{
+    // 带逆地理（返回坐标和地址信息）。将下面代码中的 YES 改成 NO ，则不会返回地址信息。
+    [self.locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
         
-        //        NSString *urLocation = [userReference objectForKey:LocationFromDevice];
-        //        NSNumber *latitude = @([[userReference objectForKey:LatitudeFromDevice] floatValue]);
-        //        NSNumber *longitude = @([[userReference objectForKey:LongitudeFromDevice] floatValue]);
-        //
-        //        [ServerAPIManager asyncUpdateUserProfileByUserName:nil gender:nil location:urLocation latitude:latitude longitude:longitude account:nil succeedBlock:nil failedBlock:nil];
-        
-    }];
-    
-    [self CoordinateGeocode:blockForUpdate];
-    
-}
-
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    NSLog(@"location error is %@",error);
-    if (self.failedBlock) {
-        self.failedBlock();
-    }
-}
-
-- (void)CoordinateGeocode:(NSBlockOperation*)block
-{
-    
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    
-    CLLocationCoordinate2D coord = self.location.coordinate;
-    
-    CLLocation *loc = [[CLLocation alloc] initWithLatitude:coord.latitude longitude:coord.longitude];
-    
-    [geocoder reverseGeocodeLocation:loc completionHandler:^(NSArray *placemarks, NSError *error) {
-        if (error){
-            NSLog(@"Geocode failed with error: %@", error);
-            if (self.failedBlock) {
-                self.failedBlock();
+        if (error) {
+            UserCenter.storeId = @"1"; //--test
+            MKNSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
+            if (error.code == AMapLocationErrorLocateFailed) {
+                return;
             }
-            return;
-        }
-        CLPlacemark *placemark = [placemarks objectAtIndex:0];
-        
-        self.locationForGeocode = placemark.addressDictionary;
-        NSString *city = placemark.locality;
-        
-        if (!city || city.length == 0) {
-            city = placemark.administrativeArea;
         }
         
-        if (city.length>0) {
-            //            [userReference setObject:city forKey:LocationFromDevice];
-//            if ([city isChineseLanguage]) {
-//                UserCenter.currentCityName = city;
-//                if (!UserCenter.lastTimeCity.cityName || UserCenter.lastTimeCity.cityName.length == 0) {
-//                    [UserCenter setLastTimeCity:[CityManager cityModelWithCityName:UserCenter.currentCityName]];
-//                }
-//            }
-        }else if (placemark.administrativeArea.length > 0) {
-            //            [userReference setObject:placemark.administrativeArea forKey:LocationFromDevice];
+        if (regeocode) {
+            MKNSLog(@"reGeocode:%@", regeocode);
+            [ServerAPIManager asyncQueryStoreInfoWithRegionCode:regeocode.adcode succeedBlock:^(GMStoreInfoModel * _Nonnull infoModel) {
+                MKNSLog(@"GMStoreInfoModel--%@",infoModel);
+                UserCenter.storeId = infoModel.storeId;
+            } failedBlock:^(NSError * _Nonnull error) {
+                MKNSLog(@"GMStoreInfoModel--查询门店失败");
+                UserCenter.storeId = @"1"; //--test
+            }];
         }
-        
-        NSString *countryCode = placemark.ISOcountryCode;
-        if (countryCode.length>0) {
-            //            [userReference setObject:countryCode forKey:CountryCodeFromDevice];
-        }
-        [block start];
-        
-//        if (self.completionBlock) {
-//            self.completionBlock(locationInfoDict);
-//        }
     }];
 }
 
-- (void)clear {
+- (void)cleanUpAction {
+    [self.locationManager stopUpdatingLocation];
     
-    self.completionBlock = nil;
-    self.failedBlock = nil;
-    
+    [self.locationManager setDelegate:nil];
+}
+
+- (void)dealloc {
+    [self cleanUpAction];
 }
 
 @end

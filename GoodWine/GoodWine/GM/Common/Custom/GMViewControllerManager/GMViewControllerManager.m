@@ -47,7 +47,14 @@ static GMViewControllerManager *shared = nil;
     appdelegate.window.rootViewController = nav;
     
     self.rootController = (GMNavigationController *)nav;
-    
+}
+
+- (GMTabBarController *)tabBarController {
+    if (! _tabBarController) {
+        AppDelegate *appdelegate =  (AppDelegate *)[UIApplication sharedApplication].delegate;
+        _tabBarController = (GMTabBarController *)appdelegate.window.rootViewController;
+    }
+    return _tabBarController;
 }
 
 @end

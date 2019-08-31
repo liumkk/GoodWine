@@ -33,7 +33,7 @@
 
 - (UIImageView *)headerImageView {
     if (! _headerImageView) {
-        _headerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"test"]];
+        _headerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"goodWine"]];
         [self addSubview:_headerImageView];
     }
     return _headerImageView;

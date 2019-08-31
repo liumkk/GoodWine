@@ -41,9 +41,9 @@ static NSString *serviceCellID = @"serviceCellID";
     
     GMKeyValueInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:serviceCellID forIndexPath:indexPath];
     if (indexPath.row == 0) {
-        [cell updateCellContentWithCellType:GMKVInfoCellTypeLeftImageView leftText:@"联系美酒快线平台" rightText:@"test" needLine:indexPath.row != 0];
+        [cell updateCellContentWithCellType:GMKVInfoCellTypeLeftImageView leftText:@"联系美酒快线平台" rightText:@"goodWine" needLine:indexPath.row != 0];
     } else {
-        [cell updateCellContentWithCellType:GMKVInfoCellTypeLeftImageView leftText:@"联系商家" rightText:@"test" needLine:indexPath.row != 0];
+        [cell updateCellContentWithCellType:GMKVInfoCellTypeLeftImageView leftText:@"联系商家" rightText:@"goodWine" needLine:indexPath.row != 0];
     }
     
     

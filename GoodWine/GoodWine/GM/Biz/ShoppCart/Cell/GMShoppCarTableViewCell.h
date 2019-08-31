@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GMShoppCarTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *statusLabel;
 @property (nonatomic, strong) UIButton *selectBtn;
 @property (nonatomic, strong) UIImageView *titleImageView;
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -20,6 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *jianBtn;
 @property (nonatomic, strong) UIButton *jiaBtn;
 @property (nonatomic, strong) UILabel *numLabel;
+@property (nonatomic, strong) UIView *lineView;
+
+- (void)updateShoppCarTableCellWithModel:(ShoppCarInfoModel *)infoModel needLine:(BOOL)needLine;
+
++ (CGFloat)heightForCell;
 
 @end
 

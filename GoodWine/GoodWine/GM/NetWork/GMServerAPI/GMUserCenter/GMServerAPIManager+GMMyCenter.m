@@ -14,7 +14,7 @@
                                                 failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
     
     return
-    [ServerClient asyncGetNetworkRequestWithURLString:GMAllAddress parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
+    [ServerClient asyncGetNetworkRequestWithURLString:GMAllAddress(@"10", @"1", UserCenter.storeId) parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
             NSMutableArray *dataArray = [[NSMutableArray alloc] init];
             for (NSDictionary *dic in responseDict[@"data"]) {
@@ -56,7 +56,7 @@
     }
     
     NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
-    temParamDict[@"storeId"] = @"1";
+    temParamDict[@"storeId"] = UserCenter.storeId;
     temParamDict[@"memberId"] = UserCenter.userInfoModel.memberId;
     temParamDict[@"name"] = name;
     temParamDict[@"phoneNumber"] = phoneNum;
@@ -71,6 +71,127 @@
                 succeedBlock();
             }
             
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
+- (NSURLSessionDataTask *)asyncDeleteAddressWithAddressId:(NSString *)addressId
+                                             succeedBlock:(void (^)(void))succeedBlock
+                                              failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    
+    return
+    [ServerClient asyncNetworkRequestWithURL:GMDeleteAddress(addressId) parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            if (succeedBlock) {
+                succeedBlock();
+            }
+            
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
+- (NSURLSessionDataTask *)asyncGetCollectListWithSucceedBlock:(void (^)(CollectListInfoModel * _Nonnull))succeedBlock
+                                                failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    
+    return
+    [ServerClient asyncGetNetworkRequestWithURLString:GMGetCollectList(@"4", @"1", UserCenter.storeId) parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            CollectListInfoModel *model = [CollectListInfoModel collectListInfoModelWithDictionary:responseDict[@"data"]];
+            if (succeedBlock) {
+                succeedBlock(model);
+            }
+        }else {
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
+- (NSURLSessionDataTask *)asyncDeleteCollectWithProductId:(NSString *)productId
+                                             succeedBlock:(void (^)(void))succeedBlock
+                                              failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    
+    NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
+    temParamDict[@"productId"] = productId;
+    return
+    [ServerClient asyncNetworkRequestWithURL:GMDeleteCollect(productId) parameter:temParamDict success:^(NSDictionary * _Nonnull responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            if (succeedBlock) {
+                succeedBlock();
+            }
+            
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
+- (NSURLSessionDataTask *)asyncCollectProductWithModel:(GMProductDetailModel *)model
+                                          succeedBlock:(void (^)(void))succeedBlock
+                                           failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    
+    if (!model) {
+        if (failedBlock) {
+            failedBlock([GMNetworkError getParamError]);
+        }
+        return nil;
+    }
+    
+    NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
+    temParamDict[@"deleteStatus"] = @"0";
+    temParamDict[@"createTime"] = [NSString getCurrentTime];
+    
+    temParamDict[@"memberId"] = UserCenter.userInfoModel.memberId;
+    temParamDict[@"memberIcon"] = UserCenter.userInfoModel.icon;
+    temParamDict[@"memberNickname"] = UserCenter.userInfoModel.nickname;
+    temParamDict[@"productId"] = model.productId;
+    temParamDict[@"productName"] = model.name;
+    temParamDict[@"productPic"] = model.pic;
+    temParamDict[@"productPrice"] = model.price;
+    temParamDict[@"productSubTitle"] = model.subTitle;
+    
+    [ServerClient setContentTypeJson];
+    return
+    [ServerClient asyncNetworkRequestWithURL:GMCollectProduct parameter:temParamDict success:^(NSDictionary *responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            
+            if (succeedBlock) {
+                succeedBlock();
+            }
         }else {
             
             if (failedBlock) {

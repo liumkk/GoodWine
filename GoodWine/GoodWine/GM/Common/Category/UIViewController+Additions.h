@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (Additions)
 
+- (void)showAlertViewWithTitle:(NSString *)title;
+
 - (void)showAlertViewWithError:(NSError *)error;
 
 - (void)showAlertViewWithTitle:(NSString *)title Error:(NSError *)error buttonTitle:(NSString *)buttonTitle;

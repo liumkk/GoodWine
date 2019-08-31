@@ -14,6 +14,8 @@ static NSString *userSecondCollectionCell = @"userSecondCollectionCell";
 @interface GMCollectionView () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) NSArray *titleArray;
+@property (nonatomic, strong) NSArray *imageArray;
+
 
 @end
 
@@ -47,6 +49,7 @@ static NSString *userSecondCollectionCell = @"userSecondCollectionCell";
 
 - (void)initData {
     self.titleArray = @[@"地址管理", @"优惠券", @"我的关注", @"联系客服", @"设置", @"版本信息"];
+    self.imageArray = @[@"address", @"coupon", @"collect", @"talk_kefu", @"setting", @"info"];
 }
 
 #pragma mark - collectionView dataSource Or delegate
@@ -58,7 +61,7 @@ static NSString *userSecondCollectionCell = @"userSecondCollectionCell";
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     GMUserSecondCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:userSecondCollectionCell forIndexPath:indexPath];
-    [cell updateCellWithImageString:@"test" titleText:self.titleArray[indexPath.item]];
+    [cell updateCellWithImageString:self.imageArray[indexPath.item] titleText:self.titleArray[indexPath.item]];
     return cell;
 }
 

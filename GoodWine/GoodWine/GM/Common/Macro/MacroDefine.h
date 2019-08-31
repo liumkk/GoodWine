@@ -20,6 +20,13 @@
 #define Height_NavBar 44
 #define Height_TabBar 49
 
+#define StatusBarHeight (Height_Screen == 812.0 ? 44 : 20)
+#define SafeAreaTopHeight (Height_Screen >= 812.0 ? 88 : 64)
+#define BottomTarBarSpace (Height_Screen >= 812.0 ? 34 : 0)
+
+#define NavigationBarAndStatusBarHeight  (self.navigationController.navigationBar.frame.size.height + [[UIApplication sharedApplication] statusBarFrame].size.height)
+#define TabBarHeight  (self.tabBarController.tabBar.frame.size.height)
+
 #define IS_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
 #define iPhoneX_Bottom_Margin            (IS_iPhoneX ? 88 : 0)
@@ -31,6 +38,9 @@
 
 #define LeftTitle       @"leftTitle"
 #define RightTitle      @"rightTitle"
+
+
+#define Notification_addProduct     @"addproduct"
 
 //-----------------------------------------------------------------------------------------//
 

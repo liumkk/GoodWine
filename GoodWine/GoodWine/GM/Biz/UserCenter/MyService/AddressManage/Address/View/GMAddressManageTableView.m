@@ -27,8 +27,6 @@ static NSString *addressCellID = @"addressCellID";
         
         self.dataSource = self;
         self.delegate = self;
-//        self.estimatedRowHeight = 100.f;
-//        self.rowHeight = UITableViewAutomaticDimension;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = [UIColor whiteColor];
         
@@ -62,14 +60,25 @@ static NSString *addressCellID = @"addressCellID";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    [self deselectRowAtIndexPath:indexPath animated:YES];
-    
+    if (self.addressDelegate && [self.addressDelegate respondsToSelector:@selector(addressManagerTableViewDidSelectRowAtModel:)]) {
+        [self.addressDelegate addressManagerTableViewDidSelectRowAtModel:self.dataArray[indexPath.row]];
+    }
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 100.f;
-//}
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.addressDelegate && [self.addressDelegate respondsToSelector:@selector(addressManageTableView:deleteRowAtIndexPath:model:)]) {
+        [self.addressDelegate addressManageTableView:tableView deleteRowAtIndexPath:indexPath model:self.dataArray[indexPath.row]];
+    }
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     

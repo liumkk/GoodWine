@@ -18,8 +18,7 @@
     
 }
 
-+ (void)showToastToView:(UIView *)view text:(NSString *)text time:(NSTimeInterval)time
-{
++ (void)showToastToView:(UIView *)view text:(NSString *)text time:(NSTimeInterval)time {
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.detailsLabelText = text;
     hud.detailsLabelFont = [UIFont systemFontOfSize:13.0];
@@ -33,8 +32,7 @@
     [hud hide:YES afterDelay:time];
 }
 
-+ (void)showToastToView:(UIView *)view text:(NSString *)text time:(NSTimeInterval)time completion:(void(^)())completion
-{
++ (void)showToastToView:(UIView *)view text:(NSString *)text time:(NSTimeInterval)time completion:(nonnull void (^)(void))completion {
     [MKToastView showToastToView:view text:text time:time];
     
     dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC));

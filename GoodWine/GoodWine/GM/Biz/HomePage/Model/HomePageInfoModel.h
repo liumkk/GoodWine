@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HomePageInfoModel : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy, readonly) NSArray<HomePageInfoDetailItem *> *advertiseArray;
-@property (nonatomic, copy, readonly) NSArray<HomePageTypeItem *> *originalProductArray;
+@property (nonatomic, copy, readonly) NSArray<HomePageTypeItem *> *freshProductArray;
 @property (nonatomic, copy, readonly) NSArray<HomePageTypeItem *> *hotProductArray;
 @property (nonatomic, copy, readonly) NSArray<HomePageTypeItem *> *storeProductArray;
 

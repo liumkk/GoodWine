@@ -10,7 +10,23 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, WineAreaType){
+    WineAreaTypeWhite = 1,
+    WineAreaTypeRed,
+    WineAreaTypeOther,
+    WineAreaTypeCoupon
+};
+
+@protocol GMHomePageTableViewDelegate <NSObject>
+
+- (void)collectionViewDidSelectItemWithModel:(HomePageTypeItem *)model;
+- (void)clickWineAreaWithAreaType:(WineAreaType)type;
+
+@end
+
 @interface GMHomePageTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, weak) id <GMHomePageTableViewDelegate> homePageTVDelegate;
 
 - (void)updateBannerImageWithHomePageInfoModel:(HomePageInfoModel *)infoModel;
 - (void)reloadHomePageTableViewWithHomePageInfoModel:(HomePageInfoModel *)infoModel;

@@ -1,0 +1,17 @@
+//
+//  GMForgetPasswordViewController.h
+//  GoodWine
+//
+//  Created by LMK on 2019/8/22.
+//  Copyright © 2019年 LMK. All rights reserved.
+//
+
+#import "GMBaseViewController.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface GMForgetPasswordViewController : GMBaseViewController
+
+@end
+
+NS_ASSUME_NONNULL_END

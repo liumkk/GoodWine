@@ -11,6 +11,7 @@
 #import "GMVersionViewController.h"
 #import "GMServiceViewController.h"
 #import "GMAddressManagerViewcontroller.h"
+#import "GMCollectViewController.h"
 
 @interface GMUserCenterViewController () <GMUserCenterTableViewDelegate>
 
@@ -41,7 +42,9 @@
     } else if (index == 1) {
         
     } else if (index == 2) {
-        
+        GMCollectViewController *vc = [[GMCollectViewController alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     } else if (index == 3) {
         GMServiceViewController *serviceVC = [[GMServiceViewController alloc] init];
         serviceVC.hidesBottomBarWhenPushed = YES;

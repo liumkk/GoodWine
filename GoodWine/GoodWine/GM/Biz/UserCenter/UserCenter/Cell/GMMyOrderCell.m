@@ -66,7 +66,7 @@
 - (GMITButton *)orderStateButton {
     if (! _orderStateButton) {
         _orderStateButton = [GMITButton buttonWithType:UIButtonTypeCustom];
-        _orderStateButton.iconImageView.image = [UIImage imageNamed:@"test"];
+        _orderStateButton.iconImageView.image = [UIImage imageNamed:@"goodWine"];
         _orderStateButton.contentLabel.text = @"配送中";
         [self.contentView addSubview:_orderStateButton];
     }

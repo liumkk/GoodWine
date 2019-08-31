@@ -8,6 +8,12 @@
 
 #import "GMShoppCarTableViewCell.h"
 
+@interface GMShoppCarTableViewCell ()
+
+@property (nonatomic, strong) ShoppCarInfoModel *model;
+
+@end
+
 @implementation GMShoppCarTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -21,10 +27,16 @@
 }
 
 - (void)setupConstraints {
+    [self.statusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.contentView);
+        make.left.equalTo(self.contentView).offset(7.f);
+        make.size.mas_equalTo(CGSizeMake(35.f, 35.f));
+    }];
+    
     [self.selectBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView);
         make.left.equalTo(self.contentView).offset(10.f);
-        make.size.mas_equalTo(CGSizeMake(20.f, 20.f));
+        make.size.mas_equalTo(CGSizeMake(30.f, 30.f));
     }];
     
     [self.titleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -68,9 +80,31 @@
         make.size.mas_equalTo(CGSizeMake(20.f, 20.f));
     }];
     
+    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.top.equalTo(self);
+        make.left.equalTo(self).offset(16.f);
+        make.height.mas_equalTo(LINE_HEIGHT);
+    }];
+    
 }
 
-- (void)updateCell {
+- (void)updateShoppCarTableCellWithModel:(ShoppCarInfoModel *)infoModel needLine:(BOOL)needLine {
+    self.model = infoModel;
+    
+    self.lineView.hidden = !needLine;
+    [self.titleImageView sd_setImageWithURL:[NSURL URLWithString:infoModel.productPic] placeholderImage:[UIImage imageNamed:@"goodWine"]];
+    self.titleLabel.text = infoModel.productName;
+    self.contentLabel.text = infoModel.productSubTitle;
+    self.priceLabel.text = [NSString stringWithFormat:@"%.2f元",[infoModel.currentPrice floatValue]];
+    self.numLabel.text = [NSString stringWithFormat:@"%@",self.model.quantity];
+    if ([infoModel.invalidStatus isEqualToString:@"1"]) {
+        self.selectBtn.hidden = YES;
+        self.statusLabel.hidden = NO;
+    } else {
+        self.statusLabel.hidden = YES;
+        self.selectBtn.hidden = NO;
+        self.selectBtn.selected = infoModel.isSelected;
+    }
     
 }
 
@@ -81,6 +115,22 @@
 }
 
 #pragma mark --init subviews
+
+- (UILabel *)statusLabel {
+    if (! _statusLabel) {
+        _statusLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _statusLabel.text = @"已下架";
+        _statusLabel.textAlignment = NSTextAlignmentCenter;
+        _statusLabel.textColor = COLOR_THEME_COLOR;
+        _statusLabel.font = Font_10;
+        _statusLabel.layer.cornerRadius = 17.5;
+        _statusLabel.layer.masksToBounds = YES;
+        _statusLabel.layer.borderWidth = 0.5;
+        _statusLabel.layer.borderColor = COLOR_THEME_COLOR.CGColor;
+        [self.contentView addSubview:_statusLabel];
+    }
+    return _statusLabel;
+}
 
 - (UIButton *)selectBtn {
     if (! _selectBtn) {
@@ -95,7 +145,7 @@
 - (UIImageView *)titleImageView {
     if (! _titleImageView) {
         _titleImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-        _titleImageView.image = [UIImage imageNamed:@"test"];
+        _titleImageView.image = [UIImage imageNamed:@"goodWine"];
         [self.contentView addSubview:_titleImageView];
     }
     return _titleImageView;
@@ -162,6 +212,15 @@
         [self.contentView addSubview:_numLabel];
     }
     return _numLabel;
+}
+
+- (UIView *)lineView {
+    if (! _lineView) {
+        _lineView = [UIView creatDefaultLineView];
+        [self.contentView addSubview:_lineView];
+    }
+    
+    return _lineView;
 }
 
 @end

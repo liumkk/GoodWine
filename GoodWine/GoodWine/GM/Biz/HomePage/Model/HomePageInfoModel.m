@@ -14,7 +14,7 @@
     
     return @{
              @"advertiseArray"      : @"advertiseList",
-             @"originalProductArray": @"newProductList",
+             @"freshProductArray":  @"newProductList",
              @"hotProductArray"     : @"hotProductList",
              @"storeProductArray"   : @"storeProductList"
              };
@@ -30,7 +30,7 @@
     return [MTLJSONAdapter arrayTransformerWithModelClass:[HomePageInfoDetailItem class]];
 }
 
-+ (NSValueTransformer *)originalProductArrayJSONTransformer {
++ (NSValueTransformer *)freshProductArrayJSONTransformer {
     
     return [MTLJSONAdapter arrayTransformerWithModelClass:[HomePageTypeItem class]];
 }

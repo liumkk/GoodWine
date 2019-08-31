@@ -47,6 +47,7 @@
 - (GMITButton *)whiteSpiritArea {
     if (! _whiteSpiritArea) {
         _whiteSpiritArea = [GMITButton buttonWithType:UIButtonTypeCustom];
+        _whiteSpiritArea.tag = 1;
         [_whiteSpiritArea updateIconImageName:@"" contentText:@"白酒专区"];
         [self.contentView addSubview:_whiteSpiritArea];
     }
@@ -56,6 +57,7 @@
 - (GMITButton *)redWineArea {
     if (! _redWineArea) {
         _redWineArea = [GMITButton buttonWithType:UIButtonTypeCustom];
+        _redWineArea.tag = 2;
         [_redWineArea updateIconImageName:@"" contentText:@"红酒专区"];
         [self.contentView addSubview:_redWineArea];
     }
@@ -65,6 +67,7 @@
 - (GMITButton *)otherArea {
     if (! _otherArea) {
         _otherArea = [GMITButton buttonWithType:UIButtonTypeCustom];
+        _otherArea.tag = 3;
         [_otherArea updateIconImageName:@"" contentText:@"其他酒品"];
         [self.contentView addSubview:_otherArea];
     }
@@ -74,6 +77,7 @@
 - (GMITButton *)couponArea {
     if (! _couponArea) {
         _couponArea = [GMITButton buttonWithType:UIButtonTypeCustom];
+        _couponArea.tag = 4;
         [_couponArea updateIconImageName:@"" contentText:@"领券中心"];
         [self.contentView addSubview:_couponArea];
     }

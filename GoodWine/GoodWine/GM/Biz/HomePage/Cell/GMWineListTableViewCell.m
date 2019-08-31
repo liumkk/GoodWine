@@ -74,9 +74,10 @@ static NSString *collectionViewCellId = @"collectionViewCellId";
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"collecIndexPath--%ld",(long)indexPath.row);
+    MKNSLog(@"collecIndexPath--%ld",(long)indexPath.item);
+    if (self.wineListTVCellDelegate && [self.wineListTVCellDelegate respondsToSelector:@selector(collectionViewDidSelectItemWithModel:)]) {
+        [self.wineListTVCellDelegate collectionViewDidSelectItemWithModel:self.dataArray[indexPath.item]];
+    }
 }
-
-#pragma mark --init subviews
 
 @end

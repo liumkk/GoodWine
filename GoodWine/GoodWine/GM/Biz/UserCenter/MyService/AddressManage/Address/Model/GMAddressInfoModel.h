@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GMAddressInfoModel : MTLModel <MTLJSONSerializing>
 
+@property (nonatomic, copy) NSString *addressId;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *phoneNumber;
 @property (nonatomic, copy) NSString *postCode;

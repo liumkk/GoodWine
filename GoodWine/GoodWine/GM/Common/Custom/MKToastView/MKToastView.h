@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)showToastToView:(UIView *)view text:(NSString *)text;
 
-+ (void)showToastToView:(UIView *)view text:(NSString *)text time:(NSTimeInterval)time completion:(void(^)())completion;
++ (void)showToastToView:(UIView *)view text:(NSString *)text time:(NSTimeInterval)time completion:(void(^)(void))completion;
 
 @end
 

@@ -22,11 +22,27 @@
 }
 
 - (void)updateIconImageName:(NSString *)imageName contentText:(NSString *)contentText {
-    NSURL *URL = [NSURL URLWithString:@"https://image.so.com/i?q=天空图片&listsrc=sobox&listsign=19440fdd6ddfd0df010b7fbf00eb217f&src=360pic_strong"];
-
-    [self.iconImageView sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"test"] options:0];
+    NSURL *URL = [NSURL URLWithString:imageName];
+    [self.iconImageView sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"goodWine"] options:0];
     
     self.contentLabel.text = contentText;
+}
+
+- (void)updateImageName:(NSString *)imageName contentText:(NSString *)contentText Width:(CGFloat)width topMargin:(CGFloat)topMargin bottomMargin:(CGFloat)bottomMargin {
+    
+    self.iconImageView.image = [UIImage imageNamed:imageName];
+    self.contentLabel.text = contentText;
+    
+    [self.iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self);
+        make.top.equalTo(self).offset(topMargin);
+        make.size.mas_equalTo(CGSizeMake(width, width));
+    }];
+    
+    [self.contentLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self);
+        make.top.equalTo(self.iconImageView.mas_bottom).offset(bottomMargin);
+    }];
 }
 
 - (void)setUpConstrain {

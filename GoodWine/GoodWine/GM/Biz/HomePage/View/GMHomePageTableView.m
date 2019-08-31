@@ -14,10 +14,11 @@ static NSString *homePageIdentifier = @"homePageIdentifier";
 static NSString *menuCellIdentifier = @"menuCellIdentifier";
 static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
 
-@interface GMHomePageTableView () <SDCycleScrollViewDelegate>
+@interface GMHomePageTableView () <SDCycleScrollViewDelegate,GMWineListTableViewCellDelegate>
 
 @property (nonatomic, strong) SDCycleScrollView *cycleScrollView;
 @property (nonatomic, strong) NSArray <HomePageTypeItem *> *hotProductArray;
+@property (nonatomic, strong) NSArray <HomePageTypeItem *> *freshProductArray;
 @property (nonatomic, strong) NSArray <HomePageTypeItem *> *storeProductArray;
 
 @end
@@ -29,8 +30,6 @@ static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
     if (self) {
         self.dataSource = self;
         self.delegate = self;
-//        self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.backgroundColor = COLOR_TABLE_BG_COLOR;
         self.estimatedRowHeight = 44;
         self.rowHeight = UITableViewAutomaticDimension;
 
@@ -54,6 +53,7 @@ static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
 }
 
 - (void)reloadHomePageTableViewWithHomePageInfoModel:(HomePageInfoModel *)infoModel {
+    self.freshProductArray = infoModel.freshProductArray;
     self.hotProductArray = infoModel.hotProductArray;
     self.storeProductArray = infoModel.storeProductArray;
     
@@ -68,7 +68,7 @@ static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -80,17 +80,40 @@ static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
     
     if (indexPath.section == 0) {
         GMMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:menuCellIdentifier forIndexPath:indexPath];
+        [cell.whiteSpiritArea addTarget:self action:@selector(wineArea:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.redWineArea addTarget:self action:@selector(wineArea:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.otherArea addTarget:self action:@selector(wineArea:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.couponArea addTarget:self action:@selector(wineArea:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     } else if (indexPath.section == 1) {
         GMWineListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:wineListCellIdentifier forIndexPath:indexPath];
+        cell.wineListTVCellDelegate = self;
+        [cell updateWineListCellWithArray:self.freshProductArray];
+        return cell;
+    } else if (indexPath.section == 2) {
+        GMWineListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:wineListCellIdentifier forIndexPath:indexPath];
+        cell.wineListTVCellDelegate = self;
         [cell updateWineListCellWithArray:self.hotProductArray];
         return cell;
     } else {
         GMWineListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:wineListCellIdentifier forIndexPath:indexPath];
+        cell.wineListTVCellDelegate = self;
         [cell updateWineListCellWithArray:self.storeProductArray];
         return cell;
     }
     return nil;
+}
+
+-(void)collectionViewDidSelectItemWithModel:(HomePageTypeItem *)model {
+    if (self.homePageTVDelegate && [self.homePageTVDelegate respondsToSelector:@selector(collectionViewDidSelectItemWithModel:)]) {
+        [self.homePageTVDelegate collectionViewDidSelectItemWithModel:model];
+    }
+}
+
+- (void)wineArea:(UIButton *)btn {
+    if (self.homePageTVDelegate && [self.homePageTVDelegate respondsToSelector:@selector(clickWineAreaWithAreaType:)]) {
+        [self.homePageTVDelegate clickWineAreaWithAreaType:btn.tag];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -104,6 +127,8 @@ static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
     if (indexPath.section == 0) {
         return [GMMenuTableViewCell heightForCell];
     } else if (indexPath.section == 1){
+        return (self.freshProductArray.count/2 + self.freshProductArray.count %2)* 255.f;
+    } else if (indexPath.section == 2){
         return (self.hotProductArray.count/2 + self.hotProductArray.count %2)* 255.f;
     } else {
         return (self.storeProductArray.count/2 + self.storeProductArray.count %2) *255.f;
@@ -125,9 +150,14 @@ static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return 180.f;
-    } else {
-        return 30.f;
+    } else if (section == 1) {
+        return self.freshProductArray.count == 0 ? CGFLOAT_MIN : 30.f;
+    } else if (section == 2) {
+        return self.hotProductArray.count == 0 ? CGFLOAT_MIN : 30.f;
+    } else if (section == 3) {
+        return self.storeProductArray.count == 0 ? CGFLOAT_MIN : 30.f;
     }
+    return CGFLOAT_MIN;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -139,6 +169,8 @@ static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
     if (section == 0) {
         return nil;
     } else if (section == 1) {
+        return @"新品酒水";
+    } else if (section == 2) {
         return @"热门酒水";
     } else {
         return @"门店推荐";
@@ -146,7 +178,7 @@ static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
 }
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
-    NSLog(@"didselectItem--%ld",(long)index);
+    MKNSLog(@"didselectItem--%ld",(long)index);
     
 }
 
@@ -157,7 +189,7 @@ static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
 - (SDCycleScrollView *)cycleScrollView {
     if (! _cycleScrollView) {
 //        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, Width_Screen, 150.f) imageNamesGroup:@[@"test",@"test",@"test",@"test",@"test"]];
-        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, Width_Screen, 150.f) delegate:self placeholderImage:[UIImage imageNamed:@"test"]];
+        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, Width_Screen, 150.f) delegate:self placeholderImage:[UIImage imageNamed:@"goodWine"]];
 //        _cycleScrollView.imageURLStringsGroup = nil;
         _cycleScrollView.currentPageDotColor = [UIColor blueColor];
         _cycleScrollView.pageDotColor = [UIColor grayColor];

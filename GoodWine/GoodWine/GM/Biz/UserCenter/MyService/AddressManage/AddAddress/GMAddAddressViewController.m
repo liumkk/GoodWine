@@ -27,10 +27,10 @@
 }
 
 - (void)addAddressTableViewConfirmBtnName:(NSString *)name phoneNum:(NSString *)phoneNum address:(NSString *)address detailAddess:(NSString *)detailAddress {
-    name = @"哈哈";
-    phoneNum = @"13916391993";
-    address = @"合肥";
-    detailAddress = @"xx小区";
+//    name = @"哈哈";     //--test
+//    phoneNum = @"13916391993";
+//    address = @"合肥";
+//    detailAddress = @"xx小区";
     if (IsStrEmpty(name) || IsStrEmpty(phoneNum) || IsStrEmpty(address) || IsStrEmpty(detailAddress)) {
         [MKToastView showToastToView:self.view text:@"请输入完整信息"];
         return;
@@ -66,8 +66,6 @@
 }
 
 - (void)addAddressCallBack:(GMAddAddressCallBack)callBack {
-    if (self.callBack) {
-        self.callBack = callBack;
-    }
+    self.callBack = callBack;
 }
 @end

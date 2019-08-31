@@ -10,7 +10,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol GMShoppCarTableViewDelegate <NSObject>
+
+- (void)shoppCarTableCellSelectBtn:(UIButton *)btn;
+- (void)shoppCarTableViewDeleteRowAtIndex:(NSInteger)index;
+- (void)addNumAtIndex:(NSInteger)index isAdd:(BOOL)isAdd;
+
+@end
+
 @interface GMShoppCarTableView : UITableView
+
+@property (nonatomic, weak) id <GMShoppCarTableViewDelegate> shoppCarCellDelegate;
+
+- (void)reloadTableViewWithDataArray:(NSArray <ShoppCarInfoModel *>*)dataArray;
 
 @end
 

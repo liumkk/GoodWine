@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *username;
 @property (nonatomic, copy, readonly) NSString *nickname;
 @property (nonatomic, copy, readonly) NSString *password;
+@property (nonatomic, copy, readonly) NSString *icon;
 @property (nonatomic, copy, readonly) NSString *phone;
 @property (nonatomic, copy, readonly) NSString *createTime;
 @property (nonatomic, copy, readonly) NSString *birthday;

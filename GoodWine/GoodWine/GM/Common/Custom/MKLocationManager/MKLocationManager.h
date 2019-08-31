@@ -12,20 +12,11 @@
 NS_ASSUME_NONNULL_BEGIN
 #define LocationManager        [MKLocationManager sharedInstance]
 
-typedef void(^CompletionBlock)(NSDictionary *locationInfoDict);
-typedef void(^FailedBlock)(void);
-
-@interface MKLocationManager : NSObject <CLLocationManagerDelegate>
+@interface MKLocationManager : NSObject
 
 + (instancetype)sharedInstance;
 
 - (void)openLocationFunction;
-
-- (void)updateLocationFunctionWithCompletion:(CompletionBlock)completion failed:(FailedBlock)failed;
-
-- (BOOL)checkLocationFunctionEnable;
-
-- (void)clear;
 
 @end
 

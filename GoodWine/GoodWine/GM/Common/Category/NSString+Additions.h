@@ -15,6 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
 //添加中划线
 + (NSMutableAttributedString *)setMiddleLinePriceWithString:(NSString *)string;
 
+//计算文字高度
+- (CGFloat)heightStringWithFont:(UIFont *)font width:(CGFloat)width;
+
+//计算文字宽度
+- (CGFloat)widthStringWithFont:(UIFont *)font height:(CGFloat)height;
+
++ (NSString *)getCurrentTime;
+
+- (NSString *)formatterYuan;
+
 @end
 
 NS_ASSUME_NONNULL_END

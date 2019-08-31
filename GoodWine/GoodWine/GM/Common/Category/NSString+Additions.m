@@ -17,4 +17,25 @@
     return attribtStr;
 }
 
+- (CGFloat)heightStringWithFont:(UIFont *)font width:(CGFloat)width {
+    CGFloat height = [self boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:font} context:nil].size.height;
+    return height;
+}
+
+- (CGFloat)widthStringWithFont:(UIFont *)font height:(CGFloat)height {
+    CGFloat width=[self boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:font} context:nil].size.width;
+    return width;
+}
+
++ (NSString *)getCurrentTime {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *dateTime = [formatter stringFromDate:[NSDate date]];
+    return dateTime;
+}
+
+- (NSString *)formatterYuan {
+    return [NSString stringWithFormat:@"￥%.2f",[self floatValue]];
+}
+
 @end

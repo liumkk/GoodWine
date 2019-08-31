@@ -10,9 +10,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol GMWineListTableViewCellDelegate <NSObject>
+
+-(void)collectionViewDidSelectItemWithModel:(HomePageTypeItem *)model;
+
+@end
+
+
 @interface GMWineListTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UICollectionView *wineListCollectionView;
+
+@property(nonatomic, weak) id <GMWineListTableViewCellDelegate> wineListTVCellDelegate;
 
 - (void)updateWineListCellWithArray:(NSArray <HomePageTypeItem *> *)array;
 

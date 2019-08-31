@@ -22,6 +22,20 @@ NS_ASSUME_NONNULL_BEGIN
                                      succeedBlock:(void (^)(void))succeedBlock
                                       failedBlock:(void (^)(NSError * error))failedBlock;
 
+- (NSURLSessionDataTask *)asyncDeleteAddressWithAddressId:(NSString *)addressId
+                                             succeedBlock:(void (^)(void))succeedBlock
+                                              failedBlock:(void (^)(NSError * error))failedBlock;
+
+- (NSURLSessionDataTask *)asyncGetCollectListWithSucceedBlock:(void (^)(CollectListInfoModel *model))succeedBlock
+                                                  failedBlock:(void (^)(NSError * error))failedBlock;
+
+- (NSURLSessionDataTask *)asyncDeleteCollectWithProductId:(NSString *)productId
+                                             succeedBlock:(void (^)(void))succeedBlock
+                                              failedBlock:(void (^)(NSError * error))failedBlock;
+
+- (NSURLSessionDataTask *)asyncCollectProductWithModel:(GMProductDetailModel *)model
+                                          succeedBlock:(void (^)(void))succeedBlock
+                                           failedBlock:(void (^)(NSError * error))failedBlock;
 @end
 
 NS_ASSUME_NONNULL_END

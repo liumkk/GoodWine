@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol GMAddressManageTableViewDelegate <NSObject>
 
 - (void)addAddress;
+- (void)addressManageTableView:(UITableView *)tableView
+        deleteRowAtIndexPath:(NSIndexPath *)indexPath
+                       model:(GMAddressInfoModel *)model;
+- (void)addressManagerTableViewDidSelectRowAtModel:(GMAddressInfoModel *)model;
 
 @end
 
