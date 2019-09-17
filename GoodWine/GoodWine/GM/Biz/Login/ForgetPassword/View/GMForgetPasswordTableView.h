@@ -12,14 +12,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol GMForgetPasswordTableViewDelegate <NSObject>
 
-- (void)registerTableViewPhoneTF:(UITextField *)phoneTF
-                  verficationTF:(UITextField *)verficationTF
-                     passwordTF:(UITextField *)passwordTF;
+- (void)sendVerificationCodeWithPhone:(NSString *)phone;
+
+- (void)forgetTableViewPhoneTF:(UITextField *)phoneTF
+                 verficationTF:(UITextField *)verficationTF
+                    passwordTF:(UITextField *)passwordTF;
 
 @end
 
 @interface GMForgetPasswordTableView : UITableView
 
+@property (nonatomic, strong) MKVerificationCodeView *verificationView;
 @property (nonatomic, weak) id <GMForgetPasswordTableViewDelegate> forgetPwdTBDelegate;
 
 @end

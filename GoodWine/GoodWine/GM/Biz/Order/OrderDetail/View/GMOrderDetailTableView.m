@@ -9,7 +9,6 @@
 #import "GMOrderDetailTableView.h"
 #import "GMOrderAddressTableViewCell.h"
 #import "GMOrderProductTableViewCell.h"
-#import "GMOrderDetailHeaderView.h"
 
 static NSString *orderAddressCellID = @"orderAddressCellID";
 static NSString *orderProductCellID = @"orderProductCellID";
@@ -23,7 +22,6 @@ static NSString *orderDetailCellID = @"orderDetailCellID";
 @property (nonatomic, strong) NSArray *amountArray;
 
 @property (nonatomic, strong) GMOrderDetailInfoModel *orderInfoModel;
-@property (nonatomic, strong) GMOrderDetailHeaderView *detailHeaderView;
 
 @end
 
@@ -36,8 +34,7 @@ static NSString *orderDetailCellID = @"orderDetailCellID";
         self.dataSource = self;
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
-        self.titleArray = @[@"支付方式", @"订单编号", @"优惠券", @"配送方式", @"配送时间"];
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
         self.amountTitleArray = @[@"商品总价",@"配送费",@"已优惠"];
         
         [self registerClass:[GMOrderAddressTableViewCell class] forCellReuseIdentifier:orderAddressCellID];
@@ -47,10 +44,14 @@ static NSString *orderDetailCellID = @"orderDetailCellID";
     return self;
 }
 
-- (void)reloadTableViewWithModel:(GMOrderDetailInfoModel *)model {
+- (void)reloadTableViewWithModel:(GMOrderDetailInfoModel *)model myModel:(GMMyOrderDetailModel *)myOrder {
     self.orderInfoModel = model;
-    
-    self.contentArray = @[@"线上支付", model.orderSn, @"", @"商家配送", @"立即配送"];
+    NSString *time = myOrder.expectedTime;
+    if (IsStrEmpty(time)) {
+        time = @"立即配送";
+    }
+    self.titleArray = @[@"支付方式", @"订单编号", @"优惠券", @"配送方式", @"配送时间"];
+    self.contentArray = @[@"线上支付", model.orderSn, @"", @"商家配送", time];
     self.amountArray = @[[model.totalAmount formatterYuan],@"￥0.00",[model.couponAmount formatterYuan]];
     if ([[NSThread currentThread] isMainThread]) {
         [self reloadData];

@@ -10,6 +10,7 @@
 #import "GMShoppCarTableView.h"
 #import "GMShoppCarFooterView.h"
 #import "GMOrderConfirmViewController.h"
+#import "GMProductDetailViewController.h"
 
 @interface GMShoppCartViewController () <GMShoppCarTableViewDelegate>
 
@@ -27,6 +28,7 @@
     [self initSubviews];
     [self setupConstranits];
     [self requestQueryShoppCarList];
+    [self addRefreshHeaderView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableView:) name:Notification_addProduct object:nil];
 }
@@ -43,13 +45,23 @@
 - (void)requestQueryShoppCarList {
     [GMLoadingActivity showLoadingActivityInView:self.view];
     [ServerAPIManager asyncQueryShoppCarListWithSucceedBlock:^(NSArray<ShoppCarInfoModel *> * _Nonnull array) {
+        [self endMJRefresh];
         [GMLoadingActivity hideLoadingActivityInView:self.view];
-        self.dataArray = [[NSMutableArray alloc] initWithArray:array];
+        [self.dataArray removeAllObjects];
+        [self.dataArray addObjectsFromArray:array];
         [self.shoppCarTV reloadTableViewWithDataArray:self.dataArray];
     } failedBlock:^(NSError * _Nonnull error) {
         [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [self endMJRefresh];
         [self showAlertViewWithError:error];
     }];
+}
+
+- (void)shoppCarTableViewDidSelectRowAtIndex:(NSInteger)index {
+    ShoppCarInfoModel *model = self.dataArray[index];
+    GMProductDetailViewController *vc = [[GMProductDetailViewController alloc] initWithProductId:model.productId];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)shoppCarTableCellSelectBtn:(UIButton *)btn {
@@ -145,6 +157,21 @@
     [self.view addSubview:self.footerView];
 }
 
+- (void)addRefreshHeaderView {
+    @weakify(self)
+    self.shoppCarTV.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        @strongify(self)
+        [self requestQueryShoppCarList];
+    }];
+}
+
+- (void)endMJRefresh {
+    
+    if ([self.shoppCarTV.mj_header isRefreshing]) {
+        [self.shoppCarTV.mj_header endRefreshing];
+    }
+}
+
 - (GMShoppCarTableView *)shoppCarTV {
     if (! _shoppCarTV) {
         _shoppCarTV = [[GMShoppCarTableView alloc] initWithFrame:CGRectZero];
@@ -161,6 +188,13 @@
         [_footerView.checkoutBtn addTarget:self action:@selector(checkoutBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _footerView;
+}
+
+- (NSMutableArray<ShoppCarInfoModel *> *)dataArray {
+    if (! _dataArray) {
+        _dataArray = [[NSMutableArray alloc] init];
+    }
+    return _dataArray;
 }
 
 - (void)dealloc {

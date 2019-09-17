@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)shoppCarTableCellSelectBtn:(UIButton *)btn;
 - (void)shoppCarTableViewDeleteRowAtIndex:(NSInteger)index;
 - (void)addNumAtIndex:(NSInteger)index isAdd:(BOOL)isAdd;
-
+- (void)shoppCarTableViewDidSelectRowAtIndex:(NSInteger)index;
 @end
 
 @interface GMShoppCarTableView : UITableView

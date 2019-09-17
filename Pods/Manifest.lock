@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AlipaySDK-iOS (15.5.9)
   - AMapFoundation-NO-IDFA (1.5.7)
   - AMapLocation-NO-IDFA (2.6.2):
     - AMapFoundation-NO-IDFA (~> 1.4)
@@ -25,6 +26,10 @@ PODS:
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.17)
   - MKCategory (1.0.2)
+  - PGDatePicker (2.6.9):
+    - PGPickerView
+  - PGPickerView (1.3.8)
+  - QFDatePicker (0.1.8)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -41,6 +46,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - AlipaySDK-iOS
   - AMapLocation-NO-IDFA
   - IQKeyboardManager (~> 6.1.1)
   - Mantle (~> 2.1.0)
@@ -48,6 +54,8 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.9.2)
   - MJRefresh (~> 3.1.12)
   - MKCategory (~> 1.0.2)
+  - PGDatePicker
+  - QFDatePicker
   - ReactiveCocoa (= 2.5)
   - SDCycleScrollView (~> 1.65)
   - SDWebImage (~> 3.8.1)
@@ -56,6 +64,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - AlipaySDK-iOS
     - AMapFoundation-NO-IDFA
     - AMapLocation-NO-IDFA
     - IQKeyboardManager
@@ -64,6 +73,9 @@ SPEC REPOS:
     - MBProgressHUD
     - MJRefresh
     - MKCategory
+    - PGDatePicker
+    - PGPickerView
+    - QFDatePicker
     - ReactiveCocoa
     - SDCycleScrollView
     - SDWebImage
@@ -71,6 +83,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AlipaySDK-iOS: 1c5283b30977a24acecc0114662697f7dc78f618
   AMapFoundation-NO-IDFA: 9088085827c831811bb0fd3afd96b99963a7cf71
   AMapLocation-NO-IDFA: d7792c8c516f415e186f1bc25946f1a58ca6a583
   IQKeyboardManager: 79c57795f5c2408d259d37b9da2ed07efcbb5225
@@ -79,11 +92,14 @@ SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: ee5b68f639775462faba4db0fd243baf4d42c2cf
   MKCategory: 804eb173947cdf48b4cbd3301bac8b9d769f7de5
+  PGDatePicker: 88960f3760edac96219c10320f25536ad31d0f44
+  PGPickerView: 037acfb132a4c8054fb43aaa59a5ff50c7f747f5
+  QFDatePicker: 5707da1a86a678c2d2514e0ae0ca4bfbef9248ed
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: a72e880a8fe0f7fc31efe15aaed443c074d2a80c
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: d09d9860479eba5d3711622b7a1f675de5b7da0e
+PODFILE CHECKSUM: 9cd075a77f669a7f7966ee9538178697f8c4d6cd
 
 COCOAPODS: 1.5.3

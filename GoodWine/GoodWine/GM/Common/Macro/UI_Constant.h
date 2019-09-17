@@ -19,6 +19,7 @@
 #define Font_Normal                 [UIFont systemFontOfSize:16.f]
 #define Font_Big                    [UIFont systemFontOfSize:17.f]
 
+#define Font(_size)  [UIFont fontWithName:@"PingFang SC" size:_size]
 #define Font_10 [UIFont systemFontOfSize:10]
 #define Font_12 [UIFont systemFontOfSize:12]
 #define Font_13 [UIFont systemFontOfSize:13]
@@ -51,6 +52,9 @@
 // 多数tableView的背景颜色，微微有点蓝绿的灰色
 #define COLOR_TABLE_BG_COLOR                                                    \
 [UIColor colorWithRed:238 / 255.0 green:242 / 255.0 blue:245 / 255.0 alpha:1]
+
+//浅灰色
+#define COLOR_TABLE_BG_RAY      [UIColor colorWithHexString:@"F9F9F9"]
 
 // 本项目主题色，橘红色，随处可见的UIButton的文字或背景的颜色
 #define COLOR_THEME_COLOR                                                    \

@@ -25,6 +25,21 @@
     [self setupConstranits];
 }
 
+- (void)sendVerificationCodeWithPhone:(NSString *)phone {
+    if (phone.length != 11) {
+        [MKToastView showToastToView:self.view text:@"请填写有效手机号码"];
+    } else {
+        [self.registerTableView.verificationView initTimer];
+        [ServerAPIManager asyncQueryAuthCodeWithPhoneNum:@"" succeedBlock:^{
+            
+        } failedBlock:^(NSError * _Nonnull error) {
+            [self showAlertViewWithError:error];
+            [self.registerTableView.verificationView clearTimer];
+        }];
+    }
+    
+}
+
 - (void)registerTableViewNameTF:(UITextField *)nameTF phoneTF:(UITextField *)phoneTF verficationTF:(UITextField *)verficationTF passwordTF:(UITextField *)passwordTF {
     if (IsStrEmpty(nameTF.text) || IsStrEmpty(phoneTF.text) || IsStrEmpty(verficationTF.text) || IsStrEmpty(passwordTF.text)) {
         [MKToastView showToastToView:self.view text:@"请输入有效信息"];

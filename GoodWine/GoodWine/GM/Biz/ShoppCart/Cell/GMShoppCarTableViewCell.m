@@ -8,6 +8,8 @@
 
 #import "GMShoppCarTableViewCell.h"
 
+#define HeaderView_width        80.f
+
 @interface GMShoppCarTableViewCell ()
 
 @property (nonatomic, strong) ShoppCarInfoModel *model;
@@ -42,7 +44,7 @@
     [self.titleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView);
         make.left.equalTo(self.selectBtn.mas_right).offset(10.f);
-        make.size.mas_equalTo(CGSizeMake(80.f, 80.f));
+        make.size.mas_equalTo(CGSizeMake(HeaderView_width, HeaderView_width));
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -85,6 +87,9 @@
         make.left.equalTo(self).offset(16.f);
         make.height.mas_equalTo(LINE_HEIGHT);
     }];
+    
+    self.titleImageView.bounds = CGRectMake(0, 0, HeaderView_width, HeaderView_width);
+    [UIView maskCorner:self.titleImageView rectCorner:UIRectCornerAllCorners corner:5.f];
     
 }
 

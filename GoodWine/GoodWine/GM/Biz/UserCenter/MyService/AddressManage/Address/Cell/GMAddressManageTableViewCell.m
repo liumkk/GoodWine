@@ -14,7 +14,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        self.backgroundColor = COLOR_GRAY_244;
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
         [self setupConstraints];
         
     }

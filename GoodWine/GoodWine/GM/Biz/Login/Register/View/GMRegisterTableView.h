@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol GMRegisterTableViewDelegate <NSObject>
 
+- (void)sendVerificationCodeWithPhone:(NSString *)phone;
+
 - (void)registerTableViewNameTF:(UITextField *)nameTF
                         phoneTF:(UITextField *)phoneTF
                   verficationTF:(UITextField *)verficationTF
@@ -22,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GMRegisterTableView : UITableView
 
 @property (nonatomic, weak) id <GMRegisterTableViewDelegate> registerTBDelegate;
-
+@property (nonatomic, strong) MKVerificationCodeView *verificationView;
 @end
 
 NS_ASSUME_NONNULL_END

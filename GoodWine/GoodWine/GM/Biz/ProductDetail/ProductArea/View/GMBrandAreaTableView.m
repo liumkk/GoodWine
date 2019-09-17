@@ -27,7 +27,7 @@ static NSString *brandAreaTableCellID = @"brandAreaTableCellID";
         self.dataSource = self;
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.backgroundColor = COLOR_GRAY_244;
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
         self.lastIndex = 0;
         [self registerClass:[GMBrandTableViewCell class] forCellReuseIdentifier:brandAreaTableCellID];
     }

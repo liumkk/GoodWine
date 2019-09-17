@@ -74,6 +74,13 @@
 		D638669B22A6B0DC0020DE4B /* GMViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D638669A22A6B0DC0020DE4B /* GMViewControllerManager.m */; };
 		D638669E22A6BCF40020DE4B /* GMMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D638669D22A6BCF40020DE4B /* GMMenuTableViewCell.m */; };
 		D63866A122A6C76D0020DE4B /* GMWineListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D63866A022A6C76D0020DE4B /* GMWineListTableViewCell.m */; };
+		D64CA6A7232F2BF7001E252F /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6A6232F2BF7001E252F /* UIColor+Additions.m */; };
+		D64CA6AA232F6D0C001E252F /* GMPaySuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6A9232F6D0C001E252F /* GMPaySuccessViewController.m */; };
+		D64CA6B1232FC9E5001E252F /* GMMyCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6B0232FC9E5001E252F /* GMMyCouponViewController.m */; };
+		D64CA6B5232FCA13001E252F /* GMMyCouponTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6B4232FCA13001E252F /* GMMyCouponTableView.m */; };
+		D64CA6B823307F83001E252F /* GMPicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6B723307F83001E252F /* GMPicTableViewCell.m */; };
+		D64CA6BC233086B4001E252F /* GMSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6BB233086B4001E252F /* GMSettingTableViewCell.m */; };
+		D64CA6C52330CFCF001E252F /* GMOrderSnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6C42330CFCF001E252F /* GMOrderSnTableViewCell.m */; };
 		D65C233123044CA800DF955F /* GMOrderConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D65C233023044CA800DF955F /* GMOrderConfirmViewController.m */; };
 		D65C233723044CD800DF955F /* GMOrderConfirmTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D65C233623044CD800DF955F /* GMOrderConfirmTableView.m */; };
 		D65C233A2304502F00DF955F /* GMOrderAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D65C23392304502F00DF955F /* GMOrderAddressTableViewCell.m */; };
@@ -129,6 +136,15 @@
 		D687EE9E22FBB18C00A3D249 /* ShoppCarInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D687EE9D22FBB18B00A3D249 /* ShoppCarInfoModel.m */; };
 		D687EEA522FBB40C00A3D249 /* GMServerAPIManager+ShoppCar.m in Sources */ = {isa = PBXBuildFile; fileRef = D687EEA422FBB40C00A3D249 /* GMServerAPIManager+ShoppCar.m */; };
 		D687EEA922FC004A00A3D249 /* MKLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D687EEA822FC004A00A3D249 /* MKLocationManager.m */; };
+		D6E3613D23267C380056454C /* GMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E3613C23267C380056454C /* GMSettingViewController.m */; };
+		D6E3614123267CAF0056454C /* GMSettingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E3614023267CAF0056454C /* GMSettingTableView.m */; };
+		D6E36145232683CE0056454C /* GMModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E36144232683CE0056454C /* GMModifyPasswordViewController.m */; };
+		D6E361492326841A0056454C /* GMModifyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E361482326841A0056454C /* GMModifyTableView.m */; };
+		D6E3614D232694AB0056454C /* GMOrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E3614C232694AB0056454C /* GMOrderListViewController.m */; };
+		D6E36153232694D40056454C /* GMOrderListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E36152232694D40056454C /* GMOrderListTableView.m */; };
+		D6E36156232695850056454C /* GMOrderListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E36155232695850056454C /* GMOrderListTableViewCell.m */; };
+		D6E361592326980E0056454C /* GMOrderListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E361582326980E0056454C /* GMOrderListItem.m */; };
+		D6E3615C232698240056454C /* GMOrderListInfoModels.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E3615B232698240056454C /* GMOrderListInfoModels.m */; };
 		D6FD41D1230EC5CB00866A68 /* GMRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FD41D0230EC5CB00866A68 /* GMRegisterViewController.m */; };
 		D6FD41D5230EC63400866A68 /* GMForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FD41D4230EC63400866A68 /* GMForgetPasswordViewController.m */; };
 		D6FD41D9230ECB0F00866A68 /* MKVerificationCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FD41D8230ECB0F00866A68 /* MKVerificationCodeView.m */; };
@@ -295,6 +311,20 @@
 		D638669D22A6BCF40020DE4B /* GMMenuTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMMenuTableViewCell.m; sourceTree = "<group>"; };
 		D638669F22A6C76D0020DE4B /* GMWineListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMWineListTableViewCell.h; sourceTree = "<group>"; };
 		D63866A022A6C76D0020DE4B /* GMWineListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMWineListTableViewCell.m; sourceTree = "<group>"; };
+		D64CA6A5232F2BF7001E252F /* UIColor+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
+		D64CA6A6232F2BF7001E252F /* UIColor+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Additions.m"; sourceTree = "<group>"; };
+		D64CA6A8232F6D0C001E252F /* GMPaySuccessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMPaySuccessViewController.h; sourceTree = "<group>"; };
+		D64CA6A9232F6D0C001E252F /* GMPaySuccessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMPaySuccessViewController.m; sourceTree = "<group>"; };
+		D64CA6AF232FC9E5001E252F /* GMMyCouponViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMMyCouponViewController.h; sourceTree = "<group>"; };
+		D64CA6B0232FC9E5001E252F /* GMMyCouponViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMMyCouponViewController.m; sourceTree = "<group>"; };
+		D64CA6B3232FCA13001E252F /* GMMyCouponTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMMyCouponTableView.h; sourceTree = "<group>"; };
+		D64CA6B4232FCA13001E252F /* GMMyCouponTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMMyCouponTableView.m; sourceTree = "<group>"; };
+		D64CA6B623307F83001E252F /* GMPicTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMPicTableViewCell.h; sourceTree = "<group>"; };
+		D64CA6B723307F83001E252F /* GMPicTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMPicTableViewCell.m; sourceTree = "<group>"; };
+		D64CA6BA233086B4001E252F /* GMSettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSettingTableViewCell.h; sourceTree = "<group>"; };
+		D64CA6BB233086B4001E252F /* GMSettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSettingTableViewCell.m; sourceTree = "<group>"; };
+		D64CA6C32330CFCF001E252F /* GMOrderSnTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderSnTableViewCell.h; sourceTree = "<group>"; };
+		D64CA6C42330CFCF001E252F /* GMOrderSnTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderSnTableViewCell.m; sourceTree = "<group>"; };
 		D65C232F23044CA800DF955F /* GMOrderConfirmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderConfirmViewController.h; sourceTree = "<group>"; };
 		D65C233023044CA800DF955F /* GMOrderConfirmViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderConfirmViewController.m; sourceTree = "<group>"; };
 		D65C233523044CD800DF955F /* GMOrderConfirmTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderConfirmTableView.h; sourceTree = "<group>"; };
@@ -403,6 +433,24 @@
 		D687EEA422FBB40C00A3D249 /* GMServerAPIManager+ShoppCar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GMServerAPIManager+ShoppCar.m"; sourceTree = "<group>"; };
 		D687EEA722FC004A00A3D249 /* MKLocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKLocationManager.h; sourceTree = "<group>"; };
 		D687EEA822FC004A00A3D249 /* MKLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKLocationManager.m; sourceTree = "<group>"; };
+		D6E3613B23267C380056454C /* GMSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSettingViewController.h; sourceTree = "<group>"; };
+		D6E3613C23267C380056454C /* GMSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSettingViewController.m; sourceTree = "<group>"; };
+		D6E3613F23267CAF0056454C /* GMSettingTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSettingTableView.h; sourceTree = "<group>"; };
+		D6E3614023267CAF0056454C /* GMSettingTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSettingTableView.m; sourceTree = "<group>"; };
+		D6E36143232683CE0056454C /* GMModifyPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMModifyPasswordViewController.h; sourceTree = "<group>"; };
+		D6E36144232683CE0056454C /* GMModifyPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMModifyPasswordViewController.m; sourceTree = "<group>"; };
+		D6E361472326841A0056454C /* GMModifyTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMModifyTableView.h; sourceTree = "<group>"; };
+		D6E361482326841A0056454C /* GMModifyTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMModifyTableView.m; sourceTree = "<group>"; };
+		D6E3614B232694AB0056454C /* GMOrderListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderListViewController.h; sourceTree = "<group>"; };
+		D6E3614C232694AB0056454C /* GMOrderListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderListViewController.m; sourceTree = "<group>"; };
+		D6E36151232694D40056454C /* GMOrderListTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderListTableView.h; sourceTree = "<group>"; };
+		D6E36152232694D40056454C /* GMOrderListTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderListTableView.m; sourceTree = "<group>"; };
+		D6E36154232695850056454C /* GMOrderListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderListTableViewCell.h; sourceTree = "<group>"; };
+		D6E36155232695850056454C /* GMOrderListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderListTableViewCell.m; sourceTree = "<group>"; };
+		D6E361572326980E0056454C /* GMOrderListItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderListItem.h; sourceTree = "<group>"; };
+		D6E361582326980E0056454C /* GMOrderListItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderListItem.m; sourceTree = "<group>"; };
+		D6E3615A232698240056454C /* GMOrderListInfoModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderListInfoModels.h; sourceTree = "<group>"; };
+		D6E3615B232698240056454C /* GMOrderListInfoModels.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderListInfoModels.m; sourceTree = "<group>"; };
 		D6FD41CF230EC5CB00866A68 /* GMRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMRegisterViewController.h; sourceTree = "<group>"; };
 		D6FD41D0230EC5CB00866A68 /* GMRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMRegisterViewController.m; sourceTree = "<group>"; };
 		D6FD41D3230EC63400866A68 /* GMForgetPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMForgetPasswordViewController.h; sourceTree = "<group>"; };
@@ -504,11 +552,8 @@
 		D60F37F8231905400059B66F /* Coupon */ = {
 			isa = PBXGroup;
 			children = (
-				D60F37FE231913C90059B66F /* Model */,
-				D60F37FD231913C40059B66F /* Cell */,
-				D60F37FC231913BF0059B66F /* View */,
-				D60F37F9231905550059B66F /* GMCouponViewController.h */,
-				D60F37FA231905550059B66F /* GMCouponViewController.m */,
+				D64CA6AE232FC9CD001E252F /* MyCoupon */,
+				D64CA6AD232FC9B3001E252F /* Coupon */,
 			);
 			path = Coupon;
 			sourceTree = "<group>";
@@ -586,7 +631,6 @@
 		D60F3821231A2F460059B66F /* OrderDetail */ = {
 			isa = PBXGroup;
 			children = (
-				D60F383A231ACF480059B66F /* OrderPay */,
 				D60F3827231A2FB60059B66F /* Model */,
 				D60F3826231A2FB10059B66F /* Cell */,
 				D60F3825231A2FA70059B66F /* View */,
@@ -633,6 +677,8 @@
 				D60F383E231ACF5D0059B66F /* View */,
 				D60F383B231ACF580059B66F /* GMOrderPayViewController.h */,
 				D60F383C231ACF580059B66F /* GMOrderPayViewController.m */,
+				D64CA6A8232F6D0C001E252F /* GMPaySuccessViewController.h */,
+				D64CA6A9232F6D0C001E252F /* GMPaySuccessViewController.m */,
 			);
 			path = OrderPay;
 			sourceTree = "<group>";
@@ -807,6 +853,8 @@
 				D61A1EB322D8E6CE00EC69AB /* UIViewController+Additions.m */,
 				D671920422EED1F30061146F /* NSString+Additions.h */,
 				D671920522EED1F30061146F /* NSString+Additions.m */,
+				D64CA6A5232F2BF7001E252F /* UIColor+Additions.h */,
+				D64CA6A6232F2BF7001E252F /* UIColor+Additions.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -834,6 +882,7 @@
 		D6386625229C32CE0020DE4B /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				D6E36142232683B30056454C /* ModifyPassword */,
 				D6FD41D2230EC62100866A68 /* ForgetPassword */,
 				D6FD41CE230EC59B00866A68 /* Register */,
 				D6FD41CD230EC58B00866A68 /* LoginVC */,
@@ -921,6 +970,7 @@
 		D638664B229D75670020DE4B /* UserCenter */ = {
 			isa = PBXGroup;
 			children = (
+				D6E3613A23267C040056454C /* Setting */,
 				D60F380823196C920059B66F /* Collect */,
 				D60F37F8231905400059B66F /* Coupon */,
 				D687ED5922F42B5000A3D249 /* MyService */,
@@ -932,6 +982,8 @@
 		D638664C229D758A0020DE4B /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				D6E3614A2326948A0056454C /* OrderList */,
+				D60F383A231ACF480059B66F /* OrderPay */,
 				D60F3821231A2F460059B66F /* OrderDetail */,
 				D65C232E23044C8C00DF955F /* OrderConfirm */,
 				D65C232D23044C2F00DF955F /* MyOrder */,
@@ -1036,6 +1088,46 @@
 			path = GMViewControllerManager;
 			sourceTree = "<group>";
 		};
+		D64CA6AD232FC9B3001E252F /* Coupon */ = {
+			isa = PBXGroup;
+			children = (
+				D60F37FE231913C90059B66F /* Model */,
+				D60F37FD231913C40059B66F /* Cell */,
+				D60F37FC231913BF0059B66F /* View */,
+				D60F37F9231905550059B66F /* GMCouponViewController.h */,
+				D60F37FA231905550059B66F /* GMCouponViewController.m */,
+			);
+			path = Coupon;
+			sourceTree = "<group>";
+		};
+		D64CA6AE232FC9CD001E252F /* MyCoupon */ = {
+			isa = PBXGroup;
+			children = (
+				D64CA6B2232FC9F8001E252F /* View */,
+				D64CA6AF232FC9E5001E252F /* GMMyCouponViewController.h */,
+				D64CA6B0232FC9E5001E252F /* GMMyCouponViewController.m */,
+			);
+			path = MyCoupon;
+			sourceTree = "<group>";
+		};
+		D64CA6B2232FC9F8001E252F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D64CA6B3232FCA13001E252F /* GMMyCouponTableView.h */,
+				D64CA6B4232FCA13001E252F /* GMMyCouponTableView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D64CA6B9233085EB001E252F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D64CA6BA233086B4001E252F /* GMSettingTableViewCell.h */,
+				D64CA6BB233086B4001E252F /* GMSettingTableViewCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		D65C232D23044C2F00DF955F /* MyOrder */ = {
 			isa = PBXGroup;
 			children = (
@@ -1137,6 +1229,8 @@
 			children = (
 				D65C23572306F42500DF955F /* GMProductDetailCell.h */,
 				D65C23582306F42500DF955F /* GMProductDetailCell.m */,
+				D64CA6B623307F83001E252F /* GMPicTableViewCell.h */,
+				D64CA6B723307F83001E252F /* GMPicTableViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1457,6 +1551,88 @@
 			path = MKLocationManager;
 			sourceTree = "<group>";
 		};
+		D6E3613A23267C040056454C /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				D64CA6B9233085EB001E252F /* Cell */,
+				D6E3613E23267C930056454C /* View */,
+				D6E3613B23267C380056454C /* GMSettingViewController.h */,
+				D6E3613C23267C380056454C /* GMSettingViewController.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		D6E3613E23267C930056454C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6E3613F23267CAF0056454C /* GMSettingTableView.h */,
+				D6E3614023267CAF0056454C /* GMSettingTableView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D6E36142232683B30056454C /* ModifyPassword */ = {
+			isa = PBXGroup;
+			children = (
+				D6E36146232684030056454C /* View */,
+				D6E36143232683CE0056454C /* GMModifyPasswordViewController.h */,
+				D6E36144232683CE0056454C /* GMModifyPasswordViewController.m */,
+			);
+			path = ModifyPassword;
+			sourceTree = "<group>";
+		};
+		D6E36146232684030056454C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6E361472326841A0056454C /* GMModifyTableView.h */,
+				D6E361482326841A0056454C /* GMModifyTableView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D6E3614A2326948A0056454C /* OrderList */ = {
+			isa = PBXGroup;
+			children = (
+				D6E36150232694BC0056454C /* Model */,
+				D6E3614F232694B60056454C /* Cell */,
+				D6E3614E232694B10056454C /* View */,
+				D6E3614B232694AB0056454C /* GMOrderListViewController.h */,
+				D6E3614C232694AB0056454C /* GMOrderListViewController.m */,
+			);
+			path = OrderList;
+			sourceTree = "<group>";
+		};
+		D6E3614E232694B10056454C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6E36151232694D40056454C /* GMOrderListTableView.h */,
+				D6E36152232694D40056454C /* GMOrderListTableView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D6E3614F232694B60056454C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D6E36154232695850056454C /* GMOrderListTableViewCell.h */,
+				D6E36155232695850056454C /* GMOrderListTableViewCell.m */,
+				D64CA6C32330CFCF001E252F /* GMOrderSnTableViewCell.h */,
+				D64CA6C42330CFCF001E252F /* GMOrderSnTableViewCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D6E36150232694BC0056454C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D6E361572326980E0056454C /* GMOrderListItem.h */,
+				D6E361582326980E0056454C /* GMOrderListItem.m */,
+				D6E3615A232698240056454C /* GMOrderListInfoModels.h */,
+				D6E3615B232698240056454C /* GMOrderListInfoModels.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D6FD41CD230EC58B00866A68 /* LoginVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1701,15 +1877,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-GoodWine/Pods-GoodWine-resources.sh",
+				"${PODS_ROOT}/AlipaySDK-iOS/AlipaySDK.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/PGDatePicker/PGDatePicker/PGDatePicker.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AlipaySDK.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/PGDatePicker.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1729,7 +1909,9 @@
 				D61A1F0D22E8A86400EC69AB /* GMWineListCollectionViewCell.m in Sources */,
 				D61A1EA922D37F3B00EC69AB /* GMServerAPIManager+HomePage.m in Sources */,
 				D687ED7C22F56BAF00A3D249 /* GMServerAPIManager+GMMyCenter.m in Sources */,
+				D64CA6BC233086B4001E252F /* GMSettingTableViewCell.m in Sources */,
 				D687EE1422F8296400A3D249 /* GMAddAddressTableView.m in Sources */,
+				D64CA6AA232F6D0C001E252F /* GMPaySuccessViewController.m in Sources */,
 				D65C23562306B71400DF955F /* GMProductDetailFooterView.m in Sources */,
 				D65C2371230A40A400DF955F /* ProductEvaluateInfoModel.m in Sources */,
 				D60F382A231A30650059B66F /* GMOrderDetailTableView.m in Sources */,
@@ -1739,6 +1921,7 @@
 				D638667E229EE3510020DE4B /* GMITButton.m in Sources */,
 				D60F381123196E4B0059B66F /* CollectListInfoModel.m in Sources */,
 				D63865EE229C1EC20020DE4B /* ViewController.m in Sources */,
+				D6E361592326980E0056454C /* GMOrderListItem.m in Sources */,
 				D638669122A5746C0020DE4B /* GMNetworkError.m in Sources */,
 				D65C2394230D210200DF955F /* CalcAmountInfoModel.m in Sources */,
 				D638666C229D90E50020DE4B /* GMKeyValueInfoCell.m in Sources */,
@@ -1758,9 +1941,11 @@
 				D687EE8822F9C34500A3D249 /* GMTableViewFooterView.m in Sources */,
 				D61A1EA522CCE10E00EC69AB /* GMServerAPIManager+UserAccess.m in Sources */,
 				D6FD41D9230ECB0F00866A68 /* MKVerificationCodeView.m in Sources */,
+				D64CA6B5232FCA13001E252F /* GMMyCouponTableView.m in Sources */,
 				D65C23602307AB7A00DF955F /* GMProductSkuItem.m in Sources */,
 				D60F381423196E6B0059B66F /* CollectProductItem.m in Sources */,
 				D638663F229C399E0020DE4B /* GMNavigationController.m in Sources */,
+				D6E36156232695850056454C /* GMOrderListTableViewCell.m in Sources */,
 				D61A1EB422D8E6CE00EC69AB /* UIViewController+Additions.m in Sources */,
 				D65C233123044CA800DF955F /* GMOrderConfirmViewController.m in Sources */,
 				D60F383D231ACF580059B66F /* GMOrderPayViewController.m in Sources */,
@@ -1768,6 +1953,7 @@
 				D61A1EB822D8E79500EC69AB /* GMLoadingActivity.m in Sources */,
 				D678145C2301A67F00B26104 /* GMShoppCarFooterView.m in Sources */,
 				D6386631229C34CE0020DE4B /* AppDelegate+RootViewcontroller.m in Sources */,
+				D6E3614D232694AB0056454C /* GMOrderListViewController.m in Sources */,
 				D61A1EB122D8DFAB00EC69AB /* HomePageInfoDetailItem.m in Sources */,
 				D687ED4022F1950E00A3D249 /* GMCollectionView.m in Sources */,
 				D687EEA522FBB40C00A3D249 /* GMServerAPIManager+ShoppCar.m in Sources */,
@@ -1775,10 +1961,14 @@
 				D687ED7122F51CCE00A3D249 /* GMAddressManageTableView.m in Sources */,
 				D63865EB229C1EC20020DE4B /* AppDelegate.m in Sources */,
 				D65C2397230D24B300DF955F /* CouponHistoryInfoModel.m in Sources */,
+				D64CA6B1232FC9E5001E252F /* GMMyCouponViewController.m in Sources */,
+				D6E361492326841A0056454C /* GMModifyTableView.m in Sources */,
 				D65C233A2304502F00DF955F /* GMOrderAddressTableViewCell.m in Sources */,
+				D6E3613D23267C380056454C /* GMSettingViewController.m in Sources */,
 				D6386659229D767B0020DE4B /* GMUserCenterViewController.m in Sources */,
 				D60F3839231AB3BD0059B66F /* GMOrderDetailHeaderView.m in Sources */,
 				D6FD41D5230EC63400866A68 /* GMForgetPasswordViewController.m in Sources */,
+				D64CA6B823307F83001E252F /* GMPicTableViewCell.m in Sources */,
 				D638668B22A572730020DE4B /* GMServerAPIManager.m in Sources */,
 				D687ED6222F437D400A3D249 /* GMVersionTableView.m in Sources */,
 				D6FD41E8230EE51300866A68 /* GMForgetPasswordTableView.m in Sources */,
@@ -1796,6 +1986,7 @@
 				D61A1EAD22D8C25B00EC69AB /* HomePageInfoModel.m in Sources */,
 				D65C234E2306B60D00DF955F /* GMProductDetailViewController.m in Sources */,
 				D687ED4722F2D45300A3D249 /* GMOrderCollectionView.m in Sources */,
+				D6E3615C232698240056454C /* GMOrderListInfoModels.m in Sources */,
 				D60F37F32317AE060059B66F /* GMBrandTableViewCell.m in Sources */,
 				D65C233D2304504B00DF955F /* GMOrderProductTableViewCell.m in Sources */,
 				D60F37ED23157EA60059B66F /* GMBrandAreaTableView.m in Sources */,
@@ -1822,6 +2013,8 @@
 				D6386677229ED8F40020DE4B /* GMUserInfoCell.m in Sources */,
 				D6386643229C3A210020DE4B /* GMBaseViewController.m in Sources */,
 				D65C23532306B64C00DF955F /* GMProductDetailTableView.m in Sources */,
+				D6E36145232683CE0056454C /* GMModifyPasswordViewController.m in Sources */,
+				D6E36153232694D40056454C /* GMOrderListTableView.m in Sources */,
 				D638667A229EE1B50020DE4B /* GMMyOrderCell.m in Sources */,
 				D60F3841231ACF6E0059B66F /* GMOrderPayView.m in Sources */,
 				D60F37E1231578B00059B66F /* GMProductAreaViewController.m in Sources */,
@@ -1837,7 +2030,10 @@
 				D6FD41DE230ED2D400866A68 /* GMRegisterTableView.m in Sources */,
 				D638669B22A6B0DC0020DE4B /* GMViewControllerManager.m in Sources */,
 				D60F37FB231905550059B66F /* GMCouponViewController.m in Sources */,
+				D64CA6A7232F2BF7001E252F /* UIColor+Additions.m in Sources */,
+				D6E3614123267CAF0056454C /* GMSettingTableView.m in Sources */,
 				D61A1EC122E5F37100EC69AB /* HomePageTypeItem.m in Sources */,
+				D64CA6C52330CFCF001E252F /* GMOrderSnTableViewCell.m in Sources */,
 				D65C235D2307AB5100DF955F /* GMProductDetailModel.m in Sources */,
 				D65C237D230AA22800DF955F /* GMMoreEvaluateFooterView.m in Sources */,
 				D638669E22A6BCF40020DE4B /* GMMenuTableViewCell.m in Sources */,
@@ -2013,6 +2209,7 @@
 			baseConfigurationReference = 3654DA2FCCC0710E2022EF96 /* Pods-GoodWine.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CPU9SP6L3H;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2025,6 +2222,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lmk.GoodWine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2034,6 +2232,7 @@
 			baseConfigurationReference = 7EA57E12E89DBAE6120E2D79 /* Pods-GoodWine.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CPU9SP6L3H;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2046,6 +2245,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lmk.GoodWine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

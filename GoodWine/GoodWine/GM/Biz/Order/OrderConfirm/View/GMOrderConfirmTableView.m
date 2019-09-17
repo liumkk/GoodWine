@@ -17,7 +17,6 @@ static NSString *orderDetailCellID = @"orderDetailCellID";
 @interface GMOrderConfirmTableView () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSArray *titleArray;
-@property (nonatomic, strong) NSArray *contentArray;
 @property (nonatomic, strong) NSArray *amountTitleArray;
 @property (nonatomic, strong) NSArray *amountArray;
 
@@ -36,9 +35,9 @@ static NSString *orderDetailCellID = @"orderDetailCellID";
         self.dataSource = self;
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
         self.titleArray = @[@"支付方式", @"发票", @"请选择优惠券", @"配送方式", @"请选择配送时间"];
-        self.contentArray = @[@"线上支付", @"普通发票", @"点击选择优惠券", @"商家配送", @"立即配送"];
+        self.contentArray = [[NSMutableArray alloc] initWithArray:@[@"线上支付", @"普通发票", @"点击选择优惠券", @"商家配送", @"立即配送"]];
         self.amountTitleArray = @[@"商品总价",@"配送费",@"已优惠"];
         
         [self registerClass:[GMOrderAddressTableViewCell class] forCellReuseIdentifier:orderAddressCellID];

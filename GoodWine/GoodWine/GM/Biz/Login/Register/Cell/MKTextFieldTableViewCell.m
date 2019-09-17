@@ -60,6 +60,7 @@
 - (UITextField *)textField {
     if (! _textField) {
         _textField = [[UITextField alloc] initWithFrame:CGRectZero];
+        _textField.font = Font_14;
         [self.contentView addSubview:_textField];
     }
     return _textField;

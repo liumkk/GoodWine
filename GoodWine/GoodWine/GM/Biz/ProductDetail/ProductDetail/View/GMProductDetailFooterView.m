@@ -42,23 +42,30 @@
     
     [self.buyButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.mas_centerY);
-        make.right.equalTo(self.mas_right);
-        make.size.mas_equalTo(CGSizeMake(100.f, 40.f));
+        make.right.equalTo(self.mas_right).offset(-10.f);
+        make.size.mas_equalTo(CGSizeMake(90.f, 35.f));
     }];
     
     [self.joinShoppCarBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.mas_centerY);
         make.right.equalTo(self.buyButton.mas_left);
-        make.size.mas_equalTo(CGSizeMake(100.f, 40.f));
+        make.size.mas_equalTo(CGSizeMake(90.f, 35.f));
     }];
+    
+    self.joinShoppCarBtn.bounds = CGRectMake(0, 0, 90.f, 35.f);
+    self.buyButton.bounds = CGRectMake(0, 0, 90.f, 35.f);
+    [UIView maskCorner:self.joinShoppCarBtn rectCorner:UIRectCornerBottomLeft | UIRectCornerTopLeft corner:16.f];
+    [UIView maskCorner:self.buyButton rectCorner:UIRectCornerBottomRight | UIRectCornerTopRight corner:16.f];
 }
 
 - (void)collectBtnSelected:(BOOL)selected {
+//    [UIView maskCorner:self.joinShoppCarBtn rectCorner:UIRectCornerBottomLeft | UIRectCornerTopLeft corner:16.f];
+//    [UIView maskCorner:self.buyButton rectCorner:UIRectCornerBottomRight | UIRectCornerTopRight corner:16.f];
     self.collectBtn.selected = selected;
     if (selected) {
         [self.collectBtn updateImageName:@"red_collected" contentText:@"已关注" Width:button_width topMargin:3.f bottomMargin:3.f];
     } else {
-        [self.collectBtn updateImageName:@"red_collect" contentText:@"关注" Width:button_width topMargin:3.f bottomMargin:3.f];
+        [self.collectBtn updateImageName:@"collect" contentText:@"关注" Width:button_width topMargin:3.f bottomMargin:3.f];
     }
 }
 
@@ -95,7 +102,7 @@
         [_joinShoppCarBtn setTitle:@"加入购物车" forState:UIControlStateNormal];
         [_joinShoppCarBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_joinShoppCarBtn setBackgroundColor:COLOR_YELLOW_COLOR];
-        _joinShoppCarBtn.titleLabel.font = Font_17;
+        _joinShoppCarBtn.titleLabel.font = Font_15;
         [self addSubview:_joinShoppCarBtn];
     }
     return _joinShoppCarBtn;
@@ -107,7 +114,7 @@
         [_buyButton setTitle:@"立即购买" forState:UIControlStateNormal];
         [_buyButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_buyButton setBackgroundColor:COLOR_THEME_COLOR];
-        _buyButton.titleLabel.font = Font_17;
+        _buyButton.titleLabel.font = Font_15;
         [self addSubview:_buyButton];
     }
     return _buyButton;

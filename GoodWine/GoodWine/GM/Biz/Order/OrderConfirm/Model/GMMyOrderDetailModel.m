@@ -11,7 +11,12 @@
 @implementation GMMyOrderDetailModel
 
 - (NSString *)expectedTime {
-    return @"";
+    if (IsStrEmpty(_expectedTime)) {
+        return @"";
+    } else {
+        return _expectedTime;
+    }
+    
 }
 
 - (NSString *)payType {

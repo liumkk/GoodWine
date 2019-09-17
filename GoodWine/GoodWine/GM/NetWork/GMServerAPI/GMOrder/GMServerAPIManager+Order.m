@@ -231,9 +231,9 @@
     }];
 }
 
-- (NSURLSessionDataTask *)asyncGetPayData:(NSString *)orderId
-                             succeedBlock:(void (^)(void))succeedBlock
-                              failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+- (NSURLSessionDataTask *)asyncGetPayDataWithOrderId:(NSString *)orderId
+                                        succeedBlock:(nonnull void (^)(NSString * _Nonnull))succeedBlock
+                                         failedBlock:(nonnull void (^)(NSError * _Nonnull))failedBlock {
     
     NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
     
@@ -244,7 +244,46 @@
     [ServerClient asyncNetworkRequestWithURL:GMGetPayData(orderId) parameter:temParamDict success:^(NSDictionary * _Nonnull responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
             if (succeedBlock) {
-                succeedBlock();
+                succeedBlock(responseDict[@"data"]);
+            }
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
+- (NSURLSessionDataTask *)asyncQueryOrderListWithPageSize:(NSString *)pageSize
+                                                  pageNum:(NSString *)pageNum
+                                                   status:(NSString *)status
+                                            succeedBlock:(void (^)(NSArray <GMOrderDetailInfoModel *> *array))succeedBlock
+                                             failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    
+    NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
+    
+    temParamDict[@"storeId"] = UserCenter.storeId;
+    temParamDict[@"pageSize"] = pageSize;
+    temParamDict[@"pageNum"] = pageNum;
+    temParamDict[@"status"] = status;
+    
+    [ServerClient setContentTypeJson];
+    return
+    [ServerClient asyncGetNetworkRequestWithURLString:GMGetOrderList(pageSize,pageNum,UserCenter.storeId,status) parameter:temParamDict success:^(NSDictionary * _Nonnull responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            NSMutableArray *arr = [[NSMutableArray alloc] init];
+            for (NSDictionary *dic in responseDict[@"data"]) {
+                GMOrderDetailInfoModel *model = [GMOrderDetailInfoModel yy_modelWithDictionary:dic];
+                [arr addObject:model];
+            }
+            if (succeedBlock) {
+                succeedBlock(arr);
             }
         }else {
             

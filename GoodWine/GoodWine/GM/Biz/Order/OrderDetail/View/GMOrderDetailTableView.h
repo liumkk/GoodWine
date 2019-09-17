@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GMOrderDetailHeaderView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,8 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GMOrderDetailTableView : UITableView
 
 @property (nonatomic, weak) id <GMOrderDetailTableViewDelegate> orderDetailDelegate;
-
-- (void)reloadTableViewWithModel:(GMOrderDetailInfoModel *)model;
+@property (nonatomic, strong) GMOrderDetailHeaderView *detailHeaderView;
+- (void)reloadTableViewWithModel:(GMOrderDetailInfoModel *)model myModel:(GMMyOrderDetailModel *)myOrder;
 
 @end
 

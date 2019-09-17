@@ -26,6 +26,18 @@ NS_ASSUME_NONNULL_BEGIN
                                     succeedBlock:(void(^)(GMUserCenterInfoModel * model))succeedBlock
                                      failedBlock:(void(^)(NSError *error))failedBlock;
 
+- (NSURLSessionDataTask *)asyncQueryAuthCodeWithPhoneNum:(NSString *)phoneNum
+                                            succeedBlock:(void (^)(void))succeedBlock
+                                             failedBlock:(void (^)(NSError * error))failedBlock;
+
+- (NSURLSessionDataTask *)asynclogoutSucceedBlock:(void (^)(void))succeedBlock
+                                      failedBlock:(void (^)(NSError * error))failedBlock;
+
+- (NSURLSessionDataTask *)asyncModifyPasswordWithPhoneNum:(NSString *)phoneNum
+                                                 password:(NSString *)password
+                                                 authCode:(NSString *)authCode
+                                             succeedBlock:(void (^)(void))succeedBlock
+                                              failedBlock:(void (^)(NSError * error))failedBlock;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -17,7 +17,6 @@
 
 @interface MKVerificationCodeView ()
 
-@property (nonatomic, strong) UIButton *verifyButton;
 @property (nonatomic, assign) NSInteger defaultTime;
 @property (nonatomic, strong) NSTimer *timer;
 
@@ -68,7 +67,7 @@
         [_verifyButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
         [_verifyButton setTitle:@"获取验证码" forState:UIControlStateNormal];
         _verifyButton.titleLabel.font = Font_13;
-        [_verifyButton addTarget:self action:@selector(initTimer) forControlEvents:UIControlEventTouchUpInside];
+//        [_verifyButton addTarget:self action:@selector(initTimer) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_verifyButton];
     }
     return _verifyButton;

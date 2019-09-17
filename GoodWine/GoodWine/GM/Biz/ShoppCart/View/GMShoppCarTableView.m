@@ -25,7 +25,7 @@ static NSString *shoppCarTableCellID = @"shoppCarTableCellID";
         self.dataSource = self;
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.backgroundColor = COLOR_GRAY_244;
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
         
         [self registerClass:[GMShoppCarTableViewCell class] forCellReuseIdentifier:shoppCarTableCellID];
     }
@@ -95,6 +95,11 @@ static NSString *shoppCarTableCellID = @"shoppCarTableCellID";
         [self.shoppCarCellDelegate shoppCarTableViewDeleteRowAtIndex:indexPath.row];
     }
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.shoppCarCellDelegate && [self.shoppCarCellDelegate respondsToSelector:@selector(shoppCarTableViewDidSelectRowAtIndex:)]) {
+        [self.shoppCarCellDelegate shoppCarTableViewDidSelectRowAtIndex:indexPath.row];
+    }
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -107,7 +112,7 @@ static NSString *shoppCarTableCellID = @"shoppCarTableCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
-    return 10.f;
+    return CGFLOAT_MIN;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {

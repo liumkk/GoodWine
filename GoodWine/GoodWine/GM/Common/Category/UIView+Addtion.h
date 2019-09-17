@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIView (Addtion)
 
 + (instancetype)creatDefaultLineView;
-
++ (void)maskCorner:(UIView *)view rectCorner:(UIRectCorner)rectCorner corner:(CGFloat)corner;
 @end
 
 NS_ASSUME_NONNULL_END

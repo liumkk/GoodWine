@@ -41,13 +41,15 @@
     
     [self.rightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView);
-        make.right.equalTo(self.contentView).offset(-10.f);
+        make.right.equalTo(self.contentView);
+        make.size.mas_equalTo(CGSizeMake(100.f, 25.f));
     }];
     
-//    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.right.top.equalTo(self);
-//        make.height.mas_equalTo(LINE_HEIGHT);
-//    }];
+    self.headerImageiew.bounds = CGRectMake(0, 0, HeaderView_width, HeaderView_width);
+    [UIView maskCorner:self.headerImageiew rectCorner:UIRectCornerAllCorners corner:HeaderView_width/2.f];
+
+    self.rightLabel.bounds = CGRectMake(0, 0, 105.f, 25.f);
+    [UIView maskCorner:self.rightLabel rectCorner:UIRectCornerTopLeft | UIRectCornerBottomLeft corner:25.f];
 }
 
 - (void)updateCell {
@@ -66,8 +68,8 @@
     if (! _headerImageiew) {
         _headerImageiew = [[UIImageView alloc] initWithFrame:CGRectZero];
         _headerImageiew.image = [UIImage imageNamed:@"goodWine"];
-        _headerImageiew.clipsToBounds = YES;
-        _headerImageiew.layer.cornerRadius = HeaderView_width/2;
+//        _headerImageiew.clipsToBounds = YES;
+//        _headerImageiew.layer.cornerRadius = HeaderView_width/2;
         [self.contentView addSubview:_headerImageiew];
     }
     return _headerImageiew;
@@ -106,8 +108,10 @@
     if (! _rightLabel) {
         _rightLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _rightLabel.text = @"美酒快线会员";
-        _rightLabel.textAlignment = NSTextAlignmentRight;
+        _rightLabel.textAlignment = NSTextAlignmentCenter;
         _rightLabel.font = Font_14;
+        _rightLabel.textColor = [UIColor whiteColor];
+        _rightLabel.backgroundColor = COLOR_THEME_COLOR;
         [self.contentView addSubview:_rightLabel];
     }
     return _rightLabel;

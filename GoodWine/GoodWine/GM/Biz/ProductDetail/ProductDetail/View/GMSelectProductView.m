@@ -111,8 +111,8 @@
         [itemBtn setTitle:item.sp1 forState:UIControlStateNormal];
         [itemBtn setTitleColor:COLOR_TEXT_BLACK forState:UIControlStateNormal];
         [itemBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [itemBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg_gray"] forState:UIControlStateNormal];
-        [itemBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg_red"] forState:UIControlStateSelected];
+        [itemBtn setBackgroundImage:[UIImage imageNamed:@"white_bg"] forState:UIControlStateNormal];
+        [itemBtn setBackgroundImage:[UIImage imageNamed:@"red_bg"] forState:UIControlStateSelected];
         [itemBtn addTarget:self action:@selector(itemBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.selectView addSubview:itemBtn];
         

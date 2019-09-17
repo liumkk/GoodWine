@@ -10,10 +10,12 @@
 #import "GMProductDetailCell.h"
 #import "GMProductEvaluateTableViewCell.h"
 #import "GMMoreEvaluateFooterView.h"
+#import "GMPicTableViewCell.h"
 
 static  NSString *productCellID = @"productCellID";
 static  NSString *productCouponCellID = @"productCouponCellID";
 static  NSString *productEvaluateCellID = @"productEvaluateCellID";
+static  NSString *productPicCellID = @"productPicCellID";
 
 @interface GMProductDetailTableView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -21,6 +23,7 @@ static  NSString *productEvaluateCellID = @"productEvaluateCellID";
 @property (nonatomic, strong) NSArray <ProductEvaluateInfoModel*>*evaluateArray;
 @property (nonatomic, strong) GMHeaderTitleView *headerView;
 @property (nonatomic, strong) GMMoreEvaluateFooterView *evaluateFooterView;
+@property (nonatomic, strong) NSArray *albumPics;
 
 
 @end
@@ -34,16 +37,18 @@ static  NSString *productEvaluateCellID = @"productEvaluateCellID";
         self.dataSource = self;
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
         [self registerClass:[GMProductDetailCell class] forCellReuseIdentifier:productCellID];
         [self registerClass:[GMKeyValueInfoCell class] forCellReuseIdentifier:productCouponCellID];
         [self registerClass:[GMProductEvaluateTableViewCell class] forCellReuseIdentifier:productEvaluateCellID];
+        [self registerClass:[GMPicTableViewCell class] forCellReuseIdentifier:productPicCellID];
     }
     return self;
 }
 
 - (void)reloadTableViewWithModel:(GMProductDetailModel *)model evaluateArray:(NSArray <ProductEvaluateInfoModel *>*)evaluateArray {
     self.productDetailModel = model;
+    self.albumPics = [self.productDetailModel.albumPics componentsSeparatedByString:@","];
     self.evaluateArray = evaluateArray;
     if ([[NSThread currentThread] isMainThread]) {
         [self reloadData];
@@ -56,18 +61,20 @@ static  NSString *productEvaluateCellID = @"productEvaluateCellID";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0 || section == 1) {
         return 1;
-    } else {
+    } else if (section == 2) {
         if (self.evaluateArray.count > 2) {
             return 2;
         } else {
             return self.evaluateArray.count;
         }
+    } else {
+        return self.albumPics.count;
     }
 }
 
@@ -82,9 +89,13 @@ static  NSString *productEvaluateCellID = @"productEvaluateCellID";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         [cell updateCellContentWithCellType:GMKVInfoCellTypeDefaultLabel leftText:@"优惠券" rightText:@"点击选择优惠券" needLine:NO];
         return cell;
-    } else {
+    } else if (indexPath.section == 2) {
         GMProductEvaluateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:productEvaluateCellID];
         [cell updateEvaluateTableCellWithModel:self.evaluateArray[indexPath.row]];
+        return cell;
+    } else {
+        GMPicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:productPicCellID];
+        [cell updateCellWithImageName:self.albumPics[indexPath.row]];
         return cell;
     }
     
@@ -103,12 +114,14 @@ static  NSString *productEvaluateCellID = @"productEvaluateCellID";
         return 270.f;
     } else if (indexPath.section == 1) {
         return 50.f;
-    } else {
+    } else if (indexPath.section == 2) {
         ProductEvaluateInfoModel *model = self.evaluateArray[indexPath.row];
         if (!model.contentHeight) {
             model.contentHeight = [model.content heightStringWithFont:evaluateContentCellFont width:Width_Screen-26.f] + 70.f;
         }
         return model.contentHeight;
+    } else {
+        return 270.f;
     }
 }
 

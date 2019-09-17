@@ -50,4 +50,91 @@
     }];
 }
 
+- (NSURLSessionDataTask *)asyncQueryAuthCodeWithPhoneNum:(NSString *)phoneNum
+                                            succeedBlock:(void (^)(void))succeedBlock
+                                             failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    
+    return
+    [ServerClient asyncGetNetworkRequestWithURLString:GMAuthCode(phoneNum) parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            if (succeedBlock) {
+                succeedBlock();
+            }
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
+- (NSURLSessionDataTask *)asynclogoutSucceedBlock:(void (^)(void))succeedBlock
+                                      failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    
+    return
+    [ServerClient asyncGetNetworkRequestWithURLString:GMLogout parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            if (succeedBlock) {
+                succeedBlock();
+            }
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
+- (NSURLSessionDataTask *)asyncModifyPasswordWithPhoneNum:(NSString *)phoneNum
+                                                 password:(NSString *)password
+                                                 authCode:(NSString *)authCode
+                                    succeedBlock:(void (^)(void))succeedBlock
+                                     failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    if (IsStrEmpty(phoneNum) ||
+        IsStrEmpty(password) ||
+        IsStrEmpty(authCode)) {
+        if (failedBlock) {
+            failedBlock([GMNetworkError getParamError]);
+        }
+        return nil;
+    }
+    
+    NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
+    
+    temParamDict[@"telephone"] = phoneNum;
+    temParamDict[@"password"] = password;
+    temParamDict[@"authCode"] = authCode;
+    
+    return
+    [ServerClient asyncNetworkRequestWithURL:GMModifyPassword(phoneNum,password,authCode) parameter:temParamDict success:^(NSDictionary *responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            if (succeedBlock) {
+                succeedBlock();
+            }
+            
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
 @end

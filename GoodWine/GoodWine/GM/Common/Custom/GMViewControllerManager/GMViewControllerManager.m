@@ -33,20 +33,20 @@ static GMViewControllerManager *shared = nil;
 
 - (void)showLoginView {
     
-    UINavigationController *navT =  self.tabBarController.selectedViewController;
-    
-    [navT popToRootViewControllerAnimated:NO];
+//    UINavigationController *navT =  self.tabBarController.selectedViewController;
+//    
+//    [navT popToRootViewControllerAnimated:NO];
     
     AppDelegate *appdelegate =  (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appdelegate checkLoginViewController];
     
-    
-    GMLoginViewController *loginController = [[GMLoginViewController alloc] init];
-    
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginController];
-    
-    appdelegate.window.rootViewController = nav;
-    
-    self.rootController = (GMNavigationController *)nav;
+//    GMLoginViewController *loginController = [[GMLoginViewController alloc] init];
+//    
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginController];
+//    
+//    appdelegate.window.rootViewController = nav;
+//    
+//    self.rootController = (GMNavigationController *)nav;
 }
 
 - (GMTabBarController *)tabBarController {

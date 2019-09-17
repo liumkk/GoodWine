@@ -9,9 +9,11 @@
 #import "GMUserCenterViewController.h"
 #import "GMUserCenterTableView.h"
 #import "GMVersionViewController.h"
+#import "GMMyCouponViewController.h"
 #import "GMServiceViewController.h"
 #import "GMAddressManagerViewcontroller.h"
 #import "GMCollectViewController.h"
+#import "GMSettingViewController.h"
 
 @interface GMUserCenterViewController () <GMUserCenterTableViewDelegate>
 
@@ -40,7 +42,8 @@
         addressVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:addressVC animated:YES];
     } else if (index == 1) {
-        
+        GMMyCouponViewController *vc = [[GMMyCouponViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     } else if (index == 2) {
         GMCollectViewController *vc = [[GMCollectViewController alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
@@ -50,7 +53,9 @@
         serviceVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:serviceVC animated:YES];
     } else if (index == 4) {
-        
+        GMSettingViewController *settingVC = [[GMSettingViewController alloc] init];
+        settingVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:settingVC animated:YES];
     } else if (index == 5) {
         GMVersionViewController *versionVC = [[GMVersionViewController alloc] init];
         versionVC.hidesBottomBarWhenPushed = YES;

@@ -35,10 +35,19 @@
 #define GMServerBaseURL           @"http://118.31.225.18:8085/"
 
 #define GMLogin                       @"sso/login"
+#define GMLogout                      @"sso/logout"
+#define GMAuthCode(_phone)            [NSString stringWithFormat:@"sso/getAuthCode?telephone=%@",_phone]
+#define GMModifyPassword(_phone,_password,_authCode)   \
+[NSString stringWithFormat:@"sso/updatePassword?telephone=%@&password=%@&authCode=%@",_phone,_password,_authCode]
+
+
 #define GMGetStoreInfo(_code)         [NSString stringWithFormat:@"store/storeInfo?regionCode=%@",_code]
 #define GMHomePageInfo(_storeId)      [NSString stringWithFormat:@"home/content?storeId=%@",_storeId]
 #define GMHomeCoupon(_storeId)        [NSString stringWithFormat:@"home/couponList?storeId=%@",_storeId]
 #define GMGetCoupon(_couponId)        [NSString stringWithFormat:@"member/coupon/add/%ld",_couponId]
+
+#define GMQueryMyCoupon(_pageSize,_pageNum,_storeId)      \
+        [NSString stringWithFormat:@"member/coupon/list?pageSize=%@&pageNum=%@&storeId=%@&useStatus=0",_pageSize,_pageNum,_storeId]
 
 #define GMShoppCarList(_storeId)      [NSString stringWithFormat:@"cart/list?storeId=%@",_storeId]
 #define GMModifyProductNum(_id,_num)    \
@@ -77,6 +86,9 @@
 #define GMDeleteOrder(_orderId)        [NSString stringWithFormat:@"order/cancelOrder?orderId=%@",_orderId]
 
 #define GMGetPayData(_orderId)         [NSString stringWithFormat:@"order/getPayData?orderId=%@&payType=1",_orderId]
+
+#define GMGetOrderList(_pageSize,_pageNum,_storeId,_status)      \
+        [NSString stringWithFormat:@"order/orderList?pageSize=%@&pageNum=%@&storeId=%@&status=%@",_pageSize,_pageNum,_storeId,_status]
 
 
 #endif

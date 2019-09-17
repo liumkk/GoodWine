@@ -34,16 +34,17 @@ static NSString *orderCollectionCell = @"orderCollectionCell";
         
         self.delegate = self;
         self.dataSource = self;
-        self.backgroundColor = COLOR_GRAY_244;
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
         self.showsVerticalScrollIndicator = YES;//关闭滚动条
-        self.bounces = NO;//是否有回弹效果
+        self.bounces = YES;//是否有回弹效果
+        self.alwaysBounceVertical = YES; //数据少时也可以竖向滑动
         [self registerClass:[GMUserSecondCollectionViewCell class] forCellWithReuseIdentifier:orderCollectionCell];
     }
     return self;
 }
 
 - (void)initData {
-    self.titleArray = @[@"代付款", @"代发货", @"待送达", @"已完成", @"已撤销", @"全部订单"];
+    self.titleArray = @[@"待付款", @"待发货", @"已发货", @"已完成", @"已关闭", @"已失效"];
 }
 
 #pragma mark - collectionView dataSource Or delegate

@@ -63,12 +63,20 @@ static NSString *registerTableCellID = @"registerTableCellID";
         self.phoneTF = cell.textField;
     } else if (indexPath.row == 2) {
         [cell updateTextFieldCellType:MKTextFieldCellTypeVerficationCode placeholder:@"请输入短信验证码"];
+        [cell.verificationView.verifyButton addTarget:self action:@selector(sendVerificationCode:) forControlEvents:UIControlEventTouchUpInside];
+        self.verificationView = cell.verificationView;
         self.verficationTF = cell.textField;
     } else {
         [cell updateTextFieldCellType:MKTextFieldCellTypeEye placeholder:@"请设置密码"];
         self.passwordTF = cell.textField;
     }
     return cell;
+}
+
+- (void)sendVerificationCode:(UIButton *)btn {
+    if (self.registerTBDelegate && [self.registerTBDelegate respondsToSelector:@selector(sendVerificationCodeWithPhone:)]) {
+        [self.registerTBDelegate sendVerificationCodeWithPhone:self.phoneTF.text];
+    }
 }
 
 - (void)registerAction:(UIButton *)btn {

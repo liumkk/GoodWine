@@ -55,14 +55,15 @@
     }];
 }
 
-- (void)updateOrderDetailHeaderViewWithStatus:(NSString *)status content:(NSString *)content {
+- (void)updateOrderDetailHeaderViewWithStatus:(NSString *)status content:(NSString *)content btnTitle:(NSString *)btnTitle {
     self.statusLabel.text = status;
     self.contentLabel.text = content;
+    [self.payBtn setTitle:btnTitle forState:UIControlStateNormal];
 }
 
 - (UIImageView *)iconImageView {
     if (! _iconImageView) {
-        _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"address"]];
+        _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bianji"]];
         [self addSubview:_iconImageView];
     }
     return _iconImageView;
@@ -117,7 +118,7 @@
         _payBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_payBtn setTitle:@"去付款" forState:UIControlStateNormal];
         [_payBtn setTitleColor:COLOR_THEME_COLOR forState:UIControlStateNormal];
-        [_payBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg_white"] forState:UIControlStateNormal];
+        [_payBtn setBackgroundImage:[UIImage imageNamed:@"gm_gray_bj"] forState:UIControlStateNormal];
         _payBtn.titleLabel.font = Font_15;
         [self addSubview:_payBtn];
     }

@@ -32,7 +32,7 @@ static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
         self.delegate = self;
         self.estimatedRowHeight = 44;
         self.rowHeight = UITableViewAutomaticDimension;
-
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
         
         [self registerClass:[GMKeyValueInfoCell class] forCellReuseIdentifier:homePageIdentifier];
         [self registerClass:[GMMenuTableViewCell class] forCellReuseIdentifier:menuCellIdentifier];
@@ -193,7 +193,7 @@ static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
 //        _cycleScrollView.imageURLStringsGroup = nil;
         _cycleScrollView.currentPageDotColor = [UIColor blueColor];
         _cycleScrollView.pageDotColor = [UIColor grayColor];
-        _cycleScrollView.autoScroll = YES;
+//        _cycleScrollView.autoScroll = YES;
         [self addSubview:_cycleScrollView];
     }
     return _cycleScrollView;

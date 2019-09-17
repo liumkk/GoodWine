@@ -10,7 +10,6 @@
 #import "GMBrandAreaTableView.h"
 #import "GMProductAreaCollectionView.h"
 #import "GMProductDetailViewController.h"
-#import "MkEmptyView.h"
 
 @interface GMProductAreaViewController () <GMProductAreaCollectionViewDelegate,GMBrandAreaTableViewDelegate>
 

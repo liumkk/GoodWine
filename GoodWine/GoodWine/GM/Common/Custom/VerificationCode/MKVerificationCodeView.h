@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKVerificationCodeView : UIView
 
+@property (nonatomic, strong) UIButton *verifyButton;
+
+- (void)initTimer;
 - (void)clearTimer;
 
 @end

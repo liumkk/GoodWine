@@ -31,6 +31,7 @@
 #import "UIView+Addtion.h"
 #import "UIViewController+Additions.h"
 #import "NSString+Additions.h"
+#import "UIColor+Additions.h"
 
 #import "GMDataManager.h"
 

@@ -26,9 +26,13 @@
     [self setupConstraints];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+//    self.navigationController.navigationBar.hidden = YES;
+}
+
 - (void)initSubviews {
     self.title = @"登录";
-    
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
@@ -55,6 +59,7 @@
 
 - (void)forgetAction:(UIButton *)btn {
     GMForgetPasswordViewController *vc = [[GMForgetPasswordViewController alloc] init];
+    vc.title = @"忘记密码";
     [self.navigationController pushViewController:vc animated:YES];
 }
 

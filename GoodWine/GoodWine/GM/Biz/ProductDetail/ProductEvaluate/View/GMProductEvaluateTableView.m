@@ -27,7 +27,7 @@ static NSString *productEvaluateCellID = @"productEvaluateCellID";
         self.dataSource = self;
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
         [self registerClass:[GMProductEvaluateTableViewCell class] forCellReuseIdentifier:productEvaluateCellID];
     }
     return self;

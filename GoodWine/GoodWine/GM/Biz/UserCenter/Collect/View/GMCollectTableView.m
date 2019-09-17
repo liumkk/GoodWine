@@ -26,7 +26,7 @@ static NSString *collectCellID = @"collectCellID";
         self.dataSource = self;
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
         [self registerClass:[GMCollectTableViewCell class] forCellReuseIdentifier:collectCellID];
     }
     return self;
@@ -57,8 +57,9 @@ static NSString *collectCellID = @"collectCellID";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    [self deselectRowAtIndexPath:indexPath animated:YES];
+    if (self.collectTBDelegate && [self.collectTBDelegate respondsToSelector:@selector(collectTableViewDidSelectRowAtIndex:)]) {
+        [self.collectTBDelegate collectTableViewDidSelectRowAtIndex:indexPath.row];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

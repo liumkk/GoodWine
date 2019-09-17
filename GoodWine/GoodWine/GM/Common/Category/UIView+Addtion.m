@@ -16,4 +16,12 @@
     return view;
 }
 
++ (void)maskCorner:(UIView *)view rectCorner:(UIRectCorner)rectCorner corner:(CGFloat)corner {
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds byRoundingCorners:rectCorner cornerRadii:CGSizeMake(corner, corner)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = view.bounds;
+    maskLayer.path = maskPath.CGPath;
+    view.layer.mask = maskLayer;
+}
+
 @end

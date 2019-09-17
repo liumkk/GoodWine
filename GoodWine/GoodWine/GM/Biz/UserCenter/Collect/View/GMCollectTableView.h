@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol GMCollectTableViewDelegate <NSObject>
 
 - (void)collectTableViewDeleteRowAtIndex:(NSInteger)index;
+- (void)collectTableViewDidSelectRowAtIndex:(NSInteger)index;
 
 @end
 

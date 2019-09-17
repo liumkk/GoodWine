@@ -31,7 +31,7 @@ static NSString *addAddressTableCell = @"addAddressTableCell";
         self.dataSource = self;
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.backgroundColor = COLOR_GRAY_244;
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
 //        self.tableHeaderView = [UIView new];
         [self registerClass:[GMKeyValueInfoCell class] forCellReuseIdentifier:addAddressTableCell];
     }
@@ -113,6 +113,7 @@ static NSString *addAddressTableCell = @"addAddressTableCell";
 - (GMTableViewFooterView *)footerView {
     if (! _footerView) {
         _footerView = [[GMTableViewFooterView alloc] initWithFrame:CGRectZero title:@"确认添加"];
+        _footerView.backgroundColor = COLOR_TABLE_BG_RAY;
         [_footerView.confirmBtn addTarget:self action:@selector(confirmBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _footerView;

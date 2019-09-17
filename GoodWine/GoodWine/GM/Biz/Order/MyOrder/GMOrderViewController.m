@@ -8,6 +8,7 @@
 
 #import "GMOrderViewController.h"
 #import "GMOrderCollectionView.h"
+#import "GMOrderListViewController.h"
 
 @interface GMOrderViewController () <GMOrderCollectionViewDelegate>
 
@@ -19,23 +20,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setupConstranits];
     [self initSubviews];
 }
 
 - (void)initSubviews {
     self.title = @"订单";
     self.orderCollectView.orderCollectDelegate = self;
-    self.view.backgroundColor = COLOR_GRAY_244;;
 }
 
+- (void)setupConstranits {
+    [self.orderCollectView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+}
 - (void)orderCollectionViewDidSelectItemAtIndex:(NSInteger)index {
-    
+    GMOrderListViewController *vc = [[GMOrderListViewController alloc] initWithStatus:[NSString stringWithFormat:@"%ld",index]];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (GMOrderCollectionView *)orderCollectView {
     if (! _orderCollectView) {
-        _orderCollectView = [[GMOrderCollectionView alloc] initWithFrame:CGRectMake(0, 0, Width_Screen, 180.f)];
+        _orderCollectView = [[GMOrderCollectionView alloc] initWithFrame:CGRectZero];
         [self.view addSubview:_orderCollectView];
     }
     return _orderCollectView;

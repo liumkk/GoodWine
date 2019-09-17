@@ -58,6 +58,8 @@ static NSString *forgetPwdTableCellID = @"forgetPwdTableCellID";
         self.phoneTF = cell.textField;
     } else if (indexPath.row == 1) {
         [cell updateTextFieldCellType:MKTextFieldCellTypeVerficationCode placeholder:@"请输入短信验证码"];
+        [cell.verificationView.verifyButton addTarget:self action:@selector(sendVerificationCode:) forControlEvents:UIControlEventTouchUpInside];
+        self.verificationView = cell.verificationView;
         self.verficationTF = cell.textField;
     } else {
         [cell updateTextFieldCellType:MKTextFieldCellTypeEye placeholder:@"请设置密码"];
@@ -66,9 +68,15 @@ static NSString *forgetPwdTableCellID = @"forgetPwdTableCellID";
     return cell;
 }
 
+- (void)sendVerificationCode:(UIButton *)btn {
+    if (self.forgetPwdTBDelegate && [self.forgetPwdTBDelegate respondsToSelector:@selector(sendVerificationCodeWithPhone:)]) {
+        [self.forgetPwdTBDelegate sendVerificationCodeWithPhone:self.phoneTF.text];
+    }
+}
+
 - (void)registerAction:(UIButton *)btn {
-    if (self.forgetPwdTBDelegate && [self.forgetPwdTBDelegate respondsToSelector:@selector(registerTableViewPhoneTF:verficationTF:passwordTF:)]) {
-        [self.forgetPwdTBDelegate registerTableViewPhoneTF:self.phoneTF verficationTF:self.verficationTF passwordTF:self.passwordTF];
+    if (self.forgetPwdTBDelegate && [self.forgetPwdTBDelegate respondsToSelector:@selector(forgetTableViewPhoneTF:verficationTF:passwordTF:)]) {
+        [self.forgetPwdTBDelegate forgetTableViewPhoneTF:self.phoneTF verficationTF:self.verficationTF passwordTF:self.passwordTF];
     }
 }
 

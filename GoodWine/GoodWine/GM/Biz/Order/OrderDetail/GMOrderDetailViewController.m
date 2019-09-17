@@ -58,8 +58,10 @@
         @weakify(self)
         [ServerAPIManager asyncQueryOrderDetailWithModel:self.myOrderModel succeedBlock:^(GMOrderDetailInfoModel * model) {
             @strongify(self)
+            //购物车商品生成订单后，会从购物车中移除
+            [[NSNotificationCenter defaultCenter] postNotificationName:Notification_addProduct object:nil];
             self.orderDetailInfoModel = model;
-            [self.detailTableView reloadTableViewWithModel:model];
+            [self.detailTableView reloadTableViewWithModel:model myModel:self.myOrderModel];
             [self.footerView updateFooterViewWithOrderDetailModel:model];
         } failedBlock:^(NSError * error) {
             @strongify(self)
@@ -70,7 +72,7 @@
         [ServerAPIManager asyncQueryOrderDetailProductWithModel:self.myOrderModel succeedBlock:^(GMOrderDetailInfoModel * _Nonnull model) {
             @strongify(self)
             self.orderDetailInfoModel = model;
-            [self.detailTableView reloadTableViewWithModel:model];
+            [self.detailTableView reloadTableViewWithModel:model myModel:self.myOrderModel];
             [self.footerView updateFooterViewWithOrderDetailModel:model];
         } failedBlock:^(NSError * _Nonnull error) {
             @strongify(self)
@@ -80,7 +82,7 @@
 }
 
 - (void)payOrder {
-    GMOrderPayViewController *vc = [[GMOrderPayViewController alloc] initWithPayAmount:self.orderDetailInfoModel.payAmount];
+    GMOrderPayViewController *vc = [[GMOrderPayViewController alloc] initWithOrderDetailModel:self.orderDetailInfoModel];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -90,6 +92,7 @@
         @strongify(self)
         [MKToastView showToastToView:self.view text:@"取消订单成功"];
         self.footerView.cancleBtn.hidden = YES;
+        [self.detailTableView.detailHeaderView updateOrderDetailHeaderViewWithStatus:@"已关闭" content:@"订单已关闭" btnTitle:@"继续购买"];
     } failedBlock:^(NSError * _Nonnull error) {
         @strongify(self)
         [self showAlertViewWithError:error];
@@ -98,6 +101,11 @@
 
 - (void)phoneServiceAction:(UIButton *)btn {
     
+}
+
+- (void)back {
+    NSInteger index=[[self.navigationController viewControllers] indexOfObject:self];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:index-2]animated:YES];
 }
 
 - (GMOrderDetailTableView *)detailTableView {

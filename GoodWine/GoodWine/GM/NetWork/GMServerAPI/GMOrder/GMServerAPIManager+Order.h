@@ -38,9 +38,15 @@ NS_ASSUME_NONNULL_BEGIN
                               succeedBlock:(void (^)(void))succeedBlock
                                failedBlock:(void (^)(NSError * error))failedBlock;
 
-- (NSURLSessionDataTask *)asyncGetPayData:(NSString *)orderId
-                             succeedBlock:(void (^)(void))succeedBlock
-                              failedBlock:(void (^)(NSError * error))failedBlock;
+- (NSURLSessionDataTask *)asyncGetPayDataWithOrderId:(NSString *)orderId
+                                        succeedBlock:(void (^)(NSString *data))succeedBlock
+                                         failedBlock:(void (^)(NSError * error))failedBlock;
+
+- (NSURLSessionDataTask *)asyncQueryOrderListWithPageSize:(NSString *)pageSize
+                                                  pageNum:(NSString *)pageNum
+                                                   status:(NSString *)status
+                                             succeedBlock:(void (^)(NSArray <GMOrderDetailInfoModel *> *array))succeedBlock
+                                              failedBlock:(void (^)(NSError * error))failedBlock;
 
 @end
 

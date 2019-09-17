@@ -39,6 +39,8 @@
 #define LeftTitle       @"leftTitle"
 #define RightTitle      @"rightTitle"
 
+#define GMUrlSchemes    @"GoodWineSchems"
+
 
 #define Notification_addProduct     @"addproduct"
 

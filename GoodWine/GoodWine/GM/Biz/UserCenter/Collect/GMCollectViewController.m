@@ -8,11 +8,13 @@
 
 #import "GMCollectViewController.h"
 #import "GMCollectTableView.h"
+#import "GMProductDetailViewController.h"
 
 @interface GMCollectViewController () <GMCollectTableViewDelegate>
 
 @property (nonatomic, strong) GMCollectTableView *collectTB;
 @property (nonatomic, strong) NSMutableArray <CollectProductItem *> *productArray;
+@property (nonatomic, strong) MKEmptyView *emptyView;
 
 @end
 
@@ -31,6 +33,10 @@
     [self.collectTB mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    
+    [self.emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
 }
 
 - (void)requestCollectList {
@@ -38,10 +44,22 @@
     [ServerAPIManager asyncGetCollectListWithSucceedBlock:^(CollectListInfoModel * _Nonnull model) {
         @strongify(self)
         self.productArray = (NSMutableArray *)model.collectProductArray;
-        [self.collectTB reloadTableViewWithDataArray:model.collectProductArray];
+        if (self.productArray.count > 0) {
+            self.emptyView.hidden = YES;
+            [self.collectTB reloadTableViewWithDataArray:model.collectProductArray];
+        } else {
+            [self.emptyView showEmptyNeedLoadBtn:NO];
+        }
     } failedBlock:^(NSError * _Nonnull error) {
         [self showAlertViewWithError:error];
     }];
+}
+
+- (void)collectTableViewDidSelectRowAtIndex:(NSInteger)index {
+    CollectProductItem *item = self.productArray[index];
+    GMProductDetailViewController *vc = [[GMProductDetailViewController alloc] initWithProductId:item.productId];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)collectTableViewDeleteRowAtIndex:(NSInteger)index {
@@ -63,6 +81,14 @@
         [self.view addSubview:_collectTB];
     }
     return _collectTB;
+}
+
+- (MKEmptyView *)emptyView {
+    if (! _emptyView) {
+        _emptyView = [[MKEmptyView alloc] initWithFrame:CGRectZero];
+        [self.view addSubview:_emptyView];
+    }
+    return _emptyView;
 }
 
 @end

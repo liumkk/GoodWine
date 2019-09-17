@@ -28,7 +28,7 @@ static NSString *addressCellID = @"addressCellID";
         self.dataSource = self;
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
         
         [self registerClass:[GMAddressManageTableViewCell class] forCellReuseIdentifier:addressCellID];
     }

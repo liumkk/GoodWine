@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GMOrderConfirmTableView : UITableView
 
+@property (nonatomic, strong) UILabel *timeLabel;
+
+@property (nonatomic, strong) NSMutableArray *contentArray;
 @property (nonatomic, weak) id <GMOrderConfirmTableViewDelegate> orderConfirmDelegate;
 
 - (void)reloadTableViewWithAddressModel:(GMAddressInfoModel *)model;

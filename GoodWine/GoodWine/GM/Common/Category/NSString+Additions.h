@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)formatterYuan;
 
+- (NSString *)statusFormatter;
+
 @end
 
 NS_ASSUME_NONNULL_END

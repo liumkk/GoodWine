@@ -11,6 +11,8 @@
 #import "GMOrderConfirmFooterView.h"
 #import "GMAddressManagerViewcontroller.h"
 #import "GMOrderDetailViewController.h"
+#import "QFTimerPicker.h"
+#import "GMMyCouponViewController.h"
 
 @interface GMOrderConfirmViewController () <GMOrderConfirmTableViewDelegate>
 
@@ -116,6 +118,21 @@
             [self.orderConfirmTV reloadTableViewWithAddressModel:model];
         }];
         [self.navigationController pushViewController:addressVC animated:YES];
+    } else if (indexPath.section == 2) {
+        if (indexPath.row == 2) {
+            GMMyCouponViewController *vc = [[GMMyCouponViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        } else if (indexPath.row == 4) {
+            QFTimerPicker *picker = [[QFTimerPicker alloc]initWithSuperView:self.view response:^(NSString *selectedStr) {
+                NSLog(@"%@",selectedStr);
+                NSString *timeStr = [selectedStr stringByReplacingCharactersInRange:NSMakeRange(selectedStr.length - 2, 2) withString:@"00:00"];
+                self.myOrderModel.expectedTime = timeStr;
+                [self.orderConfirmTV.contentArray replaceObjectAtIndex:4 withObject:timeStr];
+                [self.orderConfirmTV reloadData];
+            }];
+            [picker show];
+        }
+        
     }
 }
 
