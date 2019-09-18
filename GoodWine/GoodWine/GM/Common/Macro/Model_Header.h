@@ -33,5 +33,7 @@
 #import "GMMyOrderDetailModel.h"
 #import "GMOrderListItem.h"
 #import "GMOrderListInfoModels.h"
+#import "MyCouponItem.h"
+#import "MyCouponInfoModel.h"
 
 #endif /* Model_Header_h */

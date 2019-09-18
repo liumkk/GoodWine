@@ -58,8 +58,10 @@ static NSString *brandAreaTableCellID = @"brandAreaTableCellID";
     [cell updateCellWithLabelText:model.name];
     if (indexPath.row == 0) {
         cell.backgroundColor = [UIColor whiteColor];
+        cell.brandLabel.textColor = COLOR_THEME_COLOR;
     } else {
-        cell.backgroundColor = COLOR_GRAY_244;
+        cell.backgroundColor = COLOR_TABLE_BG_RAY;
+        cell.brandLabel.textColor = COLOR_TEXT_BLACK;
     }
     return cell;
 }
@@ -68,10 +70,12 @@ static NSString *brandAreaTableCellID = @"brandAreaTableCellID";
     
     if (indexPath.row != self.lastIndex) {
         GMBrandTableViewCell *lastCell = [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.lastIndex inSection:0]];
-        lastCell.backgroundColor = COLOR_GRAY_244;
+        lastCell.backgroundColor = COLOR_TABLE_BG_RAY;
+        lastCell.brandLabel.textColor = COLOR_TEXT_BLACK;
         
         GMBrandTableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
         cell.backgroundColor = [UIColor whiteColor];
+        cell.brandLabel.textColor = COLOR_THEME_COLOR;
         
         self.lastIndex = indexPath.row;
         

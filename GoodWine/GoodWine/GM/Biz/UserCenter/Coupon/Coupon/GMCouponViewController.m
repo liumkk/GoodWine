@@ -62,7 +62,7 @@
     CouponInfoModel *model = self.dataArray[index];
     if (model.receive == 0) {
         [GMLoadingActivity showLoadingActivityInView:self.view];
-        [ServerAPIManager asyncGetCouponWithCouponId:model.couponId succeedBlock:^{
+        [ServerAPIManager asyncGetCouponWithCouponId:[NSString stringWithFormat:@"%ld",model.couponId] succeedBlock:^{
             [MKToastView showToastToView:self.view text:@"领取成功"];
             model.receive = 1;
             [self.couponTableView reloadTableViewWithDataArray:self.dataArray];

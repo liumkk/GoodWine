@@ -7,13 +7,13 @@
 //
 
 #import "GMMyCouponTableView.h"
-#import "GMCouponTableViewCell.h"
+#import "GMMyCouponTableViewCell.h"
 
 static NSString *myCouponCellID = @"myCouponCellID";
 
 @interface GMMyCouponTableView () <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) NSArray <CouponInfoModel *> *dataArray;
+@property (nonatomic, strong) NSArray <MyCouponInfoModel *> *dataArray;
 
 @end
 
@@ -27,12 +27,12 @@ static NSString *myCouponCellID = @"myCouponCellID";
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = COLOR_TABLE_BG_RAY;
-        [self registerClass:[GMCouponTableViewCell class] forCellReuseIdentifier:myCouponCellID];
+        [self registerClass:[GMMyCouponTableViewCell class] forCellReuseIdentifier:myCouponCellID];
     }
     return self;
 }
 
-- (void)reloadTableViewWithDataArray:(NSArray <CouponInfoModel*> *)array {
+- (void)reloadTableViewWithDataArray:(NSArray <MyCouponInfoModel*> *)array {
     self.dataArray = array;
     
     if ([[NSThread currentThread] isMainThread]) {
@@ -51,8 +51,8 @@ static NSString *myCouponCellID = @"myCouponCellID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    GMCouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCouponCellID forIndexPath:indexPath];
-    [cell updateCouponCellWithModel:self.dataArray[indexPath.row]];
+    GMMyCouponTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCouponCellID forIndexPath:indexPath];
+    [cell updateMyCouponCellWithModel:self.dataArray[indexPath.row]];
     return cell;
 }
 

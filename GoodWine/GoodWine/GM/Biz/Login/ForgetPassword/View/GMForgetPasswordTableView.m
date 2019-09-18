@@ -28,7 +28,7 @@ static NSString *forgetPwdTableCellID = @"forgetPwdTableCellID";
         self.dataSource = self;
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
         [self registerClass:[MKTextFieldTableViewCell class] forCellReuseIdentifier:forgetPwdTableCellID];
     }
     return self;

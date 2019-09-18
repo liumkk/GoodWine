@@ -14,6 +14,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.contentView.backgroundColor = COLOR_TABLE_BG_RAY;
         [self setupConstraints];
         
     }
@@ -30,11 +31,18 @@
 
 - (void)setupConstraints {
     
+    [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(2, 10, 2, 10));
+    }];
+    
     [self.headerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.contentView);
-        make.left.equalTo(self.contentView).offset(16.f);
+        make.centerY.equalTo(self.bgView);
+        make.left.equalTo(self.bgView).offset(6.f);
         make.size.mas_equalTo(CGSizeMake(80.f, 80.f));
     }];
+    
+    self.headerImageView.bounds = CGRectMake(0, 0, 80.f, 80.f);
+    [UIView maskCorner:self.headerImageView rectCorner:UIRectCornerAllCorners corner:5.f];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.headerImageView).offset(10.f);
@@ -54,9 +62,17 @@
     
     [self.saleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.detailLabel);
-        make.right.equalTo(self.contentView.mas_right).offset(-10.f);
+        make.right.equalTo(self.bgView.mas_right).offset(-10.f);
     }];
     
+}
+
+- (UIImageView *)bgView {
+    if (! _bgView) {
+        _bgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"collection_bg"]];
+        [self.contentView addSubview:_bgView];
+    }
+    return _bgView;
 }
 
 - (UIImageView *)headerImageView {

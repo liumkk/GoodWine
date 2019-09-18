@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id <GMMyCouponTableViewDelegate> myCouponDelegate;
 
-- (void)reloadTableViewWithDataArray:(NSArray <CouponInfoModel*> *)array;
+- (void)reloadTableViewWithDataArray:(NSArray <MyCouponInfoModel*> *)array;
 
 
 @end

@@ -14,6 +14,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
+        self.contentView.backgroundColor = COLOR_TABLE_BG_RAY;
         [self setupConstraints];
     }
     return self;
@@ -38,16 +39,18 @@
     }];
     
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView).offset(7.f);
-        make.left.equalTo(self.contentView).offset(6.f);
-        make.right.equalTo(self.contentView).offset(-6.f);
+        make.top.equalTo(self.contentView).offset(3.f);
+        make.left.equalTo(self.contentView).offset(2.f);
+        make.right.equalTo(self.contentView).offset(-2.f);
         make.height.mas_equalTo(167 *ScreenScale);
     }];
+    self.imageView.bounds = CGRectMake(0, 0, self.contentView.width-4.f, 167 *ScreenScale);
+    [UIView maskCorner:self.imageView rectCorner:UIRectCornerAllCorners corner:5.f];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.imageView.mas_bottom).offset(5.f);
         make.right.equalTo(self.contentView).offset(-10.f);
-        make.left.equalTo(self.imageView);
+        make.left.equalTo(self.imageView).offset(2.f);
     }];
     
     [self.promotionPriceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -62,7 +65,7 @@
     
     [self.saleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.originalPriceLabel);
-        make.right.equalTo(self.contentView.mas_right);
+        make.right.equalTo(self.imageView.mas_right).offset(-2.f);
     }];
     
 }
@@ -87,7 +90,6 @@
     if (! _titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _titleLabel.font = Font_16;
-        _titleLabel.text = @"测试数据"; //--test
         [self.contentView addSubview:_titleLabel];
     }
     return _titleLabel;

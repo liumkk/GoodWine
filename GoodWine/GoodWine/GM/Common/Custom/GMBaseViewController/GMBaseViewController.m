@@ -29,6 +29,7 @@
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     //修改return键
     _returnKeyHander = [[IQKeyboardReturnKeyHandler alloc] initWithViewController:self];
+     [[IQKeyboardManager sharedManager] setToolbarDoneBarButtonItemText:@"收起"];
 }
 
 - (void)updateNavigationBar {

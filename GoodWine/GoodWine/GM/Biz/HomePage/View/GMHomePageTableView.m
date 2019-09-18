@@ -32,7 +32,7 @@ static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
         self.delegate = self;
         self.estimatedRowHeight = 44;
         self.rowHeight = UITableViewAutomaticDimension;
-        self.backgroundColor = COLOR_TABLE_BG_RAY;
+        self.backgroundColor = COLOR_GRAY_244;
         
         [self registerClass:[GMKeyValueInfoCell class] forCellReuseIdentifier:homePageIdentifier];
         [self registerClass:[GMMenuTableViewCell class] forCellReuseIdentifier:menuCellIdentifier];

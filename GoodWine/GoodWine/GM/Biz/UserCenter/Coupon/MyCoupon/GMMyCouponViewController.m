@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) GMMyCouponTableView *myCouponTableView;
 @property (nonatomic, strong) MKEmptyView *emptyView;
-@property (nonatomic, strong) NSMutableArray <CouponInfoModel *> *dataArray;
+@property (nonatomic, strong) NSMutableArray <MyCouponInfoModel *> *dataArray;
 @property (nonatomic, assign) NSInteger page;
 
 @end
@@ -46,7 +46,7 @@
 - (void)requestQueryCouponListIsLoadMore:(BOOL)isLoadMore {
     [GMLoadingActivity showLoadingActivityInView:self.view];
     @weakify(self)
-    [ServerAPIManager asyncQueryMyCouponPageNum:isLoadMore ? [NSString stringWithFormat:@"%ld",(long)self.page] : @"1" pageSize:@"4" SucceedBlock:^(NSArray<CouponInfoModel *> * array) {
+    [ServerAPIManager asyncQueryMyCouponPageNum:isLoadMore ? [NSString stringWithFormat:@"%ld",(long)self.page] : @"1" pageSize:@"4" SucceedBlock:^(NSArray<MyCouponInfoModel *> * array) {
         @strongify(self)
         [GMLoadingActivity hideLoadingActivityInView:self.view];
         [self endMJRefresh];
@@ -78,12 +78,11 @@
 }
 
 - (void)myCouponTableViewDidSelectRowAtIndex:(NSInteger)index {
-    CouponInfoModel *model = self.dataArray[index];
-    if (model.receive == 0) {
+    MyCouponInfoModel *model = self.dataArray[index];
+    if ([model.useStatus integerValue] == 0) {
         [GMLoadingActivity showLoadingActivityInView:self.view];
         [ServerAPIManager asyncGetCouponWithCouponId:model.couponId succeedBlock:^{
             [MKToastView showToastToView:self.view text:@"领取成功"];
-            model.receive = 1;
             [self.myCouponTableView reloadTableViewWithDataArray:self.dataArray];
         } failedBlock:^(NSError * _Nonnull error) {
             [GMLoadingActivity hideLoadingActivityInView:self.view];

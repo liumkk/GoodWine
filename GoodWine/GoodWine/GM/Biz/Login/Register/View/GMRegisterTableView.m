@@ -30,7 +30,7 @@ static NSString *registerTableCellID = @"registerTableCellID";
         self.dataSource = self;
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
         [self registerClass:[MKTextFieldTableViewCell class] forCellReuseIdentifier:registerTableCellID];
     }
     return self;

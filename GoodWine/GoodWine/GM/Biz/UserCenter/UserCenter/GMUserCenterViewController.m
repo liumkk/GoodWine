@@ -43,6 +43,7 @@
         [self.navigationController pushViewController:addressVC animated:YES];
     } else if (index == 1) {
         GMMyCouponViewController *vc = [[GMMyCouponViewController alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     } else if (index == 2) {
         GMCollectViewController *vc = [[GMCollectViewController alloc] init];

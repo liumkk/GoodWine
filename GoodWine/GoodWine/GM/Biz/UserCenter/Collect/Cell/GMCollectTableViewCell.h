@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GMCollectTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UIImageView *bgView;
+
 @property (nonatomic, strong) UIImageView *headerImageView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *priceLabel;

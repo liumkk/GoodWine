@@ -81,6 +81,12 @@
 		D64CA6B823307F83001E252F /* GMPicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6B723307F83001E252F /* GMPicTableViewCell.m */; };
 		D64CA6BC233086B4001E252F /* GMSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6BB233086B4001E252F /* GMSettingTableViewCell.m */; };
 		D64CA6C52330CFCF001E252F /* GMOrderSnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6C42330CFCF001E252F /* GMOrderSnTableViewCell.m */; };
+		D64CA6CE233209B1001E252F /* GMSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6CD233209B1001E252F /* GMSearchView.m */; };
+		D64CA6D2233213AC001E252F /* GMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6D1233213AC001E252F /* GMSearchViewController.m */; };
+		D64CA6D6233234BD001E252F /* GMSearchCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6D5233234BD001E252F /* GMSearchCollectionView.m */; };
+		D64CA6DA23327079001E252F /* MyCouponInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6D923327079001E252F /* MyCouponInfoModel.m */; };
+		D64CA6DD2332708E001E252F /* MyCouponItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6DC2332708E001E252F /* MyCouponItem.m */; };
+		D64CA6E1233275A4001E252F /* GMMyCouponTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D64CA6E0233275A4001E252F /* GMMyCouponTableViewCell.m */; };
 		D65C233123044CA800DF955F /* GMOrderConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D65C233023044CA800DF955F /* GMOrderConfirmViewController.m */; };
 		D65C233723044CD800DF955F /* GMOrderConfirmTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D65C233623044CD800DF955F /* GMOrderConfirmTableView.m */; };
 		D65C233A2304502F00DF955F /* GMOrderAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D65C23392304502F00DF955F /* GMOrderAddressTableViewCell.m */; };
@@ -325,6 +331,18 @@
 		D64CA6BB233086B4001E252F /* GMSettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSettingTableViewCell.m; sourceTree = "<group>"; };
 		D64CA6C32330CFCF001E252F /* GMOrderSnTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderSnTableViewCell.h; sourceTree = "<group>"; };
 		D64CA6C42330CFCF001E252F /* GMOrderSnTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderSnTableViewCell.m; sourceTree = "<group>"; };
+		D64CA6CC233209B1001E252F /* GMSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSearchView.h; sourceTree = "<group>"; };
+		D64CA6CD233209B1001E252F /* GMSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSearchView.m; sourceTree = "<group>"; };
+		D64CA6D0233213AC001E252F /* GMSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSearchViewController.h; sourceTree = "<group>"; };
+		D64CA6D1233213AC001E252F /* GMSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSearchViewController.m; sourceTree = "<group>"; };
+		D64CA6D4233234BD001E252F /* GMSearchCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMSearchCollectionView.h; sourceTree = "<group>"; };
+		D64CA6D5233234BD001E252F /* GMSearchCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMSearchCollectionView.m; sourceTree = "<group>"; };
+		D64CA6D823327079001E252F /* MyCouponInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCouponInfoModel.h; sourceTree = "<group>"; };
+		D64CA6D923327079001E252F /* MyCouponInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCouponInfoModel.m; sourceTree = "<group>"; };
+		D64CA6DB2332708E001E252F /* MyCouponItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCouponItem.h; sourceTree = "<group>"; };
+		D64CA6DC2332708E001E252F /* MyCouponItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCouponItem.m; sourceTree = "<group>"; };
+		D64CA6DF233275A4001E252F /* GMMyCouponTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMMyCouponTableViewCell.h; sourceTree = "<group>"; };
+		D64CA6E0233275A4001E252F /* GMMyCouponTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMMyCouponTableViewCell.m; sourceTree = "<group>"; };
 		D65C232F23044CA800DF955F /* GMOrderConfirmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderConfirmViewController.h; sourceTree = "<group>"; };
 		D65C233023044CA800DF955F /* GMOrderConfirmViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderConfirmViewController.m; sourceTree = "<group>"; };
 		D65C233523044CD800DF955F /* GMOrderConfirmTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderConfirmTableView.h; sourceTree = "<group>"; };
@@ -958,6 +976,7 @@
 		D638664A229D755E0020DE4B /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				D64CA6CF2332138B001E252F /* Search */,
 				D61A1EAA22D8C1FC00EC69AB /* Model */,
 				D638665E229D7C3D0020DE4B /* Cell */,
 				D638665D229D7C350020DE4B /* View */,
@@ -1018,6 +1037,8 @@
 			children = (
 				D6386662229D7DB90020DE4B /* GMHomePageTableView.h */,
 				D6386663229D7DB90020DE4B /* GMHomePageTableView.m */,
+				D64CA6CC233209B1001E252F /* GMSearchView.h */,
+				D64CA6CD233209B1001E252F /* GMSearchView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1103,6 +1124,8 @@
 		D64CA6AE232FC9CD001E252F /* MyCoupon */ = {
 			isa = PBXGroup;
 			children = (
+				D64CA6DE23327582001E252F /* cell */,
+				D64CA6D72332705C001E252F /* Model */,
 				D64CA6B2232FC9F8001E252F /* View */,
 				D64CA6AF232FC9E5001E252F /* GMMyCouponViewController.h */,
 				D64CA6B0232FC9E5001E252F /* GMMyCouponViewController.m */,
@@ -1126,6 +1149,45 @@
 				D64CA6BB233086B4001E252F /* GMSettingTableViewCell.m */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		D64CA6CF2332138B001E252F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				D64CA6D3233213B8001E252F /* View */,
+				D64CA6D0233213AC001E252F /* GMSearchViewController.h */,
+				D64CA6D1233213AC001E252F /* GMSearchViewController.m */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		D64CA6D3233213B8001E252F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D64CA6D4233234BD001E252F /* GMSearchCollectionView.h */,
+				D64CA6D5233234BD001E252F /* GMSearchCollectionView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D64CA6D72332705C001E252F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D64CA6D823327079001E252F /* MyCouponInfoModel.h */,
+				D64CA6D923327079001E252F /* MyCouponInfoModel.m */,
+				D64CA6DB2332708E001E252F /* MyCouponItem.h */,
+				D64CA6DC2332708E001E252F /* MyCouponItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D64CA6DE23327582001E252F /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				D64CA6DF233275A4001E252F /* GMMyCouponTableViewCell.h */,
+				D64CA6E0233275A4001E252F /* GMMyCouponTableViewCell.m */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		D65C232D23044C2F00DF955F /* MyOrder */ = {
@@ -1941,7 +2003,9 @@
 				D687EE8822F9C34500A3D249 /* GMTableViewFooterView.m in Sources */,
 				D61A1EA522CCE10E00EC69AB /* GMServerAPIManager+UserAccess.m in Sources */,
 				D6FD41D9230ECB0F00866A68 /* MKVerificationCodeView.m in Sources */,
+				D64CA6D6233234BD001E252F /* GMSearchCollectionView.m in Sources */,
 				D64CA6B5232FCA13001E252F /* GMMyCouponTableView.m in Sources */,
+				D64CA6E1233275A4001E252F /* GMMyCouponTableViewCell.m in Sources */,
 				D65C23602307AB7A00DF955F /* GMProductSkuItem.m in Sources */,
 				D60F381423196E6B0059B66F /* CollectProductItem.m in Sources */,
 				D638663F229C399E0020DE4B /* GMNavigationController.m in Sources */,
@@ -1957,11 +2021,14 @@
 				D61A1EB122D8DFAB00EC69AB /* HomePageInfoDetailItem.m in Sources */,
 				D687ED4022F1950E00A3D249 /* GMCollectionView.m in Sources */,
 				D687EEA522FBB40C00A3D249 /* GMServerAPIManager+ShoppCar.m in Sources */,
+				D64CA6DA23327079001E252F /* MyCouponInfoModel.m in Sources */,
+				D64CA6CE233209B1001E252F /* GMSearchView.m in Sources */,
 				D65C2384230AE0C300DF955F /* GMProductEvaluateTableView.m in Sources */,
 				D687ED7122F51CCE00A3D249 /* GMAddressManageTableView.m in Sources */,
 				D63865EB229C1EC20020DE4B /* AppDelegate.m in Sources */,
 				D65C2397230D24B300DF955F /* CouponHistoryInfoModel.m in Sources */,
 				D64CA6B1232FC9E5001E252F /* GMMyCouponViewController.m in Sources */,
+				D64CA6DD2332708E001E252F /* MyCouponItem.m in Sources */,
 				D6E361492326841A0056454C /* GMModifyTableView.m in Sources */,
 				D65C233A2304502F00DF955F /* GMOrderAddressTableViewCell.m in Sources */,
 				D6E3613D23267C380056454C /* GMSettingViewController.m in Sources */,
@@ -2016,6 +2083,7 @@
 				D6E36145232683CE0056454C /* GMModifyPasswordViewController.m in Sources */,
 				D6E36153232694D40056454C /* GMOrderListTableView.m in Sources */,
 				D638667A229EE1B50020DE4B /* GMMyOrderCell.m in Sources */,
+				D64CA6D2233213AC001E252F /* GMSearchViewController.m in Sources */,
 				D60F3841231ACF6E0059B66F /* GMOrderPayView.m in Sources */,
 				D60F37E1231578B00059B66F /* GMProductAreaViewController.m in Sources */,
 				D671920622EED1F30061146F /* NSString+Additions.m in Sources */,

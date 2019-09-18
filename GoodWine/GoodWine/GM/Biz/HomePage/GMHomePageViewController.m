@@ -11,11 +11,15 @@
 #import "GMProductDetailViewController.h"
 #import "GMProductAreaViewController.h"
 #import "GMCouponViewController.h"
+#import "GMSearchView.h"
+#import "GMSearchViewController.h"
 
 @interface GMHomePageViewController () <GMHomePageTableViewDelegate>
 
 @property (nonatomic, strong) GMHomePageTableView *homePageTableView;
 @property (nonatomic, strong) HomePageInfoModel *infoModel;
+@property (nonatomic, strong) GMSearchView *searchView;
+
 
 @end
 
@@ -42,9 +46,11 @@
 }
 
 - (void)initSubviews {
-    self.title = @"首页";
+//    self.title = @"首页";
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.navigationItem.titleView = self.searchView;
 }
 
 #pragma mark --add MJRefresh
@@ -99,7 +105,12 @@
         vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    
+}
+
+- (void)searchAction:(UIButton *)btn {
+    GMSearchViewController *vc = [[GMSearchViewController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark --update constraints
@@ -119,6 +130,14 @@
         [self.view addSubview:_homePageTableView];
     }
     return _homePageTableView;
+}
+
+- (GMSearchView *)searchView {
+    if (! _searchView) {
+        _searchView = [[GMSearchView alloc] initWithFrame:CGRectMake(30.f, 10.f, Width_Screen - 60.f, 35.f)];
+        [_searchView.searchButton addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _searchView;
 }
 
 @end

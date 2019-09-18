@@ -46,7 +46,7 @@
         return nil;
     }
     return
-    [ServerClient asyncGetNetworkRequestWithURLString:GMGetStoreInfo(regionCode) parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
+    [ServerClient asyncQueryAreaCodeWithURLString:GMGetStoreInfo(regionCode) parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
             GMStoreInfoModel *infomodel = [GMStoreInfoModel storeInfoModelWithDictionary:responseDict[@"data"]];
             if (succeedBlock) {
@@ -132,7 +132,7 @@
 
 - (NSURLSessionDataTask *)asyncQueryMyCouponPageNum:(NSString *)pageNum
                                            pageSize:(NSString *)pageSize
-                                       SucceedBlock:(void (^)(NSArray <CouponInfoModel *> * _Nonnull))succeedBlock
+                                       SucceedBlock:(void (^)(NSArray <MyCouponInfoModel *> * _Nonnull))succeedBlock
                                         failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
     
     NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
@@ -147,7 +147,7 @@
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
             NSMutableArray *dataArray = [[NSMutableArray alloc] init];
             for (NSDictionary *dic in responseDict[@"data"]) {
-                CouponInfoModel *model = [CouponInfoModel couponInfoModelsWithDictionary:dic];
+                MyCouponInfoModel *model = [MyCouponInfoModel yy_modelWithDictionary:dic];
                 [dataArray addObject:model];
             }
             if (succeedBlock) {
@@ -168,12 +168,12 @@
     }];
 }
 
-- (NSURLSessionDataTask *)asyncGetCouponWithCouponId:(NSInteger)couponId
+- (NSURLSessionDataTask *)asyncGetCouponWithCouponId:(NSString *)couponId
                                         succeedBlock:(void (^)(void))succeedBlock
                                          failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
     NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
     
-    temParamDict[@"couponId"] = [NSString stringWithFormat:@"%ld",couponId];
+    temParamDict[@"couponId"] = couponId;
     return
     [ServerClient asyncNetworkRequestWithURL:GMGetCoupon(couponId) parameter:temParamDict success:^(NSDictionary * _Nonnull responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
@@ -189,6 +189,47 @@
             
         }
     } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
+- (NSURLSessionDataTask *)asyncSearchWithSearchName:(NSString *)searchName
+                                           pageSize:(NSString *)pageSize
+                                            pageNum:(NSString *)pageNum
+                                        succeedBlock:(void (^)(NSArray <HomePageTypeItem *> *_Nonnull))succeedBlock
+                                         failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
+    
+    temParamDict[@"storeId"] = UserCenter.storeId;
+    searchName = [searchName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    temParamDict[@"searchName"] = searchName;
+    temParamDict[@"pageSize"] = pageSize;
+    temParamDict[@"pageNum"] = pageNum;
+    [ServerClient setContentTypeJson];
+    return
+    [ServerClient asyncGetNetworkRequestWithURLString:GMSearchProduct(pageSize, pageNum, UserCenter.storeId, searchName) parameter:temParamDict success:^(NSDictionary * _Nonnull responseDict) {
+        
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            NSMutableArray *dataArray = [[NSMutableArray alloc] init];
+            for (NSDictionary *dic in responseDict[@"data"]) {
+                HomePageTypeItem *model = [HomePageTypeItem homePageTypeItemWithDict:dic];
+                [dataArray addObject:model];
+            }
+            
+            if (succeedBlock) {
+                succeedBlock(dataArray);
+            }
+            
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError * _Nonnull error) {
         if (failedBlock) {
             failedBlock(error);
         }

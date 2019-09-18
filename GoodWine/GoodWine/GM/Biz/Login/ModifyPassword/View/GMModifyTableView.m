@@ -28,7 +28,7 @@ static NSString *modifyPasswordTableCellID = @"modifyPasswordTableCellID";
         self.dataSource = self;
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        
+        self.backgroundColor = COLOR_TABLE_BG_RAY;
         [self registerClass:[MKTextFieldTableViewCell class] forCellReuseIdentifier:modifyPasswordTableCellID];
     }
     return self;

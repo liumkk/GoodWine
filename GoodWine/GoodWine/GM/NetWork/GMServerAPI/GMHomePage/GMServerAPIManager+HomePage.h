@@ -25,13 +25,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSURLSessionDataTask *)asyncQueryMyCouponPageNum:(NSString *)pageNum
                                            pageSize:(NSString *)pageSize
-                                       SucceedBlock:(void (^)(NSArray <CouponInfoModel *> *array))succeedBlock
+                                       SucceedBlock:(void (^)(NSArray <MyCouponInfoModel *> *array))succeedBlock
                                         failedBlock:(void (^)(NSError * error))failedBlock;
 
-- (NSURLSessionDataTask *)asyncGetCouponWithCouponId:(NSInteger)couponId
+- (NSURLSessionDataTask *)asyncGetCouponWithCouponId:(NSString *)couponId
                                         succeedBlock:(void (^)(void))succeedBlock
                                          failedBlock:(void (^)(NSError * error))failedBlock;
 
+- (NSURLSessionDataTask *)asyncSearchWithSearchName:(NSString *)searchName
+                                           pageSize:(NSString *)pageSize
+                                            pageNum:(NSString *)pageNum
+                                       succeedBlock:(void (^)(NSArray <HomePageTypeItem *> *array))succeedBlock
+                                        failedBlock:(void (^)(NSError * error))failedBlock;
 @end
 
 NS_ASSUME_NONNULL_END

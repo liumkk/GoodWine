@@ -24,7 +24,6 @@
             if (succeedBlock) {
                 succeedBlock(dataArray);
             }
-            
         }else {
             
             if (failedBlock) {

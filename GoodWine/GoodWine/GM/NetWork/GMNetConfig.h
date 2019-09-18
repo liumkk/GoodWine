@@ -44,7 +44,10 @@
 #define GMGetStoreInfo(_code)         [NSString stringWithFormat:@"store/storeInfo?regionCode=%@",_code]
 #define GMHomePageInfo(_storeId)      [NSString stringWithFormat:@"home/content?storeId=%@",_storeId]
 #define GMHomeCoupon(_storeId)        [NSString stringWithFormat:@"home/couponList?storeId=%@",_storeId]
-#define GMGetCoupon(_couponId)        [NSString stringWithFormat:@"member/coupon/add/%ld",_couponId]
+#define GMSearchProduct(_pageSize,_pageNum,_storeId,_sname)      \
+        [NSString stringWithFormat:@"product/seachProducts?pageSize=%@&pageNum=%@&storeId=%@&seachName=%@",_pageSize,_pageNum,_storeId,_sname]
+
+#define GMGetCoupon(_couponId)        [NSString stringWithFormat:@"member/coupon/add/%@",_couponId]
 
 #define GMQueryMyCoupon(_pageSize,_pageNum,_storeId)      \
         [NSString stringWithFormat:@"member/coupon/list?pageSize=%@&pageNum=%@&storeId=%@&useStatus=0",_pageSize,_pageNum,_storeId]

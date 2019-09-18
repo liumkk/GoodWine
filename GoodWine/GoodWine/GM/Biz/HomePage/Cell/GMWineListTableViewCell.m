@@ -23,6 +23,7 @@ static NSString *collectionViewCellId = @"collectionViewCellId";
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.contentView.backgroundColor = COLOR_TABLE_BG_RAY;
         [self setupConstraints];
         
         [self initWineListCollectionView];
@@ -42,8 +43,8 @@ static NSString *collectionViewCellId = @"collectionViewCellId";
     self.wineListCollectionView.delegate = self;
     self.wineListCollectionView.dataSource = self;
     [self.wineListCollectionView registerClass:[GMWineListCollectionViewCell class] forCellWithReuseIdentifier:collectionViewCellId];
-    self.wineListCollectionView.backgroundColor = [UIColor whiteColor];
-    self.wineListCollectionView.showsVerticalScrollIndicator = YES;//关闭滚动条
+    self.wineListCollectionView.backgroundColor = COLOR_TABLE_BG_RAY;
+    self.wineListCollectionView.showsVerticalScrollIndicator = NO;//关闭滚动条
     self.wineListCollectionView.bounces = NO;//是否有回弹效果
     self.wineListCollectionView.scrollEnabled = NO;
     [self.contentView addSubview:self.wineListCollectionView];

@@ -49,6 +49,9 @@ static GMServerClient *_sharedClient = nil;
                                            parameter:(id)param
                                              success:(void (^)(NSDictionary *responseDict))success
                                              failure:(void (^)(NSError *error))failure {
+    if (!UserCenter.storeId) {
+        MKNSLog(@"UserCenter.storeId为空");
+    }
    [_sharedClient.requestSerializer setValue:[DataManager getCookie] forHTTPHeaderField:Cookie_Key];
     NSURLSessionDataTask *task = [self POST:url parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
@@ -61,8 +64,13 @@ static GMServerClient *_sharedClient = nil;
                 failure(error);
             }
         }else {
-            if (success) {
-                success(responseDict);
+            if ([[responseDict[@"code"] stringValue] isEqualToString:@"403"]) {
+                [ViewControllerManager showLoginView];
+                [MKToastView showToastToView:[UIApplication sharedApplication].delegate.window text:@"请重新登录"];
+            } else {
+                if (success) {
+                    success(responseDict);
+                }
             }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -79,6 +87,47 @@ static GMServerClient *_sharedClient = nil;
                                                     parameter:(id)param
                                                       success:(void (^)(NSDictionary *responseDict))success
                                                       failure:(void (^)(NSError *error))failure {
+    if (!UserCenter.storeId) {
+        MKNSLog(@"UserCenter.storeId为空");
+    }
+    [_sharedClient.requestSerializer setValue:[DataManager getCookie] forHTTPHeaderField:Cookie_Key];
+    NSURLSessionDataTask *task = [self GET:urlString parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        //1.解析json
+        NSError *error = nil;
+        NSDictionary *respDict = [NSJSONSerialization JSONObjectWithData:responseObject
+                                                                 options:NSJSONReadingAllowFragments
+                                                                   error:&error];
+        if (error) {
+            if (failure) {
+                failure(error);
+            }
+        }else {
+            if ([[respDict[@"code"] stringValue] isEqualToString:@"403"]) {
+                [ViewControllerManager showLoginView];
+                [MKToastView showToastToView:[UIApplication sharedApplication].delegate.window text:@"请重新登录"];
+            } else {
+                if (success) {
+                    success(respDict);
+                }
+            }
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        if (failure) {
+            failure([GMNetworkError changeNetError:error]);
+        }
+        
+    }];
+    
+    return task;
+}
+
+- (NSURLSessionDataTask *)asyncQueryAreaCodeWithURLString:(NSString *)urlString
+                                                parameter:(id)param
+                                                  success:(void (^)(NSDictionary *responseDict))success
+                                                  failure:(void (^)(NSError *error))failure {
     [_sharedClient.requestSerializer setValue:[DataManager getCookie] forHTTPHeaderField:Cookie_Key];
     NSURLSessionDataTask *task = [self GET:urlString parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         

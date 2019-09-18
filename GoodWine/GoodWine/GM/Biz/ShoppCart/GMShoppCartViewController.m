@@ -50,6 +50,7 @@
         [self.dataArray removeAllObjects];
         [self.dataArray addObjectsFromArray:array];
         [self.shoppCarTV reloadTableViewWithDataArray:self.dataArray];
+        self.footerView.allSelectBtn.selected = NO;
     } failedBlock:^(NSError * _Nonnull error) {
         [GMLoadingActivity hideLoadingActivityInView:self.view];
         [self endMJRefresh];

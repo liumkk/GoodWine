@@ -48,8 +48,7 @@
     @weakify(self)
     [self.maskView touchesBegan:^{
         @strongify(self)
-        self.selectView.frame = CGRectMake(0, Height_Screen, Width_Screen, self.selectView.bgView.height);
-        self.maskView.hidden = YES;
+        [self hiddenSelectView];
     }];
 }
 
@@ -81,6 +80,7 @@
         dispatch_group_leave(group);
     } failedBlock:^(NSError *error) {
         dispatch_group_leave(group);
+        [self showAlertViewWithError:error];
     }];
     
     dispatch_group_enter(group);
@@ -90,6 +90,7 @@
         dispatch_group_leave(group);
     } failedBlock:^(NSError * _Nonnull error) {
         dispatch_group_leave(group);
+        [self showAlertViewWithError:error];
     }];
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
@@ -144,41 +145,42 @@
 
 - (void)joinShoppCarAction:(UIButton *)btn {
     self.isBuy = NO;
-    self.maskView.hidden = NO;
-    [self.selectView setNeedsLayout];
-    @weakify(self)
-    [UIView animateWithDuration:0.3 animations:^{
-        @strongify(self)
-        self.selectView.frame = CGRectMake(0, Height_Screen - NavigationBarAndStatusBarHeight - self.selectView.bgView.height, Width_Screen, self.selectView.bgView.height);
-    }];
+    [self showSelectView];
 }
 
 - (void)buyAction:(UIButton *)btn {
     self.isBuy = YES;
+    [self showSelectView];
+}
+
+- (void)showSelectView {
     self.maskView.hidden = NO;
     [self.selectView setNeedsLayout];
     @weakify(self)
     [UIView animateWithDuration:0.3 animations:^{
         @strongify(self)
+        self.selectView.hidden = NO;
         self.selectView.frame = CGRectMake(0, Height_Screen - NavigationBarAndStatusBarHeight - self.selectView.bgView.height, Width_Screen, self.selectView.bgView.height);
     }];
+}
+
+- (void)hiddenSelectView {
+    self.selectView.frame = CGRectMake(0, Height_Screen, Width_Screen, self.selectView.bgView.height);
+    self.maskView.hidden = YES;
 }
 
 - (void)selectProductWithItem:(GMProductSkuItem *)item buyNum:(NSString *)buyNum {
     if (self.isBuy) {
         GMOrderConfirmViewController *vc = [[GMOrderConfirmViewController alloc] init];
         [vc reloadOrderConfirmWithProductDetail:self.productInfoModel.productDetailModel skuItem:item quantity:buyNum];
-        self.selectView.frame = CGRectMake(0, Height_Screen, Width_Screen, self.selectView.bgView.height);
-        self.maskView.hidden = YES;
+        [self hiddenSelectView];
         [self.navigationController pushViewController:vc animated:YES];
     } else {
         @weakify(self)
         [ServerAPIManager asyncAddShoppCarWithDetailModel:self.productInfoModel.productDetailModel skuItem:item quantity:buyNum succeedBlock:^{
            @strongify(self)
             [[NSNotificationCenter defaultCenter] postNotificationName:Notification_addProduct object:nil];
-            self.selectView.frame = CGRectMake(0, Height_Screen, Width_Screen, self.selectView.bgView.height);
-            self.maskView.hidden = YES;
-//            [MKToastView showToastToView:self.view text:@"添加购物车成功"];
+            [self hiddenSelectView];
             [self showAlertViewWithTitle:@"添加购物车成功"];
         } failedBlock:^(NSError * error) {
             [self showAlertViewWithError:error];
@@ -210,8 +212,9 @@
 
 - (GMSelectProductView *)selectView {
     if (! _selectView) {
-        _selectView = [[GMSelectProductView alloc] initWithFrame:CGRectMake(0, Height_Screen + NavigationBarAndStatusBarHeight, Width_Screen, 200.f)];
+        _selectView = [[GMSelectProductView alloc] initWithFrame:CGRectMake(0, Height_Screen + SafeAreaTopHeight, Width_Screen, 200.f)];
         _selectView.selectProductDelegate = self;
+        self.selectView.hidden = YES;
         [self.view addSubview:_selectView];
     }
     return _selectView;

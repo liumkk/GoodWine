@@ -28,6 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
                                                       success:(void (^)(NSDictionary *responseDict))success
                                                       failure:(void (^)(NSError *error))failure;
 
+- (NSURLSessionDataTask *)asyncQueryAreaCodeWithURLString:(NSString *)urlString
+                                                parameter:(id)param
+                                                  success:(void (^)(NSDictionary *responseDict))success
+                                                  failure:(void (^)(NSError *error))failure;
 @end
 
 NS_ASSUME_NONNULL_END
