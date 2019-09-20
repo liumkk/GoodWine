@@ -41,10 +41,10 @@
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(3.f);
         make.left.equalTo(self.contentView).offset(2.f);
-        make.right.equalTo(self.contentView).offset(-2.f);
+        make.right.equalTo(self.contentView).offset(-4.f);
         make.height.mas_equalTo(167 *ScreenScale);
     }];
-    self.imageView.bounds = CGRectMake(0, 0, self.contentView.width-4.f, 167 *ScreenScale);
+    self.imageView.bounds = CGRectMake(0, 0, self.contentView.width-6.f, 167 *ScreenScale);
     [UIView maskCorner:self.imageView rectCorner:UIRectCornerAllCorners corner:5.f];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -73,6 +73,12 @@
 - (UIImageView *)bgView {
     if (! _bgView) {
         _bgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"collection_bg"]];
+        // 阴影偏移，默认(0, -3)
+        _bgView.layer.shadowOffset = CGSizeMake(1,2);
+        // 阴影透明度，默认0
+        _bgView.layer.shadowOpacity = 0.3;
+        // 阴影半径，默认3
+        _bgView.layer.shadowRadius = 2;
         [self.contentView addSubview:_bgView];
     }
     return _bgView;

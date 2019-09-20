@@ -44,10 +44,13 @@
 }
 
 - (void)payBtnAction:(UIButton *)btn {
+    [GMLoadingActivity showLoadingActivityInView:self.view];
     @weakify(self)
     [ServerAPIManager asyncGetPayDataWithOrderId:self.orderModel.orderId succeedBlock:^(NSString * _Nonnull data) {
-
+        @strongify(self)
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
         [[AlipaySDK defaultService] payOrder:data fromScheme:GMUrlSchemes callback:^(NSDictionary *resultDic) {
+            @strongify(self)
             NSLog(@"reslut = %@",resultDic);
             if ([resultDic[@"resultStatus"] integerValue] == 9000) {
                 GMPaySuccessViewController *vc = [[GMPaySuccessViewController alloc] init];
@@ -79,6 +82,7 @@
         }];
     } failedBlock:^(NSError * _Nonnull error) {
         @strongify(self)
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
         [self showAlertViewWithError:error];
     }];
 }

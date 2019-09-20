@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *cancleBtn;
 @property (nonatomic, strong) UIButton *statusBtn;
 
+- (void)updateCellWithModel:(GMOrderDetailInfoModel *)model;
+
 @end
 
 NS_ASSUME_NONNULL_END

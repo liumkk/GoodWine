@@ -10,7 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^MyCouponCallBack)(MyCouponInfoModel *model);
+
 @interface GMMyCouponViewController : GMBaseViewController
+
+- (void)myCouponCallBack:(MyCouponCallBack)callBack;
 
 @end
 

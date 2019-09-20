@@ -121,6 +121,11 @@
     } else if (indexPath.section == 2) {
         if (indexPath.row == 2) {
             GMMyCouponViewController *vc = [[GMMyCouponViewController alloc] init];
+            [vc myCouponCallBack:^(MyCouponInfoModel * _Nonnull model) {
+                self.myOrderModel.couponId = model.couponId;
+                [self.orderConfirmTV.contentArray replaceObjectAtIndex:2 withObject:model.couponItem.name];
+                [self.orderConfirmTV reloadData];
+            }];
             [self.navigationController pushViewController:vc animated:YES];
         } else if (indexPath.row == 4) {
             QFTimerPicker *picker = [[QFTimerPicker alloc]initWithSuperView:self.view response:^(NSString *selectedStr) {

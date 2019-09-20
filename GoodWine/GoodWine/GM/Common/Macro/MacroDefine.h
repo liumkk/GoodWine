@@ -34,6 +34,8 @@
 //字符串是否为空
 #define IsStrEmpty(_ref)    (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]) ||([(_ref)isEqualToString:@""]))
 
+#define Toast_Time              1.5
+
 //-----------------------------------------------------------------------------------------//
 
 #define LeftTitle       @"leftTitle"

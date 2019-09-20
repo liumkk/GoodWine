@@ -30,8 +30,8 @@
         [MKToastView showToastToView:self.view text:@"请填写有效手机号码"];
     } else {
         [self.registerTableView.verificationView initTimer];
-        [ServerAPIManager asyncQueryAuthCodeWithPhoneNum:@"" succeedBlock:^{
-            
+        [ServerAPIManager asyncQueryAuthCodeWithPhoneNum:phone succeedBlock:^{
+            [MKToastView showToastToView:self.view text:@"发送成功"];
         } failedBlock:^(NSError * _Nonnull error) {
             [self showAlertViewWithError:error];
             [self.registerTableView.verificationView clearTimer];

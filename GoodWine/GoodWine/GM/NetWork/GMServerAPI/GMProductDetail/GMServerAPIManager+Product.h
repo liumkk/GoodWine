@@ -20,6 +20,15 @@ NS_ASSUME_NONNULL_BEGIN
                                                     succeedBlock:(void (^)(NSArray <ProductEvaluateInfoModel*> *dataArray))succeedBlock
                                                      failedBlock:(void (^)(NSError *error))failedBlock;
 
+- (NSURLSessionDataTask *)asyncAddEvaluateWithContent:(NSString *)content
+                                              orderId:(NSString *)orderId
+                                          productStar:(NSString *)productStar
+                                            anonymous:(NSString *)anonymous
+                                         deliveryStar:(NSString *)deliveryStar
+                                     satisfactionStar:(NSString *)satisfactionStar
+                                         succeedBlock:(void (^)(void))succeedBlock
+                                          failedBlock:(void (^)(NSError * error))failedBlock;
+
 /**
  *根据门店id和分类id获取品牌
  */

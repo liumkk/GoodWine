@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *memberReceiveAddressId;
 @property (nonatomic, copy) NSString *expectedTime;
 @property (nonatomic, copy) NSString *payType;
+@property (nonatomic, copy) NSString *couponId;
+@property (nonatomic, copy) NSString *couponName;
 
 @property (nonatomic, assign) NSInteger state; //0为购物车生成订单详情  1位商品详情生成订单详情
 

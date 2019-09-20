@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OrderConfirmInfoModels : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, strong) NSArray <GMAddressInfoModel *> *addressArray;
-@property (nonatomic, strong) NSArray <CouponHistoryInfoModel *> *couponHistoryArray;
+@property (nonatomic, strong) NSArray <MyCouponInfoModel *> *couponHistoryArray;
 @property (nonatomic, strong) CalcAmountInfoModel *calcAmountModel;
 
 + (instancetype)orderConfirmInfoModelsWithDictionary:(NSDictionary *)dic;

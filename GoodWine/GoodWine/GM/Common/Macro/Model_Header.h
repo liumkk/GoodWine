@@ -21,6 +21,8 @@
 #import "ProductEvaluateInfoModel.h"
 #import "CalcAmountInfoModel.h"
 #import "CouponHistoryInfoModel.h"
+#import "MyCouponItem.h"
+#import "MyCouponInfoModel.h"
 #import "OrderConfirmInfoModels.h"
 #import "BrandAreaInfoModel.h"
 #import "ProductInfoModel.h"
@@ -33,7 +35,5 @@
 #import "GMMyOrderDetailModel.h"
 #import "GMOrderListItem.h"
 #import "GMOrderListInfoModels.h"
-#import "MyCouponItem.h"
-#import "MyCouponInfoModel.h"
 
 #endif /* Model_Header_h */

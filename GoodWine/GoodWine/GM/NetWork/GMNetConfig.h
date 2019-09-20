@@ -73,6 +73,8 @@
 
 #define GMProductEvaluate(_productId) [NSString stringWithFormat:@"product/comment/list?productId=%@",_productId]
 
+#define GMAddEvaluate                 @"product/comment/add"
+
 #define GMProductBrandList(_storeId,_cateId)      \
         [NSString stringWithFormat:@"product/brandList/?storeId=%@&cateId=%@",_storeId,_cateId]
 

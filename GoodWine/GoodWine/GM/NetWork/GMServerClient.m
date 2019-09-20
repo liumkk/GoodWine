@@ -65,8 +65,9 @@ static GMServerClient *_sharedClient = nil;
             }
         }else {
             if ([[responseDict[@"code"] stringValue] isEqualToString:@"403"]) {
-                [ViewControllerManager showLoginView];
-                [MKToastView showToastToView:[UIApplication sharedApplication].delegate.window text:@"请重新登录"];
+                [MKToastView showToastToView:[UIApplication sharedApplication].delegate.window text:@"请重新登录~" time:Toast_Time completion:^{
+                    [ViewControllerManager showLoginView];
+                }];
             } else {
                 if (success) {
                     success(responseDict);

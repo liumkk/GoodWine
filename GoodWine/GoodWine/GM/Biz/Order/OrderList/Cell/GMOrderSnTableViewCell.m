@@ -34,8 +34,9 @@
     }];
     
     [self.statusBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.equalTo(self.contentView);
+        make.top.equalTo(self.contentView);
         make.right.equalTo(self.contentView.mas_right).offset(-16.f);
+        make.size.mas_equalTo(CGSizeMake(60.f, 20.f));
     }];
     
     [self.cancleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -45,9 +46,20 @@
     }];
 }
 
+- (void)updateCellWithModel:(GMOrderDetailInfoModel *)model {
+    self.titleLabel.text = model.orderSn;
+    if ([model.commentType integerValue] == 2) {
+        [self.statusBtn setBackgroundImage:[UIImage imageNamed:@"white_bg"] forState:UIControlStateNormal];
+        [self.statusBtn setTitleColor:COLOR_TEXT_BLACK forState:UIControlStateNormal];
+    } else {
+        [self.statusBtn setBackgroundImage:[UIImage imageNamed:@"red_bg"] forState:UIControlStateNormal];
+        [self.statusBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }
+    [self.statusBtn setTitle:[model.status statusFormatterWithType:model.commentType] forState:UIControlStateNormal];
+}
+
 - (void)updateCellImageName:(NSString *)imageName title:(NSString *)title content:(NSString *)content needLine:(BOOL)needLine {
 
-    self.iconImageView.image = [UIImage imageNamed:imageName];
     self.titleLabel.text = title;
 }
 
@@ -55,7 +67,7 @@
 
 - (UIImageView *)iconImageView {
     if (! _iconImageView) {
-        _iconImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"goodWine"]];
         [self.contentView addSubview:_iconImageView];
     }
     return _iconImageView;
@@ -69,6 +81,15 @@
         [self.contentView addSubview:_titleLabel];
     }
     return _titleLabel;
+}
+
+- (UIButton *)statusBtn {
+    if (! _statusBtn) {
+        _statusBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _statusBtn.titleLabel.font = Font(14.f);
+        [self.contentView addSubview:_statusBtn];
+    }
+    return _statusBtn;
 }
 
 @end

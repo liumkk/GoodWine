@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CouponHistoryInfoModel : MTLModel <MTLJSONSerializing>
 
+//@property (nonatomic, strong) MyCouponItem *couponItem;
+
 @end
 
 NS_ASSUME_NONNULL_END

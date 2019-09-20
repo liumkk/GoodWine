@@ -63,6 +63,52 @@
     }];
 }
 
+- (NSURLSessionDataTask *)asyncAddEvaluateWithContent:(NSString *)content
+                                              orderId:(NSString *)orderId
+                                          productStar:(NSString *)productStar
+                                            anonymous:(NSString *)anonymous
+                                         deliveryStar:(NSString *)deliveryStar
+                                     satisfactionStar:(NSString *)satisfactionStar
+                                         succeedBlock:(void (^)(void))succeedBlock
+                                          failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    
+    NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
+    
+    temParamDict[@"content"] = content;
+    temParamDict[@"createTime"] = [NSString getCurrentTime];
+    
+    temParamDict[@"memberIcon"] = UserCenter.userInfoModel.icon;
+    temParamDict[@"memberId"] = UserCenter.userInfoModel.memberId;
+    temParamDict[@"memberNickname"] = UserCenter.userInfoModel.nickname;
+    
+    
+    temParamDict[@"orderId"] = orderId;
+    temParamDict[@"anonymous"] = anonymous;
+    
+    temParamDict[@"productStar"] = productStar;
+    temParamDict[@"deliveryStar"] = deliveryStar;
+    temParamDict[@"satisfactionStar"] = satisfactionStar;
+    
+    return
+    [ServerClient asyncNetworkRequestWithURL:GMAddShoppCar parameter:temParamDict success:^(NSDictionary * _Nonnull responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            if (succeedBlock) {
+                succeedBlock();
+            }
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
 - (NSURLSessionDataTask *)asyncAddShoppCarWithDetailModel:(GMProductDetailModel *)detailModel
                                                   skuItem:(GMProductSkuItem *)skuItem
                                                  quantity:(NSString *)quantity

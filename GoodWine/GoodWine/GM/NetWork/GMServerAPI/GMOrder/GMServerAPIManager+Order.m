@@ -129,6 +129,7 @@
     temParamDict[@"memberReceiveAddressId"] =model.memberReceiveAddressId;
     temParamDict[@"expectedTime"] = model.expectedTime;
     temParamDict[@"payType"] = model.payType;
+    temParamDict[@"couponId"] = model.couponId;
     
     [ServerClient setContentTypeJson];
     return
@@ -162,6 +163,7 @@
     temParamDict[@"memberReceiveAddressId"] =model.memberReceiveAddressId;
     temParamDict[@"expectedTime"] = model.expectedTime;
     temParamDict[@"payType"] = model.payType;
+    temParamDict[@"couponId"] = model.couponId;
 
     temParamDict[@"quantity"] = model.quantity;
     temParamDict[@"memberId"] = UserCenter.userInfoModel.memberId;

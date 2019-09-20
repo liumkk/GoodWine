@@ -45,8 +45,8 @@
 - (void)loginAction:(UIButton *)btn {
 
     [GMLoadingActivity showLoadingActivityInView:self.view];
-    [ServerAPIManager asyncLoginWithUserName:@"zhangsan"
-                                    password:@"123456"
+    [ServerAPIManager asyncLoginWithUserName:self.loginView.nameTextField.text.length == 0 ? @"zhangsan" : self.loginView.nameTextField.text
+                                    password:self.loginView.passwordTextField.text.length == 0 ? @"123456" : self.loginView.passwordTextField.text
                                 succeedBlock:^(GMUserCenterInfoModel * model) {
         UserCenter.userInfoModel = model;
         [GMLoadingActivity hideLoadingActivityInView:self.view];

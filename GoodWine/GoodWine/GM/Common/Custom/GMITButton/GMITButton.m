@@ -66,7 +66,7 @@
         _contentLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _contentLabel.textColor = COLOR_TEXT_BLACK;
         _contentLabel.textAlignment = NSTextAlignmentCenter;
-        _contentLabel.font = [UIFont systemFontOfSize:14.f];
+        _contentLabel.font = [UIFont systemFontOfSize:13.f];
         [self addSubview:_contentLabel];
     }
     return _contentLabel;

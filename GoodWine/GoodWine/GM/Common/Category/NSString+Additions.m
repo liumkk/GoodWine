@@ -54,4 +54,20 @@
     }
 }
 
+- (NSString *)statusFormatterWithType:(NSString *)type {
+    if ([self isEqualToString:@"0"]) {
+        return @"去付款";
+    } else if ([self isEqualToString:@"1"]) {
+        return @"待发货";
+    } else if ([self isEqualToString:@"2"]) {
+        return @"确认收货";
+    } else if ([self isEqualToString:@"3"]) {
+        return [type integerValue] == 2 ? @"已评价" : @"去评价";
+    } else if ([self isEqualToString:@"4"]) {
+        return @"已关闭";
+    } else {
+        return @"已失效";
+    }
+}
+
 @end

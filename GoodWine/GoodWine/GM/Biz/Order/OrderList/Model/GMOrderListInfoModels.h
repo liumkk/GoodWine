@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *receiverDetailAddress;
 @property (nonatomic, copy) NSString *confirmStatus;
 @property (nonatomic, copy) NSString *deleteStatus;
+@property (nonatomic, copy) NSString *commentType; //未取到或者值为1表示未评价   值为2表示已评价
 @property (nonatomic, strong) NSArray <GMOrderListItem *>*orderListArray;
 
 @end

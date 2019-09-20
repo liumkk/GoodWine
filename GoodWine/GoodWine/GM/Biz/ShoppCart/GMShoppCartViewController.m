@@ -122,9 +122,9 @@
     } else {
         NSString *quantity;
         if (isAdd) {
-            quantity = [NSString stringWithFormat:@"%ld",[model.quantity integerValue] + 1];
+            quantity = [NSString stringWithFormat:@"%d",[model.quantity integerValue] + 1];
         } else {
-            quantity = [NSString stringWithFormat:@"%ld",[model.quantity integerValue] - 1];
+            quantity = [NSString stringWithFormat:@"%d",[model.quantity integerValue] - 1];
         }
         [ServerAPIManager asyncModifyProductNumWithShoppId:model.shoppCarId quantity:quantity succeedBlock:^{
             model.quantity = quantity;

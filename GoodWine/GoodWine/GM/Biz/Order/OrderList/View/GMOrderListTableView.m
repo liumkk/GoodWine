@@ -11,6 +11,7 @@
 #import "GMOrderListTableViewCell.h"
 #import "GMOrderProductTableViewCell.h"
 #import "GMSettingTableViewCell.h"
+#import "GMOrderSnTableViewCell.h"
 
 static NSString *orderCellID = @"orderCellID";
 static NSString *orderListAddressCellID = @"orderListAddressCellID";
@@ -33,7 +34,7 @@ static NSString *orderListCellID = @"orderListCellID";
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = COLOR_TABLE_BG_RAY;
         
-        [self registerClass:[GMSettingTableViewCell class] forCellReuseIdentifier:orderCellID];
+        [self registerClass:[GMOrderSnTableViewCell class] forCellReuseIdentifier:orderCellID];
         [self registerClass:[GMOrderAddressTableViewCell class] forCellReuseIdentifier:orderListAddressCellID];
         [self registerClass:[GMOrderProductTableViewCell class] forCellReuseIdentifier:orderListCellID];
     }
@@ -65,10 +66,11 @@ static NSString *orderListCellID = @"orderListCellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
-        GMSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:orderCellID forIndexPath:indexPath];
+        GMOrderSnTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:orderCellID forIndexPath:indexPath];
         GMOrderDetailInfoModel *model = self.modelArray[indexPath.section];
-        [cell updateCellImageName:@"goodWine" title:model.orderSn content:[model.status statusFormatter] needLine:NO];
-        cell.contentLabel.textColor = COLOR_THEME_COLOR;
+//        [cell updateCellImageName:@"goodWine" title:model.orderSn content:[model.status statusFormatterWithType:model.commentType] needLine:NO];
+//        cell.contentLabel.textColor = COLOR_THEME_COLOR;
+        [cell updateCellWithModel:model];
         return cell;
     } else if (indexPath.row == 1) {
         GMOrderAddressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:orderListAddressCellID forIndexPath:indexPath];

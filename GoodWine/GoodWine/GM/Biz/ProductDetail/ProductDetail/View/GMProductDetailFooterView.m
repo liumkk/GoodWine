@@ -8,7 +8,8 @@
 
 #import "GMProductDetailFooterView.h"
 
-#define button_width        20.f
+#define button_width        19.f
+#define button_top_margin   5.f
 
 @implementation GMProductDetailFooterView
 
@@ -63,16 +64,16 @@
 //    [UIView maskCorner:self.buyButton rectCorner:UIRectCornerBottomRight | UIRectCornerTopRight corner:16.f];
     self.collectBtn.selected = selected;
     if (selected) {
-        [self.collectBtn updateImageName:@"red_collected" contentText:@"已关注" Width:button_width topMargin:3.f bottomMargin:3.f];
+        [self.collectBtn updateImageName:@"red_collected" contentText:@"已关注" Width:button_width topMargin:button_top_margin bottomMargin:3.f];
     } else {
-        [self.collectBtn updateImageName:@"collect" contentText:@"关注" Width:button_width topMargin:3.f bottomMargin:3.f];
+        [self.collectBtn updateImageName:@"collect" contentText:@"关注" Width:button_width topMargin:button_top_margin bottomMargin:3.f];
     }
 }
 
 - (GMITButton *)collectBtn {
     if (! _collectBtn) {
         _collectBtn = [GMITButton buttonWithType:UIButtonTypeCustom];
-        [_collectBtn updateImageName:@"red_collect" contentText:@"关注" Width:button_width topMargin:3.f bottomMargin:3.f];
+        [_collectBtn updateImageName:@"collect" contentText:@"关注" Width:button_width topMargin:button_top_margin bottomMargin:3.f];
         [self addSubview:_collectBtn];
     }
     return _collectBtn;
@@ -81,7 +82,7 @@
 - (GMITButton *)serviceBtn {
     if (! _serviceBtn) {
         _serviceBtn = [GMITButton buttonWithType:UIButtonTypeCustom];
-        [_serviceBtn updateImageName:@"kefu" contentText:@"客服" Width:button_width topMargin:3.f bottomMargin:3.f];
+        [_serviceBtn updateImageName:@"kefu" contentText:@"客服" Width:button_width topMargin:button_top_margin bottomMargin:3.f];
         [self addSubview:_serviceBtn];
     }
     return _serviceBtn;
@@ -90,7 +91,7 @@
 - (GMITButton *)shoppCarBtn {
     if (! _shoppCarBtn) {
         _shoppCarBtn = [GMITButton buttonWithType:UIButtonTypeCustom];
-        [_shoppCarBtn updateImageName:@"shoppCar" contentText:@"购物车" Width:button_width topMargin:3.f bottomMargin:3.f];
+        [_shoppCarBtn updateImageName:@"shoppCar" contentText:@"购物车" Width:button_width topMargin:button_top_margin bottomMargin:3.f];
         [self addSubview:_shoppCarBtn];
     }
     return _shoppCarBtn;

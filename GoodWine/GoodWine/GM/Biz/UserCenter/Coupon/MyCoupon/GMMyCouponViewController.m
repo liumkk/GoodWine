@@ -16,6 +16,8 @@
 @property (nonatomic, strong) NSMutableArray <MyCouponInfoModel *> *dataArray;
 @property (nonatomic, assign) NSInteger page;
 
+@property (nonatomic, copy) MyCouponCallBack callBack;
+
 @end
 
 @implementation GMMyCouponViewController
@@ -80,14 +82,10 @@
 - (void)myCouponTableViewDidSelectRowAtIndex:(NSInteger)index {
     MyCouponInfoModel *model = self.dataArray[index];
     if ([model.useStatus integerValue] == 0) {
-        [GMLoadingActivity showLoadingActivityInView:self.view];
-        [ServerAPIManager asyncGetCouponWithCouponId:model.couponId succeedBlock:^{
-            [MKToastView showToastToView:self.view text:@"领取成功"];
-            [self.myCouponTableView reloadTableViewWithDataArray:self.dataArray];
-        } failedBlock:^(NSError * _Nonnull error) {
-            [GMLoadingActivity hideLoadingActivityInView:self.view];
-            [self showAlertViewWithError:error];
-        }];
+        if (self.callBack) {
+            self.callBack(model);
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }
 }
 
@@ -142,11 +140,15 @@
     return _emptyView;
 }
 
-- (NSMutableArray<CouponInfoModel *> *)dataArray {
+- (NSMutableArray<MyCouponInfoModel *> *)dataArray {
     if (! _dataArray) {
         _dataArray = [[NSMutableArray alloc] init];
     }
     return _dataArray;
+}
+
+- (void)myCouponCallBack:(MyCouponCallBack)callBack {
+    self.callBack = callBack;
 }
 
 @end

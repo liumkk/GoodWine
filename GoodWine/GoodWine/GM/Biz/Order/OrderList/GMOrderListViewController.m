@@ -9,6 +9,8 @@
 #import "GMOrderListViewController.h"
 #import "GMOrderListTableView.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "GMPaySuccessViewController.h"
+#import "GMOrderEvaluateViewController.h"
 
 @interface GMOrderListViewController () <GMOrderListTableViewDelegate>
 
@@ -37,7 +39,7 @@
     self.page = 1;
     [self updateNavigationBar];
     [self setupConstranits];
-    [self requestOrderListStatus:self.status isLoadMore:NO];
+    [self requestOrderListIsLoadMore:NO];
     
     [self addRefreshHeaderView];
     [self addRefreshFooterView];
@@ -53,7 +55,7 @@
     }];
 }
 
-- (void)requestOrderListStatus:(NSString *)status isLoadMore:(BOOL)isLoadMore {
+- (void)requestOrderListIsLoadMore:(BOOL)isLoadMore {
     [GMLoadingActivity showLoadingActivityInView:self.view];
     @weakify(self)
     [ServerAPIManager asyncQueryOrderListWithPageSize:@"10" pageNum:isLoadMore ? [NSString stringWithFormat:@"%ld",(long)self.page] : @"1" status:self.status succeedBlock:^(NSArray<GMOrderDetailInfoModel *> * _Nonnull array) {
@@ -92,21 +94,61 @@
 - (void)orderListTableViewDidSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     GMOrderDetailInfoModel *infoModel = self.modelArray[indexPath.section];
     if ([infoModel.status integerValue] == 0) {
-        @weakify(self)
-        [ServerAPIManager asyncGetPayDataWithOrderId:infoModel.orderId succeedBlock:^(NSString * _Nonnull data) {
-            
-            [[AlipaySDK defaultService] payOrder:data fromScheme:GMUrlSchemes callback:^(NSDictionary *resultDic) {
-                NSLog(@"reslut = %@",resultDic);
-                if ([resultDic[@"resultStatus"] isEqualToString:@"6001"]) {
-                    //用户取消
-                    [MKToastView showToastToView:self.view text:@"已取消支付"];
-                }
-            }];
-        } failedBlock:^(NSError * _Nonnull error) {
-            @strongify(self)
-            [self showAlertViewWithError:error];
+        [self payWithOrderId:infoModel.orderId];
+    } else if ([infoModel.status integerValue] == 3) {
+        GMOrderEvaluateViewController *vc = [[GMOrderEvaluateViewController alloc] initWithModel:infoModel.orderArray[0]];
+        [vc orderEvaluateCallBack:^{
+            [self requestOrderListIsLoadMore:NO];
         }];
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        GMOrderEvaluateViewController *vc = [[GMOrderEvaluateViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }
+}
+
+- (void)payWithOrderId:(NSString *)orderId {
+    [GMLoadingActivity showLoadingActivityInView:self.view];
+    @weakify(self)
+    [ServerAPIManager asyncGetPayDataWithOrderId:orderId succeedBlock:^(NSString * _Nonnull data) {
+        @strongify(self)
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [[AlipaySDK defaultService] payOrder:data fromScheme:GMUrlSchemes callback:^(NSDictionary *resultDic) {
+            @strongify(self)
+            NSLog(@"reslut = %@",resultDic);
+            if ([resultDic[@"resultStatus"] integerValue] == 9000) {
+                GMPaySuccessViewController *vc = [[GMPaySuccessViewController alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            } else {
+                NSInteger orderState = [resultDic[@"resultStatus"] integerValue];
+                NSString *returnStr;
+                switch (orderState) {
+                    case 8000:
+                        returnStr=@"订单正在处理中";
+                        break;
+                    case 4000:
+                        returnStr=@"订单支付失败";
+                        
+                        break;
+                    case 6001:
+                        returnStr=@"订单取消";
+                        
+                        break;
+                    case 6002:
+                        returnStr=@"网络连接出错";
+                        
+                        break;
+                    default:
+                        break;
+                }
+                [MKToastView showToastToView:self.view text:returnStr];
+            }
+        }];
+    } failedBlock:^(NSError * _Nonnull error) {
+        @strongify(self)
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [self showAlertViewWithError:error];
+    }];
 }
 
 - (void)orderListTableViewDeleteRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -129,7 +171,7 @@
         if ([self.orderListTableView.mj_footer isRefreshing]) {
             [self.orderListTableView.mj_footer endRefreshing];
         }
-        [self requestOrderListStatus:self.status isLoadMore:NO];
+        [self requestOrderListIsLoadMore:NO];
     }];
 }
 
@@ -140,7 +182,7 @@
         if ([self.orderListTableView.mj_header isRefreshing]) {
             [self.orderListTableView.mj_header endRefreshing];
         }
-        [self requestOrderListStatus:self.status isLoadMore:YES];
+        [self requestOrderListIsLoadMore:YES];
     }];
     self.orderListTableView.mj_footer.ignoredScrollViewContentInsetBottom = BottomTarBarSpace;
 }

@@ -31,7 +31,7 @@
 
 + (NSValueTransformer *)couponHistoryArrayJSONTransformer {
     
-    return [MTLJSONAdapter arrayTransformerWithModelClass:[CouponHistoryInfoModel class]];
+    return [MTLJSONAdapter arrayTransformerWithModelClass:[MyCouponInfoModel class]];
 }
 
 + (NSValueTransformer *)calcAmountModelJSONTransformer {
