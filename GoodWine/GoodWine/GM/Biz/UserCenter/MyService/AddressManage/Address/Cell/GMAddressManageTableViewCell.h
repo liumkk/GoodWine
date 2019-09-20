@@ -12,12 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GMAddressManageTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UIView *bgView;
+@property (nonatomic, strong) UIImageView *bgImageView;
+@property (nonatomic, strong) UIImageView *addressImageView;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *phoneLabel;
 @property (nonatomic, strong) UILabel *addressLabel;
 
-- (void)updateAddressCellWithModel:(GMAddressInfoModel *)model;
+- (void)updateAddressCellWithModel:(AddressInfoModel *)model;
 
 @end
 

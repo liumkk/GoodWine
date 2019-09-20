@@ -32,7 +32,7 @@
 - (void)setupConstraints {
     
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(2, 10, 2, 10));
+        make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(2, 10, 5, 10));
     }];
     
     [self.headerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -69,7 +69,9 @@
 
 - (UIImageView *)bgView {
     if (! _bgView) {
-        _bgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"collection_bg"]];
+        _bgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"collection_bg_right"]];
+        _bgView.layer.shadowOffset = CGSizeMake(1,2);
+        _bgView.layer.shadowOpacity = 0.3;
         [self.contentView addSubview:_bgView];
     }
     return _bgView;

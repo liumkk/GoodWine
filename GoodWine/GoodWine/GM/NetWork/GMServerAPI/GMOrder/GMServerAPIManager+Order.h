@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GMServerAPIManager (Order)
 
 - (NSURLSessionDataTask *)asyncQueryOrderConfirmWithShoppCarIds:(NSArray *)array
-                                                   succeedBlock:(void (^)(OrderConfirmInfoModels *infoModel))succeedBlock
+                                                   succeedBlock:(void (^)(GMOrderConfirmInfoModels *infoModel))succeedBlock
                                                     failedBlock:(void (^)(NSError *error))failedBlock;
 
 - (NSURLSessionDataTask *)asyncDeleteProductWithShoppCarIds:(NSArray *)array
@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSURLSessionDataTask *)asyncQueryOrderConfirmWithProductModel:(GMProductDetailModel *)detailModel
                                                          skuItem:(GMProductSkuItem *)skuItem
                                                         quantity:(NSString *)quantity
-                                                    succeedBlock:(void (^)(OrderConfirmInfoModels *infoModel))succeedBlock
+                                                    succeedBlock:(void (^)(GMOrderConfirmInfoModels *infoModel))succeedBlock
                                                      failedBlock:(void (^)(NSError *error))failedBlock;
 
 - (NSURLSessionDataTask *)asyncQueryOrderDetailWithModel:(GMMyOrderDetailModel *)model
@@ -48,6 +48,9 @@ NS_ASSUME_NONNULL_BEGIN
                                              succeedBlock:(void (^)(NSArray <GMOrderDetailInfoModel *> *array))succeedBlock
                                               failedBlock:(void (^)(NSError * error))failedBlock;
 
+- (NSURLSessionDataTask *)asyncDeliverProductWithOrderId:(NSString *)orderId
+                                            succeedBlock:(void (^)(void))succeedBlock
+                                             failedBlock:(void (^)(NSError * error))failedBlock;
 @end
 
 NS_ASSUME_NONNULL_END

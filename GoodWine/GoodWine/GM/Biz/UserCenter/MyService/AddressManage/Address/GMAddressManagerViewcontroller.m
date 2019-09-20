@@ -13,7 +13,7 @@
 @interface GMAddressManagerViewcontroller () <GMAddressManageTableViewDelegate>
 
 @property (nonatomic, strong) GMAddressManageTableView *addressTableView;
-@property (nonatomic, strong) NSMutableArray <GMAddressInfoModel *> *dataArray;
+@property (nonatomic, strong) NSMutableArray <AddressInfoModel *> *dataArray;
 @property (nonatomic, copy) SelectAddressCallBack callBack;
 
 
@@ -53,7 +53,7 @@
 
 - (void)addressManageTableView:(UITableView *)tableView
           deleteRowAtIndexPath:(NSIndexPath *)indexPath
-                         model:(GMAddressInfoModel *)model {
+                         model:(AddressInfoModel *)model {
     [GMLoadingActivity showLoadingActivityInView:self.view];
     
     [ServerAPIManager asyncDeleteAddressWithAddressId:model.addressId succeedBlock:^{
@@ -67,7 +67,7 @@
     }];
 }
 
-- (void)addressManagerTableViewDidSelectRowAtModel:(GMAddressInfoModel *)model {
+- (void)addressManagerTableViewDidSelectRowAtModel:(AddressInfoModel *)model {
     if (self.callBack) {
         self.callBack(model);
         [self.navigationController popViewControllerAnimated:YES];

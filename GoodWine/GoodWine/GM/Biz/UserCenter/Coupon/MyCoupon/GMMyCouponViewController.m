@@ -18,9 +18,21 @@
 
 @property (nonatomic, copy) MyCouponCallBack callBack;
 
+@property (nonatomic, assign) BOOL isSelectCoupon; //YES=选择可用优惠券  NO=展示优惠券列表
+
 @end
 
 @implementation GMMyCouponViewController
+
+//此方法仅为从选择优惠券进入时调用，不需要去后台请求数据
+- (instancetype)initWithArray:(NSArray<MyCouponInfoModel *> *)array {
+    self = [super initWithNibName:nil bundle:nil];
+    if (self) {
+        self.dataArray = (NSMutableArray *)array;
+        self.isSelectCoupon = YES;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,9 +41,17 @@
     [self updateNavigationBar];
     
     [self setupConstranits];
-    [self requestQueryCouponListIsLoadMore:NO];
-    [self addRefreshHeaderView];
-    [self addRefreshFooterView];
+    if (self.isSelectCoupon == YES) {
+        if (self.dataArray.count > 0) {
+            [self.myCouponTableView reloadTableViewWithDataArray:self.dataArray];
+        } else {
+            [self.emptyView showEmptyNeedLoadBtn:NO];
+        }
+    } else {
+        [self requestQueryCouponListIsLoadMore:NO];
+        [self addRefreshHeaderView];
+        [self addRefreshFooterView];
+    }
 }
 
 - (void)setupConstranits {

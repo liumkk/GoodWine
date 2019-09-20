@@ -21,8 +21,8 @@ static NSString *orderDetailCellID = @"orderDetailCellID";
 @property (nonatomic, strong) NSArray *amountArray;
 
 @property (nonatomic, strong) NSArray <ShoppCarInfoModel *> *dataArray;
-@property (nonatomic, strong) GMAddressInfoModel*addressModel;
-@property (nonatomic, strong) CalcAmountInfoModel *amountModel;
+@property (nonatomic, strong) AddressInfoModel *addressModel;
+@property (nonatomic, strong) GMCalcAmountInfoModel *amountModel;
 
 @end
 
@@ -47,7 +47,7 @@ static NSString *orderDetailCellID = @"orderDetailCellID";
     return self;
 }
 
-- (void)reloadTableViewWithAddressModel:(GMAddressInfoModel *)model {
+- (void)reloadTableViewWithAddressModel:(AddressInfoModel *)model {
     self.addressModel = model;
     
     if ([[NSThread currentThread] isMainThread]) {
@@ -57,7 +57,7 @@ static NSString *orderDetailCellID = @"orderDetailCellID";
     }
 }
 
-- (void)reloadTableViewWithDataArray:(NSArray <ShoppCarInfoModel *> *)dataArray model:(CalcAmountInfoModel *)model{
+- (void)reloadTableViewWithDataArray:(NSArray <ShoppCarInfoModel *> *)dataArray model:(GMCalcAmountInfoModel *)model{
     self.dataArray = dataArray;
     self.amountModel = model;
     self.amountArray = @[[model.totalAmount formatterYuan],[model.freightAmount formatterYuan],@"￥0.00"];

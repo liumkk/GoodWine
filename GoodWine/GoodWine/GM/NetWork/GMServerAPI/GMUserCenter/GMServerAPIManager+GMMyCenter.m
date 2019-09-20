@@ -18,7 +18,7 @@
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
             NSMutableArray *dataArray = [[NSMutableArray alloc] init];
             for (NSDictionary *dic in responseDict[@"data"]) {
-                GMAddressInfoModel *model = [GMAddressInfoModel addressInfoModelWithDictionary:dic];
+                AddressInfoModel *model = [AddressInfoModel yy_modelWithDictionary:dic];
                 [dataArray addObject:model];
             }
             if (succeedBlock) {

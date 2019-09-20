@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define itemHeight      255.f
+#define itemHeight      245.f
 
 @protocol GMSearchCollectionViewDelegate <NSObject>
 

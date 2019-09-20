@@ -33,7 +33,7 @@
     }];
 }
 
-- (void)updateCellWithModel:(GMAddressInfoModel *)model {
+- (void)updateCellWithModel:(AddressInfoModel *)model {
     if (!model.detailAddress) {
         self.addressLabel.text = @"请选择地址";
     } else {

@@ -23,8 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableArray *contentArray;
 @property (nonatomic, weak) id <GMOrderConfirmTableViewDelegate> orderConfirmDelegate;
 
-- (void)reloadTableViewWithAddressModel:(GMAddressInfoModel *)model;
-- (void)reloadTableViewWithDataArray:(NSArray <ShoppCarInfoModel *> *)dataArray model:(CalcAmountInfoModel *)model;
+- (void)reloadTableViewWithAddressModel:(AddressInfoModel *)model;
+- (void)reloadTableViewWithDataArray:(NSArray <ShoppCarInfoModel *> *)dataArray model:(GMCalcAmountInfoModel *)model;
 
 @end
 

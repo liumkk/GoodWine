@@ -108,11 +108,11 @@
 		D65C2387230B8F5300DF955F /* GMSelectProductView.m in Sources */ = {isa = PBXBuildFile; fileRef = D65C2386230B8F5300DF955F /* GMSelectProductView.m */; };
 		D65C238A230C43DC00DF955F /* GMMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = D65C2389230C43DC00DF955F /* GMMaskView.m */; };
 		D65C238E230CF75400DF955F /* GMServerAPIManager+Order.m in Sources */ = {isa = PBXBuildFile; fileRef = D65C238D230CF75400DF955F /* GMServerAPIManager+Order.m */; };
-		D65C2391230D1F3500DF955F /* OrderConfirmInfoModels.m in Sources */ = {isa = PBXBuildFile; fileRef = D65C2390230D1F3500DF955F /* OrderConfirmInfoModels.m */; };
-		D65C2394230D210200DF955F /* CalcAmountInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D65C2393230D210200DF955F /* CalcAmountInfoModel.m */; };
-		D65C2397230D24B300DF955F /* CouponHistoryInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D65C2396230D24B200DF955F /* CouponHistoryInfoModel.m */; };
 		D6699EF723332CEF004CE907 /* GMOrderEvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6699EF623332CEF004CE907 /* GMOrderEvaluateViewController.m */; };
 		D6699EFB23332DAC004CE907 /* GMOrderEvaluateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6699EFA23332DAC004CE907 /* GMOrderEvaluateView.m */; };
+		D6699EFE23347F08004CE907 /* AddressInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6699EFD23347F08004CE907 /* AddressInfoModel.m */; };
+		D6699F0123347F81004CE907 /* GMCalcAmountInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6699F0023347F80004CE907 /* GMCalcAmountInfoModel.m */; };
+		D6699F0423347FB0004CE907 /* GMOrderConfirmInfoModels.m in Sources */ = {isa = PBXBuildFile; fileRef = D6699F0323347FB0004CE907 /* GMOrderConfirmInfoModels.m */; };
 		D671920622EED1F30061146F /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = D671920522EED1F30061146F /* NSString+Additions.m */; };
 		D678144D22FD0A3500B26104 /* GMStoreInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D678144C22FD0A3500B26104 /* GMStoreInfoModel.m */; };
 		D678145C2301A67F00B26104 /* GMShoppCarFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D678145B2301A67F00B26104 /* GMShoppCarFooterView.m */; };
@@ -133,7 +133,6 @@
 		D687ED7122F51CCE00A3D249 /* GMAddressManageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED7022F51CCE00A3D249 /* GMAddressManageTableView.m */; };
 		D687ED7522F5285900A3D249 /* GMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED7422F5285900A3D249 /* GMDataManager.m */; };
 		D687ED7C22F56BAF00A3D249 /* GMServerAPIManager+GMMyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED7B22F56BAF00A3D249 /* GMServerAPIManager+GMMyCenter.m */; };
-		D687ED8022F56D9100A3D249 /* GMAddressInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED7F22F56D9100A3D249 /* GMAddressInfoModel.m */; };
 		D687ED8322F5758C00A3D249 /* GMAddressManagerViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = D687ED8222F5758C00A3D249 /* GMAddressManagerViewcontroller.m */; };
 		D687EE1022F828F500A3D249 /* GMAddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D687EE0F22F828F500A3D249 /* GMAddAddressViewController.m */; };
 		D687EE1422F8296400A3D249 /* GMAddAddressTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D687EE1322F8296400A3D249 /* GMAddAddressTableView.m */; };
@@ -387,16 +386,16 @@
 		D65C2389230C43DC00DF955F /* GMMaskView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMMaskView.m; sourceTree = "<group>"; };
 		D65C238C230CF75400DF955F /* GMServerAPIManager+Order.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GMServerAPIManager+Order.h"; sourceTree = "<group>"; };
 		D65C238D230CF75400DF955F /* GMServerAPIManager+Order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GMServerAPIManager+Order.m"; sourceTree = "<group>"; };
-		D65C238F230D1F3500DF955F /* OrderConfirmInfoModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderConfirmInfoModels.h; sourceTree = "<group>"; };
-		D65C2390230D1F3500DF955F /* OrderConfirmInfoModels.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderConfirmInfoModels.m; sourceTree = "<group>"; };
-		D65C2392230D210200DF955F /* CalcAmountInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalcAmountInfoModel.h; sourceTree = "<group>"; };
-		D65C2393230D210200DF955F /* CalcAmountInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalcAmountInfoModel.m; sourceTree = "<group>"; };
-		D65C2395230D24B200DF955F /* CouponHistoryInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CouponHistoryInfoModel.h; sourceTree = "<group>"; };
-		D65C2396230D24B200DF955F /* CouponHistoryInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouponHistoryInfoModel.m; sourceTree = "<group>"; };
 		D6699EF523332CEF004CE907 /* GMOrderEvaluateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderEvaluateViewController.h; sourceTree = "<group>"; };
 		D6699EF623332CEF004CE907 /* GMOrderEvaluateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderEvaluateViewController.m; sourceTree = "<group>"; };
 		D6699EF923332DAC004CE907 /* GMOrderEvaluateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderEvaluateView.h; sourceTree = "<group>"; };
 		D6699EFA23332DAC004CE907 /* GMOrderEvaluateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderEvaluateView.m; sourceTree = "<group>"; };
+		D6699EFC23347F08004CE907 /* AddressInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressInfoModel.h; sourceTree = "<group>"; };
+		D6699EFD23347F08004CE907 /* AddressInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressInfoModel.m; sourceTree = "<group>"; };
+		D6699EFF23347F80004CE907 /* GMCalcAmountInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMCalcAmountInfoModel.h; sourceTree = "<group>"; };
+		D6699F0023347F80004CE907 /* GMCalcAmountInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMCalcAmountInfoModel.m; sourceTree = "<group>"; };
+		D6699F0223347FB0004CE907 /* GMOrderConfirmInfoModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderConfirmInfoModels.h; sourceTree = "<group>"; };
+		D6699F0323347FB0004CE907 /* GMOrderConfirmInfoModels.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderConfirmInfoModels.m; sourceTree = "<group>"; };
 		D671920422EED1F30061146F /* NSString+Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
 		D671920522EED1F30061146F /* NSString+Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
 		D678144B22FD0A3500B26104 /* GMStoreInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMStoreInfoModel.h; sourceTree = "<group>"; };
@@ -435,8 +434,6 @@
 		D687ED7422F5285900A3D249 /* GMDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMDataManager.m; sourceTree = "<group>"; };
 		D687ED7A22F56BAF00A3D249 /* GMServerAPIManager+GMMyCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GMServerAPIManager+GMMyCenter.h"; sourceTree = "<group>"; };
 		D687ED7B22F56BAF00A3D249 /* GMServerAPIManager+GMMyCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GMServerAPIManager+GMMyCenter.m"; sourceTree = "<group>"; };
-		D687ED7E22F56D9100A3D249 /* GMAddressInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAddressInfoModel.h; sourceTree = "<group>"; };
-		D687ED7F22F56D9100A3D249 /* GMAddressInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMAddressInfoModel.m; sourceTree = "<group>"; };
 		D687ED8122F5758C00A3D249 /* GMAddressManagerViewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAddressManagerViewcontroller.h; sourceTree = "<group>"; };
 		D687ED8222F5758C00A3D249 /* GMAddressManagerViewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMAddressManagerViewcontroller.m; sourceTree = "<group>"; };
 		D687EE0E22F828F500A3D249 /* GMAddAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMAddAddressViewController.h; sourceTree = "<group>"; };
@@ -1244,14 +1241,12 @@
 		D65C233423044CBE00DF955F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D65C238F230D1F3500DF955F /* OrderConfirmInfoModels.h */,
-				D65C2390230D1F3500DF955F /* OrderConfirmInfoModels.m */,
-				D65C2395230D24B200DF955F /* CouponHistoryInfoModel.h */,
-				D65C2396230D24B200DF955F /* CouponHistoryInfoModel.m */,
-				D65C2392230D210200DF955F /* CalcAmountInfoModel.h */,
-				D65C2393230D210200DF955F /* CalcAmountInfoModel.m */,
+				D6699EFF23347F80004CE907 /* GMCalcAmountInfoModel.h */,
+				D6699F0023347F80004CE907 /* GMCalcAmountInfoModel.m */,
 				D60F3831231A66490059B66F /* GMMyOrderDetailModel.h */,
 				D60F3832231A66490059B66F /* GMMyOrderDetailModel.m */,
+				D6699F0223347FB0004CE907 /* GMOrderConfirmInfoModels.h */,
+				D6699F0323347FB0004CE907 /* GMOrderConfirmInfoModels.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1533,8 +1528,8 @@
 		D687ED7D22F56D7100A3D249 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D687ED7E22F56D9100A3D249 /* GMAddressInfoModel.h */,
-				D687ED7F22F56D9100A3D249 /* GMAddressInfoModel.m */,
+				D6699EFC23347F08004CE907 /* AddressInfoModel.h */,
+				D6699EFD23347F08004CE907 /* AddressInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2004,14 +1999,13 @@
 				D65C2371230A40A400DF955F /* ProductEvaluateInfoModel.m in Sources */,
 				D60F382A231A30650059B66F /* GMOrderDetailTableView.m in Sources */,
 				D687ED6522F437FA00A3D249 /* GMVersionHeaderView.m in Sources */,
-				D687ED8022F56D9100A3D249 /* GMAddressInfoModel.m in Sources */,
 				D60F3820231A19230059B66F /* ProductInfoModel.m in Sources */,
 				D638667E229EE3510020DE4B /* GMITButton.m in Sources */,
+				D6699EFE23347F08004CE907 /* AddressInfoModel.m in Sources */,
 				D60F381123196E4B0059B66F /* CollectListInfoModel.m in Sources */,
 				D63865EE229C1EC20020DE4B /* ViewController.m in Sources */,
 				D6E361592326980E0056454C /* GMOrderListItem.m in Sources */,
 				D638669122A5746C0020DE4B /* GMNetworkError.m in Sources */,
-				D65C2394230D210200DF955F /* CalcAmountInfoModel.m in Sources */,
 				D638666C229D90E50020DE4B /* GMKeyValueInfoCell.m in Sources */,
 				D6386673229ED8D10020DE4B /* GMUserCenterTableView.m in Sources */,
 				D65C233723044CD800DF955F /* GMOrderConfirmTableView.m in Sources */,
@@ -2039,6 +2033,7 @@
 				D61A1EB422D8E6CE00EC69AB /* UIViewController+Additions.m in Sources */,
 				D65C233123044CA800DF955F /* GMOrderConfirmViewController.m in Sources */,
 				D60F383D231ACF580059B66F /* GMOrderPayViewController.m in Sources */,
+				D6699F0123347F81004CE907 /* GMCalcAmountInfoModel.m in Sources */,
 				D687EE8C22F9C84B00A3D249 /* MKToastView.m in Sources */,
 				D61A1EB822D8E79500EC69AB /* GMLoadingActivity.m in Sources */,
 				D678145C2301A67F00B26104 /* GMShoppCarFooterView.m in Sources */,
@@ -2052,7 +2047,6 @@
 				D65C2384230AE0C300DF955F /* GMProductEvaluateTableView.m in Sources */,
 				D687ED7122F51CCE00A3D249 /* GMAddressManageTableView.m in Sources */,
 				D63865EB229C1EC20020DE4B /* AppDelegate.m in Sources */,
-				D65C2397230D24B300DF955F /* CouponHistoryInfoModel.m in Sources */,
 				D64CA6B1232FC9E5001E252F /* GMMyCouponViewController.m in Sources */,
 				D64CA6DD2332708E001E252F /* MyCouponItem.m in Sources */,
 				D6E361492326841A0056454C /* GMModifyTableView.m in Sources */,
@@ -2101,11 +2095,11 @@
 				D6386646229C3A500020DE4B /* GMLoginViewController.m in Sources */,
 				D687EEA922FC004A00A3D249 /* MKLocationManager.m in Sources */,
 				D6386664229D7DB90020DE4B /* GMHomePageTableView.m in Sources */,
-				D65C2391230D1F3500DF955F /* OrderConfirmInfoModels.m in Sources */,
 				D60F381723196E8C0059B66F /* CollectItem.m in Sources */,
 				D687ED3D22F1925C00A3D249 /* GMUserCenterFooterView.m in Sources */,
 				D6386677229ED8F40020DE4B /* GMUserInfoCell.m in Sources */,
 				D6386643229C3A210020DE4B /* GMBaseViewController.m in Sources */,
+				D6699F0423347FB0004CE907 /* GMOrderConfirmInfoModels.m in Sources */,
 				D65C23532306B64C00DF955F /* GMProductDetailTableView.m in Sources */,
 				D6E36145232683CE0056454C /* GMModifyPasswordViewController.m in Sources */,
 				D6E36153232694D40056454C /* GMOrderListTableView.m in Sources */,

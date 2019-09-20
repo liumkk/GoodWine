@@ -14,6 +14,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.contentView.backgroundColor = COLOR_TABLE_BG_RAY;
         [self setupConstraints];
         
     }
@@ -23,18 +24,18 @@
 - (void)setupConstraints {
     
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(10, 10, 10, 10));
+        make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(5, 10, 5, 10));
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.bgImageView);
+        make.bottom.equalTo(self.bgImageView.mas_centerY);
         make.left.equalTo(self.bgImageView).offset(26.f);
         make.width.mas_equalTo(Width_Screen - 126.f);
     }];
     
     [self.validLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleLabel);
-        make.top.equalTo(self.titleLabel.mas_bottom);
+        make.top.equalTo(self.bgImageView.mas_centerY);
         make.right.equalTo(self.titleLabel.mas_right);
     }];
     
@@ -60,6 +61,8 @@
 - (UIImageView *)bgImageView {
     if (! _bgImageView) {
         _bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"coupon_bg"]];
+        _bgImageView.layer.shadowOffset = CGSizeMake(1,2);
+        _bgImageView.layer.shadowOpacity = 0.3;
         [self.contentView addSubview:_bgImageView];
     }
     return _bgImageView;

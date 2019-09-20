@@ -30,7 +30,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *code; //优惠码
 @property (nonatomic, assign) NSInteger receive; //是否领取 0未领取 1已领取
 
-
 + (instancetype)couponInfoModelsWithDictionary:(NSDictionary *)dic;
 
 @end

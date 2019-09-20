@@ -9,6 +9,8 @@
 #import "GMProductAreaCollectionView.h"
 #import "GMWineListCollectionViewCell.h"
 
+#define ItemHeight   245.f
+
 static NSString *productAreaCellId = @"productAreaCellId";
 
 @interface GMProductAreaCollectionView () <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -32,7 +34,7 @@ static NSString *productAreaCellId = @"productAreaCellId";
 //}
 - (instancetype)initWithFrame:(CGRect)frame {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.itemSize = CGSizeMake((Width_Screen - 75)/2.f, 255.f);
+    flowLayout.itemSize = CGSizeMake((Width_Screen - 75)/2.f, ItemHeight);
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     flowLayout.minimumLineSpacing = 0;
@@ -63,6 +65,11 @@ static NSString *productAreaCellId = @"productAreaCellId";
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     GMWineListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:productAreaCellId forIndexPath:indexPath];
     [cell updateWineListCollectionCellWithHomePageTypeItem:self.dataArray[indexPath.item]];
+    cell.contentView.backgroundColor = [UIColor whiteColor];
+    cell.titleLabel.font = Font(14.f);
+    cell.promotionPriceLabel.font = Font(13.f);
+    cell.originalPriceLabel.font = Font(10.f);
+    cell.saleLabel.font = Font(10.f);
     return cell;
     
 }

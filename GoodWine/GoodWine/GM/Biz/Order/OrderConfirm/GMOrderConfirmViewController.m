@@ -20,6 +20,7 @@
 @property (nonatomic, strong) GMOrderConfirmFooterView *orderConfirmFooterView;
 @property (nonatomic, strong) NSArray<ShoppCarInfoModel *> *dataArray;
 @property (nonatomic, strong) NSArray *idArray;
+@property (nonatomic, strong) GMOrderConfirmInfoModels *orderConfirmModel;
 @property (nonatomic, strong) GMMyOrderDetailModel *myOrderModel;
 
 @end
@@ -56,14 +57,14 @@
     self.idArray = idArray;
     [GMLoadingActivity showLoadingActivityInView:self.view];
     @weakify(self)
-    [ServerAPIManager asyncQueryOrderConfirmWithShoppCarIds:self.idArray succeedBlock:^(OrderConfirmInfoModels * _Nonnull infoModel) {
+    [ServerAPIManager asyncQueryOrderConfirmWithShoppCarIds:self.idArray succeedBlock:^(GMOrderConfirmInfoModels * _Nonnull infoModel) {
         @strongify(self)
         [GMLoadingActivity hideLoadingActivityInView:self.view];
-        
+        self.orderConfirmModel = infoModel;
         [self.orderConfirmFooterView updateFooterViewWithModel:infoModel.calcAmountModel];
         [self.orderConfirmTV reloadTableViewWithDataArray:self.dataArray model:infoModel.calcAmountModel];
         if (infoModel.addressArray.count > 0) {
-            GMAddressInfoModel *addressModel = infoModel.addressArray[0];
+            AddressInfoModel *addressModel = infoModel.addressArray[0];
             self.myOrderModel.memberReceiveAddressId = addressModel.addressId;
             [self.orderConfirmTV reloadTableViewWithAddressModel:addressModel];
         }
@@ -82,10 +83,10 @@
     
     [GMLoadingActivity showLoadingActivityInView:self.view];
     @weakify(self)
-    [ServerAPIManager asyncQueryOrderConfirmWithProductModel:model skuItem:item quantity:quantity succeedBlock:^(OrderConfirmInfoModels * _Nonnull infoModel) {
+    [ServerAPIManager asyncQueryOrderConfirmWithProductModel:model skuItem:item quantity:quantity succeedBlock:^(GMOrderConfirmInfoModels * _Nonnull infoModel) {
         @strongify(self)
         [GMLoadingActivity hideLoadingActivityInView:self.view];
-        
+        self.orderConfirmModel = infoModel;
         ShoppCarInfoModel *scInfoModel = [[ShoppCarInfoModel alloc] init];
         scInfoModel.productPic = item.pic;
         scInfoModel.productName = model.brandName;
@@ -95,7 +96,7 @@
         NSArray *arr = @[scInfoModel];
         [self.orderConfirmTV reloadTableViewWithDataArray:arr model:infoModel.calcAmountModel];
         if (infoModel.addressArray.count > 0) {
-            GMAddressInfoModel *addressModel = infoModel.addressArray[0];
+            AddressInfoModel *addressModel = infoModel.addressArray[0];
             self.myOrderModel.memberReceiveAddressId = addressModel.addressId;
             [self.orderConfirmTV reloadTableViewWithAddressModel:addressModel];
         }
@@ -112,7 +113,7 @@
     if (indexPath.section == 0) {
         GMAddressManagerViewcontroller *addressVC = [[GMAddressManagerViewcontroller alloc] init];
         @weakify(self)
-        [addressVC addressManagerSelectAddressCallBack:^(GMAddressInfoModel * _Nonnull model) {
+        [addressVC addressManagerSelectAddressCallBack:^(AddressInfoModel * _Nonnull model) {
             @strongify(self)
             self.myOrderModel.memberReceiveAddressId = model.addressId;
             [self.orderConfirmTV reloadTableViewWithAddressModel:model];
@@ -120,7 +121,7 @@
         [self.navigationController pushViewController:addressVC animated:YES];
     } else if (indexPath.section == 2) {
         if (indexPath.row == 2) {
-            GMMyCouponViewController *vc = [[GMMyCouponViewController alloc] init];
+            GMMyCouponViewController *vc = [[GMMyCouponViewController alloc] initWithArray:self.orderConfirmModel.couponHistoryArray];
             [vc myCouponCallBack:^(MyCouponInfoModel * _Nonnull model) {
                 self.myOrderModel.couponId = model.couponId;
                 [self.orderConfirmTV.contentArray replaceObjectAtIndex:2 withObject:model.couponItem.name];

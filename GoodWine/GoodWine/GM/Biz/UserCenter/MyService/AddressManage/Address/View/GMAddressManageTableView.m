@@ -13,7 +13,7 @@ static NSString *addressCellID = @"addressCellID";
 
 @interface GMAddressManageTableView () <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) NSArray<GMAddressInfoModel *> *dataArray;
+@property (nonatomic, strong) NSArray<AddressInfoModel *> *dataArray;
 @property (nonatomic, strong) GMTableViewFooterView *footerView;
 
 
@@ -35,7 +35,7 @@ static NSString *addressCellID = @"addressCellID";
     return self;
 }
 
-- (void)reloadTableViewWithDataArray:(NSArray<GMAddressInfoModel *> *)dataArray {
+- (void)reloadTableViewWithDataArray:(NSArray<AddressInfoModel *> *)dataArray {
     self.dataArray = dataArray;
     
     if ([[NSThread currentThread] isMainThread]) {

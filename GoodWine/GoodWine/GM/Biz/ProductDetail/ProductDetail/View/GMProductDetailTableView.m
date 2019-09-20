@@ -87,7 +87,7 @@ static  NSString *productPicCellID = @"productPicCellID";
     } else if (indexPath.section == 1) {
         GMKeyValueInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:productCouponCellID];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        [cell updateCellContentWithCellType:GMKVInfoCellTypeDefaultLabel leftText:@"优惠券" rightText:@"点击选择优惠券" needLine:NO];
+        [cell updateCellContentWithCellType:GMKVInfoCellTypeDefaultLabel leftText:@"优惠券" rightText:@"进入领券中心" needLine:NO];
         return cell;
     } else if (indexPath.section == 2) {
         GMProductEvaluateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:productEvaluateCellID];

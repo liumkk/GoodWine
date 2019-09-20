@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) UILabel *addressLabel;
 @property (nonatomic, copy) UILabel *receiverLabel;
 
-- (void)updateCellWithModel:(GMAddressInfoModel *)model;
+- (void)updateCellWithModel:(AddressInfoModel *)model;
 
 - (void)updateCellWithOrderDetailModel:(GMOrderDetailInfoModel *)model;
 

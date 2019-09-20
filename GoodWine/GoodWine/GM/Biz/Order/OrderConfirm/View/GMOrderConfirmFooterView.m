@@ -31,7 +31,7 @@
     }];
 }
 
-- (void)updateFooterViewWithModel:(CalcAmountInfoModel *)model {
+- (void)updateFooterViewWithModel:(GMCalcAmountInfoModel *)model {
     self.totalLabeL.text = [model.payAmount formatterYuan];
 }
 

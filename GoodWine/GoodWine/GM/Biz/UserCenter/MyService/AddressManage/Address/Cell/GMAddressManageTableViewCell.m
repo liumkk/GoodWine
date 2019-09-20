@@ -22,31 +22,37 @@
 }
 
 - (void)setupConstraints {
-    [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(10.f, 10.f, 10.f, 10.f));
+    [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(10, 15, 5, 15));
+    }];
+    
+    [self.addressImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView).offset(28.f);
+        make.left.equalTo(self.contentView).offset(41.f);
+        make.size.mas_equalTo(CGSizeMake(19.f, 22.f));
     }];
     
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.bgView).offset(10.f);
-        make.top.equalTo(self.bgView).offset(10.f);
-        make.height.mas_equalTo(20.f);
+        make.left.equalTo(self.addressImageView.mas_right).offset(10.f);
+        make.top.equalTo(self.contentView).offset(25.f);
+        make.height.mas_equalTo(14.f);
     }];
     
     [self.phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.nameLabel);
-        make.top.equalTo(self.nameLabel.mas_bottom).offset(5.f);
-        make.height.mas_equalTo(20.f);
+        make.top.equalTo(self.nameLabel);
+        make.left.equalTo(self.nameLabel.mas_right).offset(5.f);
+        make.height.mas_equalTo(14.f);
     }];
     
     [self.addressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.nameLabel.mas_bottom).offset(10.f);
         make.left.equalTo(self.nameLabel);
-        make.top.equalTo(self.phoneLabel.mas_bottom).offset(5.f);
-        make.height.mas_equalTo(20.f);
+        make.right.equalTo(self.contentView.mas_right).offset(-55.f);
     }];
     
 }
 
-- (void)updateAddressCellWithModel:(GMAddressInfoModel *)model {
+- (void)updateAddressCellWithModel:(AddressInfoModel *)model {
     self.nameLabel.text = model.name;
     self.phoneLabel.text = model.phoneNumber;
     self.addressLabel.text = model.detailAddress;
@@ -54,23 +60,30 @@
 
 #pragma mark --init subviews
 
-- (UIView *)bgView {
-    if (! _bgView) {
-        _bgView = [[UIView alloc] initWithFrame:CGRectZero];
-        _bgView.backgroundColor = [UIColor whiteColor];
-        _bgView.layer.cornerRadius = 10.f;
-        _bgView.layer.masksToBounds = YES;
-        [self.contentView addSubview:_bgView];
+- (UIImageView *)bgImageView {
+    if (! _bgImageView) {
+        _bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"collection_bg_right"]];
+//        _bgImageView.layer.shadowOffset = CGSizeMake(0,1);
+//        _bgImageView.layer.shadowOpacity = 0.3;
+        [self.contentView addSubview:_bgImageView];
     }
-    return _bgView;
+    return _bgImageView;
+}
+
+- (UIImageView *)addressImageView {
+    if (! _addressImageView) {
+        _addressImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"address_icon"]];
+        [self.contentView addSubview:_addressImageView];
+    }
+    return _addressImageView;
 }
 
 - (UILabel *)nameLabel {
     if (! _nameLabel) {
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _nameLabel.font = Font_14;
-        _nameLabel.textColor = [UIColor blackColor];
-        [self.bgView addSubview:_nameLabel];
+        _nameLabel.textColor = COLOR_THEME_COLOR;
+        [self.bgImageView addSubview:_nameLabel];
     }
     return _nameLabel;
 }
@@ -79,7 +92,7 @@
     if (! _phoneLabel) {
         _phoneLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _phoneLabel.font = Font_14;
-        [self.bgView addSubview:_phoneLabel];
+        [self.bgImageView addSubview:_phoneLabel];
     }
     return _phoneLabel;
 }
@@ -88,7 +101,7 @@
     if (! _addressLabel) {
         _addressLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _addressLabel.font = Font_14;
-        [self.bgView addSubview:_addressLabel];
+        [self.bgImageView addSubview:_addressLabel];
     }
     return _addressLabel;
 }

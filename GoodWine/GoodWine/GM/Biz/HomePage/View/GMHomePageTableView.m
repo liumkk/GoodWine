@@ -127,11 +127,11 @@ static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
     if (indexPath.section == 0) {
         return [GMMenuTableViewCell heightForCell];
     } else if (indexPath.section == 1){
-        return (self.freshProductArray.count/2 + self.freshProductArray.count %2)* 255.f;
+        return (self.freshProductArray.count/2 + self.freshProductArray.count %2)* ItemHeight;
     } else if (indexPath.section == 2){
-        return (self.hotProductArray.count/2 + self.hotProductArray.count %2)* 255.f;
+        return (self.hotProductArray.count/2 + self.hotProductArray.count %2)* ItemHeight;
     } else {
-        return (self.storeProductArray.count/2 + self.storeProductArray.count %2) *255.f;
+        return (self.storeProductArray.count/2 + self.storeProductArray.count %2) *ItemHeight;
     }
 }
 

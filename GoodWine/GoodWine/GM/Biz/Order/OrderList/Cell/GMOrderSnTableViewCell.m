@@ -24,19 +24,19 @@
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView);
         make.left.equalTo(self.contentView).offset(16.f);
-        make.size.mas_equalTo(CGSizeMake(30.f, 30.f));
+        make.size.mas_equalTo(CGSizeMake(20.f, 20.f));
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.bottom.equalTo(self.contentView);
+        make.centerY.equalTo(self.contentView.mas_centerY);
         make.left.equalTo(self.iconImageView.mas_right).offset(10.f);
         //        make.width.mas_equalTo(70.f);
     }];
     
     [self.statusBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView);
+        make.centerY.equalTo(self.contentView.mas_centerY);
         make.right.equalTo(self.contentView.mas_right).offset(-16.f);
-        make.size.mas_equalTo(CGSizeMake(60.f, 20.f));
+        make.size.mas_equalTo(CGSizeMake(70.f, 20.f));
     }];
     
     [self.cancleBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -48,13 +48,26 @@
 
 - (void)updateCellWithModel:(GMOrderDetailInfoModel *)model {
     self.titleLabel.text = model.orderSn;
-    if ([model.commentType integerValue] == 2) {
-        [self.statusBtn setBackgroundImage:[UIImage imageNamed:@"white_bg"] forState:UIControlStateNormal];
-        [self.statusBtn setTitleColor:COLOR_TEXT_BLACK forState:UIControlStateNormal];
-    } else {
+    
+    if ([model.status integerValue] == 0) {
         [self.statusBtn setBackgroundImage:[UIImage imageNamed:@"red_bg"] forState:UIControlStateNormal];
         [self.statusBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    } else if ([model.status integerValue] == 2) {
+        [self.statusBtn setBackgroundImage:[UIImage imageNamed:@"red_bg"] forState:UIControlStateNormal];
+        [self.statusBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    } else if ([model.status integerValue] == 3) {
+        if ([model.commentType integerValue] == 2) {
+            [self.statusBtn setBackgroundImage:[UIImage imageNamed:@"white_bg"] forState:UIControlStateNormal];
+            [self.statusBtn setTitleColor:COLOR_TEXT_BLACK forState:UIControlStateNormal];
+        } else {
+            [self.statusBtn setBackgroundImage:[UIImage imageNamed:@"red_bg"] forState:UIControlStateNormal];
+            [self.statusBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        }
+    } else {
+        [self.statusBtn setBackgroundImage:[UIImage imageNamed:@"white_bg"] forState:UIControlStateNormal];
+        [self.statusBtn setTitleColor:COLOR_TEXT_BLACK forState:UIControlStateNormal];
     }
+    
     [self.statusBtn setTitle:[model.status statusFormatterWithType:model.commentType] forState:UIControlStateNormal];
 }
 
@@ -67,7 +80,7 @@
 
 - (UIImageView *)iconImageView {
     if (! _iconImageView) {
-        _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"goodWine"]];
+        _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"order"]];
         [self.contentView addSubview:_iconImageView];
     }
     return _iconImageView;
@@ -86,7 +99,7 @@
 - (UIButton *)statusBtn {
     if (! _statusBtn) {
         _statusBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _statusBtn.titleLabel.font = Font(14.f);
+        _statusBtn.titleLabel.font = Font(13.f);
         [self.contentView addSubview:_statusBtn];
     }
     return _statusBtn;

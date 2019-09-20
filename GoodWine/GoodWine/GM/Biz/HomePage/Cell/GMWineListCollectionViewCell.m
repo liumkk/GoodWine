@@ -32,40 +32,41 @@
 - (void)setupConstraints {
     
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.contentView).offset(2.f);
-//        make.left.equalTo(self.contentView).offset(2.f);
-//        make.right.equalTo(self.contentView).offset(-2.f);
-        make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(2, 2, 2, 2));
+        make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(2, 0, 2, 0));
     }];
     
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(3.f);
-        make.left.equalTo(self.contentView).offset(2.f);
-        make.right.equalTo(self.contentView).offset(-4.f);
+        make.left.equalTo(self.contentView).offset(3.5);
+        make.right.equalTo(self.contentView).offset(-3.5);
         make.height.mas_equalTo(167 *ScreenScale);
     }];
-    self.imageView.bounds = CGRectMake(0, 0, self.contentView.width-6.f, 167 *ScreenScale);
+    self.imageView.bounds = CGRectMake(0, 0, self.contentView.width-7, 167 *ScreenScale);
     [UIView maskCorner:self.imageView rectCorner:UIRectCornerAllCorners corner:5.f];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.imageView.mas_bottom).offset(5.f);
+        make.top.equalTo(self.imageView.mas_bottom).offset(8.f);
         make.right.equalTo(self.contentView).offset(-10.f);
         make.left.equalTo(self.imageView).offset(2.f);
+        make.height.mas_equalTo(15.f);
     }];
     
     [self.promotionPriceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleLabel.mas_bottom).offset(5.f);
         make.left.equalTo(self.titleLabel);
+        make.height.mas_equalTo(14.f);
     }];
     
     [self.originalPriceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.promotionPriceLabel.mas_bottom).offset(8.f);
         make.left.equalTo(self.promotionPriceLabel);
+        make.height.mas_equalTo(11.f);
     }];
     
     [self.saleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.originalPriceLabel);
         make.right.equalTo(self.imageView.mas_right).offset(-2.f);
+        make.height.mas_equalTo(11.f);
     }];
     
 }
@@ -95,7 +96,7 @@
 - (UILabel *)titleLabel {
     if (! _titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _titleLabel.font = Font_16;
+        _titleLabel.font = Font(15.f);
         [self.contentView addSubview:_titleLabel];
     }
     return _titleLabel;
@@ -104,7 +105,7 @@
 - (UILabel *)promotionPriceLabel {
     if (! _promotionPriceLabel) {
         _promotionPriceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _promotionPriceLabel.font = Font_15;
+        _promotionPriceLabel.font = Font(14.f);
         _promotionPriceLabel.textColor = COLOR_THEME_COLOR;
         [self.contentView addSubview:_promotionPriceLabel];
     }
@@ -114,7 +115,7 @@
 - (UILabel *)originalPriceLabel {
     if (! _originalPriceLabel) {
         _originalPriceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _originalPriceLabel.font = Font_12;
+        _originalPriceLabel.font = Font(11.f);
         _originalPriceLabel.textColor = COLOR_GRAY_150;
         [self.contentView addSubview:_originalPriceLabel];
     }
@@ -124,7 +125,7 @@
 - (UILabel *)saleLabel {
     if (! _saleLabel) {
         _saleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _saleLabel.font = Font_12;
+        _saleLabel.font = Font(11.f);
         _saleLabel.textColor = COLOR_GRAY_150;
         _saleLabel.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:_saleLabel];

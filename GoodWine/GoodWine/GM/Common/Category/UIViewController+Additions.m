@@ -48,4 +48,41 @@
     
 }
 
+- (void)showAlertViewWithTitle:(NSString *)title btnNames:(NSArray *)btnNames clickedCallBack:(void (^)(NSInteger))callback {
+    [self showAlertViewInDynamicWithTitle:title message:@"" btnNames:btnNames clickedCallBack:callback];
+}
+
+- (void)showAlertViewInDynamicWithTitle:(NSString *)title message:(NSString *)message btnNames:(NSArray *)btnNames clickedCallBack:(void (^)(NSInteger index))callback {
+    
+    UIAlertController *alertViewController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    for (NSString* name  in btnNames)
+    {
+        NSInteger index = [btnNames indexOfObject:name];
+        
+        UIAlertAction *action = [UIAlertAction actionWithTitle:name style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            if (callback) {
+                callback(index);
+            }
+        }];
+        
+        [alertViewController addAction:action];
+    }
+    
+    [self presentViewController:alertViewController animated:YES completion:nil];
+    
+}
+
+- (void)showActionSheetWithButtonText:(NSString *)sheetText actionSheetStyle:(UIAlertActionStyle)actionSheetStyle handler:(void (^)(UIAlertAction *))handler {
+    if (!sheetText || sheetText.length == 0) {
+        sheetText = @"";
+    }
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *sheetAction = [UIAlertAction actionWithTitle:sheetText style:actionSheetStyle handler:handler];
+    [alertController addAction:cancelAction];
+    [alertController addAction:sheetAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 @end

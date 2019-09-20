@@ -14,6 +14,8 @@ typedef void(^MyCouponCallBack)(MyCouponInfoModel *model);
 
 @interface GMMyCouponViewController : GMBaseViewController
 
+- (instancetype)initWithArray:(NSArray <MyCouponInfoModel *> *)array;
+
 - (void)myCouponCallBack:(MyCouponCallBack)callBack;
 
 @end

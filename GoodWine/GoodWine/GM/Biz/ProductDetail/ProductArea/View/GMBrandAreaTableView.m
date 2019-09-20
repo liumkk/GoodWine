@@ -27,7 +27,7 @@ static NSString *brandAreaTableCellID = @"brandAreaTableCellID";
         self.dataSource = self;
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.backgroundColor = COLOR_TABLE_BG_RAY;
+        self.backgroundColor = COLOR_TABLE_BG_COLOR;
         self.lastIndex = 0;
         [self registerClass:[GMBrandTableViewCell class] forCellReuseIdentifier:brandAreaTableCellID];
     }
@@ -57,10 +57,10 @@ static NSString *brandAreaTableCellID = @"brandAreaTableCellID";
     BrandAreaInfoModel *model = self.dataArray[indexPath.row];
     [cell updateCellWithLabelText:model.name];
     if (indexPath.row == 0) {
-        cell.backgroundColor = [UIColor whiteColor];
+        cell.contentView.backgroundColor = [UIColor whiteColor];
         cell.brandLabel.textColor = COLOR_THEME_COLOR;
     } else {
-        cell.backgroundColor = COLOR_TABLE_BG_RAY;
+        cell.contentView.backgroundColor = COLOR_TABLE_BG_COLOR;
         cell.brandLabel.textColor = COLOR_TEXT_BLACK;
     }
     return cell;
@@ -70,11 +70,11 @@ static NSString *brandAreaTableCellID = @"brandAreaTableCellID";
     
     if (indexPath.row != self.lastIndex) {
         GMBrandTableViewCell *lastCell = [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.lastIndex inSection:0]];
-        lastCell.backgroundColor = COLOR_TABLE_BG_RAY;
+        lastCell.contentView.backgroundColor = COLOR_TABLE_BG_COLOR;
         lastCell.brandLabel.textColor = COLOR_TEXT_BLACK;
         
         GMBrandTableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
-        cell.backgroundColor = [UIColor whiteColor];
+        cell.contentView.backgroundColor = [UIColor whiteColor];
         cell.brandLabel.textColor = COLOR_THEME_COLOR;
         
         self.lastIndex = indexPath.row;

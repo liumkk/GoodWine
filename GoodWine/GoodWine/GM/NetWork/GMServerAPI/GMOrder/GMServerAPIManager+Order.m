@@ -11,7 +11,7 @@
 @implementation GMServerAPIManager (Order)
 
 - (NSURLSessionDataTask *)asyncQueryOrderConfirmWithShoppCarIds:(NSArray *)array
-                                                   succeedBlock:(void (^)(OrderConfirmInfoModels * _Nonnull))succeedBlock
+                                                   succeedBlock:(void (^)(GMOrderConfirmInfoModels * _Nonnull))succeedBlock
                                                     failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
     
     NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
@@ -23,7 +23,7 @@
     return
     [ServerClient asyncNetworkRequestWithURL:GMOrderConfirmFromShoppCar parameter:temParamDict success:^(NSDictionary * _Nonnull responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
-            OrderConfirmInfoModels *model = [OrderConfirmInfoModels orderConfirmInfoModelsWithDictionary:responseDict[@"data"]];
+            GMOrderConfirmInfoModels *model = [GMOrderConfirmInfoModels yy_modelWithDictionary:responseDict[@"data"]];
             if (succeedBlock) {
                 succeedBlock(model);
             }
@@ -73,7 +73,7 @@
 - (NSURLSessionDataTask *)asyncQueryOrderConfirmWithProductModel:(GMProductDetailModel *)detailModel
                                                          skuItem:(GMProductSkuItem *)skuItem
                                                         quantity:(NSString *)quantity
-                                                    succeedBlock:(void (^)(OrderConfirmInfoModels * _Nonnull))succeedBlock
+                                                    succeedBlock:(void (^)(GMOrderConfirmInfoModels * _Nonnull))succeedBlock
                                                      failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
     
     NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
@@ -100,7 +100,7 @@
     return
     [ServerClient asyncNetworkRequestWithURL:GMOrderConfirmFromProduct parameter:temParamDict success:^(NSDictionary * _Nonnull responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
-            OrderConfirmInfoModels *model = [OrderConfirmInfoModels orderConfirmInfoModelsWithDictionary:responseDict[@"data"]];
+            GMOrderConfirmInfoModels *model = [GMOrderConfirmInfoModels yy_modelWithDictionary:responseDict[@"data"]];
             if (succeedBlock) {
                 succeedBlock(model);
             }
@@ -286,6 +286,35 @@
             }
             if (succeedBlock) {
                 succeedBlock(arr);
+            }
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
+- (NSURLSessionDataTask *)asyncDeliverProductWithOrderId:(NSString *)orderId
+                                            succeedBlock:(void (^)(void))succeedBlock
+                                             failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    
+    NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
+    
+    temParamDict[@"orderId"] = orderId;
+    
+    [ServerClient setContentTypeJson];
+    return
+    [ServerClient asyncNetworkRequestWithURL:GMDeliverProduct(orderId) parameter:temParamDict success:^(NSDictionary * _Nonnull responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            if (succeedBlock) {
+                succeedBlock();
             }
         }else {
             

@@ -1,16 +1,16 @@
 //
-//  GMAddressInfoModel.h
+//  AddressInfoModel.h
 //  GoodWine
 //
-//  Created by LMK on 2019/8/3.
+//  Created by LMK on 2019/9/20.
 //  Copyright © 2019年 LMK. All rights reserved.
 //
 
-#import <Mantle/Mantle.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GMAddressInfoModel : MTLModel <MTLJSONSerializing>
+@interface AddressInfoModel : NSObject
 
 @property (nonatomic, copy) NSString *addressId;
 @property (nonatomic, copy) NSString *name;
@@ -20,8 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *city;
 @property (nonatomic, copy) NSString *region;
 @property (nonatomic, copy) NSString *detailAddress;
-
-+ (instancetype)addressInfoModelWithDictionary:(NSDictionary *)dic;
 
 @end
 

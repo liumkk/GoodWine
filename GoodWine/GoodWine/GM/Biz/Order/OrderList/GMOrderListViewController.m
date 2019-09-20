@@ -94,60 +94,88 @@
 - (void)orderListTableViewDidSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     GMOrderDetailInfoModel *infoModel = self.modelArray[indexPath.section];
     if ([infoModel.status integerValue] == 0) {
+        //去付款
         [self payWithOrderId:infoModel.orderId];
+    } else if ([infoModel.status integerValue] == 2) {
+        //确认收货
+        [self delicerProductWithOrderId:infoModel.orderId];
     } else if ([infoModel.status integerValue] == 3) {
-        GMOrderEvaluateViewController *vc = [[GMOrderEvaluateViewController alloc] initWithModel:infoModel.orderArray[0]];
-        [vc orderEvaluateCallBack:^{
-            [self requestOrderListIsLoadMore:NO];
-        }];
-        [self.navigationController pushViewController:vc animated:YES];
+        //去评价
+        if ([infoModel.commentType integerValue] != 2) {
+            GMOrderEvaluateViewController *vc = [[GMOrderEvaluateViewController alloc] initWithModel:infoModel.orderArray[0]];
+            [vc orderEvaluateCallBack:^{
+                [self requestOrderListIsLoadMore:NO];
+            }];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     } else {
-        GMOrderEvaluateViewController *vc = [[GMOrderEvaluateViewController alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
+        
     }
 }
 
 - (void)payWithOrderId:(NSString *)orderId {
-    [GMLoadingActivity showLoadingActivityInView:self.view];
-    @weakify(self)
-    [ServerAPIManager asyncGetPayDataWithOrderId:orderId succeedBlock:^(NSString * _Nonnull data) {
-        @strongify(self)
-        [GMLoadingActivity hideLoadingActivityInView:self.view];
-        [[AlipaySDK defaultService] payOrder:data fromScheme:GMUrlSchemes callback:^(NSDictionary *resultDic) {
-            @strongify(self)
-            NSLog(@"reslut = %@",resultDic);
-            if ([resultDic[@"resultStatus"] integerValue] == 9000) {
-                GMPaySuccessViewController *vc = [[GMPaySuccessViewController alloc] init];
-                [self.navigationController pushViewController:vc animated:YES];
-            } else {
-                NSInteger orderState = [resultDic[@"resultStatus"] integerValue];
-                NSString *returnStr;
-                switch (orderState) {
-                    case 8000:
-                        returnStr=@"订单正在处理中";
-                        break;
-                    case 4000:
-                        returnStr=@"订单支付失败";
-                        
-                        break;
-                    case 6001:
-                        returnStr=@"订单取消";
-                        
-                        break;
-                    case 6002:
-                        returnStr=@"网络连接出错";
-                        
-                        break;
-                    default:
-                        break;
-                }
-                [MKToastView showToastToView:self.view text:returnStr];
-            }
-        }];
-    } failedBlock:^(NSError * _Nonnull error) {
-        @strongify(self)
-        [GMLoadingActivity hideLoadingActivityInView:self.view];
-        [self showAlertViewWithError:error];
+    [self showAlertViewInDynamicWithTitle:@"温馨提示" message:@"现在去付款" btnNames:@[@"取消",@"确定"] clickedCallBack:^(NSInteger index) {
+        if (index == 1) {
+            [GMLoadingActivity showLoadingActivityInView:self.view];
+            @weakify(self)
+            [ServerAPIManager asyncGetPayDataWithOrderId:orderId succeedBlock:^(NSString * _Nonnull data) {
+                @strongify(self)
+                [GMLoadingActivity hideLoadingActivityInView:self.view];
+                [[AlipaySDK defaultService] payOrder:data fromScheme:GMUrlSchemes callback:^(NSDictionary *resultDic) {
+                    @strongify(self)
+                    NSLog(@"reslut = %@",resultDic);
+                    if ([resultDic[@"resultStatus"] integerValue] == 9000) {
+                        GMPaySuccessViewController *vc = [[GMPaySuccessViewController alloc] init];
+                        [self.navigationController pushViewController:vc animated:YES];
+                    } else {
+                        NSInteger orderState = [resultDic[@"resultStatus"] integerValue];
+                        NSString *returnStr;
+                        switch (orderState) {
+                            case 8000:
+                                returnStr=@"订单正在处理中";
+                                break;
+                            case 4000:
+                                returnStr=@"订单支付失败";
+                                
+                                break;
+                            case 6001:
+                                returnStr=@"订单取消";
+                                
+                                break;
+                            case 6002:
+                                returnStr=@"网络连接出错";
+                                
+                                break;
+                            default:
+                                break;
+                        }
+                        [MKToastView showToastToView:self.view text:returnStr];
+                    }
+                }];
+            } failedBlock:^(NSError * _Nonnull error) {
+                @strongify(self)
+                [GMLoadingActivity hideLoadingActivityInView:self.view];
+                [self showAlertViewWithError:error];
+            }];
+        }
+    }];
+}
+
+- (void)delicerProductWithOrderId:(NSString *)orderId {
+    [self showAlertViewWithTitle:@"是否确认收货" btnNames:@[@"取消",@"收货"] clickedCallBack:^(NSInteger index) {
+        if (index == 1) {
+            [GMLoadingActivity showLoadingActivityInView:self.view];
+            @weakify(self)
+            [ServerAPIManager asyncDeliverProductWithOrderId:orderId succeedBlock:^{
+                @strongify(self)
+                [self.orderListTableView reloadData];
+                [MKToastView showToastToView:self.view text:@"收货成功"];
+            } failedBlock:^(NSError * _Nonnull error) {
+                @strongify(self)
+                [GMLoadingActivity hideLoadingActivityInView:self.view];
+                [self showAlertViewWithError:error];
+            }];
+        }
     }];
 }
 

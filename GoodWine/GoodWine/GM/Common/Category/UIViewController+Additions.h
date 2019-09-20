@@ -18,6 +18,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)showAlertViewWithTitle:(NSString *)title Error:(NSError *)error buttonTitle:(NSString *)buttonTitle;
 
+- (void)showAlertViewWithTitle:(NSString *)title btnNames:(NSArray *)btnNames clickedCallBack:(void (^)(NSInteger index))callback;
+
+- (void)showAlertViewInDynamicWithTitle:(NSString *)title message:(NSString *)message btnNames:(NSArray *)btnNames clickedCallBack:(void (^)(NSInteger index))callback;
+
+- (void)showActionSheetWithButtonText:(NSString *)sheetText actionSheetStyle:(UIAlertActionStyle)actionSheetStyle handler:(void (^)(UIAlertAction *))handler;
+
 @end
 
 NS_ASSUME_NONNULL_END

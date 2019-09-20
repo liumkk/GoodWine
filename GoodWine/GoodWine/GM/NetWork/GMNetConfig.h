@@ -95,6 +95,7 @@
 #define GMGetOrderList(_pageSize,_pageNum,_storeId,_status)      \
         [NSString stringWithFormat:@"order/orderList?pageSize=%@&pageNum=%@&storeId=%@&status=%@",_pageSize,_pageNum,_storeId,_status]
 
+#define GMDeliverProduct(_orderId)      [NSString stringWithFormat:@"order/confirmReceipt?orderId=%@",_orderId]
 
 #endif
 

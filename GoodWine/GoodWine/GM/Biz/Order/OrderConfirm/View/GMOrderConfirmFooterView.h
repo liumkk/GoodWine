@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *totalLabeL;
 @property (nonatomic, strong) UIButton *confirmButton;
 
-- (void)updateFooterViewWithModel:(CalcAmountInfoModel *)model;
+- (void)updateFooterViewWithModel:(GMCalcAmountInfoModel *)model;
 
 @end
 

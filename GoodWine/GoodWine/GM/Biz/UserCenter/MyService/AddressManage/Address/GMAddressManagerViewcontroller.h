@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^SelectAddressCallBack)(GMAddressInfoModel *model);
+typedef void(^SelectAddressCallBack)(AddressInfoModel *model);
 
 @interface GMAddressManagerViewcontroller : GMBaseViewController
 

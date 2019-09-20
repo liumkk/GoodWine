@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addAddress;
 - (void)addressManageTableView:(UITableView *)tableView
         deleteRowAtIndexPath:(NSIndexPath *)indexPath
-                       model:(GMAddressInfoModel *)model;
-- (void)addressManagerTableViewDidSelectRowAtModel:(GMAddressInfoModel *)model;
+                       model:(AddressInfoModel *)model;
+- (void)addressManagerTableViewDidSelectRowAtModel:(AddressInfoModel *)model;
 
 @end
 
@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id <GMAddressManageTableViewDelegate> addressDelegate;
 
-- (void)reloadTableViewWithDataArray:(NSArray <GMAddressInfoModel *> *)dataArray;
+- (void)reloadTableViewWithDataArray:(NSArray <AddressInfoModel *> *)dataArray;
 
 @end
 

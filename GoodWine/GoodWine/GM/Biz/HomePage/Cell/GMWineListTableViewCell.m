@@ -9,6 +9,8 @@
 #import "GMWineListTableViewCell.h"
 #import "GMWineListCollectionViewCell.h"
 
+#define leftMargin         5.f
+
 static NSString *collectionViewCellId = @"collectionViewCellId";
 
 @interface GMWineListTableViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -33,13 +35,13 @@ static NSString *collectionViewCellId = @"collectionViewCellId";
 
 - (void)initWineListCollectionView {
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.itemSize = CGSizeMake((Width_Screen/2) - 9, 255);
+    flowLayout.itemSize = CGSizeMake((Width_Screen/2) - leftMargin, ItemHeight);
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     flowLayout.minimumLineSpacing = 0;
     flowLayout.minimumInteritemSpacing = 0;
     
-    self.wineListCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(9, 0, Width_Screen-18, 255) collectionViewLayout:flowLayout];
+    self.wineListCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(leftMargin, 0, Width_Screen-leftMargin*2, ItemHeight) collectionViewLayout:flowLayout];
     self.wineListCollectionView.delegate = self;
     self.wineListCollectionView.dataSource = self;
     [self.wineListCollectionView registerClass:[GMWineListCollectionViewCell class] forCellWithReuseIdentifier:collectionViewCellId];
@@ -56,7 +58,7 @@ static NSString *collectionViewCellId = @"collectionViewCellId";
 
 - (void)updateWineListCellWithArray:(NSArray <HomePageTypeItem *> *)array {
     self.dataArray = array;
-    self.wineListCollectionView.frame = CGRectMake(9, 0, Width_Screen - 18, (self.dataArray.count/2 + self.dataArray.count %2)* 255.f);
+    self.wineListCollectionView.frame = CGRectMake(leftMargin, 0, Width_Screen - leftMargin*2, (self.dataArray.count/2 + self.dataArray.count %2)* ItemHeight);
     [self.wineListCollectionView reloadData];
 }
 
