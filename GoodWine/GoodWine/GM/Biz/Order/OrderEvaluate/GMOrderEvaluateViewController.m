@@ -36,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"添加评价";
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     [self setupConstranits];
     [self initSubviews];
 }
@@ -97,12 +97,12 @@
     self.productStar = btn.tag +1;
     for (int i = 0; i < btn.tag +1; i ++) {
         UIButton *btn = self.evaluateView.productStarArray[i];
-        [btn setBackgroundImage:[UIImage imageNamed:@"red_collected"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"star_select"] forState:UIControlStateNormal];
     }
     
     for (int i = (int)btn.tag +1; i < self.evaluateView.productStarArray.count; i ++) {
         UIButton *btn = self.evaluateView.productStarArray[i];
-        [btn setBackgroundImage:[UIImage imageNamed:@"collect"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"star_unselect"] forState:UIControlStateNormal];
     }
 }
 
@@ -110,12 +110,12 @@
     self.storeStar = btn.tag +1;
     for (int i = 0; i < btn.tag +1; i ++) {
         UIButton *btn = self.evaluateView.storeStarArray[i];
-        [btn setBackgroundImage:[UIImage imageNamed:@"red_collected"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"star_select"] forState:UIControlStateNormal];
     }
     
     for (int i = (int)btn.tag +1; i < self.evaluateView.storeStarArray.count; i ++) {
         UIButton *btn = self.evaluateView.storeStarArray[i];
-        [btn setBackgroundImage:[UIImage imageNamed:@"collect"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"star_unselect"] forState:UIControlStateNormal];
     }
 }
 
@@ -123,12 +123,12 @@
     self.serviceStar = btn.tag +1;
     for (int i = 0; i < btn.tag +1; i ++) {
         UIButton *btn = self.evaluateView.serviceStarArray[i];
-        [btn setBackgroundImage:[UIImage imageNamed:@"red_collected"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"star_select"] forState:UIControlStateNormal];
     }
     
     for (int i = (int)btn.tag +1; i < self.evaluateView.serviceStarArray.count; i ++) {
         UIButton *btn = self.evaluateView.serviceStarArray[i];
-        [btn setBackgroundImage:[UIImage imageNamed:@"collect"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"star_unselect"] forState:UIControlStateNormal];
     }
 }
 

@@ -67,6 +67,7 @@ static MKLocationManager *_sharedInstance = nil;
             [ServerAPIManager asyncQueryStoreInfoWithRegionCode:regeocode.adcode succeedBlock:^(GMStoreInfoModel * _Nonnull infoModel) {
                 MKNSLog(@"GMStoreInfoModel--%@",infoModel);
                 UserCenter.storeId = infoModel.storeId;
+                UserCenter.storeInfoModel = infoModel;
 //                UserCenter.storeId = @"1"; //--test
             } failedBlock:^(NSError * _Nonnull error) {
                 MKNSLog(@"GMStoreInfoModel--查询门店失败");

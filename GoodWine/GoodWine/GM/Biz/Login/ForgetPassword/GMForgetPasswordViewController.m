@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    self.title = @"忘记密码";
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     
     [self setupConstranits];
 }
@@ -30,8 +30,8 @@
         [MKToastView showToastToView:self.view text:@"请填写有效手机号码"];
     } else {
         [self.pwdTableView.verificationView initTimer];
-        [ServerAPIManager asyncQueryAuthCodeWithPhoneNum:@"" succeedBlock:^{
-            
+        [ServerAPIManager asyncQueryAuthCodeWithPhoneNum:phone succeedBlock:^{
+            [MKToastView showToastToView:self.view text:@"验证码发送成功"];
         } failedBlock:^(NSError * _Nonnull error) {
             [self showAlertViewWithError:error];
             [self.pwdTableView.verificationView clearTimer];
@@ -40,6 +40,7 @@
 }
 
 - (void)forgetTableViewPhoneTF:(UITextField *)phoneTF verficationTF:(UITextField *)verficationTF passwordTF:(UITextField *)passwordTF {
+    [self.view endEditing:YES];
     if (IsStrEmpty(phoneTF.text) || IsStrEmpty(verficationTF.text) || IsStrEmpty(passwordTF.text)) {
         [MKToastView showToastToView:self.view text:@"请输入有效信息"];
     } else {

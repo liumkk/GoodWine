@@ -37,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.page = 1;
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     [self setupConstranits];
     [self requestOrderListIsLoadMore:NO];
     
@@ -91,8 +91,8 @@
     }];
 }
 
-- (void)orderListTableViewDidSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    GMOrderDetailInfoModel *infoModel = self.modelArray[indexPath.section];
+- (void)orderListTableViewStatusAtIndex:(NSInteger)index {
+    GMOrderDetailInfoModel *infoModel = self.modelArray[index];
     if ([infoModel.status integerValue] == 0) {
         //去付款
         [self payWithOrderId:infoModel.orderId];

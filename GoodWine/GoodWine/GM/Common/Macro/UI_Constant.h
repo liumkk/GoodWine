@@ -88,4 +88,8 @@
 #define COLOR_GRAY_244                                                    \
 [UIColor colorWithRed:244 / 255.0 green:245 / 255.0 blue:248 / 255.0 alpha:1]
 
+#define COLOR_WHITE                [UIColor colorWithHexString:@"FFFFFF"]
+
+#define COLORRGB(red1,green1,blue1,alpha1) [UIColor colorWithRed:red1/255.0f green:green1/255.0f blue:blue1/255.0f alpha:alpha1]
+
 #endif /* UI_Constant_h */

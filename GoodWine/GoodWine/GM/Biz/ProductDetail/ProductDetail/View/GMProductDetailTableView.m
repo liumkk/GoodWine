@@ -102,6 +102,12 @@ static  NSString *productPicCellID = @"productPicCellID";
     return nil;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (self.productDetailDelegate && [self.productDetailDelegate respondsToSelector:@selector(productDetailScrollViewDidScroll:)]) {
+        [self.productDetailDelegate productDetailScrollViewDidScroll:scrollView];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.productDetailDelegate && [self.productDetailDelegate respondsToSelector:@selector(productDetailTableViewDidSelectRowAtIndexPath:)]) {
         [self.productDetailDelegate productDetailTableViewDidSelectRowAtIndexPath:indexPath];
@@ -111,7 +117,7 @@ static  NSString *productPicCellID = @"productPicCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 270.f;
+        return Width_Screen +80.f;
     } else if (indexPath.section == 1) {
         return 50.f;
     } else if (indexPath.section == 2) {

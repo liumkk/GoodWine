@@ -17,7 +17,6 @@ static NSString *registerTableCellID = @"registerTableCellID";
 @property (nonatomic, strong) UITextField *phoneTF;
 @property (nonatomic, strong) UITextField *verficationTF;
 @property (nonatomic, strong) UITextField *passwordTF;
-@property (nonatomic, strong) GMTableViewFooterView *footerView;
 
 @end
 
@@ -85,6 +84,12 @@ static NSString *registerTableCellID = @"registerTableCellID";
     }
 }
 
+- (void)protocolAction:(UIButton *)btn {
+    if (self.registerTBDelegate && [self.registerTBDelegate respondsToSelector:@selector(pushProtocol)]) {
+        [self.registerTBDelegate pushProtocol];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self deselectRowAtIndexPath:indexPath animated:YES];
@@ -106,19 +111,20 @@ static NSString *registerTableCellID = @"registerTableCellID";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     
-    return 80.f;
+    return 100.f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    return self.footerView;
+    return self.protocolView;
 }
 
-- (GMTableViewFooterView *)footerView {
-    if (! _footerView) {
-        _footerView = [[GMTableViewFooterView alloc] initWithFrame:CGRectMake(0, 0, Width_Screen, 0) title:@"注册"];
-        [_footerView.confirmBtn addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
+- (GMRegisterFooterView *)protocolView {
+    if (! _protocolView) {
+        _protocolView = [[GMRegisterFooterView alloc] initWithFrame:CGRectMake(0, 0, Width_Screen, 30.f)];
+        [_protocolView.confirmBtn addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_protocolView.protocolBtn addTarget:self action:@selector(protocolAction:) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _footerView;
+    return _protocolView;
 }
 
 @end

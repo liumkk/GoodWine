@@ -45,8 +45,8 @@
 - (UIButton *)allSelectBtn {
     if (! _allSelectBtn) {
         _allSelectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_allSelectBtn setImage:[UIImage imageNamed:@"shopp_unselect"] forState:UIControlStateNormal];
-        [_allSelectBtn setImage:[UIImage imageNamed:@"shopp_select"] forState:UIControlStateSelected];
+        [_allSelectBtn setImage:[UIImage imageNamed:@"unselect"] forState:UIControlStateNormal];
+        [_allSelectBtn setImage:[UIImage imageNamed:@"select"] forState:UIControlStateSelected];
         [self addSubview:_allSelectBtn];
     }
     return _allSelectBtn;

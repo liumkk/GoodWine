@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"注册";
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     
     [self setupConstranits];
 }
@@ -41,11 +41,40 @@
 }
 
 - (void)registerTableViewNameTF:(UITextField *)nameTF phoneTF:(UITextField *)phoneTF verficationTF:(UITextField *)verficationTF passwordTF:(UITextField *)passwordTF {
+    [self.view endEditing:YES];
     if (IsStrEmpty(nameTF.text) || IsStrEmpty(phoneTF.text) || IsStrEmpty(verficationTF.text) || IsStrEmpty(passwordTF.text)) {
         [MKToastView showToastToView:self.view text:@"请输入有效信息"];
+    } else if (self.registerTableView.protocolView.selectBtn.selected == NO) {
+        [MKToastView showToastToView:self.view text:@"请阅读服务协议"];
     } else {
-        
+        [GMLoadingActivity showLoadingActivityInView:self.view];
+        @weakify(self)
+        [ServerAPIManager asyncRegisterWithUserName:nameTF.text PhoneNum:phoneTF.text password:passwordTF.text authCode:verficationTF.text succeedBlock:^{
+            @strongify(self)
+            [MKToastView showToastToView:self.view text:@"注册成功" time:1.f completion:^{
+                [ServerAPIManager asyncLoginWithUserName:nameTF.text password:passwordTF.text succeedBlock:^(GMUserCenterInfoModel * _Nonnull model) {
+                    @strongify(self)
+                    [GMLoadingActivity hideLoadingActivityInView:self.view];
+                    UserCenter.userInfoModel = model;
+                    [ViewControllerManager showTabController];
+                } failedBlock:^(NSError * _Nonnull error) {
+                    [GMLoadingActivity hideLoadingActivityInView:self.view];
+                    [self showAlertViewWithError:error];
+                }];
+            }];
+        } failedBlock:^(NSError * error) {
+            @strongify(self)
+            [GMLoadingActivity hideLoadingActivityInView:self.view];
+            [self showAlertViewWithError:error];
+        }];
     }
+}
+
+- (void)pushProtocol {
+    GMWebViewController *vc = [[GMWebViewController alloc] initNeedAdapter:NO];
+    vc.urlString = @"http://www.wufangyuan.cn/static/shuoming.html";
+    vc.title = @"隐私协议";
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)setupConstranits {

@@ -37,6 +37,9 @@
 #define GMLogin                       @"sso/login"
 #define GMLogout                      @"sso/logout"
 #define GMAuthCode(_phone)            [NSString stringWithFormat:@"sso/getAuthCode?telephone=%@",_phone]
+#define GMRegister(_userName,_password,_phone,_authCode)   \
+[NSString stringWithFormat:@"sso/register?username=%@&password=%@&telephone=%@&authCode=%@",_userName,_password,_phone,_authCode]
+
 #define GMModifyPassword(_phone,_password,_authCode)   \
 [NSString stringWithFormat:@"sso/updatePassword?telephone=%@&password=%@&authCode=%@",_phone,_password,_authCode]
 

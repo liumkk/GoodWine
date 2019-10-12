@@ -33,7 +33,7 @@
 - (void)setupConstraints {
     [self.titleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.contentView);
-        make.height.mas_equalTo(190.f);
+        make.height.mas_equalTo(Width_Screen);
     }];
     
     [self.promotionPriceLabel mas_makeConstraints:^(MASConstraintMaker *make) {

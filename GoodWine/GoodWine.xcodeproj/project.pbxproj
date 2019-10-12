@@ -152,6 +152,8 @@
 		D6E36156232695850056454C /* GMOrderListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E36155232695850056454C /* GMOrderListTableViewCell.m */; };
 		D6E361592326980E0056454C /* GMOrderListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E361582326980E0056454C /* GMOrderListItem.m */; };
 		D6E3615C232698240056454C /* GMOrderListInfoModels.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E3615B232698240056454C /* GMOrderListInfoModels.m */; };
+		D6F41C20234F15C0009E9733 /* GMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F41C1F234F15C0009E9733 /* GMWebViewController.m */; };
+		D6F41C2323505AD1009E9733 /* GMRegisterFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F41C2223505AD1009E9733 /* GMRegisterFooterView.m */; };
 		D6FD41D1230EC5CB00866A68 /* GMRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FD41D0230EC5CB00866A68 /* GMRegisterViewController.m */; };
 		D6FD41D5230EC63400866A68 /* GMForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FD41D4230EC63400866A68 /* GMForgetPasswordViewController.m */; };
 		D6FD41D9230ECB0F00866A68 /* MKVerificationCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6FD41D8230ECB0F00866A68 /* MKVerificationCodeView.m */; };
@@ -472,6 +474,10 @@
 		D6E361582326980E0056454C /* GMOrderListItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderListItem.m; sourceTree = "<group>"; };
 		D6E3615A232698240056454C /* GMOrderListInfoModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderListInfoModels.h; sourceTree = "<group>"; };
 		D6E3615B232698240056454C /* GMOrderListInfoModels.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderListInfoModels.m; sourceTree = "<group>"; };
+		D6F41C1E234F15C0009E9733 /* GMWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMWebViewController.h; sourceTree = "<group>"; };
+		D6F41C1F234F15C0009E9733 /* GMWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMWebViewController.m; sourceTree = "<group>"; };
+		D6F41C2123505AD1009E9733 /* GMRegisterFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMRegisterFooterView.h; sourceTree = "<group>"; };
+		D6F41C2223505AD1009E9733 /* GMRegisterFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMRegisterFooterView.m; sourceTree = "<group>"; };
 		D6FD41CF230EC5CB00866A68 /* GMRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMRegisterViewController.h; sourceTree = "<group>"; };
 		D6FD41D0230EC5CB00866A68 /* GMRegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMRegisterViewController.m; sourceTree = "<group>"; };
 		D6FD41D3230EC63400866A68 /* GMForgetPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMForgetPasswordViewController.h; sourceTree = "<group>"; };
@@ -838,6 +844,7 @@
 		D638661F229C2FD20020DE4B /* Biz */ = {
 			isa = PBXGroup;
 			children = (
+				D6F41C1D234F1598009E9733 /* WebViewVC */,
 				D638664A229D755E0020DE4B /* HomePage */,
 				D65C234A2306B5C900DF955F /* ProductDetail */,
 				D638664D229D75910020DE4B /* ShoppCart */,
@@ -1716,6 +1723,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D6F41C1D234F1598009E9733 /* WebViewVC */ = {
+			isa = PBXGroup;
+			children = (
+				D6F41C1E234F15C0009E9733 /* GMWebViewController.h */,
+				D6F41C1F234F15C0009E9733 /* GMWebViewController.m */,
+			);
+			path = WebViewVC;
+			sourceTree = "<group>";
+		};
 		D6FD41CD230EC58B00866A68 /* LoginVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1761,6 +1777,8 @@
 			children = (
 				D6FD41DC230ED2D400866A68 /* GMRegisterTableView.h */,
 				D6FD41DD230ED2D400866A68 /* GMRegisterTableView.m */,
+				D6F41C2123505AD1009E9733 /* GMRegisterFooterView.h */,
+				D6F41C2223505AD1009E9733 /* GMRegisterFooterView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2086,6 +2104,7 @@
 				D687ED7522F5285900A3D249 /* GMDataManager.m in Sources */,
 				D678144D22FD0A3500B26104 /* GMStoreInfoModel.m in Sources */,
 				D60F3836231AACB70059B66F /* GMOrderDetailFooterView.m in Sources */,
+				D6F41C20234F15C0009E9733 /* GMWebViewController.m in Sources */,
 				D60F37F72318BDC10059B66F /* MKEmptyView.m in Sources */,
 				D6FD41E4230ED46300866A68 /* MKTextFieldTableViewCell.m in Sources */,
 				D6386650229D76520020DE4B /* GMHomePageViewController.m in Sources */,
@@ -2101,6 +2120,7 @@
 				D6386643229C3A210020DE4B /* GMBaseViewController.m in Sources */,
 				D6699F0423347FB0004CE907 /* GMOrderConfirmInfoModels.m in Sources */,
 				D65C23532306B64C00DF955F /* GMProductDetailTableView.m in Sources */,
+				D6F41C2323505AD1009E9733 /* GMRegisterFooterView.m in Sources */,
 				D6E36145232683CE0056454C /* GMModifyPasswordViewController.m in Sources */,
 				D6E36153232694D40056454C /* GMOrderListTableView.m in Sources */,
 				D638667A229EE1B50020DE4B /* GMMyOrderCell.m in Sources */,
@@ -2301,7 +2321,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CPU9SP6L3H;
+				DEVELOPMENT_TEAM = NR789L6C3L;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoodWine/GoodWine-Prefix.pch";
 				INFOPLIST_FILE = GoodWine/Info.plist;
@@ -2310,7 +2330,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lmk.GoodWine;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.goodwine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2324,7 +2344,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CPU9SP6L3H;
+				DEVELOPMENT_TEAM = NR789L6C3L;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoodWine/GoodWine-Prefix.pch";
 				INFOPLIST_FILE = GoodWine/Info.plist;
@@ -2333,7 +2353,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lmk.GoodWine;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.goodwine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

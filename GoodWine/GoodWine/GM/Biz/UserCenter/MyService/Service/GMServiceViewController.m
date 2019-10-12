@@ -9,7 +9,7 @@
 #import "GMServiceViewController.h"
 #import "GMServiceTableView.h"
 
-@interface GMServiceViewController ()
+@interface GMServiceViewController () <GMServiceTableViewDelegate>
 
 @property (nonatomic, strong) GMServiceTableView *tableView;
 
@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     [self setupConstraints];
 }
 
@@ -41,9 +41,20 @@
     }];
 }
 
+- (void)serviceTableViewDidSelectRowAtIndex:(NSInteger)index {
+    if (index == 0) {
+        NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",UserCenter.storeInfoModel.platPhone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    } else {
+        NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",UserCenter.storeInfoModel.contactPhone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    }
+}
+
 - (GMServiceTableView *)tableView {
     if (! _tableView) {
         _tableView = [[GMServiceTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView.serviceTBDelegate = self;
         [self.view addSubview:_tableView];
     }
     return _tableView;

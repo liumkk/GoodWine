@@ -24,4 +24,21 @@
     view.layer.mask = maskLayer;
 }
 
++ (UIImage *)createPureColorImageWithColor:(UIColor *)color alpha:(CGFloat)alpha size:(CGSize)size {
+    // 纯色的UIView
+    UIView *pureColorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    pureColorView.backgroundColor = color;
+    pureColorView.alpha = alpha;
+    
+    // 由上下文获取UIImage
+    UIGraphicsBeginImageContext(size);
+    [pureColorView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *pureColorImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // 结束上下文
+    UIGraphicsEndImageContext();
+    
+    return pureColorImage;
+}
+
 @end

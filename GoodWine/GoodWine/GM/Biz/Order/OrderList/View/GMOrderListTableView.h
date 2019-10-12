@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol GMOrderListTableViewDelegate <NSObject>
 
-- (void)orderListTableViewDidSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (void)orderListTableViewStatusAtIndex:(NSInteger )index;
 - (void)orderListTableViewDeleteRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

@@ -14,4 +14,10 @@
     return @{@"addressId"  : @"id"};
 }
 
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    _region = dic[@"region"];
+    _region = _region == nil ? @"" : _region;
+    return YES;
+}
+
 @end

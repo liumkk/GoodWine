@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GMBaseViewController : UIViewController
 
-- (void)updateNavigationBar;
+- (void)updateNavigationBarNeedBack:(BOOL)need;
+- (void)updateClearNavigationBarNeedBack:(BOOL)need alpha:(CGFloat)alpha;
 
 @end
 

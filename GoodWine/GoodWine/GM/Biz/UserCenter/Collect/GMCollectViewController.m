@@ -24,7 +24,7 @@
     [super viewDidLoad];
     self.title = @"关注商品";
     
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     [self setupConstranits];
     [self requestCollectList];
 }

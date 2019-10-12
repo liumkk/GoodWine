@@ -114,7 +114,7 @@
 - (UIButton *)selectedBtn {
     if (! _selectedBtn) {
         _selectedBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_selectedBtn setBackgroundImage:[UIImage imageNamed:@"shopp_select"] forState:UIControlStateNormal];
+        [_selectedBtn setBackgroundImage:[UIImage imageNamed:@"select"] forState:UIControlStateNormal];
         [self addSubview:_selectedBtn];
     }
     return _selectedBtn;

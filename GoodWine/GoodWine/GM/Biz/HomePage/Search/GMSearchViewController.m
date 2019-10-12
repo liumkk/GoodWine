@@ -35,7 +35,7 @@
 }
 
 - (void)initSubviews {
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     self.view.backgroundColor = COLOR_TABLE_BG_RAY;
     self.navigationItem.titleView = self.searchView;
     

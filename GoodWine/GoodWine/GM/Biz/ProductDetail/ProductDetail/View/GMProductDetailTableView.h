@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol GMProductDetailTableViewDelegate <NSObject>
 
+- (void)productDetailScrollViewDidScroll:(UIScrollView *)scrollView;
 - (void)productDetailTableViewDidSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)showAllEvaluate;
 

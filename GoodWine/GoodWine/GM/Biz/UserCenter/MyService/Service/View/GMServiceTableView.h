@@ -10,7 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol GMServiceTableViewDelegate <NSObject>
+
+- (void)serviceTableViewDidSelectRowAtIndex:(NSInteger)index;
+
+@end
+
 @interface GMServiceTableView : UITableView
+
+@property (nonatomic, weak) id <GMServiceTableViewDelegate> serviceTBDelegate;
 
 @end
 

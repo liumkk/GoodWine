@@ -68,8 +68,12 @@ static NSString *settTableCellID = @"settTableCellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
-        GMKeyValueInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:settingTableCellID forIndexPath:indexPath];
-        [cell updateCellContentWithCellType:GMKVInfoCellTypeLeftImageView leftText:@"修改密码" rightText:@"goodWine" needLine:NO];
+//        GMKeyValueInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:settingTableCellID forIndexPath:indexPath];
+//        [cell updateCellContentWithCellType:GMKVInfoCellTypeLeftImageView leftText:@"修改密码" rightText:@"goodWine" needLine:NO];
+//        return cell;
+        GMSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:settTableCellID forIndexPath:indexPath];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        [cell updateCellImageName:@"goodWine" title:@"修改密码" content:@"" needLine:YES];
         return cell;
     } else {
         GMSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:settTableCellID forIndexPath:indexPath];

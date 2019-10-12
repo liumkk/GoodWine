@@ -33,6 +33,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSURLSessionDataTask *)asynclogoutSucceedBlock:(void (^)(void))succeedBlock
                                       failedBlock:(void (^)(NSError * error))failedBlock;
 
+- (NSURLSessionDataTask *)asyncRegisterWithUserName:(NSString *)userName
+                                           PhoneNum:(NSString *)phoneNum
+                                           password:(NSString *)password
+                                           authCode:(NSString *)authCode
+                                       succeedBlock:(void (^)(void))succeedBlock
+                                        failedBlock:(void (^)(NSError * error))failedBlock;
+
 - (NSURLSessionDataTask *)asyncModifyPasswordWithPhoneNum:(NSString *)phoneNum
                                                  password:(NSString *)password
                                                  authCode:(NSString *)authCode

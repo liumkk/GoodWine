@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableArray *productStarArray;
 
 @property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) UILabel *placedLabel;
+
 
 @property (nonatomic, strong) UILabel *storeLabel;
 @property (nonatomic, strong) NSMutableArray *storeStarArray;

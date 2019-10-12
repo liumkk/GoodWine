@@ -43,6 +43,7 @@
 #import "MKVerificationCodeView.h"
 
 #import "GMBaseViewController.h"
+#import "GMWebViewController.h"
 #import "GMLoginViewController.h"
 #import "GMViewControllerManager.h"
 #import "GMHomePageViewController.h"

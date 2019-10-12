@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     
     [self setupConstranits];
     

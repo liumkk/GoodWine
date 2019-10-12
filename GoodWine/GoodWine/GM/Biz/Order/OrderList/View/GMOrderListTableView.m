@@ -70,6 +70,8 @@ static NSString *orderListCellID = @"orderListCellID";
         GMOrderDetailInfoModel *model = self.modelArray[indexPath.section];
 //        [cell updateCellImageName:@"goodWine" title:model.orderSn content:[model.status statusFormatterWithType:model.commentType] needLine:NO];
 //        cell.contentLabel.textColor = COLOR_THEME_COLOR;
+        cell.statusBtn.tag = indexPath.section;
+        [cell.statusBtn addTarget:self action:@selector(statusAction:) forControlEvents:UIControlEventTouchUpInside];
         [cell updateCellWithModel:model];
         return cell;
     } else if (indexPath.row == 1) {
@@ -87,15 +89,18 @@ static NSString *orderListCellID = @"orderListCellID";
     
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.orderListDelegate && [self.orderListDelegate respondsToSelector:@selector(orderListTableViewDidSelectRowAtIndexPath:)]) {
-        [self.orderListDelegate orderListTableViewDidSelectRowAtIndexPath:indexPath];
+- (void)statusAction:(UIButton *)btn {
+    if (self.orderListDelegate && [self.orderListDelegate respondsToSelector:@selector(orderListTableViewStatusAtIndex:)]) {
+        [self.orderListDelegate orderListTableViewStatusAtIndex:btn.tag];
     }
 }
 
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return YES;
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
     return @"删除";

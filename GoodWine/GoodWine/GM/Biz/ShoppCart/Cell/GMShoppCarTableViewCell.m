@@ -140,8 +140,8 @@
 - (UIButton *)selectBtn {
     if (! _selectBtn) {
         _selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_selectBtn setImage:[UIImage imageNamed:@"shopp_unselect"] forState:UIControlStateNormal];
-        [_selectBtn setImage:[UIImage imageNamed:@"shopp_select"] forState:UIControlStateSelected];
+        [_selectBtn setImage:[UIImage imageNamed:@"unselect"] forState:UIControlStateNormal];
+        [_selectBtn setImage:[UIImage imageNamed:@"select"] forState:UIControlStateSelected];
         [self.contentView addSubview:_selectBtn];
     }
     return _selectBtn;

@@ -34,7 +34,7 @@
     [super viewDidLoad];
     self.title = @"订单详情";
     self.view.backgroundColor = [UIColor whiteColor];
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     [self setupConstranits];
     
     [self requestOrderDetail];

@@ -8,6 +8,10 @@
 
 #import "GMOrderEvaluateView.h"
 
+@interface GMOrderEvaluateView () <UITextViewDelegate>
+
+@end
+
 @implementation GMOrderEvaluateView
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -16,6 +20,14 @@
         [self setupConstraints];
     }
     return self;
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    if (textView.text.length > 0) {
+        self.placedLabel.hidden = YES;
+    } else {
+        self.placedLabel.hidden = NO;
+    }
 }
 
 - (void)updateEvaluateViewWithModel:(GMOrderItem *)model {
@@ -41,7 +53,7 @@
     
     for (int i = 0; i < 5; i ++) {
         UIButton *productStarBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [productStarBtn setBackgroundImage:[UIImage imageNamed:@"red_collected"] forState:UIControlStateNormal];
+        [productStarBtn setBackgroundImage:[UIImage imageNamed:@"star_select"] forState:UIControlStateNormal];
         productStarBtn.tag = i;
         [self addSubview:productStarBtn];
         [productStarBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -59,6 +71,13 @@
         make.height.mas_equalTo(150.f);
     }];
     
+    [self.placedLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.textView).offset(5.f);
+        make.right.equalTo(self.textView);
+        make.top.equalTo(self.textView).offset(10.f);
+        make.height.mas_equalTo(15.f);
+    }];
+    
     [self.storeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.textView.mas_bottom).offset(20.f);
         make.left.equalTo(self.productImageView);
@@ -67,7 +86,7 @@
     
     for (int i = 0; i < 5; i ++) {
         UIButton *storeStarBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [storeStarBtn setBackgroundImage:[UIImage imageNamed:@"red_collected"] forState:UIControlStateNormal];
+        [storeStarBtn setBackgroundImage:[UIImage imageNamed:@"star_select"] forState:UIControlStateNormal];
         storeStarBtn.tag = i;
         [self addSubview:storeStarBtn];
         [storeStarBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -86,7 +105,7 @@
     
     for (int i = 0; i < 5; i ++) {
         UIButton *serviceStarBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [serviceStarBtn setBackgroundImage:[UIImage imageNamed:@"red_collected"] forState:UIControlStateNormal];
+        [serviceStarBtn setBackgroundImage:[UIImage imageNamed:@"star_select"] forState:UIControlStateNormal];
         serviceStarBtn.tag = i;
         [self addSubview:serviceStarBtn];
         [serviceStarBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -128,13 +147,24 @@
     if (! _textView) {
         _textView = [[UITextView alloc] initWithFrame:CGRectZero];
         _textView.font = Font(15.f);
-        _textView.text = @"内容";
         _textView.layer.borderColor = COLOR_GRAY_200.CGColor;
         _textView.layer.borderWidth =1.0;
         _textView.layer.cornerRadius =5.0;
+        _textView.delegate = self;
         [self addSubview:_textView];
     }
     return _textView;
+}
+
+- (UILabel *)placedLabel {
+    if (! _placedLabel) {
+        _placedLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _placedLabel.text = @"请输入评价内容...";
+        _placedLabel.textColor = COLOR_TEXT_FIELD_PLACEHOLDER_COLOR;
+        _placedLabel.font = Font(15.f);
+        [self addSubview:_placedLabel];
+    }
+    return _placedLabel;
 }
 
 - (UILabel *)storeLabel {

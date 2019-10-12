@@ -55,7 +55,7 @@
 - (void)updateAddressCellWithModel:(AddressInfoModel *)model {
     self.nameLabel.text = model.name;
     self.phoneLabel.text = model.phoneNumber;
-    self.addressLabel.text = model.detailAddress;
+    self.addressLabel.text = [NSString stringWithFormat:@"%@%@%@",model.city,model.region,model.detailAddress];
 }
 
 #pragma mark --init subviews
@@ -101,6 +101,7 @@
     if (! _addressLabel) {
         _addressLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _addressLabel.font = Font_14;
+        _addressLabel.numberOfLines = 2;
         [self.bgImageView addSubview:_addressLabel];
     }
     return _addressLabel;

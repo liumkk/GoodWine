@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"添加地址";
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     [self setupConstranits];
 }
 

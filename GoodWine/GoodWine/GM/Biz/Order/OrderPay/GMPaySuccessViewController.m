@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"支付成功";
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     
     [self setupConstranits];
 }

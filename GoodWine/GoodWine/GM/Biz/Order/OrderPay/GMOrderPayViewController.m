@@ -33,7 +33,7 @@
     [super viewDidLoad];
     self.title = @"选择支付方式";
     
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     [self setupConstranits];
 }
 

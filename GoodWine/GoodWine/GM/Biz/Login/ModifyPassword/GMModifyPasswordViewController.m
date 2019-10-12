@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"忘记密码";
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     
     [self setupConstranits];
 }

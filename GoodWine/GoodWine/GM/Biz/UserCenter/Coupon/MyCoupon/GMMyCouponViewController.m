@@ -38,7 +38,7 @@
     [super viewDidLoad];
     self.title = @"我的优惠券";
     self.page = 1;
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     
     [self setupConstranits];
     if (self.isSelectCoupon == YES) {

@@ -22,7 +22,7 @@
     [super viewDidLoad];
     self.title = @"设置";
     self.view.backgroundColor = [UIColor whiteColor];
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     [self setupConstranits];
     
 }

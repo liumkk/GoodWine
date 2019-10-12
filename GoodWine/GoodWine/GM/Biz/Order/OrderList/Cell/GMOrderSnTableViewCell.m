@@ -36,7 +36,7 @@
     [self.statusBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView.mas_centerY);
         make.right.equalTo(self.contentView.mas_right).offset(-16.f);
-        make.size.mas_equalTo(CGSizeMake(70.f, 20.f));
+        make.size.mas_equalTo(CGSizeMake(70.f, 23.f));
     }];
     
     [self.cancleBtn mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GMUserCenterInfoModel.h"
+#import "GMStoreInfoModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GMUserCenter : NSObject
 
 @property (nonatomic, strong) GMUserCenterInfoModel *userInfoModel;
+@property (nonatomic, strong) GMStoreInfoModel *storeInfoModel;
+
 @property (nonatomic, assign) BOOL isLogin;
 
 @property (nonatomic, copy) NSString *storeId;

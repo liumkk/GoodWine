@@ -26,6 +26,7 @@
 
 - (void)initSubviews {
     self.title = @"订单";
+    [self updateNavigationBarNeedBack:NO];
     self.orderCollectView.orderCollectDelegate = self;
 }
 

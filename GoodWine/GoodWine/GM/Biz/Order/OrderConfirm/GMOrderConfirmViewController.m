@@ -30,8 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"订单确认";
+    [self updateNavigationBarNeedBack:YES];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self updateNavigationBar];
     [self setupConstranits];
 }
 

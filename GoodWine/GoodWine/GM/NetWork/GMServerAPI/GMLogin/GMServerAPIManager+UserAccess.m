@@ -97,6 +97,54 @@
     }];
 }
 
+- (NSURLSessionDataTask *)asyncRegisterWithUserName:(NSString *)userName
+                                           PhoneNum:(NSString *)phoneNum
+                                           password:(NSString *)password
+                                           authCode:(NSString *)authCode
+                                       succeedBlock:(void (^)(void))succeedBlock
+                                        failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    if (IsStrEmpty(phoneNum) ||
+        IsStrEmpty(password) ||
+        IsStrEmpty(authCode)) {
+        if (failedBlock) {
+            failedBlock([GMNetworkError getParamError]);
+        }
+        return nil;
+    }
+    
+    NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
+    
+    userName = [userName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    phoneNum = [phoneNum stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    password = [password stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    authCode = [authCode stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    temParamDict[@"username"] = userName;
+    temParamDict[@"telephone"] = phoneNum;
+    temParamDict[@"password"] = password;
+    temParamDict[@"authCode"] = authCode;
+    
+    [ServerClient setContentTypeJson];
+    return
+    [ServerClient asyncNetworkRequestWithURL:GMRegister(userName,password,phoneNum,authCode) parameter:temParamDict success:^(NSDictionary *responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            if (succeedBlock) {
+                succeedBlock();
+            }
+            
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
 - (NSURLSessionDataTask *)asyncModifyPasswordWithPhoneNum:(NSString *)phoneNum
                                                  password:(NSString *)password
                                                  authCode:(NSString *)authCode
@@ -117,6 +165,7 @@
     temParamDict[@"password"] = password;
     temParamDict[@"authCode"] = authCode;
     
+    [ServerClient setContentTypeJson];
     return
     [ServerClient asyncNetworkRequestWithURL:GMModifyPassword(phoneNum,password,authCode) parameter:temParamDict success:^(NSDictionary *responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {

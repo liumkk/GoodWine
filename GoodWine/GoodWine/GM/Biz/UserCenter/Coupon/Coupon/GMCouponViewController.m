@@ -24,7 +24,7 @@
     [super viewDidLoad];
     self.title = @"优惠券";
     
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     
     [self setupConstranits];
     [self requestQueryCouponList];

@@ -25,7 +25,7 @@
     [super viewDidLoad];
     self.title = @"地址管理";
     
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     [self setupConstranits];
     [self requestQueryAddress];
 }

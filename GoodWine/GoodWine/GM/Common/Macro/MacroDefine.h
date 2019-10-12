@@ -20,7 +20,7 @@
 #define Height_NavBar 44
 #define Height_TabBar 49
 
-#define StatusBarHeight (Height_Screen == 812.0 ? 44 : 20)
+#define StatusBarHeight (Height_Screen >= 812.0 ? 44 : 20)
 #define SafeAreaTopHeight (Height_Screen >= 812.0 ? 88 : 64)
 #define BottomTarBarSpace (Height_Screen >= 812.0 ? 34 : 0)
 
@@ -41,7 +41,7 @@
 #define LeftTitle       @"leftTitle"
 #define RightTitle      @"rightTitle"
 
-#define GMUrlSchemes    @"GoodWineSchems"
+#define GMUrlSchemes    @"goodWineSchems"
 
 
 #define Notification_addProduct     @"addproduct"

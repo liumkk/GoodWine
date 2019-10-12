@@ -33,6 +33,7 @@
 
 - (void)initSubviews {
     self.title = @"我的";
+    [self updateNavigationBarNeedBack:NO];
     self.view.backgroundColor = [UIColor whiteColor];
 }
 

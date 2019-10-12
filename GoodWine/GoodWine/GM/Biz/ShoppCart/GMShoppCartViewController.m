@@ -34,8 +34,13 @@
 }
 
 - (void)initSubviews {
-    self.title = @"购物车";
     self.view.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.title = @"购物车";
+    [self updateNavigationBarNeedBack:NO];
 }
 
 - (void)refreshTableView: (NSNotification *) notification {

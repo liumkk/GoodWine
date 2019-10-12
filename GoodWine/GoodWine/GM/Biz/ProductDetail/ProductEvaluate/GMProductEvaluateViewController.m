@@ -31,7 +31,7 @@
     [super viewDidLoad];
     self.title = @"评价详情";
     
-    [self updateNavigationBar];
+    [self updateNavigationBarNeedBack:YES];
     [self setupConstranits];
 }
 

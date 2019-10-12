@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationBar.translucent = NO;
+//    self.navigationBar.translucent = NO;
 }
 
 @end

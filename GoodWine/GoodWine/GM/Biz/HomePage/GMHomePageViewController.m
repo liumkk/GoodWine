@@ -46,11 +46,14 @@
 }
 
 - (void)initSubviews {
-//    self.title = @"首页";
-    
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.navigationItem.titleView = self.searchView;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self updateNavigationBarNeedBack:NO];
 }
 
 #pragma mark --add MJRefresh

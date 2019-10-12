@@ -40,8 +40,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"商品详情";
-    [self updateNavigationBar];
     
     [self setupConstranits];
     
@@ -52,9 +50,25 @@
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.title = @"商品详情";
+    CGFloat minAlphaOffset = 0;
+    CGFloat maxAlphaOffset = 200;
+    CGFloat offset = self.productDetailTV.contentOffset.y;
+    CGFloat alpha = (offset - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset);
+    [self updateClearNavigationBarNeedBack:YES alpha:alpha];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self updateNavigationBarNeedBack:YES];
+}
+
 - (void)setupConstranits {
+    
     [self.productDetailTV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(0, 0, footerView_height + BottomTarBarSpace, 0));
+        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(-SafeAreaTopHeight, 0, footerView_height + BottomTarBarSpace, 0));
     }];
     
     [self.productDetailFooterView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -102,6 +116,15 @@
     });
 }
 
+- (void)productDetailScrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat minAlphaOffset = 0;
+    CGFloat maxAlphaOffset = 200;
+    CGFloat offset = scrollView.contentOffset.y;
+    CGFloat alpha = (offset - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset);
+    
+    [self updateClearNavigationBarNeedBack:YES alpha:alpha];
+}
+
 - (void)productDetailTableViewDidSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 && indexPath.row == 0) {
         GMCouponViewController *vc = [[GMCouponViewController alloc] init];
@@ -135,7 +158,8 @@
 }
 
 - (void)serviceAction:(UIButton *)btn {
-    
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",UserCenter.storeInfoModel.contactPhone];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 
 - (void)shoppCarAction:(UIButton *)btn {
@@ -160,13 +184,17 @@
     [UIView animateWithDuration:0.3 animations:^{
         @strongify(self)
         self.selectView.hidden = NO;
-        self.selectView.frame = CGRectMake(0, Height_Screen - NavigationBarAndStatusBarHeight - self.selectView.bgView.height, Width_Screen, self.selectView.bgView.height);
+        self.selectView.frame = CGRectMake(0, Height_Screen - self.selectView.bgView.height, Width_Screen, self.selectView.bgView.height);
     }];
 }
 
 - (void)hiddenSelectView {
-    self.selectView.frame = CGRectMake(0, Height_Screen, Width_Screen, self.selectView.bgView.height);
-    self.maskView.hidden = YES;
+    @weakify(self)
+    [UIView animateWithDuration:0.3 animations:^{
+        @strongify(self)
+        self.selectView.frame = CGRectMake(0, Height_Screen, Width_Screen, self.selectView.bgView.height);
+        self.maskView.hidden = YES;
+    }];
 }
 
 - (void)selectProductWithItem:(GMProductSkuItem *)item buyNum:(NSString *)buyNum {

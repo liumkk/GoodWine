@@ -169,7 +169,7 @@
 }
 
 - (UIImageView *)creatSrartImageView {
-    UIImageView *start = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lightStart"]];
+    UIImageView *start = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"star_select"]];
     start.hidden = YES;
     return start;
 }
