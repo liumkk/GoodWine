@@ -51,16 +51,10 @@
         @weakify(self)
         [ServerAPIManager asyncRegisterWithUserName:nameTF.text PhoneNum:phoneTF.text password:passwordTF.text authCode:verficationTF.text succeedBlock:^{
             @strongify(self)
+            [GMLoadingActivity hideLoadingActivityInView:self.view];
             [MKToastView showToastToView:self.view text:@"注册成功" time:1.f completion:^{
-                [ServerAPIManager asyncLoginWithUserName:nameTF.text password:passwordTF.text succeedBlock:^(GMUserCenterInfoModel * _Nonnull model) {
-                    @strongify(self)
-                    [GMLoadingActivity hideLoadingActivityInView:self.view];
-                    UserCenter.userInfoModel = model;
-                    [ViewControllerManager showTabController];
-                } failedBlock:^(NSError * _Nonnull error) {
-                    [GMLoadingActivity hideLoadingActivityInView:self.view];
-                    [self showAlertViewWithError:error];
-                }];
+                self.callBack(phoneTF.text, passwordTF.text);
+                [self.navigationController popViewControllerAnimated:YES];
             }];
         } failedBlock:^(NSError * error) {
             @strongify(self)

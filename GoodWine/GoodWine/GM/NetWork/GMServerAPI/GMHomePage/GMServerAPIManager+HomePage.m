@@ -13,6 +13,7 @@
 - (NSURLSessionDataTask *)asyncQueryHomePageInfoWithStoreId:(NSString *)storeId
                                                SucceedBlock:(void (^)(HomePageInfoModel *infoModel))succeedBlock
                                                 failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    [ServerClient setContentTypeJson];
     return
     [ServerClient asyncGetNetworkRequestWithURLString:GMHomePageInfo(storeId) parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {

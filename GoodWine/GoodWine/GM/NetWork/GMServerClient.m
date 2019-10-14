@@ -40,6 +40,11 @@ static GMServerClient *_sharedClient = nil;
     
 }
 
+- (void)setContentTypeUrlencoded {
+    ServerClient.requestSerializer = [AFHTTPRequestSerializer serializer];
+    [ServerClient.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+}
+
 - (void)setContentTypeJson {
     ServerClient.requestSerializer = [AFJSONRequestSerializer serializer];
     [ServerClient.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -49,9 +54,7 @@ static GMServerClient *_sharedClient = nil;
                                            parameter:(id)param
                                              success:(void (^)(NSDictionary *responseDict))success
                                              failure:(void (^)(NSError *error))failure {
-    if (!UserCenter.storeId) {
-        MKNSLog(@"UserCenter.storeId为空");
-    }
+    
    [_sharedClient.requestSerializer setValue:[DataManager getCookie] forHTTPHeaderField:Cookie_Key];
     NSURLSessionDataTask *task = [self POST:url parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
@@ -88,9 +91,7 @@ static GMServerClient *_sharedClient = nil;
                                                     parameter:(id)param
                                                       success:(void (^)(NSDictionary *responseDict))success
                                                       failure:(void (^)(NSError *error))failure {
-    if (!UserCenter.storeId) {
-        MKNSLog(@"UserCenter.storeId为空");
-    }
+    
     [_sharedClient.requestSerializer setValue:[DataManager getCookie] forHTTPHeaderField:Cookie_Key];
     NSURLSessionDataTask *task = [self GET:urlString parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         

@@ -10,7 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^RegisterCallBack)(NSString *name, NSString *pwd);
+
 @interface GMRegisterViewController : GMBaseViewController
+
+@property (nonatomic, copy) RegisterCallBack callBack;
 
 @end
 

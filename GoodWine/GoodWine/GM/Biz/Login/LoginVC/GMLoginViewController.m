@@ -10,6 +10,7 @@
 #import "GMloginView.h"
 #import "GMForgetPasswordViewController.h"
 #import "GMRegisterViewController.h"
+#import "GMJoinViewController.h"
 
 @interface GMLoginViewController ()
 
@@ -43,17 +44,29 @@
 }
 
 - (void)loginAction:(UIButton *)btn {
-
     [GMLoadingActivity showLoadingActivityInView:self.view];
-    [ServerAPIManager asyncLoginWithUserName:self.loginView.nameTextField.text.length == 0 ? @"zhangsan" : self.loginView.nameTextField.text
-                                    password:self.loginView.passwordTextField.text.length == 0 ? @"123456" : self.loginView.passwordTextField.text
-                                succeedBlock:^(GMUserCenterInfoModel * model) {
-        UserCenter.userInfoModel = model;
+    @weakify(self)
+    //检查定位是否成功
+    [LocationManager openLocationFunctionSucceed:^{
+        @strongify(self)
+        [ServerAPIManager asyncLoginWithUserName:self.loginView.nameTextField.text.length == 0 ? @"zhangsan" : self.loginView.nameTextField.text
+                                        password:self.loginView.passwordTextField.text.length == 0 ? @"123456" : self.loginView.passwordTextField.text
+                                    succeedBlock:^(GMUserCenterInfoModel * model) {
+                                        @strongify(self)
+                                        [GMLoadingActivity hideLoadingActivityInView:self.view];
+                                        UserCenter.userInfoModel = model;
+                                        [ViewControllerManager showTabController];
+                                    } failedBlock:^(NSError * _Nonnull error) {
+                                        @strongify(self)
+                                        [GMLoadingActivity hideLoadingActivityInView:self.view];
+                                        [self showAlertViewWithError:error];
+                                    }];
+    } failed:^{
         [GMLoadingActivity hideLoadingActivityInView:self.view];
-        [ViewControllerManager showTabController];
-    } failedBlock:^(NSError * _Nonnull error) {
+        GMJoinViewController *vc = [[GMJoinViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    } authority:^{
         [GMLoadingActivity hideLoadingActivityInView:self.view];
-        [self showAlertViewWithError:error];
     }];
 }
 
@@ -65,6 +78,11 @@
 
 - (void)signUpAction:(UIButton *)btn {
     GMRegisterViewController *vc = [[GMRegisterViewController alloc] init];
+    vc.callBack = ^(NSString * _Nonnull name, NSString * _Nonnull pwd) {
+        self.loginView.nameTextField.text = name;
+        self.loginView.passwordTextField.text = pwd;
+        [self loginAction:nil];
+    };
     [self.navigationController pushViewController:vc animated:YES];
 }
 

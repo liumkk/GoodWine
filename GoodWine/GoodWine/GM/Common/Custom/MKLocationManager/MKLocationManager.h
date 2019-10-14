@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedInstance;
 
-- (void)openLocationFunction;
+- (void)openLocationFunctionSucceed:(void(^)(void))succeed failed:(void(^)(void))failed authority:(void(^)(void))authority;
 
 @end
 

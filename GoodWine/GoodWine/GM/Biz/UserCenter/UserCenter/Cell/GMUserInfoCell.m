@@ -78,7 +78,7 @@
 - (UILabel *)nameLabel {
     if (! _nameLabel) {
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _nameLabel.text = [NSString stringWithFormat:@"昵称: %@",UserCenter.userInfoModel.nickname];
+        _nameLabel.text = [NSString stringWithFormat:@"昵称: %@",UserCenter.userInfoModel.username];
         _nameLabel.font = [UIFont boldSystemFontOfSize:14.f];
         [self.contentView addSubview:_nameLabel];
     }

@@ -20,7 +20,7 @@
 - (void)checkLoginViewController {
     GMLoginViewController *loginVC = [[GMLoginViewController alloc] init];
     GMNavigationController *loginNAC = [[GMNavigationController alloc] initWithRootViewController:loginVC];
-
+    
     self.window.rootViewController = loginNAC;
 }
 

@@ -98,7 +98,7 @@ static NSString *versionCellID = @"versionCellID";
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
     return @[@{LeftTitle : @"当前版本", RightTitle : version},
-             @{LeftTitle : @"版本更新", RightTitle : @""},
+             @{LeftTitle : @"去评分", RightTitle : @""},
              @{LeftTitle : @"软件官网", RightTitle : @""}];
 }
 

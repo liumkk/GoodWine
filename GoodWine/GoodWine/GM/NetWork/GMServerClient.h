@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedClient;
 
+- (void)setContentTypeUrlencoded;
 - (void)setContentTypeJson;
 
 - (NSURLSessionDataTask *)asyncNetworkRequestWithURL:(NSString *)url

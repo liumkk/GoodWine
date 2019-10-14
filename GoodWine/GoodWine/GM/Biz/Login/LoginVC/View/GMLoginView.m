@@ -105,7 +105,7 @@
 - (UITextField *)nameTextField {
     if (! _nameTextField) {
         _nameTextField = [[UITextField alloc] initWithFrame:CGRectZero];
-        _nameTextField.placeholder = @"输入用户名";
+        _nameTextField.placeholder = @"输入手机号";
         _nameTextField.borderStyle = UITextBorderStyleRoundedRect;
         _nameTextField.font = Font_16;
         _nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;

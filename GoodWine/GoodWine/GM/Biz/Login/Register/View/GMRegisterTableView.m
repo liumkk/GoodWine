@@ -54,7 +54,7 @@ static NSString *registerTableCellID = @"registerTableCellID";
     
     MKTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:registerTableCellID forIndexPath:indexPath];
     if (indexPath.row == 0) {
-        [cell updateTextFieldCellType:MKTextFieldCellTypeDefault placeholder:@"请输入用户名"];
+        [cell updateTextFieldCellType:MKTextFieldCellTypeDefault placeholder:@"请输入昵称"];
         self.nameTF = cell.textField;
     } else if (indexPath.row == 1) {
         [cell updateTextFieldCellType:MKTextFieldCellTypeDefault placeholder:@"请输入手机号"];

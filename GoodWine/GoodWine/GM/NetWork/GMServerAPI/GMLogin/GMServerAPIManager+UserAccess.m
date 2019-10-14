@@ -27,6 +27,7 @@
     temParamDict[@"username"] = userName;
     temParamDict[@"password"] = password;
     
+    [ServerClient setContentTypeUrlencoded];
     return
     [ServerClient asyncNetworkRequestWithURL:GMLogin parameter:temParamDict success:^(NSDictionary *responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
@@ -115,13 +116,11 @@
     NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
     
     userName = [userName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    phoneNum = [phoneNum stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    password = [password stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    authCode = [authCode stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    temParamDict[@"username"] = userName;
-    temParamDict[@"telephone"] = phoneNum;
-    temParamDict[@"password"] = password;
-    temParamDict[@"authCode"] = authCode;
+   
+//    temParamDict[@"nickname"] = nickName;
+//    temParamDict[@"telephone"] = phoneNum;
+//    temParamDict[@"password"] = password;
+//    temParamDict[@"authCode"] = authCode;
     
     [ServerClient setContentTypeJson];
     return

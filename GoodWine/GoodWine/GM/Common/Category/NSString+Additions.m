@@ -17,6 +17,18 @@
     return attribtStr;
 }
 
++ (NSMutableAttributedString *)getAttrStr:(NSString *)str beginL:(CGFloat)beginL endL:(CGFloat)endL color:(UIColor *)color font:(UIFont *)font {
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:str];
+    [attrString addAttribute:NSForegroundColorAttributeName
+                       value:color
+                       range:NSMakeRange(beginL,endL)];
+    [attrString addAttribute:NSFontAttributeName
+                       value:font
+                       range:NSMakeRange(beginL,endL)];
+    
+    return  attrString;
+}
+
 - (CGFloat)heightStringWithFont:(UIFont *)font width:(CGFloat)width {
     CGFloat height = [self boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:font} context:nil].size.height;
     return height;

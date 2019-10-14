@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 //添加中划线
 + (NSMutableAttributedString *)setMiddleLinePriceWithString:(NSString *)string;
 
+//改变指定位置文字颜色和大小
++ (NSMutableAttributedString *)getAttrStr:(NSString *)str beginL:(CGFloat)beginL endL:(CGFloat)endL color:(UIColor *)color font:(UIFont *)font;
+
 //计算文字高度
 - (CGFloat)heightStringWithFont:(UIFont *)font width:(CGFloat)width;
 
