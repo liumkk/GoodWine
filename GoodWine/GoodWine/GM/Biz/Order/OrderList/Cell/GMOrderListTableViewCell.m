@@ -74,10 +74,20 @@
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _titleLabel.textColor = COLOR_TEXT_BLACK;
         _titleLabel.textAlignment = NSTextAlignmentRight;
-        _titleLabel.font = Font_15;
+        _titleLabel.font = Font_16;
         [self.contentView addSubview:_titleLabel];
     }
     return _titleLabel;
+}
+
+- (UILabel *)contentLabel {
+    if (! _contentLabel) {
+        _contentLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _contentLabel.textColor = COLOR_GRAY_150;
+        _contentLabel.font = Font(14.f);
+        [self.contentView addSubview:_contentLabel];
+    }
+    return _contentLabel;
 }
 
 - (UILabel *)numLabel {

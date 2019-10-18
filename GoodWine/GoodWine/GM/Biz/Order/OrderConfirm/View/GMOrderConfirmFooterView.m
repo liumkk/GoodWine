@@ -38,7 +38,6 @@
 - (UILabel *)totalLabeL {
     if (! _totalLabeL) {
         _totalLabeL = [[UILabel alloc] initWithFrame:CGRectZero];
-//        _totalLabeL.text = @"￥100";   --test
         _totalLabeL.textColor = COLOR_THEME_COLOR;
         [self addSubview:_totalLabeL];
     }

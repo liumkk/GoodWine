@@ -51,17 +51,25 @@
         make.top.equalTo(self.titleImageView);
         make.left.equalTo(self.titleImageView.mas_right).offset(10.f);
         make.right.equalTo(self.contentView).offset(-10.f);
+        make.height.mas_equalTo(15.f);
     }];
     
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleLabel.mas_bottom).offset(5.f);
         make.left.right.equalTo(self.titleLabel);
+        make.height.mas_equalTo(15.f);
+    }];
+    
+    [self.spLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentLabel.mas_bottom).offset(5.f);
+        make.left.equalTo(self.titleLabel);
+        make.height.mas_equalTo(15.f);
     }];
     
     [self.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentLabel.mas_bottom).offset(10.f);
+        make.top.equalTo(self.spLabel.mas_bottom).offset(5.f);
         make.left.equalTo(self.titleLabel);
-        make.height.mas_equalTo(20.f);
+        make.height.mas_equalTo(15.f);
     }];
     
     [self.jiaBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -97,9 +105,10 @@
     self.model = infoModel;
     
     self.lineView.hidden = !needLine;
-    [self.titleImageView sd_setImageWithURL:[NSURL URLWithString:infoModel.productPic] placeholderImage:[UIImage imageNamed:@"goodWine"]];
+    [self.titleImageView sd_setImageWithURL:[NSURL URLWithString:infoModel.productPic]];
     self.titleLabel.text = infoModel.productName;
     self.contentLabel.text = infoModel.productSubTitle;
+    self.spLabel.text = infoModel.sp1;
     self.priceLabel.text = [NSString stringWithFormat:@"%.2f元",[infoModel.currentPrice floatValue]];
     self.numLabel.text = [NSString stringWithFormat:@"%@",self.model.quantity];
     if ([infoModel.invalidStatus isEqualToString:@"1"]) {
@@ -150,7 +159,6 @@
 - (UIImageView *)titleImageView {
     if (! _titleImageView) {
         _titleImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-        _titleImageView.image = [UIImage imageNamed:@"goodWine"];
         [self.contentView addSubview:_titleImageView];
     }
     return _titleImageView;
@@ -159,7 +167,7 @@
 - (UILabel *)titleLabel {
     if (! _titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _titleLabel.text = @"口子窖";
+        _titleLabel.font = Font(16.f);
         [self.contentView addSubview:_titleLabel];
     }
     return _titleLabel;
@@ -168,16 +176,28 @@
 - (UILabel *)contentLabel {
     if (! _contentLabel) {
         _contentLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _contentLabel.text = @"酱香型";
+        _contentLabel.font = Font(13.f);
+        _contentLabel.textColor = COLOR_GRAY_150;
         [self.contentView addSubview:_contentLabel];
     }
     return _contentLabel;
 }
 
+- (UILabel *)spLabel {
+    if (! _spLabel) {
+        _spLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _spLabel.font = Font(13.f);
+        _spLabel.textColor = COLOR_GRAY_150;
+        [self.contentView addSubview:_spLabel];
+    }
+    return _spLabel;
+}
+
 - (UILabel *)priceLabel {
     if (! _priceLabel) {
         _priceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _priceLabel.text = @"100.00";
+        _priceLabel.font = Font(16.f);
+        _priceLabel.textColor = COLOR_THEME_COLOR;
         [self.contentView addSubview:_priceLabel];
     }
     return _priceLabel;

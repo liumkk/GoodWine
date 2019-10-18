@@ -51,6 +51,29 @@
     }];
 }
 
+- (NSURLSessionDataTask *)asyncQueryUserCodeSucceedBlock:(void (^)(NSString *str))succeedBlock
+                                             failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    
+    return
+    [ServerClient asyncGetNetworkRequestWithURLString:GMUserCode parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            if (succeedBlock) {
+                succeedBlock(responseDict[@"data"]);
+            }
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
 - (NSURLSessionDataTask *)asyncQueryAuthCodeWithPhoneNum:(NSString *)phoneNum
                                             succeedBlock:(void (^)(void))succeedBlock
                                              failedBlock:(void (^)(NSError * _Nonnull))failedBlock {

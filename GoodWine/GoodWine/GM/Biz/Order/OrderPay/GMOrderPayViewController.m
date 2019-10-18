@@ -53,6 +53,7 @@
             @strongify(self)
             NSLog(@"reslut = %@",resultDic);
             if ([resultDic[@"resultStatus"] integerValue] == 9000) {
+                self.OrderPayVCCallBack();
                 GMPaySuccessViewController *vc = [[GMPaySuccessViewController alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
             } else {

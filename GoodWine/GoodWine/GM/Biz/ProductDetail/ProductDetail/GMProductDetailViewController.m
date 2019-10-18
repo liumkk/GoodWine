@@ -40,7 +40,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self setupConstranits];
     
     @weakify(self)
@@ -48,6 +47,10 @@
         @strongify(self)
         [self hiddenSelectView];
     }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -158,7 +161,7 @@
 }
 
 - (void)serviceAction:(UIButton *)btn {
-    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",UserCenter.storeInfoModel.contactPhone];
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel://%@",UserCenter.storeInfoModel.contactPhone];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 

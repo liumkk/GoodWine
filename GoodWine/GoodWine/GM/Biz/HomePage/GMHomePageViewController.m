@@ -67,12 +67,15 @@
     if (needLoad) {
         [GMLoadingActivity showLoadingActivityInView:self.view];
     }
+    @weakify(self)
     [ServerAPIManager asyncQueryHomePageInfoWithStoreId:UserCenter.storeId SucceedBlock:^(HomePageInfoModel * _Nonnull infoModel) {
+        @strongify(self)
         [GMLoadingActivity hideLoadingActivityInView:self.view];
         [self.homePageTableView.mj_header endRefreshing];
         [self.homePageTableView updateBannerImageWithHomePageInfoModel:infoModel];
         [self.homePageTableView reloadHomePageTableViewWithHomePageInfoModel:infoModel];
     } failedBlock:^(NSError * _Nonnull error) {
+        @strongify(self)
         [GMLoadingActivity hideLoadingActivityInView:self.view];
         [self showAlertViewWithTitle:@"提示" Error:error buttonTitle:@"确定"];
         [self.homePageTableView.mj_header endRefreshing];

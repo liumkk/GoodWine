@@ -24,7 +24,8 @@
 - (void)updateCollectCellWithModel:(CollectProductItem *)item {
     [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:item.pic]];
     self.titleLabel.text = item.name;
-    self.priceLabel.text = [NSString stringWithFormat:@"%ld元/瓶",item.price];
+    self.contentLabel.text = item.subTitle;
+    self.priceLabel.text = [NSString stringWithFormat:@"%ld元/%@",item.price,item.unit];
     self.detailLabel.text = [NSString stringWithFormat:@"%ld度/%@",item.alcohol,item.productCategoryName];
     self.saleLabel.text = [NSString stringWithFormat:@"销量:%ld%@",item.sale,item.unit];
 }
@@ -47,11 +48,17 @@
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.headerImageView).offset(10.f);
         make.left.equalTo(self.headerImageView.mas_right).offset(10.f);
-        make.right.equalTo(self.contentView).offset(-10.f);
+        make.right.equalTo(self.bgView.mas_right).offset(-10.f);
+    }];
+    
+    [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(5.f);
+        make.right.equalTo(self.bgView.mas_right).offset(-10.f);
+        make.left.equalTo(self.titleLabel);
     }];
     
     [self.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.headerImageView.mas_bottom).offset(-10.f);
+        make.top.equalTo(self.contentLabel.mas_bottom).offset(5.f);
         make.left.equalTo(self.titleLabel);
     }];
     
@@ -92,6 +99,16 @@
         [self.contentView addSubview:_titleLabel];
     }
     return _titleLabel;
+}
+
+- (UILabel *)contentLabel {
+    if (! _contentLabel) {
+        _contentLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _contentLabel.font = Font_14;
+        _contentLabel.textColor = COLOR_GRAY_150;
+        [self.contentView addSubview:_contentLabel];
+    }
+    return _contentLabel;
 }
 
 - (UILabel *)priceLabel {

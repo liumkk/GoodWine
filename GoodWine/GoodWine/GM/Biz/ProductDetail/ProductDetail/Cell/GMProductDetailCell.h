@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *promotionPriceLabel;
 @property (nonatomic, strong) UILabel *originalPriceLabel;
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *purityLabel;
 @property (nonatomic, strong) UILabel *contentLabel;
 
 - (void)updateProductDetailCellWithModel:(GMProductDetailModel *)productDetailModel;

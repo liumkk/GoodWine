@@ -43,10 +43,10 @@
 
 - (void)serviceTableViewDidSelectRowAtIndex:(NSInteger)index {
     if (index == 0) {
-        NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",UserCenter.storeInfoModel.platPhone];
+        NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel://%@",UserCenter.storeInfoModel.platPhone];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     } else {
-        NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",UserCenter.storeInfoModel.contactPhone];
+        NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel://%@",UserCenter.storeInfoModel.contactPhone];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     }
 }

@@ -82,7 +82,7 @@
 - (GMITButton *)serviceBtn {
     if (! _serviceBtn) {
         _serviceBtn = [GMITButton buttonWithType:UIButtonTypeCustom];
-        [_serviceBtn updateImageName:@"kefu" contentText:@"客服" Width:button_width topMargin:button_top_margin bottomMargin:3.f];
+        [_serviceBtn updateImageName:@"km_dh" contentText:@"客服" Width:button_width topMargin:button_top_margin bottomMargin:3.f];
         [self addSubview:_serviceBtn];
     }
     return _serviceBtn;

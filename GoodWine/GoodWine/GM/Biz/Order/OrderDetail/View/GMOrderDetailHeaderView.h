@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UIButton *payBtn;
 
+- (void)updateOrderDetailHeaderViewWithModel:(GMOrderDetailInfoModel *)model;
+
 - (void)updateOrderDetailHeaderViewWithStatus:(NSString *)status content:(NSString *)content btnTitle:(NSString *)btnTitle;
 
 @end

@@ -41,10 +41,12 @@
 #define LeftTitle       @"leftTitle"
 #define RightTitle      @"rightTitle"
 
-#define GMUrlSchemes    @"goodWineSchems"
+#define GMUrlSchemes    @"goodWineSchemes"
 
 
 #define Notification_addProduct     @"addproduct"
+
+#define User_Code           @"1.0.0"
 
 //-----------------------------------------------------------------------------------------//
 

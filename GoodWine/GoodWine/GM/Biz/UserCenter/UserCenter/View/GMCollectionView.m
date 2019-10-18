@@ -49,7 +49,7 @@ static NSString *userSecondCollectionCell = @"userSecondCollectionCell";
 
 - (void)initData {
     self.titleArray = @[@"地址管理", @"优惠券", @"我的关注", @"联系客服", @"设置", @"版本信息"];
-    self.imageArray = @[@"address", @"coupon", @"collect", @"talk_kefu", @"setting", @"info"];
+    self.imageArray = @[@"address", @"coupon_icon", @"collection", @"talk_kefu_blue", @"setting_green", @"info_blue"];
 }
 
 #pragma mark - collectionView dataSource Or delegate

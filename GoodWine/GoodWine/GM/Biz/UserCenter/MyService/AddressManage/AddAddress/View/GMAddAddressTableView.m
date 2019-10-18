@@ -56,12 +56,12 @@ static NSString *addAddressTableCell = @"addAddressTableCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     GMKeyValueInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:addAddressTableCell forIndexPath:indexPath];
-    [cell updateCellContentWithCellType:GMKVInfoCellTypeAllTextField leftText:self.sourceArray[indexPath.row] rightText:@"" needLine:indexPath.row != 0];
-    
+    [cell updateCellContentWithCellType:GMKVInfoCellTypeOnlyTextField leftText:@"" rightText:self.sourceArray[indexPath.row] needLine:indexPath.row != 0];
     if (indexPath.row == 0) {
         self.nameTF = (UITextField *)cell.currentControl;
     } else if (indexPath.row == 1) {
         self.phoneTF = (UITextField *)cell.currentControl;
+        self.phoneTF.keyboardType = UIKeyboardTypeNumberPad;
     } else if (indexPath.row == 2) {
         self.addressTF = (UITextField *)cell.currentControl;
     } else if (indexPath.row == 3) {
@@ -107,7 +107,7 @@ static NSString *addAddressTableCell = @"addAddressTableCell";
 }
 
 - (NSArray *)sourceArray {
-    return @[@"姓名:",@"手机号码:",@"地址:",@"详细地址:"];
+    return @[@"请输入收货人姓名",@"请输入收货人号码",@"请输入地址(精确到市、县)",@"请输入详细地址(精确到门牌号)"];
 }
 
 - (GMTableViewFooterView *)footerView {

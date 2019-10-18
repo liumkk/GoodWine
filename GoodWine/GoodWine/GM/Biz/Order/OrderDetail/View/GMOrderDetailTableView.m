@@ -44,9 +44,9 @@ static NSString *orderDetailCellID = @"orderDetailCellID";
     return self;
 }
 
-- (void)reloadTableViewWithModel:(GMOrderDetailInfoModel *)model myModel:(GMMyOrderDetailModel *)myOrder {
+- (void)reloadTableViewWithModel:(GMOrderDetailInfoModel *)model {
     self.orderInfoModel = model;
-    NSString *time = myOrder.expectedTime;
+    NSString *time = model.expectedTime;
     if (IsStrEmpty(time)) {
         time = @"立即配送";
     }

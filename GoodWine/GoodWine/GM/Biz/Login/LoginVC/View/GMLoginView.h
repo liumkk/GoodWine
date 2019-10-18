@@ -17,9 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UITextField *nameTextField;
+@property (nonatomic, strong) UIView *nameLineView;
 
 @property(nonatomic, strong) UILabel *passwordLabel;
 @property(nonatomic, strong) UITextField *passwordTextField;
+@property (nonatomic, strong) UIView *pwdLineView;
 
 @property (nonatomic, strong) UIButton *loginButton;
 @property (nonatomic, strong) UIButton *forgetButton;

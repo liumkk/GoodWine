@@ -204,6 +204,34 @@
     }];
 }
 
+- (NSURLSessionDataTask *)asyncQueryOrderWithOrderId:(NSString *)orderId
+                                        succeedBlock:(void (^)(GMOrderDetailInfoModel * _Nonnull))succeedBlock
+                                         failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+    
+    NSMutableDictionary *temParamDict = [[NSMutableDictionary alloc] init];
+    
+    [ServerClient setContentTypeJson];
+    return
+    [ServerClient asyncGetNetworkRequestWithURLString:GMOrderDetailFromOrderList(orderId) parameter:temParamDict success:^(NSDictionary * _Nonnull responseDict) {
+        if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            GMOrderDetailInfoModel *model = [GMOrderDetailInfoModel yy_modelWithDictionary:responseDict[@"data"]];
+            if (succeedBlock) {
+                succeedBlock(model);
+            }
+        }else {
+            
+            if (failedBlock) {
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    }];
+}
+
 - (NSURLSessionDataTask *)asyncDeleteOrder:(NSString *)orderId
                               succeedBlock:(void (^)(void))succeedBlock
                                failedBlock:(void (^)(NSError * _Nonnull))failedBlock {

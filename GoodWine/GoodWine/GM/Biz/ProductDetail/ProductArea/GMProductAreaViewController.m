@@ -17,8 +17,10 @@
 @property (nonatomic, strong) GMProductAreaCollectionView *productCollectionView;
 @property (nonatomic, copy) NSString *cateId;
 @property (nonatomic, strong) NSArray <BrandAreaInfoModel *> *brandArray;
+@property (nonatomic, strong) NSMutableArray <HomePageTypeItem *> *dataArray;
 @property (nonatomic, strong) MKEmptyView *emptyView;
-
+@property (nonatomic, copy) NSString *brandId;
+@property (nonatomic, assign) NSInteger page;
 
 @end
 
@@ -34,11 +36,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.page = 1;
+    
     [self updateNavigationBarNeedBack:YES];
     
     [self setupConstranits];
     
     [self requestBrand];
+    [self addRefreshHeaderView];
+    [self addRefreshFooterView];
 }
 
 - (void)setupConstranits {
@@ -67,49 +73,113 @@
 
 - (void)requestBrand {
     [GMLoadingActivity showLoadingActivityInView:self.view];
+    @weakify(self)
     [ServerAPIManager asyncQueryBrandClassWithCateId:self.cateId succeedBlock:^(NSArray<BrandAreaInfoModel *> * _Nonnull array) {
+        @strongify(self)
         [GMLoadingActivity hideLoadingActivityInView:self.view];
-        MKNSLog(@"requestBrand--%@",array);
         self.brandArray = array;
-        [self.brandTableView reloadTableViewWithDataArray:array];
         if (self.brandArray.count > 0) {
+            [self.brandTableView reloadTableViewWithDataArray:array];
+            
             BrandAreaInfoModel *model = self.brandArray[0];
-            [self requestProductWithBrandId:model.brandId];
+            self.brandId = model.brandId;
+            [self requestProductWithBrandId:self.brandId IsLoadMore:NO];
         } else {
             [self.emptyView showEmptyNeedLoadBtn:NO];
         }
     } failedBlock:^(NSError * _Nonnull error) {
+        @strongify(self)
         [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [self.emptyView showEmptyNeedLoadBtn:NO];
         [self showAlertViewWithError:error];
     }];
 }
 
-- (void)requestProductWithBrandId:(NSString *)brandId {
+- (void)requestProductWithBrandId:(NSString *)brandId IsLoadMore:(BOOL)isLoadMore {
     [GMLoadingActivity showLoadingActivityInView:self.view];
-    [ServerAPIManager asyncQueryProductWithCateId:self.cateId brandId:brandId succeedBlock:^(NSArray<HomePageTypeItem *> * _Nonnull array) {
+    @weakify(self)
+    [ServerAPIManager asyncQueryProductWithCateId:self.cateId brandId:brandId pageSize:@"10" pageNum:isLoadMore ? [NSString stringWithFormat:@"%ld",(long)self.page] : @"1" succeedBlock:^(NSArray<HomePageTypeItem *> * _Nonnull array) {
+        @strongify(self)
         [GMLoadingActivity hideLoadingActivityInView:self.view];
-        MKNSLog(@"requestProduct--%@",array);
-        [self.productCollectionView reloadProductAreaCollectionWithDataArray:array];
-        if (array.count > 0) {
-            self.emptyView.hidden = YES;
+        [self endMJRefresh];
+        if (array.count == 0) {
+            if (!isLoadMore) {
+                self.page = 1;
+                [self.emptyView showEmptyNeedLoadBtn:NO];
+                [self updateEmptyView];
+                [self.productCollectionView.mj_footer resetNoMoreData];
+            } else {
+                [self.productCollectionView.mj_footer endRefreshingWithNoMoreData];
+            }
         } else {
-            [self.emptyView showEmptyNeedLoadBtn:NO];
-            [self updateEmptyView];
+            if (!isLoadMore) {
+                self.page = 1;
+                [self.dataArray removeAllObjects];
+                [self.productCollectionView.mj_footer resetNoMoreData];
+            }
+            self.page ++;
+            [self.dataArray addObjectsFromArray:array];
+            
+            self.emptyView.hidden = YES;
+            [self.productCollectionView reloadProductAreaCollectionWithDataArray:self.dataArray];
         }
     } failedBlock:^(NSError * _Nonnull error) {
-        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        @strongify(self)
+        [self.emptyView showEmptyNeedLoadBtn:NO];
+        [self updateEmptyView];
         [self showAlertViewWithError:error];
     }];
 }
 
 - (void)brandAreaTableViewDidSelectRowAtIndex:(NSInteger)index {
     BrandAreaInfoModel *model = self.brandArray[index];
-    [self requestProductWithBrandId:model.brandId];
+    self.brandId = model.brandId;
+    [self requestProductWithBrandId:self.brandId IsLoadMore:NO];
 }
 
 - (void)collectionViewDidSelectItemWithModel:(HomePageTypeItem *)model {
     GMProductDetailViewController *vc = [[GMProductDetailViewController alloc] initWithProductId:model.productId];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)addRefreshHeaderView {
+    @weakify(self)
+    self.productCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        @strongify(self)
+        if ([self.productCollectionView.mj_footer isRefreshing]) {
+            [self.productCollectionView.mj_footer endRefreshing];
+        }
+        [self requestProductWithBrandId:self.brandId IsLoadMore:NO];
+    }];
+}
+
+- (void)addRefreshFooterView {
+    @weakify(self)
+    self.productCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        @strongify(self)
+        if ([self.productCollectionView.mj_header isRefreshing]) {
+            [self.productCollectionView.mj_header endRefreshing];
+        }
+        [self requestProductWithBrandId:self.brandId IsLoadMore:YES];
+    }];
+    self.productCollectionView.mj_footer.ignoredScrollViewContentInsetBottom = BottomTarBarSpace;
+}
+
+- (void)endMJRefresh {
+    
+    if ([self.productCollectionView.mj_header isRefreshing]) {
+        [self.productCollectionView.mj_header endRefreshing];
+    }
+    if ([self.productCollectionView.mj_footer isRefreshing]) {
+        [self.productCollectionView.mj_footer endRefreshing];
+    }
+}
+
+- (NSMutableArray<HomePageTypeItem *> *)dataArray {
+    if (! _dataArray) {
+        _dataArray = [[NSMutableArray alloc] init];
+    }
+    return _dataArray;
 }
 
 - (GMBrandAreaTableView *)brandTableView {
@@ -133,9 +203,9 @@
 - (MKEmptyView *)emptyView {
     if (! _emptyView) {
         _emptyView = [[MKEmptyView alloc] initWithFrame:CGRectZero];
-//        _emptyView.hidden = YES; --test
         [self.view addSubview:_emptyView];
     }
     return _emptyView;
 }
+
 @end

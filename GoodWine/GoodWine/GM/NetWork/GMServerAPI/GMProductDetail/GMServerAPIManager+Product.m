@@ -90,7 +90,7 @@
     temParamDict[@"satisfactionStar"] = satisfactionStar;
     
     return
-    [ServerClient asyncNetworkRequestWithURL:GMAddShoppCar parameter:temParamDict success:^(NSDictionary * _Nonnull responseDict) {
+    [ServerClient asyncNetworkRequestWithURL:GMAddEvaluate parameter:temParamDict success:^(NSDictionary * _Nonnull responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
             if (succeedBlock) {
                 succeedBlock();
@@ -185,11 +185,13 @@
 
 - (NSURLSessionDataTask *)asyncQueryProductWithCateId:(NSString *)cateId
                                               brandId:(NSString *)brandId
+                                             pageSize:(NSString *)pageSize
+                                              pageNum:(NSString *)pageNum
                                          succeedBlock:(void (^)(NSArray<HomePageTypeItem *> * _Nonnull))succeedBlock
                                           failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
     
     return
-    [ServerClient asyncGetNetworkRequestWithURLString:GMProductList(@"10",@"1",UserCenter.storeId,cateId,brandId) parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
+    [ServerClient asyncGetNetworkRequestWithURLString:GMProductList(pageSize,pageNum,UserCenter.storeId,cateId,brandId) parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
             NSMutableArray *dataArray = [[NSMutableArray alloc] init];
             for (NSDictionary *dic in responseDict[@"data"]) {

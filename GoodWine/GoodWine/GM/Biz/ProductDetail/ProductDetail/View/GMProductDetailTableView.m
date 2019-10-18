@@ -50,6 +50,7 @@ static  NSString *productPicCellID = @"productPicCellID";
     self.productDetailModel = model;
     self.albumPics = [self.productDetailModel.albumPics componentsSeparatedByString:@","];
     self.evaluateArray = evaluateArray;
+    [self.headerView updateTitleText:[NSString stringWithFormat:@"评价(%ld)",self.evaluateArray.count] titleColor:COLOR_TEXT_BLACK];
     if ([[NSThread currentThread] isMainThread]) {
         [self reloadData];
     }else {
@@ -88,6 +89,7 @@ static  NSString *productPicCellID = @"productPicCellID";
         GMKeyValueInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:productCouponCellID];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         [cell updateCellContentWithCellType:GMKVInfoCellTypeDefaultLabel leftText:@"优惠券" rightText:@"进入领券中心" needLine:NO];
+        cell.titleLabel.textColor = COLOR_THEME_COLOR;
         return cell;
     } else if (indexPath.section == 2) {
         GMProductEvaluateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:productEvaluateCellID];
@@ -123,7 +125,7 @@ static  NSString *productPicCellID = @"productPicCellID";
     } else if (indexPath.section == 2) {
         ProductEvaluateInfoModel *model = self.evaluateArray[indexPath.row];
         if (!model.contentHeight) {
-            model.contentHeight = [model.content heightStringWithFont:evaluateContentCellFont width:Width_Screen-26.f] + 70.f;
+            model.contentHeight = [model.content heightStringWithFont:evaluateContentCellFont width:Width_Screen-26.f] + 65.f;
         }
         return model.contentHeight;
     } else {
@@ -174,7 +176,7 @@ static  NSString *productPicCellID = @"productPicCellID";
 - (GMHeaderTitleView *)headerView {
     if (! _headerView) {
         _headerView = [[GMHeaderTitleView alloc] initWithFrame:CGRectZero];
-        [_headerView updateTitleText:@"评价" titleColor:COLOR_TEXT_BLACK];
+        [_headerView updateTitleText:[NSString stringWithFormat:@"评价(%ld)",self.evaluateArray.count] titleColor:COLOR_TEXT_BLACK];
     }
     return _headerView;
 }

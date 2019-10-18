@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *subTitle; //副标题
 @property (nonatomic, copy) NSString *originalPrice;    //市场价
 @property (nonatomic, copy) NSString *price; //价格
+@property (nonatomic, copy) NSString *purity; //酒类型
+@property (nonatomic, copy) NSString *alcohol; //酒精度
 @property (nonatomic, copy) NSString *detailDesc;
 @property (nonatomic, copy) NSString *albumPics;
 @property (nonatomic, copy) NSString *productSn;

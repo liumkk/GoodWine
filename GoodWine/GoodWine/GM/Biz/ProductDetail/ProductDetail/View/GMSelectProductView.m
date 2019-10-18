@@ -83,6 +83,9 @@
         make.size.mas_equalTo(CGSizeMake(100.f, 100.f));
     }];
     
+    self.titleImageView.bounds = CGRectMake(0, 0, 100.f, 100.f);
+    [UIView maskCorner:self.titleImageView rectCorner:UIRectCornerAllCorners corner:5.f];
+    
     [self.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleImageView.mas_top);
         make.left.equalTo(self.titleImageView.mas_right).offset(10.f);
@@ -107,16 +110,22 @@
         GMProductSkuItem *item = model.skuArray[i];
         UIButton *itemBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         itemBtn.tag = 100 + i;
-        itemBtn.titleLabel.font = Font_16;
+        itemBtn.titleLabel.font = Font_15;
         [itemBtn setTitle:item.sp1 forState:UIControlStateNormal];
         [itemBtn setTitleColor:COLOR_TEXT_BLACK forState:UIControlStateNormal];
         [itemBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [itemBtn setBackgroundImage:[UIImage imageNamed:@"white_bg"] forState:UIControlStateNormal];
-        [itemBtn setBackgroundImage:[UIImage imageNamed:@"red_bg"] forState:UIControlStateSelected];
+        [itemBtn setBackgroundImage:[UIImage imageNamed:@"gray_bg_yuan"] forState:UIControlStateNormal];
+//        [itemBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg_red"] forState:UIControlStateSelected];
+        UIImage *image = [[UIImage imageNamed:@"gray_bg_yuan"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [itemBtn setBackgroundImage:image forState:UIControlStateSelected];
+        [itemBtn setTintColor:COLOR_THEME_COLOR];
         [itemBtn addTarget:self action:@selector(itemBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.selectView addSubview:itemBtn];
         
-        CGFloat width = [item.sp1 widthStringWithFont:Font_16 height:itemBtnHeight] + 15.f;
+        CGFloat width = [item.sp1 widthStringWithFont:Font_15 height:itemBtnHeight] + 20.f;
+        if (width < itemBtnHeight +20.f) {
+            width = itemBtnHeight +20.f;
+        }
         CGFloat height = CGRectGetMinY(lastBtn.frame);
         if (i >0) {
             if (CGRectGetMaxX(lastBtn.frame) + width + 16.f > Width_Screen) {

@@ -34,6 +34,7 @@
 
 #define GMServerBaseURL           @"http://118.31.225.18:8085/"
 
+#define GMUserCode                    @"store/iosVersion"
 #define GMLogin                       @"sso/login"
 #define GMLogout                      @"sso/logout"
 #define GMAuthCode(_phone)            [NSString stringWithFormat:@"sso/getAuthCode?telephone=%@",_phone]
@@ -76,7 +77,7 @@
 
 #define GMProductEvaluate(_productId) [NSString stringWithFormat:@"product/comment/list?productId=%@",_productId]
 
-#define GMAddEvaluate                 @"product/comment/add"
+#define GMAddEvaluate                 @"product/comment/add" 
 
 #define GMProductBrandList(_storeId,_cateId)      \
         [NSString stringWithFormat:@"product/brandList/?storeId=%@&cateId=%@",_storeId,_cateId]
@@ -90,6 +91,8 @@
 
 #define GMOrderDetailFromShoppCar      @"order/generateOrder"
 #define GMOrderDetailFromProduct       @"order/orderFromProduct"
+#define GMOrderDetailFromOrderList(_orderId)  \
+        [NSString stringWithFormat:@"order/orderDetail?orderId=%@",_orderId]
 
 #define GMDeleteOrder(_orderId)        [NSString stringWithFormat:@"order/cancelOrder?orderId=%@",_orderId]
 

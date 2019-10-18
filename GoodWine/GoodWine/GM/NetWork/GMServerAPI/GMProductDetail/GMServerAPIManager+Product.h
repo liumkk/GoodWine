@@ -41,6 +41,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSURLSessionDataTask *)asyncQueryProductWithCateId:(NSString *)cateId
                                               brandId:(NSString *)brandId
+                                             pageSize:(NSString *)pageSize
+                                              pageNum:(NSString *)pageNum
                                          succeedBlock:(void (^)(NSArray<HomePageTypeItem *> *array))succeedBlock
                                           failedBlock:(void (^)(NSError *error))failedBlock;
 

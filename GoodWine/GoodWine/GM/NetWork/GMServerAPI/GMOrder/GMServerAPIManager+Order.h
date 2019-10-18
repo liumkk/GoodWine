@@ -34,6 +34,10 @@ NS_ASSUME_NONNULL_BEGIN
                                                    succeedBlock:(void (^)(GMOrderDetailInfoModel * model))succeedBlock
                                                     failedBlock:(void (^)(NSError * error))failedBlock;
 
+- (NSURLSessionDataTask *)asyncQueryOrderWithOrderId:(NSString *)orderId
+                                        succeedBlock:(void (^)(GMOrderDetailInfoModel * model))succeedBlock
+                                         failedBlock:(void (^)(NSError * error))failedBlock;
+
 - (NSURLSessionDataTask *)asyncDeleteOrder:(NSString *)orderId
                               succeedBlock:(void (^)(void))succeedBlock
                                failedBlock:(void (^)(NSError * error))failedBlock;

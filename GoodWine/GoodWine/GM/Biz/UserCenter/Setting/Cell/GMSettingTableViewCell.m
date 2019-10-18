@@ -24,7 +24,7 @@
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView);
         make.left.equalTo(self.contentView).offset(16.f);
-        make.size.mas_equalTo(CGSizeMake(0.f, 0.f));
+        make.size.mas_equalTo(CGSizeMake(20.f, 20.f));
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -47,7 +47,7 @@
 
 - (void)updateCellImageName:(NSString *)imageName title:(NSString *)title content:(NSString *)content needLine:(BOOL)needLine {
     self.topLine.hidden = !needLine;
-//    self.iconImageView.image = [UIImage imageNamed:imageName];
+    self.iconImageView.image = [UIImage imageNamed:imageName];
     self.titleLabel.text = title;
     self.contentLabel.text = content;
     

@@ -25,11 +25,12 @@
     [self.addressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.contentView.mas_centerY).offset(-5.f);
         make.left.equalTo(self.contentView).offset(16.f);
+        make.right.equalTo(self.contentView.mas_right).offset(-16.f);
     }];
     
     [self.receiverLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView.mas_centerY).offset(5.f);
-        make.left.equalTo(self.addressLabel);
+        make.left.right.equalTo(self.addressLabel);
     }];
 }
 
@@ -37,13 +38,13 @@
     if (!model.detailAddress) {
         self.addressLabel.text = @"请选择地址";
     } else {
-        self.addressLabel.text = [NSString stringWithFormat:@"%@-%@-%@",model.city,model.region,model.detailAddress];
+        self.addressLabel.text = [NSString stringWithFormat:@"%@%@%@",model.city,model.region,model.detailAddress];
         self.receiverLabel.text = [NSString stringWithFormat:@"%@ %@",model.name,model.phoneNumber];
     }
 }
 
 - (void)updateCellWithOrderDetailModel:(GMOrderDetailInfoModel *)model {
-    self.addressLabel.text = [NSString stringWithFormat:@"%@-%@-%@",model.receiverCity,model.receiverRegion,model.receiverDetailAddress];
+    self.addressLabel.text = [NSString stringWithFormat:@"%@%@%@",model.receiverCity,model.receiverRegion,model.receiverDetailAddress];
     self.receiverLabel.text = [NSString stringWithFormat:@"%@ %@",model.receiverName,model.receiverPhone];
 }
 

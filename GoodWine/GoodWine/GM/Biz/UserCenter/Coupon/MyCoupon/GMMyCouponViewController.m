@@ -68,7 +68,7 @@
 - (void)requestQueryCouponListIsLoadMore:(BOOL)isLoadMore {
     [GMLoadingActivity showLoadingActivityInView:self.view];
     @weakify(self)
-    [ServerAPIManager asyncQueryMyCouponPageNum:isLoadMore ? [NSString stringWithFormat:@"%ld",(long)self.page] : @"1" pageSize:@"4" SucceedBlock:^(NSArray<MyCouponInfoModel *> * array) {
+    [ServerAPIManager asyncQueryMyCouponPageNum:isLoadMore ? [NSString stringWithFormat:@"%ld",(long)self.page] : @"1" pageSize:@"10" SucceedBlock:^(NSArray<MyCouponInfoModel *> * array) {
         @strongify(self)
         [GMLoadingActivity hideLoadingActivityInView:self.view];
         [self endMJRefresh];

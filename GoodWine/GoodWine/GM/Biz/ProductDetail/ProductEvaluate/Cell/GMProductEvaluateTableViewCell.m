@@ -30,16 +30,16 @@
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(16.f);
         make.top.equalTo(self.contentView).offset(10.f);
-        make.size.mas_equalTo(CGSizeMake(30.f, 40.f));
+        make.size.mas_equalTo(CGSizeMake(25.f, 30.f));
     }];
     
     [self.nickName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconImageView.mas_right).offset(10.f);
-        make.top.equalTo(self.contentView).offset(10.f);
+        make.top.equalTo(self.contentView).offset(7.f);
     }];
     
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.iconImageView.mas_bottom).offset(10.f);
+        make.top.equalTo(self.iconImageView.mas_bottom).offset(13.f);
         make.left.equalTo(self.contentView).offset(16.f);
         make.right.equalTo(self.contentView.mas_right).offset(-10.f);
     }];
@@ -92,7 +92,7 @@
         img.hidden = NO;
     }
     
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:infoModel.memberIcon] placeholderImage:[UIImage imageNamed:@"headerDefault"]];
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:infoModel.memberIcon] placeholderImage:[UIImage imageNamed:@"mj_kf"]];
     self.nickName.text = infoModel.memberNickName;
     self.contentLabel.text = infoModel.content;
 }

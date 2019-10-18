@@ -48,8 +48,13 @@
     if (! _whiteSpiritArea) {
         _whiteSpiritArea = [GMITButton buttonWithType:UIButtonTypeCustom];
         _whiteSpiritArea.tag = 1;
-        [_whiteSpiritArea updateIconImageName:@"" contentText:@"白酒专区"];
+        [_whiteSpiritArea updateImageName:@"mj_bj" contentText:@"白酒专区" Width:40.f topMargin:15.f bottomMargin:5.f];
         [self.contentView addSubview:_whiteSpiritArea];
+        [_whiteSpiritArea.iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self->_whiteSpiritArea.mas_centerX).offset(5.f);
+            make.top.equalTo(self).offset(15.f);
+            make.size.mas_equalTo(CGSizeMake(30.f, 40.f));
+        }];
     }
     return _whiteSpiritArea;
 }
@@ -58,7 +63,7 @@
     if (! _redWineArea) {
         _redWineArea = [GMITButton buttonWithType:UIButtonTypeCustom];
         _redWineArea.tag = 2;
-        [_redWineArea updateIconImageName:@"" contentText:@"红酒专区"];
+        [_redWineArea updateImageName:@"mj_hj" contentText:@"红酒专区" Width:40.f topMargin:15.f bottomMargin:5.f];
         [self.contentView addSubview:_redWineArea];
     }
     return _redWineArea;
@@ -68,8 +73,13 @@
     if (! _otherArea) {
         _otherArea = [GMITButton buttonWithType:UIButtonTypeCustom];
         _otherArea.tag = 3;
-        [_otherArea updateIconImageName:@"" contentText:@"其他酒品"];
+        [_otherArea updateImageName:@"mj_qtj" contentText:@"其他酒品" Width:40.f topMargin:15.f bottomMargin:5.f];
         [self.contentView addSubview:_otherArea];
+        [_otherArea.iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self->_otherArea.mas_centerX);
+            make.top.equalTo(self).offset(15.f);
+            make.size.mas_equalTo(CGSizeMake(20.f, 40.f));
+        }];
     }
     return _otherArea;
 }
@@ -78,7 +88,7 @@
     if (! _couponArea) {
         _couponArea = [GMITButton buttonWithType:UIButtonTypeCustom];
         _couponArea.tag = 4;
-        [_couponArea updateIconImageName:@"" contentText:@"领券中心"];
+        [_couponArea updateImageName:@"mj_yhq2" contentText:@"领券中心" Width:40.f topMargin:15.f bottomMargin:5.f];
         [self.contentView addSubview:_couponArea];
     }
     return _couponArea;

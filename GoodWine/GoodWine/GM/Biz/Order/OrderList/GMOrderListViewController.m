@@ -11,6 +11,7 @@
 #import <AlipaySDK/AlipaySDK.h>
 #import "GMPaySuccessViewController.h"
 #import "GMOrderEvaluateViewController.h"
+#import "GMOrderDetailViewController.h"
 
 @interface GMOrderListViewController () <GMOrderListTableViewDelegate>
 
@@ -19,7 +20,6 @@
 @property (nonatomic, strong) MKEmptyView *emptyView;
 @property (nonatomic, copy) NSString *status;
 @property (nonatomic, assign) NSInteger page;
-
 
 @end
 
@@ -56,12 +56,13 @@
 }
 
 - (void)requestOrderListIsLoadMore:(BOOL)isLoadMore {
+    if ([self.status isEqualToString:@"5"]) {
+        self.status = @"";
+    }
     [GMLoadingActivity showLoadingActivityInView:self.view];
     @weakify(self)
     [ServerAPIManager asyncQueryOrderListWithPageSize:@"10" pageNum:isLoadMore ? [NSString stringWithFormat:@"%ld",(long)self.page] : @"1" status:self.status succeedBlock:^(NSArray<GMOrderDetailInfoModel *> * _Nonnull array) {
         @strongify(self)
-//        self.modelArray = array;
-//        [self.orderListTableView reloadTableViewWithDataArray:self.modelArray];
         [GMLoadingActivity hideLoadingActivityInView:self.view];
         [self endMJRefresh];
         if (array.count == 0) {
@@ -86,34 +87,46 @@
         }
     } failedBlock:^(NSError * _Nonnull error) {
         @strongify(self)
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
         [self.emptyView showEmptyNeedLoadBtn:NO];
         [self showAlertViewWithError:error];
     }];
 }
 
 - (void)orderListTableViewStatusAtIndex:(NSInteger)index {
+
     GMOrderDetailInfoModel *infoModel = self.modelArray[index];
-    if ([infoModel.status integerValue] == 0) {
-        //去付款
-        [self payWithOrderId:infoModel.orderId];
-    } else if ([infoModel.status integerValue] == 2) {
-        //确认收货
-        [self delicerProductWithOrderId:infoModel.orderId];
-    } else if ([infoModel.status integerValue] == 3) {
-        //去评价
-        if ([infoModel.commentType integerValue] != 2) {
-            GMOrderEvaluateViewController *vc = [[GMOrderEvaluateViewController alloc] initWithModel:infoModel.orderArray[0]];
-            [vc orderEvaluateCallBack:^{
-                [self requestOrderListIsLoadMore:NO];
-            }];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-    } else {
-        
-    }
+    
+    GMOrderDetailViewController *vc = [[GMOrderDetailViewController alloc] initWithOrderModel:infoModel];
+    vc.OrderDetailVCCallBack = ^{
+        [self requestOrderListIsLoadMore:NO];
+    };
+    [self.navigationController pushViewController:vc animated:YES];
+
+//    if ([infoModel.status integerValue] == 0) {
+//        //去付款
+//        [self payWithOrderId:infoModel.orderId index:index];
+//    } else if ([infoModel.status integerValue] == 1) {
+//        //取消订单
+//        [self cancleWithOrderId:infoModel.orderId index:index];
+//    } else if ([infoModel.status integerValue] == 2) {
+//        //确认收货
+//        [self delicerProductWithOrderId:infoModel.orderId index:index];
+//    } else if ([infoModel.status integerValue] == 3) {
+//        //去评价
+//        if ([infoModel.commentType integerValue] != 2) {
+//            GMOrderEvaluateViewController *vc = [[GMOrderEvaluateViewController alloc] initWithModel:infoModel.orderArray[0]];
+//            [vc orderEvaluateCallBack:^{
+//                [self requestOrderListIsLoadMore:NO];
+//            }];
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }
+//    } else {
+//        
+//    }
 }
 
-- (void)payWithOrderId:(NSString *)orderId {
+- (void)payWithOrderId:(NSString *)orderId index:(NSInteger)index {
     [self showAlertViewInDynamicWithTitle:@"温馨提示" message:@"现在去付款" btnNames:@[@"取消",@"确定"] clickedCallBack:^(NSInteger index) {
         if (index == 1) {
             [GMLoadingActivity showLoadingActivityInView:self.view];
@@ -125,6 +138,7 @@
                     @strongify(self)
                     NSLog(@"reslut = %@",resultDic);
                     if ([resultDic[@"resultStatus"] integerValue] == 9000) {
+                        [self updatesTableViewWithIndex:index];
                         GMPaySuccessViewController *vc = [[GMPaySuccessViewController alloc] init];
                         [self.navigationController pushViewController:vc animated:YES];
                     } else {
@@ -161,15 +175,41 @@
     }];
 }
 
-- (void)delicerProductWithOrderId:(NSString *)orderId {
+- (void)updatesTableViewWithIndex:(NSInteger)index {
+    [self.modelArray removeObjectAtIndex:index];
+//    [self.orderListTableView deleteSections:[NSIndexSet indexSetWithIndex:index] withRowAnimation:UITableViewRowAnimationNone];
+//    [self.orderListTableView beginUpdates];
+//    [self.orderListTableView endUpdates];
+    [self.orderListTableView reloadData];
+}
+
+- (void)cancleWithOrderId:(NSString *)orderId index:(NSInteger)index {
+    @weakify(self)
+    [GMLoadingActivity showLoadingActivityInView:self.view];
+    [ServerAPIManager asyncDeleteOrder:orderId succeedBlock:^{
+        @strongify(self)
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [MKToastView showToastToView:self.view text:@"取消订单成功"];
+        [self updatesTableViewWithIndex:index];
+
+    } failedBlock:^(NSError * _Nonnull error) {
+        @strongify(self)
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [self showAlertViewWithError:error];
+    }];
+}
+
+- (void)delicerProductWithOrderId:(NSString *)orderId index:(NSInteger)index{
+    NSInteger listIndex = index;
     [self showAlertViewWithTitle:@"是否确认收货" btnNames:@[@"取消",@"收货"] clickedCallBack:^(NSInteger index) {
         if (index == 1) {
             [GMLoadingActivity showLoadingActivityInView:self.view];
             @weakify(self)
             [ServerAPIManager asyncDeliverProductWithOrderId:orderId succeedBlock:^{
                 @strongify(self)
-                [self.orderListTableView reloadData];
+                [GMLoadingActivity hideLoadingActivityInView:self.view];
                 [MKToastView showToastToView:self.view text:@"收货成功"];
+                [self updatesTableViewWithIndex:listIndex];
             } failedBlock:^(NSError * _Nonnull error) {
                 @strongify(self)
                 [GMLoadingActivity hideLoadingActivityInView:self.view];

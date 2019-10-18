@@ -31,32 +31,32 @@
         make.left.right.equalTo(self);
     }];
     
-    [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.identifyLabel.mas_bottom).offset(40.f);
-        make.left.equalTo(self.mas_left).offset(40.f);
-        make.width.mas_equalTo(50.f);
-    }];
-    
     [self.nameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.nameLabel);
-        make.left.equalTo(self.nameLabel.mas_right);
-        make.right.equalTo(self.mas_right).offset(-40.f);
+        make.top.equalTo(self.identifyLabel.mas_bottom).offset(30.f);
+        make.left.equalTo(self.mas_left).offset(35.f);
+        make.right.equalTo(self.mas_right).offset(-35.f);
     }];
     
-    [self.passwordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.nameLabel.mas_bottom).offset(20.f);
-        make.left.equalTo(self.nameLabel);
-        make.width.mas_equalTo(50.f);
+    [self.nameLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.nameTextField.mas_bottom);
+        make.left.equalTo(self.nameTextField).offset(-5.f);
+        make.right.equalTo(self.nameTextField).offset(5.f);
+        make.height.mas_equalTo(LINE_HEIGHT);
     }];
     
     [self.passwordTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.passwordLabel);
-        make.left.equalTo(self.nameTextField);
-        make.right.equalTo(self.nameTextField);
+        make.top.equalTo(self.nameTextField.mas_bottom).offset(20.f);
+        make.left.right.equalTo(self.nameTextField);
+    }];
+    
+    [self.pwdLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.passwordTextField.mas_bottom);
+        make.left.right.equalTo(self.nameLineView);
+        make.height.mas_equalTo(LINE_HEIGHT);
     }];
     
     [self.loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.passwordLabel.mas_bottom).offset(40.f);
+        make.top.equalTo(self.passwordTextField.mas_bottom).offset(40.f);
         make.left.equalTo(self).offset(20.f);
         make.right.equalTo(self).offset(-20.f);
         make.height.mas_equalTo(45.f);
@@ -105,14 +105,23 @@
 - (UITextField *)nameTextField {
     if (! _nameTextField) {
         _nameTextField = [[UITextField alloc] initWithFrame:CGRectZero];
-        _nameTextField.placeholder = @"输入手机号";
-        _nameTextField.borderStyle = UITextBorderStyleRoundedRect;
+        _nameTextField.placeholder = @"请输入手机号";
+        _nameTextField.borderStyle = UITextBorderStyleNone;
         _nameTextField.font = Font_16;
         _nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _nameTextField.returnKeyType = UIReturnKeyDone;
         [self addSubview:_nameTextField];
     }
     return _nameTextField;
+}
+
+- (UIView *)nameLineView {
+    if (! _nameLineView) {
+        _nameLineView = [[UIView alloc] initWithFrame:CGRectZero];
+        _nameLineView.backgroundColor = COLOR_GRAY_200;
+        [self addSubview:_nameLineView];
+    }
+    return _nameLineView;
 }
 
 - (UILabel *)passwordLabel {
@@ -128,8 +137,8 @@
 - (UITextField *)passwordTextField {
     if (! _passwordTextField) {
         _passwordTextField = [[UITextField alloc] initWithFrame:CGRectZero];
-        _passwordTextField.placeholder = @"输入密码";
-        _passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
+        _passwordTextField.placeholder = @"请输入密码";
+        _passwordTextField.borderStyle = UITextBorderStyleNone;
         _passwordTextField.font = Font_16;
         _passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _passwordTextField.returnKeyType = UIReturnKeyDone;
@@ -137,6 +146,15 @@
         [self addSubview:_passwordTextField];
     }
     return _passwordTextField;
+}
+
+- (UIView *)pwdLineView {
+    if (! _pwdLineView) {
+        _pwdLineView = [[UIView alloc] initWithFrame:CGRectZero];
+        _pwdLineView.backgroundColor = COLOR_GRAY_200;
+        [self addSubview:_pwdLineView];
+    }
+    return _pwdLineView;
 }
 
 - (UIButton *)loginButton {

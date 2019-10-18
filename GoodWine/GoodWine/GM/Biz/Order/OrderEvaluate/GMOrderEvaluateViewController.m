@@ -68,19 +68,28 @@
         [btn addTarget:self action:@selector(serviceStarBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     
+    [self.evaluateView.anonymousBtn addTarget:self action:@selector(anonymousBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.evaluateView.confirmBtn addTarget:self action:@selector(confirmBtn:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)anonymousBtn:(UIButton *)btn {
+    btn.selected = !btn.selected;
 }
 
 - (void)confirmBtn:(UIButton *)btn {
     if (IsStrEmpty(self.evaluateView.textView.text)) {
         [MKToastView showToastToView:self.view text:@"请输入评价"];
     } else {
+        [GMLoadingActivity showLoadingActivityInView:self.view];
+        @weakify(self)
         [ServerAPIManager asyncAddEvaluateWithContent:self.evaluateView.textView.text
                                               orderId:self.model.orderId
-                                          productStar:[NSString stringWithFormat:@"%ld",self.productStar]
-                                            anonymous:@"0"
-                                         deliveryStar:[NSString stringWithFormat:@"%ld",self.serviceStar]
-                                     satisfactionStar:[NSString stringWithFormat:@"%ld",self.storeStar] succeedBlock:^{
+                                          productStar:[NSString stringWithFormat:@"%ld",(long)self.productStar]
+                                            anonymous:self.evaluateView.anonymousBtn.selected == YES ? @"1" : @"0"
+                                         deliveryStar:[NSString stringWithFormat:@"%ld",(long)self.serviceStar]
+                                     satisfactionStar:[NSString stringWithFormat:@"%ld",(long)self.storeStar] succeedBlock:^{
+             @strongify(self)
+             [GMLoadingActivity hideLoadingActivityInView:self.view];
             [MKToastView showToastToView:self.view text:@"评价成功" time:Toast_Time completion:^{
                 if (self.callBack) {
                     self.callBack();
@@ -88,6 +97,8 @@
                 [self.navigationController popViewControllerAnimated:YES];
             }];
         } failedBlock:^(NSError * error) {
+            @strongify(self)
+            [GMLoadingActivity hideLoadingActivityInView:self.view];
             [self showAlertViewWithError:error];
         }];
     }

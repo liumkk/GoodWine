@@ -29,7 +29,7 @@ static NSString *versionCellID = @"versionCellID";
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = COLOR_TABLE_BG_RAY;
-        
+        self.scrollEnabled = NO;
         [self registerClass:[GMKeyValueInfoCell class] forCellReuseIdentifier:versionCellID];
     }
     return self;

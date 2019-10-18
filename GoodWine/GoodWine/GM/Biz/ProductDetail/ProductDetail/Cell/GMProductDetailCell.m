@@ -26,8 +26,11 @@
     NSString *originalPrice = [NSString stringWithFormat:@"原价:￥%.2f",[productDetailModel.originalPrice floatValue]];
     self.originalPriceLabel.attributedText = [NSString setMiddleLinePriceWithString:originalPrice];
     
-    self.titleLabel.text = productDetailModel.brandName;
-    self.contentLabel.text = productDetailModel.detailDesc;
+    NSString *title = [NSString stringWithFormat:@"%@  %@度/%@",productDetailModel.brandName,productDetailModel.alcohol,productDetailModel.purity];
+    NSInteger changeLength = productDetailModel.alcohol.length +2 +productDetailModel.purity.length;
+    self.titleLabel.attributedText = [NSString getAttrStr:title beginL:title.length -changeLength  endL:changeLength  color:COLOR_TEXT_BLACK font:Font(13.f)];
+//    self.purityLabel.text = productDetailModel.purity;
+    self.contentLabel.text = productDetailModel.subTitle;
 }
 
 - (void)setupConstraints {
@@ -52,6 +55,12 @@
         make.left.equalTo(self.promotionPriceLabel);
     }];
     
+//    [self.purityLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(self.titleLabel.mas_bottom).offset(5.f);
+//        make.right.equalTo(self.contentView).offset(-10.f);
+//        make.left.equalTo(self.titleLabel.mas_right).offset(15.f);
+//    }];
+    
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleLabel.mas_bottom).offset(5.f);
         make.right.equalTo(self.contentView).offset(-10.f);
@@ -71,7 +80,7 @@
 - (UILabel *)promotionPriceLabel {
     if (! _promotionPriceLabel) {
         _promotionPriceLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _promotionPriceLabel.font = Font_15;
+        _promotionPriceLabel.font = Font_16;
         _promotionPriceLabel.textColor = COLOR_THEME_COLOR;
         [self.contentView addSubview:_promotionPriceLabel];
     }
@@ -95,6 +104,16 @@
         [self.contentView addSubview:_titleLabel];
     }
     return _titleLabel;
+}
+
+- (UILabel *)purityLabel {
+    if (! _purityLabel) {
+        _purityLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _purityLabel.font = Font_14;
+        _purityLabel.textColor = COLOR_GRAY_150;
+        [self.contentView addSubview:_purityLabel];
+    }
+    return _purityLabel;
 }
 
 - (UILabel *)contentLabel {

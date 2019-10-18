@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id <GMOrderDetailTableViewDelegate> orderDetailDelegate;
 @property (nonatomic, strong) GMOrderDetailHeaderView *detailHeaderView;
-- (void)reloadTableViewWithModel:(GMOrderDetailInfoModel *)model myModel:(GMMyOrderDetailModel *)myOrder;
+- (void)reloadTableViewWithModel:(GMOrderDetailInfoModel *)model;
 
 @end
 

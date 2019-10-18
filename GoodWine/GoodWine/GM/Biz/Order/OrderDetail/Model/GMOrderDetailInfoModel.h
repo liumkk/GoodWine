@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *payAmount;
 @property (nonatomic, copy) NSString *couponAmount;
 @property (nonatomic, copy) NSString *discountAmount;
+@property (nonatomic, copy) NSString *expectedTime;
 @property (nonatomic, copy) NSString *payType; //支付方式：0->未支付；1->支付宝；2->微信 ,
 @property (nonatomic, copy) NSString *sourceType; //订单来源：0->PC订单；1->app订单
 @property (nonatomic, copy) NSString *status; //订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单

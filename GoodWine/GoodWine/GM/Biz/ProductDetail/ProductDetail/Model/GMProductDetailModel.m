@@ -26,7 +26,9 @@
              @"detailDesc"          : @"detailDesc",
              @"albumPics"           : @"albumPics",
              @"skuArray"            : @"skuList",
-             @"productSn"           : @"productSn"
+             @"productSn"           : @"productSn",
+             @"purity"              : @"purity",
+             @"alcohol"             : @"alcohol"
              };
     
 }
@@ -62,6 +64,13 @@
 }
 
 + (NSValueTransformer *)priceJSONTransformer{
+    
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber * number, BOOL *success, NSError *__autoreleasing *error) {
+        return [NSString stringWithFormat:@"%@",number];
+    }];
+}
+
++ (NSValueTransformer *)alcoholJSONTransformer{
     
     return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber * number, BOOL *success, NSError *__autoreleasing *error) {
         return [NSString stringWithFormat:@"%@",number];

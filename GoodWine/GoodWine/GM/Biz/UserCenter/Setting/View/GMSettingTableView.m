@@ -73,12 +73,12 @@ static NSString *settTableCellID = @"settTableCellID";
 //        return cell;
         GMSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:settTableCellID forIndexPath:indexPath];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        [cell updateCellImageName:@"goodWine" title:@"修改密码" content:@"" needLine:YES];
+        [cell updateCellImageName:@"modify_pwd" title:@"修改密码" content:@"" needLine:YES];
         return cell;
     } else {
         GMSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:settTableCellID forIndexPath:indexPath];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        [cell updateCellImageName:@"goodWine" title:@"清除缓存" content:[self getCacheSize] needLine:YES];
+        [cell updateCellImageName:@"clear" title:@"清除缓存" content:[self getCacheSize] needLine:YES];
         return cell;
     }
     

@@ -17,6 +17,7 @@
 @property (nonatomic, strong) GMShoppCarTableView *shoppCarTV;
 @property (nonatomic, strong) GMShoppCarFooterView *footerView;
 @property (nonatomic, strong) NSMutableArray <ShoppCarInfoModel *> *dataArray;
+@property (nonatomic, strong) MKEmptyView *emptyView;
 
 @end
 
@@ -56,8 +57,14 @@
         [self.dataArray addObjectsFromArray:array];
         [self.shoppCarTV reloadTableViewWithDataArray:self.dataArray];
         self.footerView.allSelectBtn.selected = NO;
+        if (self.dataArray.count == 0) {
+            [self.emptyView showEmptyNeedLoadBtn:NO];
+        } else {
+            self.emptyView.hidden = YES;
+        }
     } failedBlock:^(NSError * _Nonnull error) {
         [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [self.emptyView showEmptyNeedLoadBtn:NO];
         [self endMJRefresh];
         [self showAlertViewWithError:error];
     }];
@@ -149,6 +156,10 @@
         [self.shoppCarTV deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
         [self.shoppCarTV beginUpdates];
         [self.shoppCarTV endUpdates];
+        if (self.dataArray.count == 0) {
+            [self.emptyView showEmptyNeedLoadBtn:NO];
+            self.footerView.allSelectBtn.selected = NO;
+        }
     } failedBlock:^(NSError * _Nonnull error) {
         [self showAlertViewWithError:error];
     }];
@@ -158,6 +169,10 @@
     [self.shoppCarTV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.view);
         make.bottom.equalTo(self.view.mas_bottom).offset( - 50.f);
+    }];
+    
+    [self.emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.shoppCarTV);
     }];
     
     [self.view addSubview:self.footerView];
@@ -201,6 +216,14 @@
         _dataArray = [[NSMutableArray alloc] init];
     }
     return _dataArray;
+}
+
+- (MKEmptyView *)emptyView {
+    if (! _emptyView) {
+        _emptyView = [[MKEmptyView alloc] initWithFrame:CGRectZero];
+        [self.view addSubview:_emptyView];
+    }
+    return _emptyView;
 }
 
 - (void)dealloc {

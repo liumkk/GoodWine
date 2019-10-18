@@ -14,6 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithModel:(GMMyOrderDetailModel *)model;
 
+- (instancetype)initWithOrderModel:(GMOrderDetailInfoModel *)orderModel;
+
+@property (nonatomic, copy) void(^OrderDetailVCCallBack)(void);
+
 @end
 
 NS_ASSUME_NONNULL_END

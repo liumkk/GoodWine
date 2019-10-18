@@ -188,8 +188,7 @@ static NSString *wineListCellIdentifier = @"wineListCellIdentifier";
 
 - (SDCycleScrollView *)cycleScrollView {
     if (! _cycleScrollView) {
-//        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, Width_Screen, 150.f) imageNamesGroup:@[@"test",@"test",@"test",@"test",@"test"]];
-        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, Width_Screen, 150.f) delegate:self placeholderImage:[UIImage imageNamed:@"goodWine"]];
+        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, Width_Screen, 150.f) delegate:self placeholderImage:nil];
 //        _cycleScrollView.imageURLStringsGroup = nil;
         _cycleScrollView.currentPageDotColor = [UIColor blueColor];
         _cycleScrollView.pageDotColor = [UIColor grayColor];

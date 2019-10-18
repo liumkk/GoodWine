@@ -23,7 +23,7 @@
 
 - (void)updateIconImageName:(NSString *)imageName contentText:(NSString *)contentText {
     NSURL *URL = [NSURL URLWithString:imageName];
-    [self.iconImageView sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"goodWine"] options:0];
+    [self.iconImageView sd_setImageWithURL:URL];
     
     self.contentLabel.text = contentText;
 }
@@ -77,7 +77,6 @@
     if (! _iconImageView) {
         
         _iconImageView = [[UIImageView alloc] init];
-//        _iconImageView.image = [UIImage imageNamed:@"test"];
         
         [self addSubview:_iconImageView];
     }

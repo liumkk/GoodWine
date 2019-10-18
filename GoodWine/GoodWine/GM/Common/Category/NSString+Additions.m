@@ -62,19 +62,19 @@
     } else if ([self isEqualToString:@"4"]) {
         return @"已关闭";
     } else {
-        return @"已失效";
+        return @"全部订单";
     }
 }
 
 - (NSString *)statusFormatterWithType:(NSString *)type {
     if ([self isEqualToString:@"0"]) {
-        return @"去付款";
+        return @"待付款";
     } else if ([self isEqualToString:@"1"]) {
         return @"待发货";
     } else if ([self isEqualToString:@"2"]) {
-        return @"确认收货";
+        return @"待送达";
     } else if ([self isEqualToString:@"3"]) {
-        return [type integerValue] == 2 ? @"已评价" : @"去评价";
+        return [type integerValue] == 2 ? @"已评价" : @"未评价";
     } else if ([self isEqualToString:@"4"]) {
         return @"已关闭";
     } else {

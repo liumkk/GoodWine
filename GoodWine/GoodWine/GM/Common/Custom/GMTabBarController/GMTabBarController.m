@@ -27,29 +27,40 @@
     GMHomePageViewController *homePageVC = [[GMHomePageViewController alloc] init];
     GMNavigationController *homePageNAC = [[GMNavigationController alloc] initWithRootViewController:homePageVC];
     homePageNAC.tabBarItem.title = @"首页";
-    homePageNAC.tabBarItem.image = [[UIImage imageNamed:@"homePageNormal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    homePageNAC.tabBarItem.selectedImage = [[UIImage imageNamed:@"homePageSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    homePageNAC.tabBarItem.image = [[UIImage imageNamed:@"homePageNormal"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    homePageNAC.tabBarItem.selectedImage = [[UIImage imageNamed:@"homePageSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 
     GMShoppCartViewController *shoppVC = [[GMShoppCartViewController alloc] init];
     GMNavigationController *shoppNAC = [[GMNavigationController alloc] initWithRootViewController:shoppVC];
     shoppNAC.tabBarItem.title = @"购物车";
-    shoppNAC.tabBarItem.image = [[UIImage imageNamed:@"shoppCarNormal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    shoppNAC.tabBarItem.selectedImage = [[UIImage imageNamed:@"shoppCarSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    shoppNAC.tabBarItem.image = [[UIImage imageNamed:@"shoppCarNormal"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    shoppNAC.tabBarItem.selectedImage = [[UIImage imageNamed:@"shoppCarSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 
     GMOrderViewController *orderVC = [[GMOrderViewController alloc] init];
     GMNavigationController *orderNAC = [[GMNavigationController alloc] initWithRootViewController:orderVC];
     orderNAC.tabBarItem.title = @"订单";
-    orderNAC.tabBarItem.image = [[UIImage imageNamed:@"orderNormal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    orderNAC.tabBarItem.selectedImage = [[UIImage imageNamed:@"orderSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-
+    orderNAC.tabBarItem.image = [[UIImage imageNamed:@"orderNormal"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    orderNAC.tabBarItem.selectedImage = [[UIImage imageNamed:@"orderSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    
     GMUserCenterViewController *myVC = [[GMUserCenterViewController alloc] init];
     GMNavigationController *myNAC = [[GMNavigationController alloc] initWithRootViewController:myVC];
     myNAC.tabBarItem.title = @"我的";
-    myNAC.tabBarItem.image = [[UIImage imageNamed:@"userCenterNormal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    myNAC.tabBarItem.selectedImage = [[UIImage imageNamed:@"userCenterSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 
+    myNAC.tabBarItem.image = [[UIImage imageNamed:@"userCenterNormal"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    myNAC.tabBarItem.selectedImage = [[UIImage imageNamed:@"userCenterSelect"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+//    myNAC.tabBarItem.imageInsets = UIEdgeInsetsMake(15, 15, 15, 15);
+//    UIGraphicsBeginImageContext(CGSizeMake(20, 22));
+//    [myNAC.tabBarItem.image drawInRect:CGRectMake(0.0f, 0.0f, 20, 22)];
+//    myNAC.tabBarItem.image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+    
     self.tabBar.barTintColor = [UIColor whiteColor];
-    self.tabBar.tintColor = [UIColor redColor];
+    if (@available(iOS 10.0, *)) {
+        self.tabBar.unselectedItemTintColor = COLOR_TEXT_BLACK;
+    } else {
+        
+    }
+    self.tabBar.tintColor = COLOR_THEME_COLOR;
     self.viewControllers = @[homePageNAC,shoppNAC,orderNAC,myNAC];
 }
 

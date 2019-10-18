@@ -34,7 +34,7 @@
 }
 
 - (void)telPhone:(UIButton *)btn {
-    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",Join_PhoneNum];
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel://%@",Join_PhoneNum];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 

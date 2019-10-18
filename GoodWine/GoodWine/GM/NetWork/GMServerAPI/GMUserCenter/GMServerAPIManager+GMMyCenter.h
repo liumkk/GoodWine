@@ -12,8 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GMServerAPIManager (GMMyCenter)
 
-- (NSURLSessionDataTask *)asyncQueryAddressWithSucceedBlock:(void (^)(NSArray *array))succeedBlock
-                                                failedBlock:(void (^)(NSError *error))failedBlock;
+- (NSURLSessionDataTask *)asyncQueryAddressWithPageSize:(NSString *)pageSize
+                                                pageNum:(NSString *)pageNum
+                                           succeedBlock:(void (^)(NSArray *array))succeedBlock
+                                            failedBlock:(void (^)(NSError *error))failedBlock;
 
 - (NSURLSessionDataTask *)asyncAddAddressWithName:(NSString *)name
                                          phoneNum:(NSString *)phoneNum
@@ -26,8 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
                                              succeedBlock:(void (^)(void))succeedBlock
                                               failedBlock:(void (^)(NSError * error))failedBlock;
 
-- (NSURLSessionDataTask *)asyncGetCollectListWithSucceedBlock:(void (^)(CollectListInfoModel *model))succeedBlock
-                                                  failedBlock:(void (^)(NSError * error))failedBlock;
+- (NSURLSessionDataTask *)asyncGetCollectListWithPageSize:(NSString *)pageSize
+                                                  pageNum:(NSString *)pageNum
+                                             SucceedBlock:(void (^)(CollectListInfoModel * model))succeedBlock
+                                              failedBlock:(void (^)(NSError * error))failedBlock;
 
 - (NSURLSessionDataTask *)asyncDeleteCollectWithProductId:(NSString *)productId
                                              succeedBlock:(void (^)(void))succeedBlock

@@ -14,6 +14,7 @@ static NSString *orderCollectionCell = @"orderCollectionCell";
 @interface GMOrderCollectionView () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) NSArray *titleArray;
+@property (nonatomic, strong) NSArray *imageArray;
 
 @end
 
@@ -44,7 +45,8 @@ static NSString *orderCollectionCell = @"orderCollectionCell";
 }
 
 - (void)initData {
-    self.titleArray = @[@"待付款", @"待发货", @"已发货", @"已完成", @"已关闭", @"已失效"];
+    self.titleArray = @[@"待付款", @"待发货", @"已发货", @"已完成", @"已关闭", @"全部订单"];
+    self.imageArray = @[@"order_dfk", @"order_dfh", @"order_dsh", @"order_ywc", @"order_yqx", @"order_ysx",];
 }
 
 #pragma mark - collectionView dataSource Or delegate
@@ -57,7 +59,7 @@ static NSString *orderCollectionCell = @"orderCollectionCell";
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     GMUserSecondCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:orderCollectionCell
                                                                                      forIndexPath:indexPath];
-    [cell updateCellWithImageString:@"goodWine" titleText:self.titleArray[indexPath.item]];
+    [cell updateCellWithImageString:self.imageArray[indexPath.row] titleText:self.titleArray[indexPath.item]];
     return cell;
 }
 

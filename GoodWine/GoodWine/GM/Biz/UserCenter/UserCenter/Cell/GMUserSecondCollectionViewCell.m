@@ -28,7 +28,7 @@
     [self.headerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.contentView);
         make.bottom.equalTo(self.contentView.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(30.f, 30.f));
+        make.size.mas_equalTo(CGSizeMake(23.f, 23.f));
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {

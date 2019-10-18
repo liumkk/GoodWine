@@ -15,6 +15,7 @@
 @property (nonatomic, strong) GMCollectTableView *collectTB;
 @property (nonatomic, strong) NSMutableArray <CollectProductItem *> *productArray;
 @property (nonatomic, strong) MKEmptyView *emptyView;
+@property (nonatomic, assign) NSInteger page;
 
 @end
 
@@ -23,10 +24,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"关注商品";
+    self.page = 1;
     
     [self updateNavigationBarNeedBack:YES];
     [self setupConstranits];
-    [self requestCollectList];
+    [self requestCollectListIsLoadMore:NO];
+    [self addRefreshHeaderView];
+    [self addRefreshFooterView];
+    
 }
 
 - (void)setupConstranits {
@@ -39,18 +44,37 @@
     }];
 }
 
-- (void)requestCollectList {
+- (void)requestCollectListIsLoadMore:(BOOL)isLoadMore {
+    [GMLoadingActivity showLoadingActivityInView:self.view];
     @weakify(self)
-    [ServerAPIManager asyncGetCollectListWithSucceedBlock:^(CollectListInfoModel * _Nonnull model) {
+    [ServerAPIManager asyncGetCollectListWithPageSize:@"10" pageNum:isLoadMore ? [NSString stringWithFormat:@"%ld",(long)self.page] : @"1" SucceedBlock:^(CollectListInfoModel * model) {
         @strongify(self)
-        self.productArray = (NSMutableArray *)model.collectProductArray;
-        if (self.productArray.count > 0) {
-            self.emptyView.hidden = YES;
-            [self.collectTB reloadTableViewWithDataArray:model.collectProductArray];
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [self endMJRefresh];
+        if (model.collectProductArray.count == 0) {
+            if (!isLoadMore) {
+                self.page = 1;
+                [self.emptyView showEmptyNeedLoadBtn:NO];
+                [self.collectTB.mj_footer resetNoMoreData];
+            } else {
+                [self.collectTB.mj_footer endRefreshingWithNoMoreData];
+            }
         } else {
-            [self.emptyView showEmptyNeedLoadBtn:NO];
+            if (!isLoadMore) {
+                self.page = 1;
+                [self.productArray removeAllObjects];
+                [self.collectTB.mj_footer resetNoMoreData];
+            }
+            self.page ++;
+            [self.productArray addObjectsFromArray:model.collectProductArray];
+            
+            self.emptyView.hidden = YES;
+            [self.collectTB reloadTableViewWithDataArray:self.productArray];
         }
-    } failedBlock:^(NSError * _Nonnull error) {
+    } failedBlock:^(NSError * error) {
+        @strongify(self)
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [self.emptyView showEmptyNeedLoadBtn:NO];
         [self showAlertViewWithError:error];
     }];
 }
@@ -74,6 +98,39 @@
     }];
 }
 
+- (void)addRefreshHeaderView {
+    @weakify(self)
+    self.collectTB.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        @strongify(self)
+        if ([self.collectTB.mj_footer isRefreshing]) {
+            [self.collectTB.mj_footer endRefreshing];
+        }
+        [self requestCollectListIsLoadMore:NO];
+    }];
+}
+
+- (void)addRefreshFooterView {
+    @weakify(self)
+    self.collectTB.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        @strongify(self)
+        if ([self.collectTB.mj_header isRefreshing]) {
+            [self.collectTB.mj_header endRefreshing];
+        }
+        [self requestCollectListIsLoadMore:YES];
+    }];
+    self.collectTB.mj_footer.ignoredScrollViewContentInsetBottom = BottomTarBarSpace;
+}
+
+- (void)endMJRefresh {
+    
+    if ([self.collectTB.mj_header isRefreshing]) {
+        [self.collectTB.mj_header endRefreshing];
+    }
+    if ([self.collectTB.mj_footer isRefreshing]) {
+        [self.collectTB.mj_footer endRefreshing];
+    }
+}
+
 - (GMCollectTableView *)collectTB {
     if (! _collectTB) {
         _collectTB = [[GMCollectTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -89,6 +146,13 @@
         [self.view addSubview:_emptyView];
     }
     return _emptyView;
+}
+
+- (NSMutableArray<CollectProductItem *> *)productArray {
+    if (! _productArray) {
+        _productArray = [[NSMutableArray alloc] init];
+    }
+    return _productArray;
 }
 
 @end

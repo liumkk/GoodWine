@@ -116,8 +116,20 @@
         [self.serviceStarArray addObject:serviceStarBtn];
     }
     
+    [self.anonymousBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.serviceLabel.mas_bottom).offset(20.f);
+        make.left.equalTo(self.serviceLabel);
+        make.size.mas_equalTo(CGSizeMake(20.f, 20.f));
+    }];
+    
+    [self.anonymousLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.anonymousBtn.mas_centerY);
+        make.left.equalTo(self.anonymousBtn.mas_right).offset(5.f);
+        make.height.mas_equalTo(20.f);
+    }];
+    
     [self.confirmBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.serviceLabel.mas_bottom).offset(40.f);
+        make.top.equalTo(self.anonymousLabel.mas_bottom).offset(40.f);
         make.left.equalTo(self).offset(25.f);
         make.right.equalTo(self).offset(-25.f);
         make.height.mas_equalTo(45.f);
@@ -187,6 +199,27 @@
         [self addSubview:_serviceLabel];
     }
     return _serviceLabel;
+}
+
+- (UIButton *)anonymousBtn {
+    if (! _anonymousBtn) {
+        _anonymousBtn = [[UIButton alloc] initWithFrame:CGRectZero];
+        [_anonymousBtn setBackgroundImage:[UIImage imageNamed:@"unselect"] forState:UIControlStateNormal];
+        [_anonymousBtn setBackgroundImage:[UIImage imageNamed:@"select"] forState:UIControlStateSelected];
+        [self addSubview:_anonymousBtn];
+    }
+    return _anonymousBtn;
+}
+
+- (UILabel *)anonymousLabel {
+    if (! _anonymousLabel) {
+        _anonymousLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _anonymousLabel.text = @"匿名评价";
+        _anonymousLabel.textColor = [UIColor blackColor];
+        _anonymousLabel.font = Font(15.f);
+        [self addSubview:_anonymousLabel];
+    }
+    return _anonymousLabel;
 }
 
 - (UIButton *)confirmBtn {

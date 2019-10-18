@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UIImageView *successImageView;
 @property (nonatomic, strong) UILabel *titlelabel;
-@property (nonatomic, strong) UIButton *backBtn;
+@property (nonatomic, strong) UIButton *popBtn;
 
 @end
 
@@ -27,13 +27,13 @@
 }
 
 - (void)setupConstranits {
-    [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.popBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.view);
         make.height.mas_equalTo(20.f);
     }];
     
     [self.titlelabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.backBtn.mas_top).offset(-10.f);
+        make.bottom.equalTo(self.popBtn.mas_top).offset(-10.f);
         make.centerX.equalTo(self.view);
         make.height.mas_equalTo(15.f);
     }];
@@ -45,8 +45,14 @@
     }];
 }
 
-- (void)backBtn:(UIButton *)btn {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+- (void)back {
+    NSInteger index=[[self.navigationController viewControllers] indexOfObject:self];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:index-2] animated:YES];
+}
+
+- (void)popBtn:(UIButton *)btn {
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    [ViewControllerManager.tabBarController setSelectedIndex:0];
 }
 
 - (UIImageView *)successImageView {
@@ -57,16 +63,16 @@
     return _successImageView;
 }
 
-- (UIButton *)backBtn {
-    if (! _backBtn) {
-        _backBtn = [UIButton buttonWithType: UIButtonTypeCustom];
-        [_backBtn setTitle:@"返回首页" forState:UIControlStateNormal];
-        [_backBtn setTitleColor:COLOR_THEME_COLOR forState:UIControlStateNormal];
-        _backBtn.titleLabel.font = Font(14.f);
-        [_backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:_backBtn];
+- (UIButton *)popBtn {
+    if (! _popBtn) {
+        _popBtn = [UIButton buttonWithType: UIButtonTypeCustom];
+        [_popBtn setTitle:@"返回首页" forState:UIControlStateNormal];
+        [_popBtn setTitleColor:COLOR_THEME_COLOR forState:UIControlStateNormal];
+        _popBtn.titleLabel.font = Font(14.f);
+        [_popBtn addTarget:self action:@selector(popBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_popBtn];
     }
-    return _backBtn;
+    return _popBtn;
 }
 
 - (UILabel *)titlelabel {

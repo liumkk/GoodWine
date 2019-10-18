@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *serviceLabel;
 @property (nonatomic, strong) NSMutableArray *serviceStarArray;
 
+@property (nonatomic, strong) UIButton *anonymousBtn;
+@property (nonatomic, strong) UILabel *anonymousLabel;
+
 @property (nonatomic, strong) UIButton *confirmBtn;
 
 - (void)updateEvaluateViewWithModel:(GMOrderItem *)model;

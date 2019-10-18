@@ -8,10 +8,12 @@
 
 #import "GMVersionViewController.h"
 #import "GMVersionTableView.h"
+#import "GMVersionFooterView.h"
 
 @interface GMVersionViewController () <GMVersionTableViewDelegate>
 
 @property (nonatomic, strong) GMVersionTableView *tableView;
+@property (nonatomic, strong) GMVersionFooterView *footerView;
 
 @end
 
@@ -29,6 +31,11 @@
 - (void)setupConstranits {
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
+    }];
+    
+    [self.footerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view.mas_bottom).offset(-30.f);
+        make.left.right.equalTo(self.view);
     }];
 }
 
@@ -50,6 +57,14 @@
         [self.view addSubview:_tableView];
     }
     return _tableView;
+}
+
+- (GMVersionFooterView *)footerView {
+    if (! _footerView) {
+        _footerView = [[GMVersionFooterView alloc] initWithFrame:CGRectZero];
+        [self.view addSubview:_footerView];
+    }
+    return _footerView;
 }
 
 @end

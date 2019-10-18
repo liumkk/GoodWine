@@ -10,11 +10,13 @@
 
 @implementation GMServerAPIManager (GMMyCenter)
 
-- (NSURLSessionDataTask *)asyncQueryAddressWithSucceedBlock:(void (^)(NSArray * _Nonnull))succeedBlock
-                                                failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+- (NSURLSessionDataTask *)asyncQueryAddressWithPageSize:(NSString *)pageSize
+                                                pageNum:(NSString *)pageNum
+                                           succeedBlock:(void (^)(NSArray * _Nonnull))succeedBlock
+                                            failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
     
     return
-    [ServerClient asyncGetNetworkRequestWithURLString:GMAllAddress(@"10", @"1", UserCenter.storeId) parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
+    [ServerClient asyncGetNetworkRequestWithURLString:GMAllAddress(pageSize, pageNum, UserCenter.storeId) parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
             NSMutableArray *dataArray = [[NSMutableArray alloc] init];
             for (NSDictionary *dic in responseDict[@"data"]) {
@@ -88,9 +90,8 @@
 - (NSURLSessionDataTask *)asyncDeleteAddressWithAddressId:(NSString *)addressId
                                              succeedBlock:(void (^)(void))succeedBlock
                                               failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
-    
     return
-    [ServerClient asyncNetworkRequestWithURL:GMDeleteAddress(addressId) parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
+    [ServerClient asyncNetworkRequestWithURL:GMDeleteAddress(addressId) parameter:nil success:^(NSDictionary * _Nonnull responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
             if (succeedBlock) {
                 succeedBlock();
@@ -110,11 +111,13 @@
     }];
 }
 
-- (NSURLSessionDataTask *)asyncGetCollectListWithSucceedBlock:(void (^)(CollectListInfoModel * _Nonnull))succeedBlock
-                                                failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
+- (NSURLSessionDataTask *)asyncGetCollectListWithPageSize:(NSString *)pageSize
+                                                  pageNum:(NSString *)pageNum
+                                             SucceedBlock:(void (^)(CollectListInfoModel * _Nonnull))succeedBlock
+                                              failedBlock:(void (^)(NSError * _Nonnull))failedBlock {
     
     return
-    [ServerClient asyncGetNetworkRequestWithURLString:GMGetCollectList(@"4", @"1", UserCenter.storeId) parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
+    [ServerClient asyncGetNetworkRequestWithURLString:GMGetCollectList(pageSize, pageNum, UserCenter.storeId) parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
             CollectListInfoModel *model = [CollectListInfoModel collectListInfoModelWithDictionary:responseDict[@"data"]];
             if (succeedBlock) {

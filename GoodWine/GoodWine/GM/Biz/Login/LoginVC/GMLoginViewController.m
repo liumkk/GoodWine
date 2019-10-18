@@ -46,11 +46,38 @@
 - (void)loginAction:(UIButton *)btn {
     [GMLoadingActivity showLoadingActivityInView:self.view];
     @weakify(self)
-    //检查定位是否成功
-    [LocationManager openLocationFunctionSucceed:^{
+    [ServerAPIManager asyncQueryUserCodeSucceedBlock:^(NSString * _Nonnull str) {
         @strongify(self)
-        [ServerAPIManager asyncLoginWithUserName:self.loginView.nameTextField.text.length == 0 ? @"zhangsan" : self.loginView.nameTextField.text
-                                        password:self.loginView.passwordTextField.text.length == 0 ? @"123456" : self.loginView.passwordTextField.text
+        if ([User_Code isEqualToString:str]) {
+            UserCenter.storeId = @"46";
+            [self login];
+        } else {
+            //检查定位是否成功
+            [LocationManager openLocationFunctionSucceed:^{
+                [self login];
+            } failed:^{
+                [GMLoadingActivity hideLoadingActivityInView:self.view];
+                GMJoinViewController *vc = [[GMJoinViewController alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
+            } authority:^{
+                [GMLoadingActivity hideLoadingActivityInView:self.view];
+            }];
+        }
+    } failedBlock:^(NSError * _Nonnull error) {
+        @strongify(self)
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [self showAlertViewWithError:error];
+    }];
+}
+
+- (void)login {
+    if (IsStrEmpty(self.loginView.nameTextField.text) || IsStrEmpty(self.loginView.passwordLabel.text)) {
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        [MKToastView showToastToView:self.view text:@"账号密码不能为空"];
+    } else {
+        @weakify(self)
+        [ServerAPIManager asyncLoginWithUserName:self.loginView.nameTextField.text
+                                        password:self.loginView.passwordTextField.text
                                     succeedBlock:^(GMUserCenterInfoModel * model) {
                                         @strongify(self)
                                         [GMLoadingActivity hideLoadingActivityInView:self.view];
@@ -61,13 +88,7 @@
                                         [GMLoadingActivity hideLoadingActivityInView:self.view];
                                         [self showAlertViewWithError:error];
                                     }];
-    } failed:^{
-        [GMLoadingActivity hideLoadingActivityInView:self.view];
-        GMJoinViewController *vc = [[GMJoinViewController alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
-    } authority:^{
-        [GMLoadingActivity hideLoadingActivityInView:self.view];
-    }];
+    }
 }
 
 - (void)forgetAction:(UIButton *)btn {

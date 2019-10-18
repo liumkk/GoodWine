@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *productSn;
 @property (nonatomic, copy) NSString *unit;
 @property (nonatomic, copy) NSString *keywords;
+@property (nonatomic, copy) NSString *purity; //酒类型
 @property (nonatomic, assign) NSInteger alcohol;
 
 

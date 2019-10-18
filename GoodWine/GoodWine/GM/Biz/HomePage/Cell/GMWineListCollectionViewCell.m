@@ -39,9 +39,9 @@
         make.top.equalTo(self.contentView).offset(3.f);
         make.left.equalTo(self.contentView).offset(3.5);
         make.right.equalTo(self.contentView).offset(-3.5);
-        make.height.mas_equalTo(167 *ScreenScale);
+        make.height.mas_equalTo(167);
     }];
-    self.imageView.bounds = CGRectMake(0, 0, self.contentView.width-7, 167 *ScreenScale);
+    self.imageView.bounds = CGRectMake(0, 0, self.contentView.width-7, 167);
     [UIView maskCorner:self.imageView rectCorner:UIRectCornerAllCorners corner:5.f];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {

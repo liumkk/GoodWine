@@ -45,8 +45,6 @@ static NSString *serviceCellID = @"serviceCellID";
     } else {
         [cell updateCellContentWithCellType:GMKVInfoCellTypeLeftImageView leftText:@"联系商家" rightText:@"phone" needLine:indexPath.row != 0];
     }
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
     return cell;
 }
 

@@ -66,7 +66,7 @@ static NSString *productEvaluateCellID = @"productEvaluateCellID";
     
     ProductEvaluateInfoModel *model = self.dataArray[indexPath.row];
     if (!model.contentHeight) {
-        model.contentHeight = [model.content heightStringWithFont:evaluateContentCellFont width:Width_Screen-26.f] + 70.f;
+        model.contentHeight = [model.content heightStringWithFont:evaluateContentCellFont width:Width_Screen-26.f] + 65.f;
     }
     return model.contentHeight;
 }

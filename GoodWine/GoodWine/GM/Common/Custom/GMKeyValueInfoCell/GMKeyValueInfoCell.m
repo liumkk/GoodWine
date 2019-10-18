@@ -79,6 +79,16 @@
     }
 }
 
+- (void)updateOnlyTextFieldConstraints {
+    self.titleLabel.hidden = YES;
+    
+    [self.textField mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.equalTo(self.contentView);
+        make.left.equalTo(self.contentView).offset(16.f);
+        make.right.equalTo(self.contentView.mas_right).offset(-16.f);
+    }];
+}
+
 - (void)updateCellContentWithCellType:(GMKVInfoCellType)cellType leftText:(NSString *)leftText rightText:(NSString *)rightText needLine:(BOOL)needLine {
     self.topLine.hidden = !needLine;
     self.titleLabel.text = leftText;
@@ -87,6 +97,10 @@
         [self defaultLabelUpdateLabelFrame];
         self.rightLabel.text = rightText;
         [self viewNeedShow:self.rightLabel];
+    } else if (cellType == GMKVInfoCellTypeOnlyTextField) {
+        [self updateOnlyTextFieldConstraints];
+        self.textField.placeholder = rightText;
+        [self viewNeedShow:self.textField];
     } else if (cellType == GMKVInfoCellTypeAllTextField) {
         self.textField.placeholder = rightText;
         [self viewNeedShow:self.textField];
@@ -160,6 +174,7 @@
 - (UITextField *)textField {
     if (! _textField) {
         _textField = [[UITextField alloc] initWithFrame:CGRectZero];
+        _textField.font = Font(15.f);
         [self.contentView addSubview:_textField];
     }
     return _textField;

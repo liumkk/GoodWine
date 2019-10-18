@@ -109,6 +109,7 @@
 		D65C238A230C43DC00DF955F /* GMMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = D65C2389230C43DC00DF955F /* GMMaskView.m */; };
 		D65C238E230CF75400DF955F /* GMServerAPIManager+Order.m in Sources */ = {isa = PBXBuildFile; fileRef = D65C238D230CF75400DF955F /* GMServerAPIManager+Order.m */; };
 		D661D9C823540A130080117D /* GMJoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D661D9C723540A130080117D /* GMJoinViewController.m */; };
+		D661D9D0235991530080117D /* GMVersionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D661D9CF235991530080117D /* GMVersionFooterView.m */; };
 		D6699EF723332CEF004CE907 /* GMOrderEvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6699EF623332CEF004CE907 /* GMOrderEvaluateViewController.m */; };
 		D6699EFB23332DAC004CE907 /* GMOrderEvaluateView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6699EFA23332DAC004CE907 /* GMOrderEvaluateView.m */; };
 		D6699EFE23347F08004CE907 /* AddressInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6699EFD23347F08004CE907 /* AddressInfoModel.m */; };
@@ -391,6 +392,8 @@
 		D65C238D230CF75400DF955F /* GMServerAPIManager+Order.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GMServerAPIManager+Order.m"; sourceTree = "<group>"; };
 		D661D9C623540A130080117D /* GMJoinViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMJoinViewController.h; sourceTree = "<group>"; };
 		D661D9C723540A130080117D /* GMJoinViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMJoinViewController.m; sourceTree = "<group>"; };
+		D661D9CE235991520080117D /* GMVersionFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMVersionFooterView.h; sourceTree = "<group>"; };
+		D661D9CF235991530080117D /* GMVersionFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMVersionFooterView.m; sourceTree = "<group>"; };
 		D6699EF523332CEF004CE907 /* GMOrderEvaluateViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderEvaluateViewController.h; sourceTree = "<group>"; };
 		D6699EF623332CEF004CE907 /* GMOrderEvaluateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GMOrderEvaluateViewController.m; sourceTree = "<group>"; };
 		D6699EF923332DAC004CE907 /* GMOrderEvaluateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMOrderEvaluateView.h; sourceTree = "<group>"; };
@@ -1465,7 +1468,6 @@
 			isa = PBXGroup;
 			children = (
 				D687ED6622F51BE700A3D249 /* AddressManage */,
-				D687ED5E22F437AB00A3D249 /* Setting */,
 				D687ED5A22F42B6B00A3D249 /* Version */,
 				D687ED4922F2DFD400A3D249 /* Service */,
 			);
@@ -1482,13 +1484,6 @@
 			path = Version;
 			sourceTree = "<group>";
 		};
-		D687ED5E22F437AB00A3D249 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Setting;
-			sourceTree = "<group>";
-		};
 		D687ED5F22F437BF00A3D249 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1496,6 +1491,8 @@
 				D687ED6122F437D400A3D249 /* GMVersionTableView.m */,
 				D687ED6322F437F900A3D249 /* GMVersionHeaderView.h */,
 				D687ED6422F437FA00A3D249 /* GMVersionHeaderView.m */,
+				D661D9CE235991520080117D /* GMVersionFooterView.h */,
+				D661D9CF235991530080117D /* GMVersionFooterView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2097,6 +2094,7 @@
 				D60F3833231A66490059B66F /* GMMyOrderDetailModel.m in Sources */,
 				D60F381D231974C70059B66F /* GMCollectTableViewCell.m in Sources */,
 				D687EE9E22FBB18C00A3D249 /* ShoppCarInfoModel.m in Sources */,
+				D661D9D0235991530080117D /* GMVersionFooterView.m in Sources */,
 				D6386656229D766F0020DE4B /* GMOrderViewController.m in Sources */,
 				D65C2387230B8F5300DF955F /* GMSelectProductView.m in Sources */,
 				D60F37E7231579140059B66F /* BrandAreaInfoModel.m in Sources */,
@@ -2336,10 +2334,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NR789L6C3L;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoodWine/GoodWine-Prefix.pch";
 				INFOPLIST_FILE = GoodWine/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2347,7 +2346,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.goodwine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2359,10 +2358,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NR789L6C3L;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GoodWine/GoodWine-Prefix.pch";
 				INFOPLIST_FILE = GoodWine/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2370,7 +2370,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.goodwine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

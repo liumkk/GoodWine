@@ -58,7 +58,6 @@ static MKLocationManager *_sharedInstance = nil;
         [self.locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
             
             if (error) {
-                UserCenter.storeId = @"1"; //--test
                 MKNSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
                 if (error.code == AMapLocationErrorLocateFailed) {
                     if (failed) {
@@ -71,19 +70,13 @@ static MKLocationManager *_sharedInstance = nil;
             if (regeocode) {
                 MKNSLog(@"reGeocode:%@", regeocode);
                 [ServerAPIManager asyncQueryStoreInfoWithRegionCode:regeocode.adcode succeedBlock:^(GMStoreInfoModel * _Nonnull infoModel) {
-                    MKNSLog(@"GMStoreInfoModel--%@",infoModel);
                     UserCenter.storeId = infoModel.storeId;
                     UserCenter.storeInfoModel = infoModel;
-                    //                UserCenter.storeId = @"1"; //--test
                     if (succeed) {
                         succeed();
                     }
-//                    if (failed) {
-//                        failed();
-//                    }
                 } failedBlock:^(NSError * _Nonnull error) {
                     MKNSLog(@"GMStoreInfoModel--查询门店失败");
-                    UserCenter.storeId = @"1"; //--test
                     if (failed) {
                         failed();
                     }

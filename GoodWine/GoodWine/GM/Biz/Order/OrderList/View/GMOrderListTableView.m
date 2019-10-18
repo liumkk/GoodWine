@@ -33,7 +33,9 @@ static NSString *orderListCellID = @"orderListCellID";
         self.delegate = self;
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.backgroundColor = COLOR_TABLE_BG_RAY;
-        
+        self.estimatedRowHeight = 0;
+        self.estimatedSectionHeaderHeight = 0;
+        self.estimatedSectionFooterHeight = 0;
         [self registerClass:[GMOrderSnTableViewCell class] forCellReuseIdentifier:orderCellID];
         [self registerClass:[GMOrderAddressTableViewCell class] forCellReuseIdentifier:orderListAddressCellID];
         [self registerClass:[GMOrderProductTableViewCell class] forCellReuseIdentifier:orderListCellID];
@@ -68,8 +70,6 @@ static NSString *orderListCellID = @"orderListCellID";
     if (indexPath.row == 0) {
         GMOrderSnTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:orderCellID forIndexPath:indexPath];
         GMOrderDetailInfoModel *model = self.modelArray[indexPath.section];
-//        [cell updateCellImageName:@"goodWine" title:model.orderSn content:[model.status statusFormatterWithType:model.commentType] needLine:NO];
-//        cell.contentLabel.textColor = COLOR_THEME_COLOR;
         cell.statusBtn.tag = indexPath.section;
         [cell.statusBtn addTarget:self action:@selector(statusAction:) forControlEvents:UIControlEventTouchUpInside];
         [cell updateCellWithModel:model];
@@ -86,7 +86,6 @@ static NSString *orderListCellID = @"orderListCellID";
         return cell;
     }
     return nil;
-    
 }
 
 - (void)statusAction:(UIButton *)btn {
@@ -96,6 +95,9 @@ static NSString *orderListCellID = @"orderListCellID";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.orderListDelegate && [self.orderListDelegate respondsToSelector:@selector(orderListTableViewStatusAtIndex:)]) {
+        [self.orderListDelegate orderListTableViewStatusAtIndex:indexPath.section];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

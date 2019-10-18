@@ -16,7 +16,7 @@
 
 + (void)hideLoadingActivityInView:(UIView *)superView {
     [MBProgressHUD hideHUDForView:superView animated:YES];
-    [self removeAllHudWithView:[self mainWindow]];
+//    [self removeAllHudWithView:[self mainWindow]];
 }
 
 + (void)removeAllHudWithView:(UIView *)view {

@@ -21,4 +21,10 @@
     return @{@"orderArray" : [GMOrderItem class]};
 }
 
+- (BOOL)modelCustomTransformFromDictionary:(NSDictionary *)dic {
+    _receiverRegion = dic[@"receiverRegion"];
+    _receiverRegion = _receiverRegion == nil ? @"" : _receiverRegion;
+    return YES;
+}
+
 @end

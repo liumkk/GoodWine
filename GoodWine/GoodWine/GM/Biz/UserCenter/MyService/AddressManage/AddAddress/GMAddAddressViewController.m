@@ -27,10 +27,7 @@
 }
 
 - (void)addAddressTableViewConfirmBtnName:(NSString *)name phoneNum:(NSString *)phoneNum address:(NSString *)address detailAddess:(NSString *)detailAddress {
-//    name = @"哈哈";     //--test
-//    phoneNum = @"13916391993";
-//    address = @"合肥";
-//    detailAddress = @"xx小区";
+    [self.view endEditing:YES];
     if (IsStrEmpty(name) || IsStrEmpty(phoneNum) || IsStrEmpty(address) || IsStrEmpty(detailAddress)) {
         [MKToastView showToastToView:self.view text:@"请输入完整信息"];
         return;
