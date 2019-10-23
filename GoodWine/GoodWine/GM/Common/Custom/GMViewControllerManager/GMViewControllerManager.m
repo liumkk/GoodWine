@@ -33,12 +33,23 @@ static GMViewControllerManager *shared = nil;
 
 - (void)showLoginView {
     
-//    UINavigationController *navT =  self.tabBarController.selectedViewController;
-//    
+    [GMLoadingActivity removeAllHudWithView:[UIApplication sharedApplication].delegate.window];
+    
+//    GMNavigationController *navT =  self.tabBarController.selectedViewController;
+//
 //    [navT popToRootViewControllerAnimated:NO];
     
-    AppDelegate *appdelegate =  (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appdelegate checkLoginViewController];
+    if (UserCenter.userCode) {
+        GMNavigationController *navT =  self.tabBarController.selectedViewController;
+        [navT popToRootViewControllerAnimated:NO];
+        GMLoginViewController *loginVC = [[GMLoginViewController alloc] init];
+        loginVC.hidesBottomBarWhenPushed = YES;
+        [self.tabBarController.viewControllers[0] pushViewController:loginVC animated:YES];
+        [self.tabBarController setSelectedIndex:0];
+    } else {
+        AppDelegate *appdelegate =  (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appdelegate checkLoginViewController];
+    }
     
 //    GMLoginViewController *loginController = [[GMLoginViewController alloc] init];
 //    
@@ -47,6 +58,18 @@ static GMViewControllerManager *shared = nil;
 //    appdelegate.window.rootViewController = nav;
 //    
 //    self.rootController = (GMNavigationController *)nav;
+}
+
+- (void)pushLoginViewControllerWithVC:(UIViewController *)VC {
+    GMLoginViewController *loginVC = [[GMLoginViewController alloc] init];
+    loginVC.hidesBottomBarWhenPushed = YES;
+    
+    if (VC) {
+        [VC.navigationController pushViewController:loginVC animated:YES];
+    } else {
+        GMNavigationController *navT =  self.tabBarController.selectedViewController;
+        [navT pushViewController:loginVC animated:YES];
+    }
 }
 
 - (GMTabBarController *)tabBarController {

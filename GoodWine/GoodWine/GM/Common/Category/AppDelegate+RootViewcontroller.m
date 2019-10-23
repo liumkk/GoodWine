@@ -10,6 +10,21 @@
 
 @implementation AppDelegate (RootViewcontroller)
 
+- (void)showTabbarController {
+    @weakify(self)
+    [ServerAPIManager asyncQueryUserCodeSucceedBlock:^(NSString * _Nonnull str) {
+        @strongify(self)
+        if (UserCenter.userCode) {
+            [self setTabbarController];
+        } else {
+            [self checkLoginViewController];
+        }
+    } failedBlock:^(NSError * _Nonnull error) {
+        @strongify(self)
+        [self setTabbarController];
+    }];
+}
+
 - (void)setTabbarController {
     
     GMTabBarController *tabBarController = [[GMTabBarController alloc] initWithNibName:nil bundle:nil];

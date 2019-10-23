@@ -53,7 +53,8 @@
 }
 
 - (void)updateCell {
-    
+    self.nameLabel.text = [NSString stringWithFormat:@"昵称: %@",UserCenter.userInfoModel.username];
+    self.phoneNumLabel.text = [NSString stringWithFormat:@"手机号码: %@",UserCenter.userInfoModel.phone];
 }
 
 + (CGFloat)heightForCell {

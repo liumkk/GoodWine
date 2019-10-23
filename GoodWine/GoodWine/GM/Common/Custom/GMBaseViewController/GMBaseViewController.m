@@ -60,7 +60,7 @@
 }
 
 - (void)updateClearNavigationBarNeedBack:(BOOL)need alpha:(CGFloat)alpha {
-//    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar setBackgroundImage:[UIView createPureColorImageWithColor:COLOR_WHITE alpha:alpha size:CGSizeMake(Width_Screen, SafeAreaTopHeight)] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont systemFontOfSize:16],

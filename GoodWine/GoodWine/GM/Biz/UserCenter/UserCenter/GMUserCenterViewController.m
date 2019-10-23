@@ -37,6 +37,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.userCenterTableView reloadData];
+}
+
 - (void)userCollectionViewDidSelectRowAtIndex:(NSInteger)index {
     if (index == 0) {
         GMAddressManagerViewcontroller *addressVC = [[GMAddressManagerViewcontroller alloc] init];

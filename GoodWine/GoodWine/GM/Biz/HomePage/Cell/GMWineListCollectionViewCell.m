@@ -21,7 +21,7 @@
 }
 
 - (void)updateWineListCollectionCellWithHomePageTypeItem:(HomePageTypeItem *)homePageTypeItem {
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:homePageTypeItem.pic]];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:homePageTypeItem.pic] placeholderImage:[UIImage imageNamed:@"collection_bg_right"] options:SDWebImageProgressiveDownload];
     self.titleLabel.text = homePageTypeItem.brandName;
     self.promotionPriceLabel.text = [NSString stringWithFormat:@"%.2f/瓶",[homePageTypeItem.price floatValue] ];
     NSString *originalPrice = [NSString stringWithFormat:@"原价:%.2f元",[homePageTypeItem.originalPrice floatValue]];
@@ -88,6 +88,7 @@
 - (UIImageView *)imageView {
     if (! _imageView) {
         _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _imageView.backgroundColor = COLOR_WHITE;
         [self.contentView addSubview:_imageView];
     }
     return _imageView;

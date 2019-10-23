@@ -69,7 +69,14 @@
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
     NSUInteger selectedTab = [self whichTabSelectedAccordingViewController:viewController];
+    if (selectedTab != 0) {
+        if (!UserCenter.isLogin) {
+            [ViewControllerManager pushLoginViewControllerWithVC:nil];
+            return NO;
+        }
+    }
     self.selectedIndex = selectedTab;
+    self.selectedViewController = viewController;
     MKNSLog(@"点击了%lu",(unsigned long)self.selectedIndex);
     return YES;
 }
@@ -79,7 +86,6 @@
     GMNavigationController * nc = (GMNavigationController *)viewController;
     
     UIViewController * vc = (UIViewController *)nc.viewControllers[0];
-    
     if ([vc isKindOfClass:[GMHomePageViewController class]]) {
         return 0;
     } else  if ([vc isKindOfClass:[GMShoppCartViewController class]]) {

@@ -52,6 +52,47 @@ static MKLocationManager *_sharedInstance = nil;
     return self;
 }
 
+- (void)openLocationFunctionCallBack:(void(^)(void))callBack authority:(nonnull void (^)(void))authority {
+    if ([self determineWhetherTheAPPOpensTheLocation]) {
+        [self.locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
+            if (error) {
+                MKNSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
+                if (error.code == AMapLocationErrorLocateFailed) {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请到设置->隐私->定位服务中开启【美酒快线】定位服务，以便于门店展示" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置",nil];
+                    [alert show];
+                    
+                    if (callBack) {
+                        callBack();
+                    }
+                    return;
+                }
+            }
+            
+            if (regeocode) {
+                [ServerAPIManager asyncQueryStoreInfoWithRegionCode:regeocode.adcode succeedBlock:^(GMStoreInfoModel * _Nonnull infoModel) {
+                    [UserCenter queryStoreId];
+                    if (callBack) {
+                        callBack();
+                    }
+                } failedBlock:^(NSError * _Nonnull error) {
+                    MKNSLog(@"GMStoreInfoModel--查询门店失败");
+                    [UserCenter queryStoreId];
+                    if (callBack) {
+                        callBack();
+                    }
+                }];
+            }
+        }];
+    } else {
+        if (authority) {
+            authority();
+        }
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请到设置->隐私->定位服务中开启【美酒快线】定位服务，以便于门店展示" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置",nil];
+        
+        [alert show];
+    }
+}
+
 - (void)openLocationFunctionSucceed:(void (^)(void))succeed failed:(void (^)(void))failed authority:(nonnull void (^)(void))authority {
     if ([self determineWhetherTheAPPOpensTheLocation]) {
         // 带逆地理（返回坐标和地址信息）。将下面代码中的 YES 改成 NO ，则不会返回地址信息。

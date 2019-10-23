@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AppDelegate (RootViewcontroller)
 
+- (void)showTabbarController;
+
 - (void)setTabbarController;
 
 - (void)checkLoginViewController;

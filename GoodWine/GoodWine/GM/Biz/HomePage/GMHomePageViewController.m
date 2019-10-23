@@ -34,15 +34,15 @@
     
     [self addRefreshHeaderView];
     
-    [self requestQueryHomePageinfoNeedLoad:YES];
-    
-//    self.homePageTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-//
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [self.homePageTableView.mj_footer endRefreshing];
-//            [self.homePageTableView reloadHomePageTableViewWithHomePageInfoModel:self.infoModel];
-//        });
-//    }];
+    if (UserCenter.userCode && !UserCenter.storeId) {
+        [LocationManager openLocationFunctionCallBack:^{
+            [self requestQueryHomePageinfoNeedLoad:YES];
+        } authority:^{
+            
+        }];
+    } else {
+        [self requestQueryHomePageinfoNeedLoad:YES];
+    }
 }
 
 - (void)initSubviews {
@@ -59,7 +59,15 @@
 #pragma mark --add MJRefresh
 - (void)addRefreshHeaderView {
     self.homePageTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self requestQueryHomePageinfoNeedLoad:NO];
+        if (!UserCenter.storeId) {
+            [LocationManager openLocationFunctionCallBack:^{
+                [self requestQueryHomePageinfoNeedLoad:NO];
+            } authority:^{
+                [self.homePageTableView.mj_header endRefreshing];
+            }];
+        } else {
+            [self requestQueryHomePageinfoNeedLoad:NO];
+        }
     }];
 }
 
@@ -83,16 +91,25 @@
 }
 
 - (void)collectionViewDidSelectItemWithModel:(HomePageTypeItem *)model {
-    GMProductDetailViewController *vc = [[GMProductDetailViewController alloc] initWithProductId:model.productId];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    if (UserCenter.isLogin) {
+        GMProductDetailViewController *vc = [[GMProductDetailViewController alloc] initWithProductId:model.productId];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        [ViewControllerManager pushLoginViewControllerWithVC:self];
+    }
+    
 }
 
 - (void)clickWineAreaWithAreaType:(WineAreaType)type {
     if (type == WineAreaTypeCoupon) {
-        GMCouponViewController *vc = [[GMCouponViewController alloc] init];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
+        if (UserCenter.isLogin) {
+            GMCouponViewController *vc = [[GMCouponViewController alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        } else {
+            [ViewControllerManager pushLoginViewControllerWithVC:self];
+        }
     } else {
         NSString *cateId;
         NSString *title;

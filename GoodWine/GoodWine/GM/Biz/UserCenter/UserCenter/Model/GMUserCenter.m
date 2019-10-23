@@ -33,8 +33,8 @@ static GMUserCenter *_sharedInstance = nil;
     return self;
 }
 
-- (void)setIsLogin:(BOOL)isLogin {
-    
+- (void)queryStoreId {
+    UserCenter.storeId = @"46";
 }
 
 @end

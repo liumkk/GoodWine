@@ -41,16 +41,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupConstranits];
-    
     @weakify(self)
     [self.maskView touchesBegan:^{
         @strongify(self)
         [self hiddenSelectView];
     }];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -61,6 +61,7 @@ static NSString *userCenterTableCell = @"userCenterTableCell";
     
     if (indexPath.section == 0) {
         GMUserInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:userCenterTableCell forIndexPath:indexPath];
+        [cell updateCell];
         return cell;
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userCollect" forIndexPath:indexPath];

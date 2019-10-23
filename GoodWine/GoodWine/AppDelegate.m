@@ -25,9 +25,10 @@
 //        UITableView.appearance.estimatedSectionFooterHeight = 0;
 //        UITableView.appearance.estimatedSectionHeaderHeight = 0;
 //    }
-//    [LocationManager openLocationFunction];
-    [self checkLoginViewController];
     
+    [self showTabbarController];
+    
+    self.window.backgroundColor = COLOR_WHITE;
     return YES;
 }
 

@@ -16,7 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedInstance;
 
+- (void)openLocationFunctionCallBack:(void(^)(void))callBack authority:(nonnull void (^)(void))authority;
 - (void)openLocationFunctionSucceed:(void(^)(void))succeed failed:(void(^)(void))failed authority:(void(^)(void))authority;
+
+- (BOOL)determineWhetherTheAPPOpensTheLocation;
 
 @end
 

@@ -57,17 +57,23 @@
     return
     [ServerClient asyncGetNetworkRequestWithURLString:GMUserCode parameter:@"" success:^(NSDictionary * _Nonnull responseDict) {
         if ([[responseDict[@"code"] stringValue] isEqualToString:@"200"]) {
+            if ([User_Code isEqualToString:responseDict[@"data"]]) {
+                UserCenter.userCode = YES;
+            } else {
+                UserCenter.userCode = NO;
+            }
             if (succeedBlock) {
                 succeedBlock(responseDict[@"data"]);
             }
         }else {
-            
+            UserCenter.userCode = YES;
             if (failedBlock) {
                 failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
             }
             
         }
     } failure:^(NSError *error) {
+        UserCenter.userCode = YES;
         if (failedBlock) {
             failedBlock(error);
         }

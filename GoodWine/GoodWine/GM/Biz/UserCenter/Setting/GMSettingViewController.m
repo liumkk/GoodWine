@@ -21,7 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"设置";
-    self.view.backgroundColor = [UIColor whiteColor];
     [self updateNavigationBarNeedBack:YES];
     [self setupConstranits];
     
@@ -35,6 +34,7 @@
 
 - (void)LogoutAction {
     [ServerAPIManager asynclogoutSucceedBlock:^{
+        UserCenter.isLogin = NO;
         [ViewControllerManager showLoginView];
     } failedBlock:^(NSError * _Nonnull error) {
         [self showAlertViewWithError:error];

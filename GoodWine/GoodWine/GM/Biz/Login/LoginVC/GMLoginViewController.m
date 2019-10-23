@@ -25,11 +25,17 @@
 //    self.edgesForExtendedLayout = UIRectEdgeNone; //--坐标从导航栏下面开始
     [self initSubviews];
     [self setupConstraints];
+    
+    if (UserCenter.userCode) {
+        [self updateNavigationBarNeedBack:YES];
+    } else {
+        [self updateNavigationBarNeedBack:NO];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self updateNavigationBarNeedBack:NO];
+    
 }
 
 - (void)initSubviews {
@@ -44,51 +50,47 @@
 }
 
 - (void)loginAction:(UIButton *)btn {
-    [GMLoadingActivity showLoadingActivityInView:self.view];
-    @weakify(self)
-    [ServerAPIManager asyncQueryUserCodeSucceedBlock:^(NSString * _Nonnull str) {
-        @strongify(self)
-        if ([User_Code isEqualToString:str]) {
-            UserCenter.storeId = @"46";
+    if (IsStrEmpty(self.loginView.nameTextField.text) || IsStrEmpty(self.loginView.passwordTextField.text)) {
+        [MKToastView showToastToView:self.view text:@"账号密码不能为空"];
+    } else {
+        [GMLoadingActivity showLoadingActivityInView:self.view];
+        //检查定位是否成功
+        [LocationManager openLocationFunctionSucceed:^{
             [self login];
-        } else {
-            //检查定位是否成功
-            [LocationManager openLocationFunctionSucceed:^{
+        } failed:^{
+            if (UserCenter.userCode) {
+                [UserCenter queryStoreId];
                 [self login];
-            } failed:^{
+            } else {
                 [GMLoadingActivity hideLoadingActivityInView:self.view];
                 GMJoinViewController *vc = [[GMJoinViewController alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
-            } authority:^{
-                [GMLoadingActivity hideLoadingActivityInView:self.view];
-            }];
+            }
+        } authority:^{
+            [GMLoadingActivity hideLoadingActivityInView:self.view];
+        }];
+    }
+}
+
+- (void)login {
+    @weakify(self)
+    [ServerAPIManager asyncLoginWithUserName:self.loginView.nameTextField.text
+                                    password:self.loginView.passwordTextField.text
+                                succeedBlock:^(GMUserCenterInfoModel * model) {
+        @strongify(self)
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
+        UserCenter.isLogin = YES;
+        UserCenter.userInfoModel = model;
+        if (UserCenter.userCode) {
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            [ViewControllerManager showTabController];
         }
     } failedBlock:^(NSError * _Nonnull error) {
         @strongify(self)
         [GMLoadingActivity hideLoadingActivityInView:self.view];
         [self showAlertViewWithError:error];
     }];
-}
-
-- (void)login {
-    if (IsStrEmpty(self.loginView.nameTextField.text) || IsStrEmpty(self.loginView.passwordLabel.text)) {
-        [GMLoadingActivity hideLoadingActivityInView:self.view];
-        [MKToastView showToastToView:self.view text:@"账号密码不能为空"];
-    } else {
-        @weakify(self)
-        [ServerAPIManager asyncLoginWithUserName:self.loginView.nameTextField.text
-                                        password:self.loginView.passwordTextField.text
-                                    succeedBlock:^(GMUserCenterInfoModel * model) {
-                                        @strongify(self)
-                                        [GMLoadingActivity hideLoadingActivityInView:self.view];
-                                        UserCenter.userInfoModel = model;
-                                        [ViewControllerManager showTabController];
-                                    } failedBlock:^(NSError * _Nonnull error) {
-                                        @strongify(self)
-                                        [GMLoadingActivity hideLoadingActivityInView:self.view];
-                                        [self showAlertViewWithError:error];
-                                    }];
-    }
 }
 
 - (void)forgetAction:(UIButton *)btn {

@@ -22,10 +22,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isLogin;
 
 @property (nonatomic, copy) NSString *storeId;
+@property (nonatomic, assign) BOOL userCode;
 
 + (instancetype)sharedInstance;
 
 - (void)setIsLogin:(BOOL)isLogin;
+
+- (void)queryStoreId;
 
 @end
 

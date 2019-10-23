@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (CGFloat)heightForCell;
 
+- (void)updateCell;
+
 @end
 
 NS_ASSUME_NONNULL_END
