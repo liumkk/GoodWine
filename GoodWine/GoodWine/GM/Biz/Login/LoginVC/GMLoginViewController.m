@@ -55,20 +55,20 @@
     } else {
         [GMLoadingActivity showLoadingActivityInView:self.view];
         //检查定位是否成功
-        [LocationManager openLocationFunctionSucceed:^{
+        if (UserCenter.userCode) {
+            [UserCenter queryStoreId];
             [self login];
-        } failed:^{
-            if (UserCenter.userCode) {
-                [UserCenter queryStoreId];
+        } else {
+            [LocationManager openLocationFunctionSucceed:^{
                 [self login];
-            } else {
+            } failed:^{
                 [GMLoadingActivity hideLoadingActivityInView:self.view];
                 GMJoinViewController *vc = [[GMJoinViewController alloc] init];
                 [self.navigationController pushViewController:vc animated:YES];
-            }
-        } authority:^{
-            [GMLoadingActivity hideLoadingActivityInView:self.view];
-        }];
+            } authority:^{
+                [GMLoadingActivity hideLoadingActivityInView:self.view];
+            }];
+        }
     }
 }
 

@@ -22,15 +22,15 @@
     
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(5.f);
-        make.left.equalTo(self).offset(30.f);
-        make.right.equalTo(self).offset(-30.f);
+        make.left.equalTo(self).offset(10.f);
+        make.right.equalTo(self).offset(-10.f);
         make.height.mas_equalTo(self.height);
     }];
     
     [self.searchTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.bgImageView).offset(3.f);
-        make.left.equalTo(self).offset(40.f);
-        make.right.equalTo(self).offset(-40.f);
+        make.left.equalTo(self).offset(20.f);
+        make.right.equalTo(self).offset(-20.f);
         make.height.mas_equalTo(self.bgImageView.height);
     }];
     
@@ -68,14 +68,14 @@
 - (UIView *)paddingView {
     if (! _paddingView) {
         _paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20.f, 14.f)];
-        self.searchImageView.image = [UIImage imageNamed:@"sousuo"];
+        [_paddingView addSubview:self.searchImageView];
     }
     return _paddingView;
 }
 - (UIImageView *)searchImageView {
     if (! _searchImageView) {
         _searchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 14.f, 14.f)];
-        [self.paddingView addSubview:_searchImageView];
+        _searchImageView.image = [UIImage imageNamed:@"sousuo"];
     }
     return _searchImageView;
 }

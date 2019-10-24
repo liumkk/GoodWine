@@ -36,9 +36,11 @@
     }];
 }
 - (void)orderCollectionViewDidSelectItemAtIndex:(NSInteger)index {
-    GMOrderListViewController *vc = [[GMOrderListViewController alloc] initWithStatus:[NSString stringWithFormat:@"%ld",index]];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    [ViewControllerManager checkLoginWithVC:self login:^{
+        GMOrderListViewController *vc = [[GMOrderListViewController alloc] initWithStatus:[NSString stringWithFormat:@"%ld",index]];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
 }
 
 - (GMOrderCollectionView *)orderCollectView {

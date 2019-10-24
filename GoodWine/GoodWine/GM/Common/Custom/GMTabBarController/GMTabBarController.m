@@ -69,7 +69,7 @@
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
     NSUInteger selectedTab = [self whichTabSelectedAccordingViewController:viewController];
-    if (selectedTab != 0) {
+    if (selectedTab == 1) {
         if (!UserCenter.isLogin) {
             [ViewControllerManager pushLoginViewControllerWithVC:nil];
             return NO;

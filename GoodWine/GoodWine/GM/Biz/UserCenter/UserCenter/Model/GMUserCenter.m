@@ -35,6 +35,10 @@ static GMUserCenter *_sharedInstance = nil;
 
 - (void)queryStoreId {
     UserCenter.storeId = @"46";
+    GMStoreInfoModel *model = [[GMStoreInfoModel alloc] init];
+    model.contactPhone = @"13916391993";
+    model.platPhone = @"13916391993";
+    UserCenter.storeInfoModel = model;
 }
 
 @end

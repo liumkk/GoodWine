@@ -43,7 +43,9 @@
 
 - (void)requestQueryCouponList {
     [GMLoadingActivity showLoadingActivityInView:self.view];
+    @weakify(self)
     [ServerAPIManager asyncQueryCouponSucceedBlock:^(NSArray<CouponInfoModel *> * array) {
+        @strongify(self)
         [GMLoadingActivity hideLoadingActivityInView:self.view];
         self.dataArray = array;
         if (array.count > 0) {
@@ -51,8 +53,8 @@
         } else {
             [self.emptyView showEmptyNeedLoadBtn:NO];
         }
-        
     } failedBlock:^(NSError * _Nonnull error) {
+        @strongify(self)
         [GMLoadingActivity hideLoadingActivityInView:self.view];
         [self showAlertViewWithError:error];
     }];
@@ -62,11 +64,15 @@
     CouponInfoModel *model = self.dataArray[index];
     if (model.receive == 0) {
         [GMLoadingActivity showLoadingActivityInView:self.view];
+        @weakify(self)
         [ServerAPIManager asyncGetCouponWithCouponId:[NSString stringWithFormat:@"%ld",model.couponId] succeedBlock:^{
+            @strongify(self)
+            [GMLoadingActivity hideLoadingActivityInView:self.view];
             [MKToastView showToastToView:self.view text:@"领取成功"];
             model.receive = 1;
             [self.couponTableView reloadTableViewWithDataArray:self.dataArray];
         } failedBlock:^(NSError * _Nonnull error) {
+            @strongify(self)
             [GMLoadingActivity hideLoadingActivityInView:self.view];
             [self showAlertViewWithError:error];
         }];

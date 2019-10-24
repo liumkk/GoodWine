@@ -21,7 +21,7 @@
 }
 
 - (void)updateWineListCollectionCellWithHomePageTypeItem:(HomePageTypeItem *)homePageTypeItem {
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:homePageTypeItem.pic] placeholderImage:[UIImage imageNamed:@"collection_bg_right"] options:SDWebImageProgressiveDownload];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:homePageTypeItem.pic]];
     self.titleLabel.text = homePageTypeItem.brandName;
     self.promotionPriceLabel.text = [NSString stringWithFormat:@"%.2f/瓶",[homePageTypeItem.price floatValue] ];
     NSString *originalPrice = [NSString stringWithFormat:@"原价:%.2f元",[homePageTypeItem.originalPrice floatValue]];

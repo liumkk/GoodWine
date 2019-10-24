@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) GMProductEvaluateTableView *evaluateTableView;
 @property (nonatomic, strong) NSArray <ProductEvaluateInfoModel *> *dataArray;
-
+@property (nonatomic, strong) MKEmptyView *emptyView;
 
 @end
 
@@ -33,10 +33,20 @@
     
     [self updateNavigationBarNeedBack:YES];
     [self setupConstranits];
+    
+    if (self.dataArray.count == 0) {
+        [self.emptyView showEmptyNeedLoadBtn:NO];
+    } else {
+        self.emptyView.hidden = YES;
+    }
 }
 
 - (void)setupConstranits {
     [self.evaluateTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
+    [self.emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
 }
@@ -48,6 +58,14 @@
         [self.view addSubview:_evaluateTableView];
     }
     return _evaluateTableView;
+}
+
+- (MKEmptyView *)emptyView {
+    if (! _emptyView) {
+        _emptyView = [[MKEmptyView alloc] initWithFrame:CGRectZero];
+        [self.view addSubview:_emptyView];
+    }
+    return _emptyView;
 }
 
 @end

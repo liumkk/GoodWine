@@ -61,12 +61,19 @@ static NSString *userCenterTableCell = @"userCenterTableCell";
     
     if (indexPath.section == 0) {
         GMUserInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:userCenterTableCell forIndexPath:indexPath];
+        [cell.loginBtn addTarget:self action:@selector(loginBtn:) forControlEvents:UIControlEventTouchUpInside];
         [cell updateCell];
         return cell;
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userCollect" forIndexPath:indexPath];
         [cell.contentView addSubview:self.collectionView];
         return cell;
+    }
+}
+
+- (void)loginBtn:(UIButton *)btn {
+    if (self.userTableViewDelegate && [self.userTableViewDelegate respondsToSelector:@selector(loginAction)]) {
+        [self.userTableViewDelegate loginAction];
     }
 }
 

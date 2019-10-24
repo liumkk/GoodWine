@@ -102,12 +102,8 @@
 }
 
 - (void)searchCollectionView:(UICollectionView *)collectionView didSelectItemModel:(HomePageTypeItem *)model {
-    if (UserCenter.isLogin) {
-        GMProductDetailViewController *vc = [[GMProductDetailViewController alloc] initWithProductId:model.productId];
-        [self.navigationController pushViewController:vc animated:YES];
-    } else {
-        [ViewControllerManager pushLoginViewControllerWithVC:self];
-    }
+    GMProductDetailViewController *vc = [[GMProductDetailViewController alloc] initWithProductId:model.productId];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)addRefreshHeaderView {

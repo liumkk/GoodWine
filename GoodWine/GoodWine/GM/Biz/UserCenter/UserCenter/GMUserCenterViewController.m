@@ -44,30 +44,41 @@
 
 - (void)userCollectionViewDidSelectRowAtIndex:(NSInteger)index {
     if (index == 0) {
-        GMAddressManagerViewcontroller *addressVC = [[GMAddressManagerViewcontroller alloc] init];
-        addressVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:addressVC animated:YES];
+        [ViewControllerManager checkLoginWithVC:self login:^{
+            GMAddressManagerViewcontroller *addressVC = [[GMAddressManagerViewcontroller alloc] init];
+            addressVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:addressVC animated:YES];
+        }];
     } else if (index == 1) {
-        GMMyCouponViewController *vc = [[GMMyCouponViewController alloc] init];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
+        [ViewControllerManager checkLoginWithVC:self login:^{
+            GMMyCouponViewController *vc = [[GMMyCouponViewController alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
     } else if (index == 2) {
-        GMCollectViewController *vc = [[GMCollectViewController alloc] init];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
+        [ViewControllerManager checkLoginWithVC:self login:^{
+            GMCollectViewController *vc = [[GMCollectViewController alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
     } else if (index == 3) {
         GMServiceViewController *serviceVC = [[GMServiceViewController alloc] init];
         serviceVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:serviceVC animated:YES];
     } else if (index == 4) {
-        GMSettingViewController *settingVC = [[GMSettingViewController alloc] init];
-        settingVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:settingVC animated:YES];
+        [ViewControllerManager checkLoginWithVC:self login:^{
+            GMSettingViewController *settingVC = [[GMSettingViewController alloc] init];
+            settingVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:settingVC animated:YES];
+        }];
     } else if (index == 5) {
         GMVersionViewController *versionVC = [[GMVersionViewController alloc] init];
         versionVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:versionVC animated:YES];
     }
+}
+- (void)loginAction {
+    [ViewControllerManager pushLoginViewControllerWithVC:self];
 }
 
 - (void)setupConstraints {

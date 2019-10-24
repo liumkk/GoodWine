@@ -60,6 +60,14 @@ static GMViewControllerManager *shared = nil;
 //    self.rootController = (GMNavigationController *)nav;
 }
 
+- (void)checkLoginWithVC:(UIViewController *)VC login:(void(^)(void))login {
+    if (UserCenter.isLogin) {
+        login();
+    } else {
+        [self pushLoginViewControllerWithVC:VC];
+    }
+}
+
 - (void)pushLoginViewControllerWithVC:(UIViewController *)VC {
     GMLoginViewController *loginVC = [[GMLoginViewController alloc] init];
     loginVC.hidesBottomBarWhenPushed = YES;

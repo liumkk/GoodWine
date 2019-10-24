@@ -58,8 +58,7 @@ static MKLocationManager *_sharedInstance = nil;
             if (error) {
                 MKNSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
                 if (error.code == AMapLocationErrorLocateFailed) {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请到设置->隐私->定位服务中开启【美酒快线】定位服务，以便于门店展示" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置",nil];
-                    [alert show];
+                    [UserCenter queryStoreId];
                     
                     if (callBack) {
                         callBack();
@@ -69,6 +68,7 @@ static MKLocationManager *_sharedInstance = nil;
             }
             
             if (regeocode) {
+                MKNSLog(@"reGeocode:%@", regeocode);
                 [ServerAPIManager asyncQueryStoreInfoWithRegionCode:regeocode.adcode succeedBlock:^(GMStoreInfoModel * _Nonnull infoModel) {
                     [UserCenter queryStoreId];
                     if (callBack) {
@@ -84,12 +84,17 @@ static MKLocationManager *_sharedInstance = nil;
             }
         }];
     } else {
-        if (authority) {
-            authority();
-        }
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请到设置->隐私->定位服务中开启【美酒快线】定位服务，以便于门店展示" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置",nil];
+        [UserCenter queryStoreId];
         
-        [alert show];
+        if (callBack) {
+            callBack();
+        }
+//        if (authority) {
+//            authority();
+//        }
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请到设置->隐私->定位服务中开启【美酒快线】定位服务，以便于门店展示" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置",nil];
+//
+//        [alert show];
     }
 }
 
@@ -128,7 +133,7 @@ static MKLocationManager *_sharedInstance = nil;
         if (authority) {
             authority();
         }
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请到设置->隐私->定位服务中开启【美酒快线】定位服务，以便于门店展示" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置",nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请到设置->隐私->定位服务中开启【美酒快线】定位服务，用来获取附近门店商品" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置",nil];
         
         [alert show];
 //        GMTabBarController *tbController = (GMTabBarController *)[UIApplication sharedApplication].delegate.window.rootViewController;

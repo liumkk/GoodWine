@@ -29,6 +29,12 @@
         make.size.mas_equalTo(CGSizeMake(HeaderView_width, HeaderView_width));
     }];
     
+    [self.loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.headerImageiew.mas_right).offset(20.f);
+        make.centerY.equalTo(self);
+        make.size.mas_equalTo(CGSizeMake(85.f, 30.f));
+    }];
+    
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.headerImageiew.mas_right).offset(20.f);
         make.bottom.equalTo(self.contentView.mas_centerY).offset(-7.f);
@@ -53,8 +59,18 @@
 }
 
 - (void)updateCell {
-    self.nameLabel.text = [NSString stringWithFormat:@"昵称: %@",UserCenter.userInfoModel.username];
-    self.phoneNumLabel.text = [NSString stringWithFormat:@"手机号码: %@",UserCenter.userInfoModel.phone];
+    if (UserCenter.isLogin) {
+        self.loginBtn.hidden = YES;
+        self.nameLabel.hidden = NO;
+        self.phoneNumLabel.hidden = NO;
+        self.nameLabel.text = [NSString stringWithFormat:@"昵称: %@",UserCenter.userInfoModel.username];
+        self.phoneNumLabel.text = [NSString stringWithFormat:@"手机号码: %@",UserCenter.userInfoModel.phone];
+    } else {
+        self.nameLabel.hidden = YES;
+        self.phoneNumLabel.hidden = YES;
+        self.loginBtn.hidden = NO;
+    }
+    
 }
 
 + (CGFloat)heightForCell {
@@ -116,6 +132,21 @@
         [self.contentView addSubview:_rightLabel];
     }
     return _rightLabel;
+}
+
+- (UIButton *)loginBtn {
+    if (! _loginBtn) {
+        _loginBtn = [[UIButton alloc] initWithFrame:CGRectZero];
+        [_loginBtn setTitle:@"去登录" forState:UIControlStateNormal];
+        [_loginBtn setTitleColor:COLOR_THEME_COLOR forState:UIControlStateNormal];
+//        UIImage *image = [[UIImage imageNamed:@"gray_bg_yuan"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [_loginBtn setBackgroundImage:[UIImage imageNamed:@"border_red"] forState:UIControlStateNormal];
+//        [_loginBtn setTintColor:[UIColor whiteColor]];
+        _loginBtn.titleLabel.font = Font(15.f);
+        _loginBtn.hidden = YES;
+        [self.contentView addSubview:_loginBtn];
+    }
+    return _loginBtn;
 }
 
 @end

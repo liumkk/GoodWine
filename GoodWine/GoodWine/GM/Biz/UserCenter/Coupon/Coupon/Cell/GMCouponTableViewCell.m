@@ -47,7 +47,7 @@
 
 - (void)updateCouponCellWithModel:(CouponInfoModel *)model {
     self.titleLabel.text = model.name;
-    self.validLabel.text = [NSString stringWithFormat:@"有效期至：%@",model.enableTime];
+    self.validLabel.text = [NSString stringWithFormat:@"有效期至：%@",model.endTime];
     if (model.receive == 0) {
         self.statusLabel.text = @"领取";
     } else {

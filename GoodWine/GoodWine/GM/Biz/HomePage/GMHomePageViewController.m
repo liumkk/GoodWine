@@ -19,7 +19,7 @@
 @property (nonatomic, strong) GMHomePageTableView *homePageTableView;
 @property (nonatomic, strong) HomePageInfoModel *infoModel;
 @property (nonatomic, strong) GMSearchView *searchView;
-
+@property (nonatomic, strong) UIButton *leftBtn;
 
 @end
 
@@ -34,7 +34,7 @@
     
     [self addRefreshHeaderView];
     
-    if (UserCenter.userCode && !UserCenter.storeId) {
+    if (UserCenter.userCode) {
         [LocationManager openLocationFunctionCallBack:^{
             [self requestQueryHomePageinfoNeedLoad:YES];
         } authority:^{
@@ -49,6 +49,12 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.navigationItem.titleView = self.searchView;
+    
+    if (!UserCenter.userCode) {
+        [self.leftBtn setTitle:UserCenter.storeInfoModel.storeName forState:UIControlStateNormal];
+        self.leftBtn.titleLabel.font = Font(13.f);
+    }
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.leftBtn];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -59,15 +65,7 @@
 #pragma mark --add MJRefresh
 - (void)addRefreshHeaderView {
     self.homePageTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        if (!UserCenter.storeId) {
-            [LocationManager openLocationFunctionCallBack:^{
-                [self requestQueryHomePageinfoNeedLoad:NO];
-            } authority:^{
-                [self.homePageTableView.mj_header endRefreshing];
-            }];
-        } else {
-            [self requestQueryHomePageinfoNeedLoad:NO];
-        }
+        [self requestQueryHomePageinfoNeedLoad:NO];
     }];
 }
 
@@ -91,25 +89,16 @@
 }
 
 - (void)collectionViewDidSelectItemWithModel:(HomePageTypeItem *)model {
-    if (UserCenter.isLogin) {
-        GMProductDetailViewController *vc = [[GMProductDetailViewController alloc] initWithProductId:model.productId];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
-    } else {
-        [ViewControllerManager pushLoginViewControllerWithVC:self];
-    }
-    
+    GMProductDetailViewController *vc = [[GMProductDetailViewController alloc] initWithProductId:model.productId];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)clickWineAreaWithAreaType:(WineAreaType)type {
     if (type == WineAreaTypeCoupon) {
-        if (UserCenter.isLogin) {
-            GMCouponViewController *vc = [[GMCouponViewController alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-        } else {
-            [ViewControllerManager pushLoginViewControllerWithVC:self];
-        }
+        GMCouponViewController *vc = [[GMCouponViewController alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     } else {
         NSString *cateId;
         NSString *title;
@@ -134,6 +123,23 @@
     GMSearchViewController *vc = [[GMSearchViewController alloc] init];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)locationBtn:(UIButton *)btn {
+    if (UserCenter.userCode) {
+        [self.homePageTableView.mj_header beginRefreshing];
+    } else {
+        [LocationManager openLocationFunctionSucceed:^{
+            [self.leftBtn setTitle:UserCenter.storeInfoModel.storeName forState:UIControlStateNormal];
+            self.leftBtn.titleLabel.font = Font(13.f);
+            [self.homePageTableView.mj_header beginRefreshing];
+        } failed:^{
+            [ViewControllerManager showLoginView];
+            [MKToastView showToastToView:[UIApplication sharedApplication].delegate.window text:@"该地区暂无门店，请重新登录"];
+        } authority:^{
+            [ViewControllerManager showLoginView];
+        }];
+    }
 }
 
 #pragma mark --update constraints
@@ -161,6 +167,23 @@
         [_searchView.searchButton addTarget:self action:@selector(searchAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _searchView;
+}
+
+- (UIButton *)leftBtn {
+    if (! _leftBtn) {
+        _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _leftBtn.frame = CGRectMake(0, 0, 60, 44);
+        [_leftBtn setImage:[UIImage imageNamed:@"icon_location"] forState:UIControlStateNormal];
+        [_leftBtn setTitle:@"刷新门店" forState:UIControlStateNormal];
+        [_leftBtn setTitleColor:COLOR_THEME_COLOR forState:UIControlStateNormal];
+        _leftBtn.titleLabel.font = Font(15.f);
+        _leftBtn.titleLabel.numberOfLines = 2;
+//        _leftBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+        [_leftBtn addTarget:self action:@selector(locationBtn:) forControlEvents:UIControlEventTouchUpInside];
+        _leftBtn.imageEdgeInsets = UIEdgeInsetsMake(3, 5, 3, 5);
+        _leftBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 10);
+    }
+    return _leftBtn;
 }
 
 @end

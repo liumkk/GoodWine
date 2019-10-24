@@ -137,22 +137,23 @@
 
 - (void)collectProductAction:(UIButton *)btn {
   
-    if (btn.selected) {
-        [ServerAPIManager asyncDeleteCollectWithProductId:self.productInfoModel.productDetailModel.productId succeedBlock:^{
-            [MKToastView showToastToView:self.view text:@"已取消关注"];
-            [self.productDetailFooterView collectBtnSelected:NO];
-        } failedBlock:^(NSError * _Nonnull error) {
-            [self showAlertViewWithError:error];
-        }];
-    } else {
-        [ServerAPIManager asyncCollectProductWithModel:self.productInfoModel.productDetailModel succeedBlock:^{
-            [MKToastView showToastToView:self.view text:@"关注成功"];
-            [self.productDetailFooterView collectBtnSelected:YES];
-        } failedBlock:^(NSError * _Nonnull error) {
-            [self showAlertViewWithError:error];
-        }];
-    }
-    
+    [ViewControllerManager checkLoginWithVC:self login:^{
+        if (btn.selected) {
+            [ServerAPIManager asyncDeleteCollectWithProductId:self.productInfoModel.productDetailModel.productId succeedBlock:^{
+                [MKToastView showToastToView:self.view text:@"已取消关注"];
+                [self.productDetailFooterView collectBtnSelected:NO];
+            } failedBlock:^(NSError * _Nonnull error) {
+                [self showAlertViewWithError:error];
+            }];
+        } else {
+            [ServerAPIManager asyncCollectProductWithModel:self.productInfoModel.productDetailModel succeedBlock:^{
+                [MKToastView showToastToView:self.view text:@"关注成功"];
+                [self.productDetailFooterView collectBtnSelected:YES];
+            } failedBlock:^(NSError * _Nonnull error) {
+                [self showAlertViewWithError:error];
+            }];
+        }
+    }];
 }
 
 - (void)serviceAction:(UIButton *)btn {
@@ -161,18 +162,24 @@
 }
 
 - (void)shoppCarAction:(UIButton *)btn {
-    [self.navigationController popViewControllerAnimated:NO];
-    [ViewControllerManager.tabBarController setSelectedIndex:1];
+    [ViewControllerManager checkLoginWithVC:self login:^{
+        [self.navigationController popViewControllerAnimated:NO];
+        [ViewControllerManager.tabBarController setSelectedIndex:1];
+    }];
 }
 
 - (void)joinShoppCarAction:(UIButton *)btn {
-    self.isBuy = NO;
-    [self showSelectView];
+    [ViewControllerManager checkLoginWithVC:self login:^{
+        self.isBuy = NO;
+        [self showSelectView];
+    }];
 }
 
 - (void)buyAction:(UIButton *)btn {
-    self.isBuy = YES;
-    [self showSelectView];
+    [ViewControllerManager checkLoginWithVC:self login:^{
+        self.isBuy = YES;
+        [self showSelectView];
+    }];
 }
 
 - (void)showSelectView {

@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol GMUserCenterTableViewDelegate <NSObject>
 
+- (void)loginAction;
 - (void)userCollectionViewDidSelectRowAtIndex:(NSInteger)index;
 
 @end

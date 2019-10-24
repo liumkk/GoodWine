@@ -16,12 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *storeName;
 @property (nonatomic, copy, readonly) NSString *regionCode;
 @property (nonatomic, copy, readonly) NSString *contactPerson;
-@property (nonatomic, copy, readonly) NSString *contactPhone;
+@property (nonatomic, copy) NSString *contactPhone;
 @property (nonatomic, copy, readonly) NSString *province;
 @property (nonatomic, copy, readonly) NSString *city;
 @property (nonatomic, copy, readonly) NSString *district;
 @property (nonatomic, copy, readonly) NSString *address;
-@property (nonatomic, copy, readonly) NSString *platPhone;
+@property (nonatomic, copy) NSString *platPhone;
 
 + (instancetype)storeInfoModelWithDictionary:(NSDictionary *)dic;
 

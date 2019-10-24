@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showTabController;
 - (void)showLoginView;
 
+- (void)checkLoginWithVC:(UIViewController *)VC login:(void(^)(void))login;
 - (void)pushLoginViewControllerWithVC:(UIViewController *)VC;
 
 @end

@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIView *lineView;
 @property (nonatomic, strong) UILabel *rightLabel;
 
+@property (nonatomic, strong) UIButton *loginBtn;
+
+
 + (CGFloat)heightForCell;
 
 - (void)updateCell;
