@@ -9,6 +9,7 @@
 #import "MKLocationManager.h"
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
 
 #import <CoreLocation/CLLocationManager.h>
 
@@ -89,12 +90,6 @@ static MKLocationManager *_sharedInstance = nil;
         if (callBack) {
             callBack();
         }
-//        if (authority) {
-//            authority();
-//        }
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请到设置->隐私->定位服务中开启【美酒快线】定位服务，以便于门店展示" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置",nil];
-//
-//        [alert show];
     }
 }
 
@@ -114,7 +109,8 @@ static MKLocationManager *_sharedInstance = nil;
             }
             
             if (regeocode) {
-                MKNSLog(@"reGeocode:%@", regeocode);
+                MKNSLog(@"regeocode:%@", regeocode);
+                UserCenter.district = regeocode.district;
                 [ServerAPIManager asyncQueryStoreInfoWithRegionCode:regeocode.adcode succeedBlock:^(GMStoreInfoModel * _Nonnull infoModel) {
                     UserCenter.storeId = infoModel.storeId;
                     UserCenter.storeInfoModel = infoModel;
@@ -136,10 +132,6 @@ static MKLocationManager *_sharedInstance = nil;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请到设置->隐私->定位服务中开启【美酒快线】定位服务，用来获取附近门店商品" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置",nil];
         
         [alert show];
-//        GMTabBarController *tbController = (GMTabBarController *)[UIApplication sharedApplication].delegate.window.rootViewController;
-//        GMNavigationController *nav = [tbController.viewControllers objectAtIndex:tbController.selectedIndex];
-//        UIViewController *topVC = nav.topViewController;
-//        [topVC showAlertViewWithTitle:@"lalal"];
     }
 }
 

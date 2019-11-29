@@ -39,6 +39,7 @@ static GMUserCenter *_sharedInstance = nil;
     model.contactPhone = @"13916391993";
     model.platPhone = @"13916391993";
     UserCenter.storeInfoModel = model;
+    UserCenter.district = @"蜀山区";
 }
 
 @end

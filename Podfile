@@ -20,5 +20,6 @@ target :GoodWine do
    pod 'QFDatePicker'
    pod 'PGDatePicker'
    pod 'AMapLocation-NO-IDFA' #无IDFA版定位 高德SDK
+   pod 'AMapSearch-NO-IDFA'
    
 end

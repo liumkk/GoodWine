@@ -114,8 +114,6 @@
         [itemBtn setTitle:item.sp1 forState:UIControlStateNormal];
         [itemBtn setTitleColor:COLOR_TEXT_BLACK forState:UIControlStateNormal];
         [itemBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [itemBtn setBackgroundImage:[UIImage imageNamed:@"gray_bg_yuan"] forState:UIControlStateNormal];
-//        [itemBtn setBackgroundImage:[UIImage imageNamed:@"btn_bg_red"] forState:UIControlStateSelected];
         UIImage *image = [[UIImage imageNamed:@"gray_bg_yuan"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [itemBtn setBackgroundImage:image forState:UIControlStateSelected];
         [itemBtn setTintColor:COLOR_THEME_COLOR];
