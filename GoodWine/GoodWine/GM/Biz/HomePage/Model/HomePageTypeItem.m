@@ -22,6 +22,11 @@
              @"subTitle"        : @"subTitle",
              @"originalPrice"   : @"originalPrice",
              @"price"           : @"price",
+             @"unit"            : @"unit",
+             @"purity"          : @"purity",
+             @"alcohol"         : @"alcohol",
+             @"productCategoryName"  : @"productCategoryName",
+             @"detailTitle"     : @"detailTitle",
              @"promotionPrice"  : @"promotionPrice",
              @"publishStatus"   : @"publishStatus",
              @"recommandStatus" : @"recommandStatus",
@@ -56,6 +61,13 @@
 }
 
 + (NSValueTransformer *)promotionPriceJSONTransformer{
+    
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber * number, BOOL *success, NSError *__autoreleasing *error) {
+        return [NSString stringWithFormat:@"%@",number];
+    }];
+}
+
++ (NSValueTransformer *)alcoholJSONTransformer{
     
     return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber * number, BOOL *success, NSError *__autoreleasing *error) {
         return [NSString stringWithFormat:@"%@",number];

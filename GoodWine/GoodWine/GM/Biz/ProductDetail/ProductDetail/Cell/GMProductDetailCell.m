@@ -23,14 +23,17 @@
 - (void)updateProductDetailCellWithModel:(GMProductDetailModel *)productDetailModel {
     [self.titleImageView sd_setImageWithURL:[NSURL URLWithString:productDetailModel.pic]];
     self.promotionPriceLabel.text = [NSString stringWithFormat:@"￥%.2f",[productDetailModel.price floatValue] ];
-    NSString *originalPrice = [NSString stringWithFormat:@"原价:￥%.2f",[productDetailModel.originalPrice floatValue]];
-    self.originalPriceLabel.attributedText = [NSString setMiddleLinePriceWithString:originalPrice];
+    //原价删除
+//    NSString *originalPrice = [NSString stringWithFormat:@"原价:￥%.2f",[productDetailModel.originalPrice floatValue]];
+//    self.originalPriceLabel.attributedText = [NSString setMiddleLinePriceWithString:originalPrice];
     
-    NSString *title = [NSString stringWithFormat:@"%@  %@度/%@",productDetailModel.brandName,productDetailModel.alcohol,productDetailModel.purity];
-    NSInteger changeLength = productDetailModel.alcohol.length +2 +productDetailModel.purity.length;
-    self.titleLabel.attributedText = [NSString getAttrStr:title beginL:title.length -changeLength  endL:changeLength  color:COLOR_TEXT_BLACK font:Font(13.f)];
-//    self.purityLabel.text = productDetailModel.purity;
-    self.contentLabel.text = productDetailModel.subTitle;
+    if (productDetailModel) {
+        NSString *title = [NSString stringWithFormat:@"%@  %@度/%@",productDetailModel.brandName,productDetailModel.alcohol,productDetailModel.purity];
+        NSInteger changeLength = productDetailModel.alcohol.length +2 +productDetailModel.purity.length;
+        self.titleLabel.attributedText = [NSString getAttrStr:title beginL:title.length -changeLength  endL:changeLength  color:COLOR_TEXT_BLACK font:Font(13.f)];
+        //    self.purityLabel.text = productDetailModel.purity;
+        self.contentLabel.text = productDetailModel.subTitle;
+    }
 }
 
 - (void)setupConstraints {

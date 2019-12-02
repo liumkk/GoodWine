@@ -95,7 +95,6 @@
 - (UILabel *)nameLabel {
     if (! _nameLabel) {
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _nameLabel.text = [NSString stringWithFormat:@"昵称: %@",UserCenter.userInfoModel.username];
         _nameLabel.font = [UIFont boldSystemFontOfSize:14.f];
         [self.contentView addSubview:_nameLabel];
     }
@@ -105,7 +104,6 @@
 - (UILabel *)phoneNumLabel {
     if (! _phoneNumLabel) {
         _phoneNumLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _phoneNumLabel.text = [NSString stringWithFormat:@"手机号码: %@",UserCenter.userInfoModel.phone];
         _phoneNumLabel.font = Font_14;
         _phoneNumLabel.textColor =[UIColor blackColor];
         [self.contentView addSubview:_phoneNumLabel];
@@ -139,9 +137,7 @@
         _loginBtn = [[UIButton alloc] initWithFrame:CGRectZero];
         [_loginBtn setTitle:@"去登录" forState:UIControlStateNormal];
         [_loginBtn setTitleColor:COLOR_THEME_COLOR forState:UIControlStateNormal];
-//        UIImage *image = [[UIImage imageNamed:@"gray_bg_yuan"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [_loginBtn setBackgroundImage:[UIImage imageNamed:@"border_red"] forState:UIControlStateNormal];
-//        [_loginBtn setTintColor:[UIColor whiteColor]];
         _loginBtn.titleLabel.font = Font(15.f);
         _loginBtn.hidden = YES;
         [self.contentView addSubview:_loginBtn];

@@ -46,7 +46,7 @@
 
 #define Notification_addProduct     @"addproduct"
 
-#define User_Code           @"1.0.0"
+#define User_Code           @"1.1.0"
 
 //-----------------------------------------------------------------------------------------//
 

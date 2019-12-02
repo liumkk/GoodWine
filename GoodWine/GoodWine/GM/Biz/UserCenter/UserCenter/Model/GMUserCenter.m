@@ -42,4 +42,11 @@ static GMUserCenter *_sharedInstance = nil;
     UserCenter.district = @"蜀山区";
 }
 
+- (NSString *)weather {
+    if (_weather == nil) {
+        _weather = @"";
+    }
+    return _weather;
+}
+
 @end

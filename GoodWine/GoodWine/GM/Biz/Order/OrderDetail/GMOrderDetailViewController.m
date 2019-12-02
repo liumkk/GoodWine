@@ -67,23 +67,28 @@
 }
 
 - (void)requestQueryOrderDetail {
+    [GMLoadingActivity showLoadingActivityInView:self.view];
     @weakify(self)
     [ServerAPIManager asyncQueryOrderWithOrderId:self.orderModel.orderId succeedBlock:^(GMOrderDetailInfoModel * model) {
         @strongify(self)
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
         self.orderDetailInfoModel = model;
         [self.detailTableView reloadTableViewWithModel:model];
         [self.footerView updateFooterViewWithOrderDetailModel:model];
     } failedBlock:^(NSError * error) {
         @strongify(self)
+        [GMLoadingActivity hideLoadingActivityInView:self.view];
         [self showAlertViewWithError:error];
     }];
 }
 
 - (void)requestOrderDetail {
     if (self.myOrderModel.state == 0) {
+        [GMLoadingActivity showLoadingActivityInView:self.view];
         @weakify(self)
         [ServerAPIManager asyncQueryOrderDetailWithModel:self.myOrderModel succeedBlock:^(GMOrderDetailInfoModel * model) {
             @strongify(self)
+            [GMLoadingActivity hideLoadingActivityInView:self.view];
             //购物车商品生成订单后，会从购物车中移除
             [[NSNotificationCenter defaultCenter] postNotificationName:Notification_addProduct object:nil];
             self.orderDetailInfoModel = model;
@@ -91,17 +96,21 @@
             [self.footerView updateFooterViewWithOrderDetailModel:model];
         } failedBlock:^(NSError * error) {
             @strongify(self)
+            [GMLoadingActivity hideLoadingActivityInView:self.view];
             [self showAlertViewWithError:error];
         }];
     } else {
+        [GMLoadingActivity showLoadingActivityInView:self.view];
         @weakify(self)
         [ServerAPIManager asyncQueryOrderDetailProductWithModel:self.myOrderModel succeedBlock:^(GMOrderDetailInfoModel * _Nonnull model) {
             @strongify(self)
+            [GMLoadingActivity hideLoadingActivityInView:self.view];
             self.orderDetailInfoModel = model;
             [self.detailTableView reloadTableViewWithModel:model];
             [self.footerView updateFooterViewWithOrderDetailModel:model];
         } failedBlock:^(NSError * _Nonnull error) {
             @strongify(self)
+            [GMLoadingActivity hideLoadingActivityInView:self.view];
             [self showAlertViewWithError:error];
         }];
     }

@@ -12,7 +12,7 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     
-    return @{
+    return @{@"productId"   : @"id",
              @"picUrl"      : @"pic"
              };
     
@@ -20,6 +20,13 @@
 
 + (instancetype)homePageInfoDetailItemWithDict:(NSDictionary *)dict {
     return [MTLJSONAdapter modelOfClass:[HomePageInfoDetailItem class] fromJSONDictionary:dict error:nil];
+}
+
++ (NSValueTransformer *)productIdJSONTransformer{
+    
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber * number, BOOL *success, NSError *__autoreleasing *error) {
+        return [NSString stringWithFormat:@"%@",number];
+    }];
 }
 
 @end

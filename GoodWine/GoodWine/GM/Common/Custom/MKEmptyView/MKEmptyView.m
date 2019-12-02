@@ -29,7 +29,7 @@
 - (void)showEmptyNeedLoadBtn:(BOOL)needBtn {
     self.hidden = NO;
     if (needBtn) {
-        self.title = @"加载失败，点击重试";
+        self.title = @"加载失败，点击重试~";
         
         [self setupConstraints];
         

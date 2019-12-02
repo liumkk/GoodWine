@@ -21,6 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *subTitle; //副标题
 @property (nonatomic, copy) NSString *originalPrice;    //市场价
 @property (nonatomic, copy) NSString *price; //价格
+@property (nonatomic, copy) NSString *unit; //规格
+@property (nonatomic, copy) NSString *purity;    //类型
+@property (nonatomic, copy) NSString *alcohol; //度数
+@property (nonatomic, copy) NSString *productCategoryName; //酒类
+@property (nonatomic, copy) NSString *detailTitle; //详细标题
 @property (nonatomic, copy) NSString *promotionPrice;     //促销价格
 @property (nonatomic, assign) NSInteger publishStatus; //上架状态：0->下架；1->上架
 @property (nonatomic, assign) NSInteger recommandStatus;    //推荐状态；0->不推荐；1->推荐

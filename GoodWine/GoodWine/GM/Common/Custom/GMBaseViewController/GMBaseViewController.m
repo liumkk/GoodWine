@@ -39,11 +39,11 @@
 - (void)updateNavigationBarNeedBack:(BOOL)need {
     
     [self.navigationController.navigationBar setShadowImage:nil];
-    [self.navigationController.navigationBar setBackgroundImage:[UIView createPureColorImageWithColor:COLOR_WHITE alpha:1 size:CGSizeMake(Width_Screen, SafeAreaTopHeight)] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIView createPureColorImageWithColor:COLOR_THEME_COLOR alpha:1 size:CGSizeMake(Width_Screen, SafeAreaTopHeight)] forBarMetrics:UIBarMetricsDefault];
     
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont systemFontOfSize:16],
-       NSForegroundColorAttributeName:[UIColor blackColor]}];
+       NSForegroundColorAttributeName:COLOR_WHITE}];
     if (need) {
         [self.backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
         self.backButtonItem.customView = self.backBtn;
@@ -61,10 +61,10 @@
 
 - (void)updateClearNavigationBarNeedBack:(BOOL)need alpha:(CGFloat)alpha {
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    [self.navigationController.navigationBar setBackgroundImage:[UIView createPureColorImageWithColor:COLOR_WHITE alpha:alpha size:CGSizeMake(Width_Screen, SafeAreaTopHeight)] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIView createPureColorImageWithColor:COLOR_THEME_COLOR alpha:alpha size:CGSizeMake(Width_Screen, SafeAreaTopHeight)] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont systemFontOfSize:16],
-       NSForegroundColorAttributeName:COLORRGB(51, 51, 51, alpha)}];
+       NSForegroundColorAttributeName:COLORRGB(255, 255, 255, alpha)}];
     
     if (need) {
         [self.backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
@@ -73,7 +73,9 @@
         
         if (alpha > 0.9) {
             
-            [self.backBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+            UIImage *image = [[UIImage imageNamed:@"back"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [self.backBtn setImage:image forState:UIControlStateNormal];
+            [self.backBtn setTintColor:[UIColor whiteColor]];
         } else {
             [self.navigationController.navigationBar setShadowImage:[UIImage new]];
             [self.backBtn setImage:[UIImage imageNamed:@"back_gray"] forState:UIControlStateNormal];
@@ -92,7 +94,9 @@
 - (UIButton *)backBtn {
     if (! _backBtn) {
         _backBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 42, 24)];
-        [_backBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+        UIImage *image = [[UIImage imageNamed:@"back"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [_backBtn setImage:image forState:UIControlStateNormal];
+        [_backBtn setTintColor:[UIColor whiteColor]];
         _backBtn.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 10);
     }
     return _backBtn;

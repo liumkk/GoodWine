@@ -40,6 +40,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.view.backgroundColor = COLOR_WHITE;
+    
     [self setupConstranits];
     @weakify(self)
     [self.maskView touchesBegan:^{
@@ -51,6 +54,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.title = @"商品详情";
+    self.extendedLayoutIncludesOpaqueBars = YES;
+    
     CGFloat minAlphaOffset = 0;
     CGFloat maxAlphaOffset = 200;
     CGFloat offset = self.productDetailTV.contentOffset.y;
@@ -70,9 +75,9 @@
     }];
     
     [self.productDetailFooterView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view.mas_bottom).offset(-BottomTarBarSpace);
+        make.bottom.equalTo(self.view.mas_bottom);
         make.left.right.equalTo(self.view);
-        make.height.mas_equalTo(footerView_height);
+        make.height.mas_equalTo(footerView_height + BottomTarBarSpace);
     }];
     
     [self.maskView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -119,7 +124,7 @@
     CGFloat maxAlphaOffset = 200;
     CGFloat offset = scrollView.contentOffset.y;
     CGFloat alpha = (offset - minAlphaOffset) / (maxAlphaOffset - minAlphaOffset);
-    
+
     [self updateClearNavigationBarNeedBack:YES alpha:alpha];
 }
 
@@ -225,6 +230,8 @@
     if (! _productDetailTV) {
         _productDetailTV = [[GMProductDetailTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _productDetailTV.productDetailDelegate = self;
+        UITableView *view = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Width_Screen, Height_Screen) style:UITableViewStyleGrouped];
+        [self.view addSubview:view];
         [self.view addSubview:_productDetailTV];
     }
     return _productDetailTV;

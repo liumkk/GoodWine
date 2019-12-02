@@ -23,6 +23,7 @@
              @"subTitle"            : @"subTitle",
              @"originalPrice"       : @"originalPrice",
              @"price"               : @"price",
+             @"descriptions"         : @"description",
              @"detailDesc"          : @"detailDesc",
              @"albumPics"           : @"albumPics",
              @"skuArray"            : @"skuList",

@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSError *)getBizWithMessage:(NSString *)message;
 
++ (NSError *)getBizWithMessage:(NSString *)message code:(NSString *)code;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -16,9 +16,10 @@
 #define     MKApiKey        @"bb580696faf63d215ca472e9f9d6fc6e"
 #define     MKWebApiKey     @"7da5a57fc078a7240d77aa45d561204e"
 
-@interface MKLocationManager () <AMapLocationManagerDelegate>
+@interface MKLocationManager () <AMapLocationManagerDelegate, AMapSearchDelegate>
 
 @property (nonatomic, strong) AMapLocationManager *locationManager;
+@property (nonatomic, strong) AMapSearchAPI *search;
 
 @end
 
@@ -49,6 +50,9 @@ static MKLocationManager *_sharedInstance = nil;
         self.locationManager.locationTimeout =5;
         //   逆地理请求超时时间，最低2s，此处设置为5s
         self.locationManager.reGeocodeTimeout = 5;
+        
+        self.search = [[AMapSearchAPI alloc] init];
+        self.search.delegate = self;
     }
     return self;
 }
@@ -111,6 +115,9 @@ static MKLocationManager *_sharedInstance = nil;
             if (regeocode) {
                 MKNSLog(@"regeocode:%@", regeocode);
                 UserCenter.district = regeocode.district;
+                //获取天气
+                [self searchWeatherWithAdcode:regeocode.adcode];
+                //查询门店信息
                 [ServerAPIManager asyncQueryStoreInfoWithRegionCode:regeocode.adcode succeedBlock:^(GMStoreInfoModel * _Nonnull infoModel) {
                     UserCenter.storeId = infoModel.storeId;
                     UserCenter.storeInfoModel = infoModel;
@@ -158,6 +165,26 @@ static MKLocationManager *_sharedInstance = nil;
     } else {
         return NO;
     }
+}
+
+- (void)searchWeatherWithAdcode:(NSString *)adcode {
+    AMapWeatherSearchRequest *request = [[AMapWeatherSearchRequest alloc] init];
+    request.city = adcode;
+    request.type = AMapWeatherTypeLive;
+    [self.search AMapWeatherSearch:request];
+}
+
+//解析response获取天气信息
+- (void)onWeatherSearchDone:(AMapWeatherSearchRequest *)request response:(AMapWeatherSearchResponse *)response {
+    AMapLocalWeatherLive *live = response.lives[0];
+    UserCenter.weather = [NSString stringWithFormat:@"%@ %@°",live.weather,live.temperature];
+    if (self.searchWeatherCallBack) {
+        self.searchWeatherCallBack();
+    }
+}
+
+- (void)AMapSearchRequest:(id)request didFailWithError:(NSError *)error {
+    NSLog(@"Error: %@", error);
 }
 
 - (void)dealloc {

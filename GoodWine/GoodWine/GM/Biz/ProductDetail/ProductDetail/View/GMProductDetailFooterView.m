@@ -16,6 +16,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self) {
         self = [super initWithFrame:frame];
+        self.backgroundColor = COLOR_WHITE;
         [self setupConstraints];
     }
     return self;
@@ -42,13 +43,13 @@
     }];
     
     [self.buyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.mas_centerY);
+        make.top.equalTo(self).offset(5.f);
         make.right.equalTo(self.mas_right).offset(-10.f);
         make.size.mas_equalTo(CGSizeMake(90.f, 35.f));
     }];
     
     [self.joinShoppCarBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.mas_centerY);
+        make.top.equalTo(self.buyButton);
         make.right.equalTo(self.buyButton.mas_left);
         make.size.mas_equalTo(CGSizeMake(90.f, 35.f));
     }];

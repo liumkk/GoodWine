@@ -57,7 +57,7 @@ static NSString *brandAreaTableCellID = @"brandAreaTableCellID";
     BrandAreaInfoModel *model = self.dataArray[indexPath.row];
     [cell updateCellWithLabelText:model.name];
     if (indexPath.row == 0) {
-        cell.contentView.backgroundColor = [UIColor whiteColor];
+        cell.contentView.backgroundColor = COLOR_TABLE_BG_RAY;
         cell.brandLabel.textColor = COLOR_THEME_COLOR;
     } else {
         cell.contentView.backgroundColor = COLOR_TABLE_BG_COLOR;
@@ -74,7 +74,7 @@ static NSString *brandAreaTableCellID = @"brandAreaTableCellID";
         lastCell.brandLabel.textColor = COLOR_TEXT_BLACK;
         
         GMBrandTableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
-        cell.contentView.backgroundColor = [UIColor whiteColor];
+        cell.contentView.backgroundColor = COLOR_TABLE_BG_RAY;
         cell.brandLabel.textColor = COLOR_THEME_COLOR;
         
         self.lastIndex = indexPath.row;

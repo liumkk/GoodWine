@@ -11,10 +11,12 @@
 #import "GMProductEvaluateTableViewCell.h"
 #import "GMMoreEvaluateFooterView.h"
 #import "GMPicTableViewCell.h"
+#import "GMDescriptionTableViewCell.h"
 
 static  NSString *productCellID = @"productCellID";
 static  NSString *productCouponCellID = @"productCouponCellID";
 static  NSString *productEvaluateCellID = @"productEvaluateCellID";
+static  NSString *productDescriptionCellID = @"productDescriptionCellID";
 static  NSString *productPicCellID = @"productPicCellID";
 
 @interface GMProductDetailTableView () <UITableViewDelegate, UITableViewDataSource>
@@ -41,6 +43,7 @@ static  NSString *productPicCellID = @"productPicCellID";
         [self registerClass:[GMProductDetailCell class] forCellReuseIdentifier:productCellID];
         [self registerClass:[GMKeyValueInfoCell class] forCellReuseIdentifier:productCouponCellID];
         [self registerClass:[GMProductEvaluateTableViewCell class] forCellReuseIdentifier:productEvaluateCellID];
+        [self registerClass:[GMDescriptionTableViewCell class] forCellReuseIdentifier:productDescriptionCellID];
         [self registerClass:[GMPicTableViewCell class] forCellReuseIdentifier:productPicCellID];
     }
     return self;
@@ -62,7 +65,7 @@ static  NSString *productPicCellID = @"productPicCellID";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 4;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -74,6 +77,8 @@ static  NSString *productPicCellID = @"productPicCellID";
         } else {
             return self.evaluateArray.count;
         }
+    } else if (section == 3) {
+        return 1;
     } else {
         return self.albumPics.count;
     }
@@ -94,6 +99,10 @@ static  NSString *productPicCellID = @"productPicCellID";
     } else if (indexPath.section == 2) {
         GMProductEvaluateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:productEvaluateCellID];
         [cell updateEvaluateTableCellWithModel:self.evaluateArray[indexPath.row]];
+        return cell;
+    } else if (indexPath.section == 3) {
+        GMDescriptionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:productDescriptionCellID];
+        [cell updateCellWithTitle:self.productDetailModel.descriptions];
         return cell;
     } else {
         GMPicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:productPicCellID];
@@ -128,8 +137,10 @@ static  NSString *productPicCellID = @"productPicCellID";
             model.contentHeight = [model.content heightStringWithFont:evaluateContentCellFont width:Width_Screen-26.f] + 65.f;
         }
         return model.contentHeight;
+    } else if (indexPath.section == 3) {
+        return [self.productDetailModel.descriptions heightStringWithFont:Font(14.f) width:Width_Screen - 32.f] +29.f;
     } else {
-        return 270.f;
+        return self.albumPics.count *270.f;
     }
 }
 
@@ -145,6 +156,8 @@ static  NSString *productPicCellID = @"productPicCellID";
     
     if (section == 2) {
         return 40.f;
+    } else if (section == 3) {
+        return 10.f;
     } else {
         return CGFLOAT_MIN;
     }
@@ -162,6 +175,8 @@ static  NSString *productPicCellID = @"productPicCellID";
     
     if (section == 2){
         return 35.f;
+    } else if (section == 3 || section == 4) {
+        return CGFLOAT_MIN;
     } else {
         return 10.f;
     }

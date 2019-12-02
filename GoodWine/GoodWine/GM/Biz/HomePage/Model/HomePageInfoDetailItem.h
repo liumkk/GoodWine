@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HomePageInfoDetailItem : MTLModel <MTLJSONSerializing>
 
+@property (nonatomic, strong) NSString *productId;
 @property (nonatomic, strong) NSString *picUrl;
 
 + (instancetype)homePageInfoDetailItemWithDict:(NSDictionary *)dict;

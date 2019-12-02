@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) GMUserCenterInfoModel *userInfoModel;
 @property (nonatomic, strong) GMStoreInfoModel *storeInfoModel;
 @property (nonatomic, copy) NSString *district;
+@property (nonatomic, copy) NSString *weather;
 @property (nonatomic, assign) BOOL isLogin;
 
 @property (nonatomic, copy) NSString *storeId;

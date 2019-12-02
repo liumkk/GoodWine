@@ -71,7 +71,9 @@
     } failedBlock:^(NSError * _Nonnull error) {
         @strongify(self)
         [GMLoadingActivity hideLoadingActivityInView:self.view];
-        [self showAlertViewWithError:error];
+        [self showAlertViewWithTitle:error.userInfo[GM_Net_Key_ErrInfo] btnNames:@[@"确定"] clickedCallBack:^(NSInteger index) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
     }];
 }
 
@@ -104,7 +106,11 @@
     } failedBlock:^(NSError * _Nonnull error) {
         @strongify(self)
         [GMLoadingActivity hideLoadingActivityInView:self.view];
-        [self showAlertViewWithError:error];
+        [self showAlertViewWithTitle:error.userInfo[GM_Net_Key_ErrInfo] btnNames:@[@"确定"] clickedCallBack:^(NSInteger index) {
+//            if ([error.userInfo[GM_Net_Key_ErrCode] integerValue] == 210) {
+                [self.navigationController popViewControllerAnimated:YES];
+//            }
+        }];
     }];
 }
 

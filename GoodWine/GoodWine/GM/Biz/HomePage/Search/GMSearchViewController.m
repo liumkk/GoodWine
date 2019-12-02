@@ -10,10 +10,12 @@
 #import "GMSearchView.h"
 #import "GMSearchCollectionView.h"
 #import "GMProductDetailViewController.h"
+#import "GMSearchTableView.h"
 
-@interface GMSearchViewController () <GMSearchCollectionViewDelegate,UITextFieldDelegate>
+@interface GMSearchViewController () <GMSearchTableViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic, strong) GMSearchCollectionView *searchCollectionView;
+@property (nonatomic, strong) GMSearchTableView *searchTableView;
 @property (nonatomic, strong) GMSearchView *searchView;
 @property (nonatomic, strong) UIButton *rightBtn;
 @property (nonatomic, strong) NSMutableArray <HomePageTypeItem *> *searchArray;
@@ -50,8 +52,8 @@
 }
 
 - (void)setupConstranits {
-    [self.searchCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(0, 9.f, 0, 9.f));
+    [self.searchTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
     }];
     
     [self.emptyView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -80,38 +82,38 @@
            if (!isLoadMore) {
                self.page = 1;
                [self.emptyView showEmptyNeedLoadBtn:NO];
-               [self.searchCollectionView.mj_footer resetNoMoreData];
+               [self.searchTableView.mj_footer resetNoMoreData];
            } else {
-               [self.searchCollectionView.mj_footer endRefreshingWithNoMoreData];
+               [self.searchTableView.mj_footer endRefreshingWithNoMoreData];
            }
        } else {
            if (!isLoadMore) {
                self.page = 1;
                [self.searchArray removeAllObjects];
-               [self.searchCollectionView.mj_footer resetNoMoreData];
+               [self.searchTableView.mj_footer resetNoMoreData];
            }
            self.page ++;
            [self.searchArray addObjectsFromArray:array];
            
            self.emptyView.hidden = YES;
-           [self.searchCollectionView reloadStoreDetailCollectionViewWithDataArray:self.searchArray];
+           [self.searchTableView reloadSearchTableViewWithDataArray:self.searchArray];
        }
     } failedBlock:^(NSError * _Nonnull error) {
         
     }];
 }
 
-- (void)searchCollectionView:(UICollectionView *)collectionView didSelectItemModel:(HomePageTypeItem *)model {
+- (void)searchTableViewDidSelectItemModel:(HomePageTypeItem *)model {
     GMProductDetailViewController *vc = [[GMProductDetailViewController alloc] initWithProductId:model.productId];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)addRefreshHeaderView {
     @weakify(self)
-    self.searchCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.searchTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         @strongify(self)
-        if ([self.searchCollectionView.mj_footer isRefreshing]) {
-            [self.searchCollectionView.mj_footer endRefreshing];
+        if ([self.searchTableView.mj_footer isRefreshing]) {
+            [self.searchTableView.mj_footer endRefreshing];
         }
         [self requestSearchProductIsLoadMore:NO];
     }];
@@ -119,23 +121,23 @@
 
 - (void)addRefreshFooterView {
     @weakify(self)
-    self.searchCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+    self.searchTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         @strongify(self)
-        if ([self.searchCollectionView.mj_header isRefreshing]) {
-            [self.searchCollectionView.mj_header endRefreshing];
+        if ([self.searchTableView.mj_header isRefreshing]) {
+            [self.searchTableView.mj_header endRefreshing];
         }
         [self requestSearchProductIsLoadMore:YES];
     }];
-    self.searchCollectionView.mj_footer.ignoredScrollViewContentInsetBottom = BottomTarBarSpace;
+    self.searchTableView.mj_footer.ignoredScrollViewContentInsetBottom = BottomTarBarSpace;
 }
 
 - (void)endMJRefresh {
     
-    if ([self.searchCollectionView.mj_header isRefreshing]) {
-        [self.searchCollectionView.mj_header endRefreshing];
+    if ([self.searchTableView.mj_header isRefreshing]) {
+        [self.searchTableView.mj_header endRefreshing];
     }
-    if ([self.searchCollectionView.mj_footer isRefreshing]) {
-        [self.searchCollectionView.mj_footer endRefreshing];
+    if ([self.searchTableView.mj_footer isRefreshing]) {
+        [self.searchTableView.mj_footer endRefreshing];
     }
 }
 
@@ -146,13 +148,13 @@
     return YES;
 }
 
-- (GMSearchCollectionView *)searchCollectionView {
-    if (! _searchCollectionView) {
-        _searchCollectionView = [[GMSearchCollectionView alloc] initWithFrame:CGRectZero];
-        _searchCollectionView.searchCollectionDelegate = self;
-        [self.view addSubview:_searchCollectionView];
+- (GMSearchTableView *)searchTableView {
+    if (! _searchTableView) {
+        _searchTableView = [[GMSearchTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _searchTableView.searchDelegate = self;
+        [self.view addSubview:_searchTableView];
     }
-    return _searchCollectionView;
+    return _searchTableView;
 }
 
 - (GMSearchView *)searchView {

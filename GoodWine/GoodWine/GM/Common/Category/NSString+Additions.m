@@ -29,6 +29,17 @@
     return  attrString;
 }
 
++ (NSAttributedString *)setFirstLineHeadIndentWithString:(NSString *)string indent:(CGFloat)indent {
+    if (string.length > 0) {
+        NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+        style.firstLineHeadIndent = indent;
+        NSAttributedString *attrText = [[NSAttributedString alloc] initWithString:string attributes:@{ NSParagraphStyleAttributeName : style}];
+        return attrText;
+    }
+    return [NSAttributedString new];
+
+}
+
 - (CGFloat)heightStringWithFont:(UIFont *)font width:(CGFloat)width {
     CGFloat height = [self boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:font} context:nil].size.height;
     return height;

@@ -10,11 +10,12 @@
 #import "GMBrandAreaTableView.h"
 #import "GMProductAreaCollectionView.h"
 #import "GMProductDetailViewController.h"
+#import "GMProductAreaTableView.h"
 
-@interface GMProductAreaViewController () <GMProductAreaCollectionViewDelegate,GMBrandAreaTableViewDelegate>
+@interface GMProductAreaViewController () <GMProductAreaTableViewDelegate,GMBrandAreaTableViewDelegate>
 
 @property (nonatomic, strong) GMBrandAreaTableView *brandTableView;
-@property (nonatomic, strong) GMProductAreaCollectionView *productCollectionView;
+@property (nonatomic, strong) GMProductAreaTableView *productTableView;
 @property (nonatomic, copy) NSString *cateId;
 @property (nonatomic, strong) NSArray <BrandAreaInfoModel *> *brandArray;
 @property (nonatomic, strong) NSMutableArray <HomePageTypeItem *> *dataArray;
@@ -53,7 +54,7 @@
         make.width.mas_equalTo(75.f);
     }];
     
-    [self.productCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.productTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.brandTableView);
         make.left.equalTo(self.brandTableView.mas_right);
         make.right.bottom.equalTo(self.view);
@@ -67,7 +68,7 @@
 - (void)updateEmptyView {
     
     [self.emptyView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.productCollectionView);
+        make.edges.equalTo(self.productTableView);
     }];
 }
 
@@ -107,21 +108,21 @@
                 self.page = 1;
                 [self.emptyView showEmptyNeedLoadBtn:NO];
                 [self updateEmptyView];
-                [self.productCollectionView.mj_footer resetNoMoreData];
+                [self.productTableView.mj_footer resetNoMoreData];
             } else {
-                [self.productCollectionView.mj_footer endRefreshingWithNoMoreData];
+                [self.productTableView.mj_footer endRefreshingWithNoMoreData];
             }
         } else {
             if (!isLoadMore) {
                 self.page = 1;
                 [self.dataArray removeAllObjects];
-                [self.productCollectionView.mj_footer resetNoMoreData];
+                [self.productTableView.mj_footer resetNoMoreData];
             }
             self.page ++;
             [self.dataArray addObjectsFromArray:array];
             
             self.emptyView.hidden = YES;
-            [self.productCollectionView reloadProductAreaCollectionWithDataArray:self.dataArray];
+            [self.productTableView reloadProductAreaTableViewWithDataArray:self.dataArray];
         }
     } failedBlock:^(NSError * _Nonnull error) {
         @strongify(self)
@@ -137,17 +138,17 @@
     [self requestProductWithBrandId:self.brandId IsLoadMore:NO];
 }
 
-- (void)collectionViewDidSelectItemWithModel:(HomePageTypeItem *)model {
+- (void)productAreaTableViewDidSelectItemModel:(HomePageTypeItem *)model {
     GMProductDetailViewController *vc = [[GMProductDetailViewController alloc] initWithProductId:model.productId];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)addRefreshHeaderView {
     @weakify(self)
-    self.productCollectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    self.productTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         @strongify(self)
-        if ([self.productCollectionView.mj_footer isRefreshing]) {
-            [self.productCollectionView.mj_footer endRefreshing];
+        if ([self.productTableView.mj_footer isRefreshing]) {
+            [self.productTableView.mj_footer endRefreshing];
         }
         [self requestProductWithBrandId:self.brandId IsLoadMore:NO];
     }];
@@ -155,23 +156,23 @@
 
 - (void)addRefreshFooterView {
     @weakify(self)
-    self.productCollectionView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+    self.productTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         @strongify(self)
-        if ([self.productCollectionView.mj_header isRefreshing]) {
-            [self.productCollectionView.mj_header endRefreshing];
+        if ([self.productTableView.mj_header isRefreshing]) {
+            [self.productTableView.mj_header endRefreshing];
         }
         [self requestProductWithBrandId:self.brandId IsLoadMore:YES];
     }];
-    self.productCollectionView.mj_footer.ignoredScrollViewContentInsetBottom = BottomTarBarSpace;
+    self.productTableView.mj_footer.ignoredScrollViewContentInsetBottom = BottomTarBarSpace;
 }
 
 - (void)endMJRefresh {
     
-    if ([self.productCollectionView.mj_header isRefreshing]) {
-        [self.productCollectionView.mj_header endRefreshing];
+    if ([self.productTableView.mj_header isRefreshing]) {
+        [self.productTableView.mj_header endRefreshing];
     }
-    if ([self.productCollectionView.mj_footer isRefreshing]) {
-        [self.productCollectionView.mj_footer endRefreshing];
+    if ([self.productTableView.mj_footer isRefreshing]) {
+        [self.productTableView.mj_footer endRefreshing];
     }
 }
 
@@ -191,13 +192,13 @@
     return _brandTableView;
 }
 
-- (GMProductAreaCollectionView *)productCollectionView {
-    if (! _productCollectionView) {
-        _productCollectionView = [[GMProductAreaCollectionView alloc] initWithFrame:CGRectZero];
-        _productCollectionView.productAreaCVDelegate = self;
-        [self.view addSubview:_productCollectionView];
+- (GMProductAreaTableView *)productTableView {
+    if (! _productTableView) {
+        _productTableView = [[GMProductAreaTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _productTableView.productAreaDelegate = self;
+        [self.view addSubview:_productTableView];
     }
-    return _productCollectionView;
+    return _productTableView;
 }
 
 - (MKEmptyView *)emptyView {

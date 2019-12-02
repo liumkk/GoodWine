@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, WineAreaType){
 
 - (void)collectionViewDidSelectItemWithModel:(HomePageTypeItem *)model;
 - (void)clickWineAreaWithAreaType:(WineAreaType)type;
-
+- (void)clickAdvertiseWithProductId:(NSString *)productId;
 @end
 
 @interface GMHomePageTableView : UITableView <UITableViewDelegate, UITableViewDataSource>

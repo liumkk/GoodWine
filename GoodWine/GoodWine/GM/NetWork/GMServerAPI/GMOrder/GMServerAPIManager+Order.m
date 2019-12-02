@@ -107,7 +107,7 @@
         }else {
             
             if (failedBlock) {
-                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo]]);
+                failedBlock([GMNetworkError getBizWithMessage:responseDict[GM_Net_Key_ErrInfo] code:responseDict[GM_Net_Key_ErrCode]]);
             }
             
         }

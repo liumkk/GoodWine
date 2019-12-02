@@ -36,4 +36,17 @@
     return [NSError errorWithDomain:GM_Net_Error_Domain code:[GM_Net_RespCode_Error integerValue] userInfo:@{GM_Net_Key_ErrCode:GM_Net_RespCode_Error,GM_Net_Key_ErrInfo:message}];
 }
 
++ (NSError *)getBizWithMessage:(NSString *)message code:(NSString *)code {
+    
+    if (!message) {
+        message = @"";
+    }
+    
+    if (!code) {
+        code = @"0";
+    }
+    
+    return [NSError errorWithDomain:GM_Net_Error_Domain code:[GM_Net_RespCode_Error integerValue] userInfo:@{GM_Net_Key_ErrCode:code,GM_Net_Key_ErrInfo:message}];
+}
+
 @end

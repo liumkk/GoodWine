@@ -42,6 +42,9 @@
         }];
     } else {
         [self requestQueryHomePageinfoNeedLoad:YES];
+        LocationManager.searchWeatherCallBack = ^{
+            [self.leftBtn setTitle:[NSString stringWithFormat:@"%@\n%@",UserCenter.district,UserCenter.weather] forState:UIControlStateNormal];
+        };
     }
 }
 
@@ -51,8 +54,9 @@
     self.navigationItem.titleView = self.searchView;
     
     if (!UserCenter.userCode) {
-        [self.leftBtn setTitle:UserCenter.district forState:UIControlStateNormal];
-        self.leftBtn.titleLabel.font = Font(13.f);
+        [self.leftBtn setTitle:[NSString stringWithFormat:@"%@\n%@",UserCenter.district,UserCenter.weather] forState:UIControlStateNormal];
+    } else {
+        [self.leftBtn setTitle:[NSString stringWithFormat:@"%@\n%@",@"蜀山区",@"晴 5°"] forState:UIControlStateNormal];
     }
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.leftBtn];
 }
@@ -86,6 +90,12 @@
         [self showAlertViewWithTitle:@"提示" Error:error buttonTitle:@"确定"];
         [self.homePageTableView.mj_header endRefreshing];
     }];
+}
+
+- (void)clickAdvertiseWithProductId:(NSString *)productId {
+    GMProductDetailViewController *vc = [[GMProductDetailViewController alloc] initWithProductId:productId];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)collectionViewDidSelectItemWithModel:(HomePageTypeItem *)model {
@@ -130,8 +140,7 @@
         [self.homePageTableView.mj_header beginRefreshing];
     } else {
         [LocationManager openLocationFunctionSucceed:^{
-            [self.leftBtn setTitle:UserCenter.district forState:UIControlStateNormal];
-            self.leftBtn.titleLabel.font = Font(13.f);
+            [self.leftBtn setTitle:[NSString stringWithFormat:@"%@\n%@",UserCenter.district,UserCenter.weather] forState:UIControlStateNormal];
             [self.homePageTableView.mj_header beginRefreshing];
         } failed:^{
             [ViewControllerManager showLoginView];
@@ -174,9 +183,9 @@
         _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _leftBtn.frame = CGRectMake(0, 0, 60, 44);
 //        [_leftBtn setImage:[UIImage imageNamed:@"icon_location"] forState:UIControlStateNormal];
-        [_leftBtn setTitle:@"刷新门店" forState:UIControlStateNormal];
-        [_leftBtn setTitleColor:COLOR_THEME_COLOR forState:UIControlStateNormal];
-        _leftBtn.titleLabel.font = Font(15.f);
+        [_leftBtn setTitle:@"重新定位" forState:UIControlStateNormal];
+        [_leftBtn setTitleColor:COLOR_WHITE forState:UIControlStateNormal];
+        _leftBtn.titleLabel.font = Font(14.f);
         _leftBtn.titleLabel.numberOfLines = 2;
 //        _leftBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
         [_leftBtn addTarget:self action:@selector(locationBtn:) forControlEvents:UIControlEventTouchUpInside];

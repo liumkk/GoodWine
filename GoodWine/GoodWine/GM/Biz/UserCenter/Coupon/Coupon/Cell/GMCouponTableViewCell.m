@@ -50,7 +50,13 @@
     self.validLabel.text = [NSString stringWithFormat:@"有效期至：%@",model.endTime];
     if (model.receive == 0) {
         self.statusLabel.text = @"领取";
+        self.titleLabel.textColor = COLOR_TEXT_BLACK;
+        self.statusLabel.textColor = COLOR_TEXT_BLACK;
+        self.validLabel.textColor = COLOR_TEXT_BLACK;
     } else {
+        self.titleLabel.textColor = COLOR_GRAY_150;
+        self.statusLabel.textColor = COLOR_GRAY_150;
+        self.validLabel.textColor = COLOR_GRAY_150;
         self.statusLabel.text = @"已领取";
     }
     

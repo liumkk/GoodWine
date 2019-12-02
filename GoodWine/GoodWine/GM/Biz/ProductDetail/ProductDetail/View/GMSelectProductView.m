@@ -114,9 +114,9 @@
         [itemBtn setTitle:item.sp1 forState:UIControlStateNormal];
         [itemBtn setTitleColor:COLOR_TEXT_BLACK forState:UIControlStateNormal];
         [itemBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        UIImage *image = [[UIImage imageNamed:@"gray_bg_yuan"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        [itemBtn setBackgroundImage:image forState:UIControlStateSelected];
-        [itemBtn setTintColor:COLOR_THEME_COLOR];
+//        UIImage *image = [[UIImage imageNamed:@"gray_bg_yuan"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+//        [itemBtn setBackgroundImage:image forState:UIControlStateSelected];
+//        [itemBtn setTintColor:COLOR_THEME_COLOR];
         [itemBtn addTarget:self action:@selector(itemBtnAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.selectView addSubview:itemBtn];
         
@@ -124,6 +124,10 @@
         if (width < itemBtnHeight +20.f) {
             width = itemBtnHeight +20.f;
         }
+        UIImage *themeImage = [UIView createPureColorImageWithColor:COLOR_THEME_COLOR alpha:1 size:CGSizeMake(width, itemBtnHeight)];
+        UIImage *grayImage = [UIView createPureColorImageWithColor:COLOR_GRAY_200 alpha:1 size:CGSizeMake(width, itemBtnHeight)];
+        [itemBtn setBackgroundImage:grayImage forState:UIControlStateNormal];
+        [itemBtn setBackgroundImage:themeImage forState:UIControlStateSelected];
         CGFloat height = CGRectGetMinY(lastBtn.frame);
         if (i >0) {
             if (CGRectGetMaxX(lastBtn.frame) + width + 16.f > Width_Screen) {
@@ -138,6 +142,7 @@
             self.didSelectBtn = itemBtn;
         }
         lastBtn = itemBtn;
+        [UIView maskCorner:itemBtn rectCorner:UIRectCornerAllCorners corner:itemBtnHeight/2];
     }
     
     [self.selectView mas_remakeConstraints:^(MASConstraintMaker *make) {

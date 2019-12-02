@@ -64,10 +64,15 @@
         }
     } failedBlock:^(NSError * _Nonnull error) {
         [GMLoadingActivity hideLoadingActivityInView:self.view];
-        [self.emptyView showEmptyNeedLoadBtn:NO];
+//        [self.emptyView showEmptyNeedLoadBtn:NO];
+        [self.emptyView showEmptyNeedLoadBtn:YES];
         [self endMJRefresh];
         [self showAlertViewWithError:error];
     }];
+}
+
+- (void)loadShoppCarRequest:(UIButton *)btn {
+    [self requestQueryShoppCarList];
 }
 
 - (void)shoppCarTableViewDidSelectRowAtIndex:(NSInteger)index {
@@ -221,6 +226,7 @@
 - (MKEmptyView *)emptyView {
     if (! _emptyView) {
         _emptyView = [[MKEmptyView alloc] initWithFrame:CGRectZero];
+        [_emptyView.loadBtn addTarget:self action:@selector(loadShoppCarRequest:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_emptyView];
     }
     return _emptyView;

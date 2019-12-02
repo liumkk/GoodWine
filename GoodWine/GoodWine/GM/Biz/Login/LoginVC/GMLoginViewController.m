@@ -50,8 +50,6 @@
 }
 
 - (void)loginAction:(UIButton *)btn {
-    self.loginView.nameTextField.text = @"13916391993";
-    self.loginView.passwordTextField.text = @"111111";
     if (IsStrEmpty(self.loginView.nameTextField.text) || IsStrEmpty(self.loginView.passwordTextField.text)) {
         [MKToastView showToastToView:self.view text:@"账号密码不能为空"];
     } else {
